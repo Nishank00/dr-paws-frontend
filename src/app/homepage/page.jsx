@@ -1,4 +1,5 @@
 import VerticalTabs from "@/components/homepage/VerticalTabs"
+import SuggestionForm from "@/components/pages/clinic/SuggestionForm"
 
 
 export default function Homepage() {
@@ -557,7 +558,7 @@ export default function Homepage() {
                     If your question is still not answered, please get in touch and we’d be happy to help
                 </div>
             </div>
-
+            <SuggestionForm></SuggestionForm>
         </>
     )
 }
