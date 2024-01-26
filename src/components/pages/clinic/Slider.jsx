@@ -35,7 +35,7 @@ useEffect(() => {
           <div className="numbertext text-white text-xs bg-gray-800 bg-opacity-50 p-1 absolute top-0 left-0">
             {index + 1} / {images.length}
           </div>
-          <img src={image} className="w-full" alt={`Slide ${index + 1}`} />
+          <img src={image} className="w-[800px]" alt={`Slide ${index + 1}`} />
         </div>
       ))}
 

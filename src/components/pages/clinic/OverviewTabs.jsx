@@ -20,11 +20,7 @@ const OverviewTabs = () => {
                     <GallaryBox />
                 }
             </div>
-            <div className='w-full py-10'>
-                {
-                    <Slider />
-                }
-            </div>
+          
             <span className="self-center flex w-full max-w-[1042px]  items-stretch justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
                 <div className="px-5 max-md:max-w-full">
                     <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -80,7 +76,7 @@ const OverviewTabs = () => {
             <div className='w-[100%] m-auto flex-auto justify-center  items-center'>
                 {/* Content for Tab 1 */}
                 {activeTab === 1 && <div className="p-4">
-                    <TabTwo />
+                    <TabOne />
                 </div>
                 }
 
@@ -92,7 +88,7 @@ const OverviewTabs = () => {
 
                 {/* Content for Tab 3 */}
                 {activeTab === 3 && <div className="p-4">
-                    <TabTwo />
+                    <TabThree />
                 </div>
                 }
 
