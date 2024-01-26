@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import { useState } from "react";
 import LoginPopUp from "../ui/LoginPopUp";
@@ -9,19 +9,19 @@ export default function Header() {
   const [isLoginPopUpOpen, setLoginPopUp] = useState(false);
 
   const Profile = ["Profile", "Settings", "Logout"];
-  const Location = ["Mumbai", "Chennai", "Delhi", "Kolkata"]
+  const Location = ["Mumbai", "Chennai", "Delhi", "Kolkata"];
 
   const handleBookVisitClick = () => {
     setLoginPopUp(true);
-  }
+  };
 
   const handleCloseLoginPopUp = () => {
     setLoginPopUp(false);
-  }
-  
+  };
+
   return (
-    <div className="justify-center items-center bg-orange-100 flex flex-col px-16 py-5 max-md:px-5 sticky top-0">
-      <div className="flex w-full max-w-[1040px] justify-between gap-5 items-start max-md:max-w-full max-md:flex-wrap">
+    <div className="justify-center items-center bg-primary3 flex flex-col  py-5 body-padding-x ">
+      <div className="flex w-full justify-between gap-5 items-start max-md:max-w-full max-md:flex-wrap">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
@@ -29,21 +29,25 @@ export default function Header() {
         />
         <span className="items-stretch self-center flex justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap">
           <span className="justify-between items-stretch flex gap-0">
-            <button onClick={()=>setLocation(!openLocation)} className="text-slate-700 text-lg grow relative whitespace-nowrap">
+            <button
+              onClick={() => setLocation(!openLocation)}
+              className="text-slate-700 text-lg grow relative whitespace-nowrap"
+            >
               Locations
-              {
-              openLocation && <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-12"> 
-              <ul>
-                {
-                  Location.map((locations)=>(
-                    <li className="p-2 text-lg hover:bg-primary3 rounded cursor-pointer" key={locations}>
-                      {locations}
-                    </li>
-                  ))
-                }
-              </ul>
-              </div>
-              }
+              {openLocation && (
+                <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-12">
+                  <ul>
+                    {Location.map((locations) => (
+                      <li
+                        className="p-2 text-lg hover:bg-primary3 rounded cursor-pointer"
+                        key={locations}
+                      >
+                        {locations}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </button>
             <img
               loading="lazy"
@@ -58,37 +62,37 @@ export default function Header() {
           </div>
         </span>
         <div className="items-stretch self-stretch flex justify-between gap-5">
-          <button onClick={handleBookVisitClick} className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5">
+          <button
+            onClick={handleBookVisitClick}
+            className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5"
+          >
             Book a Visit
           </button>
-          {
-            isLoginPopUpOpen && <LoginPopUp onClose={handleCloseLoginPopUp}/>
-          }
+          {isLoginPopUpOpen && <LoginPopUp onClose={handleCloseLoginPopUp} />}
           <div className="justify-center items-center relative border-[color:var(--Accent,#74A7B3)] flex aspect-square flex-col w-[50px] h-[50px] px-3.5 rounded-[71px] border-2 border-solid cursor-pointer">
             <img
-              onClick={()=>setOpen(!open)}
+              onClick={() => setOpen(!open)}
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
               className="aspect-square object-contain object-center w-full overflow-hidden"
             />
-            {
-              open && <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-16"> 
-              <ul>
-                {
-                  Profile.map((profile)=>(
-                    <li className="p-2 text-lg cursor-pointer rounded hover:bg-primary3 text-primary" key={profile}>
+            {open && (
+              <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-16">
+                <ul>
+                  {Profile.map((profile) => (
+                    <li
+                      className="p-2 text-lg cursor-pointer rounded hover:bg-primary3 text-primary"
+                      key={profile}
+                    >
                       {profile}
                     </li>
-                  ))
-                }
-              </ul>
-            </div>
-            }
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-
