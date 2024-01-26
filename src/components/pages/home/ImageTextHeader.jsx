@@ -6,6 +6,7 @@ const ImageTextHeader = ({
   text,
   imagePosition,
   buttonText,
+  buttonVisibility=true
 }) => {
   return (
     <div
@@ -26,7 +27,7 @@ const ImageTextHeader = ({
       <div className="w-full flex flex-col justify-center">
         <h2 className="text-primary font-medium text-4xl mb-6">{header}</h2>
         <p className="text-primary mb-6">{text}</p>
-        <Button label={buttonText} />
+        <Button label={buttonText}  style={{display:!buttonVisibility?"none":""}}/>
       </div>
     </div>
   );
