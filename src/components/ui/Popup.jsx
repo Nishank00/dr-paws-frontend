@@ -38,16 +38,16 @@ const Popup = ({ isOpen, onClose, hideClose, children }) => {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
       <div ref={popupRef} className="bg-white rounded-md relative">
         {children}
         {hideClose ?? (
-          <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 absolute -top-5 -right-2"
+          <span
+            className="text-black hover:text-gray-500 text-xl absolute top-1 right-3 cursor-pointer"
             onClick={onClose}
           >
             X
-          </button>
+          </span>
         )}
       </div>
     </div>

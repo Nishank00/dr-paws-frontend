@@ -1,6 +1,17 @@
 import React from "react";
 
-const TextInput = ({ label, placeholder, value, onChange }) => {
+const TextInput = ({
+  type = "text",
+  label,
+  placeholder,
+  value,
+  onChange,
+  name,
+}) => {
+  const handleChange = (e) => {
+    onChange(e);
+  };
+
   return (
     <div className="mb-4">
       {label && (
@@ -10,9 +21,10 @@ const TextInput = ({ label, placeholder, value, onChange }) => {
       )}
       <input
         placeholder={placeholder}
-        type="text"
+        type={type}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={handleChange}
+        name={name}
         className="text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
       />
     </div>
