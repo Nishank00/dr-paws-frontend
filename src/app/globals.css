@@ -35,6 +35,26 @@ body {
   }
 
   .primary-btn {
-    @apply px-4 py-3 rounded-[80px] bg-secondary hover:bg-primary text-white font-bold w-52;
+    @apply px-4 py-3 rounded-[80px] bg-primary hover:bg-primary text-white font-bold w-full;
+  }
+
+  .primary2-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary2 hover:bg-primary3 text-primary font-bold w-full;
+  }
+
+  .primary3-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary3 hover:bg-primary2 text-primary font-bold w-full ring ring-primary outline-none;
+  }
+
+  .primary4-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary3 hover:bg-primary3 text-primary font-bold w-full border border-r-2 border-primary outline-none;
+  }
+
+  .secondary-btn {
+    @apply px-4 py-3 rounded-[80px] bg-secondary hover:bg-primary text-white font-bold w-full;
+  }
+
+  .secondary2-btn {
+    @apply px-4 py-3 rounded-[80px] bg-secondary2 hover:bg-primary2 text-primary font-bold w-full ring ring-primary outline-none;
   }
 }

@@ -6,7 +6,7 @@ const Button = ({
   label = "button",
 }) => {
   return (
-    <button className="primary-btn" onClick={onClick}>
+    <button className={`${type}-btn`} onClick={onClick}>
       {label}
     </button>
   );

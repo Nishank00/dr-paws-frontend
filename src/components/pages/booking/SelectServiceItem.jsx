@@ -30,25 +30,50 @@ const SelectServiceItem = ({
       id: 1,
       isSelected: false,
       name: "Ranbir Kapoor",
-      image: "https://images.app.goo.gl/91tsi3DsxKVJKKZi6",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
     },
     {
       id: 2,
       isSelected: false,
       name: "Ranveer Kapoor",
-      image: "https://images.app.goo.gl/91tsi3DsxKVJKKZi6",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
     },
     {
       id: 3,
       isSelected: false,
       name: "Dhawan",
-      image: "https://images.app.goo.gl/91tsi3DsxKVJKKZi6",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
     },
     {
       id: 4,
       isSelected: false,
       name: "Aditya",
-      image: "https://images.app.goo.gl/91tsi3DsxKVJKKZi6",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
+    },
+    {
+      id: 5,
+      isSelected: false,
+      name: "Ranveer Kapoor",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
+    },
+    {
+      id: 6,
+      isSelected: false,
+      name: "Dhawan",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
+    },
+    {
+      id: 7,
+      isSelected: false,
+      name: "Aditya",
+      image:
+        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
     },
   ]);
 
@@ -88,7 +113,7 @@ const SelectServiceItem = ({
       {service.is_checked && (
         <div className="p-4 bg-white rounded-lg">
           <p className="text-primary">Select your pet/pets</p>
-          <div className="flex justify-start gap-5 pt-4">
+          <div className="flex flex-nowrap justify-start gap-5 pt-4">
             {pets.map((pet) => (
               <PetSelect
                 onSelect={() => onPetSelect(pet)}

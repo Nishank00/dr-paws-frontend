@@ -4,6 +4,20 @@ const Popup = ({ isOpen, onClose, hideClose, children }) => {
   const popupRef = useRef();
 
   useEffect(() => {
+    const handleEscapeKeyPress = (event) => {
+      if (event.key === "Escape" && isOpen) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKeyPress);
+    };
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
         onClose();
@@ -25,7 +39,7 @@ const Popup = ({ isOpen, onClose, hideClose, children }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
-      <div ref={popupRef} className="bg-white p-8 rounded-md relative">
+      <div ref={popupRef} className="bg-white rounded-md relative">
         {children}
         {hideClose ?? (
           <button

@@ -17,8 +17,8 @@ const PetSelect = ({
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className={`w-16 h-16 rounded-lg text-white flex items-center justify-center ${
-        pet.isSelected ? "bg-primary" : "bg-primary3"
+      className={`w-16 h-16 rounded-full text-white flex items-center justify-center ${
+        pet.isSelected ? "bg-primary" : pet.image ? "bg-primary3" : ""
       }`}
       onClick={onSelect}
     >
