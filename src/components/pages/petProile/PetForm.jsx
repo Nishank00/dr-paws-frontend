@@ -6,8 +6,9 @@ import Select from "@/components/ui/Select";
 const PetForm = ({ closePopup }) => {
   const [formData, setFormData] = useState({ pet_name: "", pet_type: null });
 
-  const setPetName = (pet_name) => {
-    setFormData({ ...formData, pet_name });
+  const setPetName = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
@@ -17,6 +18,7 @@ const PetForm = ({ closePopup }) => {
       </h4>
 
       <TextInput
+        name="pet_name"
         value={formData.pet_name}
         placeholder={"Pet's Name"}
         onChange={setPetName}

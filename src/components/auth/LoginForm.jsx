@@ -19,6 +19,7 @@ const LoginForm = () => {
     const { name, value } = e.target;
     console.log("Method invoked", name, value);
     setForm({ ...form, [name]: value });
+    console.table(form);
   };
 
   const RenderPage1 = () => (
@@ -62,14 +63,14 @@ const LoginForm = () => {
           type={"password"}
           placeholder={"Password"}
           name="password"
-          value={form.email}
+          value={form.password}
           onChange={formValueChanged}
         />
         <TextInput
           type={"password"}
           placeholder={"Confirm Password"}
           name="confirm_password"
-          value={form.mobile_number}
+          value={form.confirm_password}
           onChange={formValueChanged}
         />
 
