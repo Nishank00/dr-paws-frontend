@@ -3,7 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 import LoginPopUp from "../ui/LoginPopUp";
 import Popup from "../ui/Popup";
-import LoginForm from "../auth/LoginForm";
+import RegisterForm from "../auth/RegisterForm";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -97,7 +97,7 @@ export default function Header() {
       </div>
 
       <Popup isOpen={isLoginPopUpOpen} onClose={closeLoginPopup}>
-        <LoginForm />
+        <RegisterForm />
       </Popup>
     </div>
   );
