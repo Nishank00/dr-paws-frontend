@@ -4,11 +4,11 @@ import Button from "../ui/Button";
 import AuthService from "@/services/Auth.service";
 import useToast from "@/components/ui/Toast";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onSuccess }) => {
   const { showToast, ToastComponent } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState({
-    mobile_number: "",
+    phone: "",
     email: "",
     password: "",
     confirm_password: "",
@@ -20,19 +20,23 @@ const RegisterForm = () => {
 
   const formValueChanged = (e) => {
     const { name, value } = e.target;
-    console.log("Method invoked", name, value);
     setForm({ ...form, [name]: value });
-    console.table(form);
   };
 
   const registerUser = () => {
-    AuthService.register(form)
+    const payload = {
+      email: form.email,
+      phone: form.phone,
+      password: form.password,
+    };
+    AuthService.register(payload)
       .then((response) => {
         if (!response.data.status) {
           showToast(response.data.message, "warning");
           console.log("False received");
+          return;
         }
-        console.log(response);
+        onSuccess();
       })
       .catch((error) => {
         console.error(error);
@@ -58,8 +62,8 @@ const RegisterForm = () => {
               />
               <TextInput
                 placeholder={"Mobile Number"}
-                name="mobile_number"
-                value={form.mobile_number}
+                name="phone"
+                value={form.phone}
                 onChange={formValueChanged}
               />
 
