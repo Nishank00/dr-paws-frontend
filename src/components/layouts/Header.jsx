@@ -3,22 +3,32 @@ import * as React from "react";
 import { useState } from "react";
 import LoginPopUp from "../ui/LoginPopUp";
 import Popup from "../ui/Popup";
+import RegisterForm from "../auth/RegisterForm";
 import LoginForm from "../auth/LoginForm";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [openLocation, setLocation] = useState(false);
-  const [isLoginPopUpOpen, setLoginPopUp] = useState(false);
+  const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
+  const [isLoginPopupOpen, setLoginPopup] = useState(false);
 
   const Profile = ["Profile", "Settings", "Logout"];
   const Location = ["Mumbai", "Chennai", "Delhi", "Kolkata"];
 
+  const openRegisterPopup = () => {
+    setRegisterPopup(true);
+  };
+
+  const closeRegisterPopup = () => {
+    setRegisterPopup(false);
+  };
+
   const openLoginPopup = () => {
-    setLoginPopUp(true);
+    setLoginPopup(true);
   };
 
   const closeLoginPopup = () => {
-    setLoginPopUp(false);
+    setLoginPopup(false);
   };
 
   return (
@@ -65,12 +75,19 @@ export default function Header() {
         </span>
         <div className="items-stretch self-stretch flex justify-between gap-5">
           <button
-            onClick={openLoginPopup}
+            onClick={openRegisterPopup}
             className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5"
           >
             Book a Visit
           </button>
-          {/* {isLoginPopUpOpen && <LoginPopUp onClose={closeLoginPopup} />} */}
+
+          <button
+            onClick={openLoginPopup}
+            className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5"
+          >
+            Login
+          </button>
+          {/* {isRegisterPopupOpen && <RegisterPopup onClose={closeRegisterPopup} />} */}
           <div className="justify-center items-center relative border-[color:var(--Accent,#74A7B3)] flex aspect-square flex-col w-[50px] h-[50px] px-3.5 rounded-[71px] border-2 border-solid cursor-pointer">
             <img
               onClick={() => setOpen(!open)}
@@ -96,8 +113,12 @@ export default function Header() {
         </div>
       </div>
 
-      <Popup isOpen={isLoginPopUpOpen} onClose={closeLoginPopup}>
-        <LoginForm />
+      <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>
+        <RegisterForm onSuccess={closeRegisterPopup} />
+      </Popup>
+
+      <Popup isOpen={isLoginPopupOpen} onClose={closeLoginPopup}>
+        <LoginForm onSuccess={closeLoginPopup} />
       </Popup>
     </div>
   );
