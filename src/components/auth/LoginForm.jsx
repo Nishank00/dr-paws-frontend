@@ -27,7 +27,7 @@ const LoginForm = () => {
         <h5>Log in to book a visit</h5>
         <p>Add your phone number. We'll send you a verification code.</p>
       </div>
-
+  
       <div className="">
         <TextInput
           placeholder={"Email"}
@@ -41,7 +41,7 @@ const LoginForm = () => {
           value={form.mobile_number}
           onChange={formValueChanged}
         />
-
+  
         <Button label="Next" onClick={handleNext} />
       </div>
       <div className="">
@@ -49,6 +49,7 @@ const LoginForm = () => {
       </div>
     </div>
   );
+  
 
   const RenderPage2 = () => (
     <div className="">
