@@ -2,9 +2,9 @@ import API from "./API"
 
 export default {
 
-    getData ( payload )
+    getData ( params )
     {
-        return API().get( `clinic/getData`, payload )
+        return API().get( `clinic/getData`, { params } )
     },
 
 }
