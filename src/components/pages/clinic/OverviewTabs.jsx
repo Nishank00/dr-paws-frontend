@@ -5,13 +5,18 @@ import TabTwo from './TabTwo';
 import TabThree from './TabThree';
 import GallaryBox from './GallaryBox';
 import Slider from './Slider';
+import { useParams } from 'next/navigation';
 
 const OverviewTabs = () => {
     const [activeTab, setActiveTab] = useState(1);
+    const {id}=useParams();
 
     const handleTabClick = (tabNumber) => {
         setActiveTab(tabNumber);
     }
+    useEffect(()=>{
+        console.log("id=>",id)
+    },[])
 
     return (
         <div className='w-[100%] m-auto flex-auto justify-center  items-center'>

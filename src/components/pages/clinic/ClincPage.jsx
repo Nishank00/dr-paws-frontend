@@ -1,33 +1,30 @@
+"use client"
 import React, { useState, useEffect } from "react"
+import ClinicService from '@/services/Clinic.service'
+import ClinicCard from "./ClinicCard"
 
+const ClinicPage = () => {
+    const [clincs, setClincs] = useState([]);
+    const imageurl = "https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/3d6afbbf6cb563d8b2e9f32794e7ce4a947d3298bf7a66dd2483fe69ffde8831?apiKey=22a36eade5734692978208fb0d2f5c62&"
 
-const ClinicPage = () =>
-{
-    const [ clincs, setClincs ] = useState( [] );
-
-    const getData = () =>
-    {
-        ClinicService.getData().then( ( r ) =>
-        {
-            if ( r.data.status )
-            {
-                setClincs( r.data.data )
+    const getData = () => {
+        ClinicService.getData().then((r) => {
+            if (r.data.status) {
+                setClincs(r.data.data)
             }
 
-        } )
-            .catch( ( err ) =>
-            {
-                console.log( err );
-            } );
+        })
+            .catch((err) => {
+                console.log(err);
+            });
     }
-    useEffect( () =>
-    {
-
-    }, [] )
+    useEffect(() => {
+        getData()
+    }, [])
     return (
         <>
             <div
-                className={"grid grid-cols-1 sm:grid-cols-2 gap-10 "}
+                className={" w-full grid grid-cols-1 sm:grid-cols-2 gap-10 "}
             >
                 <div
                     style={{
@@ -56,13 +53,14 @@ const ClinicPage = () =>
                 Our Clinics
             </div>
 
-            <div style={{ marginTop: "25px" }} className="w-[70%] m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {gridData.map( ( item, index ) => (
+            <div style={{ marginTop: "25px" }} className="w-full m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {clincs && clincs.map((item, index) => (
                     <ClinicCard
-                        imageUrl={imageurl}
+                    key={index}
+                        imageUrl={imageurl} {...item}
 
                     />
-                ) )}
+                ))}
                 <span className="justify-center items-center shadow-sm bg-orange-100 flex max-w-[331px] flex-col px-9 py-12 rounded-lg">
                     <img
                         loading="lazy"
