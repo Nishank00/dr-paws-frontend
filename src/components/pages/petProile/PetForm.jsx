@@ -31,8 +31,8 @@ const PetForm = ({ closePopup }) => {
       />
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
-        <Button type="primary3" label="Cancel" onClick={closePopup} />
-        <Button type="secondary" label="Save" />
+        <Button color="primary3" label="Cancel" onClick={closePopup} />
+        <Button color="secondary" label="Save" />
       </div>
     </div>
   );

@@ -1,19 +1,52 @@
 "use client";
-import * as React from "react";
-import { useState } from "react";
-import LoginPopUp from "../ui/LoginPopUp";
+import React, { useState } from "react";
+import Link from "next/link";
+import Button from "../ui/Button";
 import Popup from "../ui/Popup";
 import RegisterForm from "../auth/RegisterForm";
 import LoginForm from "../auth/LoginForm";
+import ProfileDropdown from "../pages/profile/ProfileDropdown";
+import { TokenService } from "@/services/Storage.service";
 
-export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [openLocation, setLocation] = useState(false);
+const Menus = ({ show = false, applyParentClass = "" }) => (
+  <div className={show ? "" : "hidden md:block"}>
+    <ul
+      className={`${applyParentClass} flex flex-col md:flex-row md:items-center md:justify-center mt-5 lg:mt-0`}
+    >
+      <li className="my-1 md:mx-3">
+        <Link className="" href="#">
+          Locations
+        </Link>
+      </li>
+
+      <li className="my-1 md:mx-3">
+        <Link className="" href="#">
+          Our Services
+        </Link>
+      </li>
+
+      <li className="my-1 md:mx-3">
+        <Link className="" href="#">
+          Our Team
+        </Link>
+      </li>
+
+      <li className="my-1 md:mx-3">
+        <Link className="" href="#">
+          Membership
+        </Link>
+      </li>
+    </ul>
+  </div>
+);
+
+const Header = () => {
+  const [showMenu, setMenu] = useState(false);
+  const [showProfileDropdown, setProfileDropdown] = useState(false);
   const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
 
-  const Profile = ["Profile", "Settings", "Logout"];
-  const Location = ["Mumbai", "Chennai", "Delhi", "Kolkata"];
+  const toggleMenu = () => setMenu(!showMenu);
 
   const openRegisterPopup = () => {
     setRegisterPopup(true);
@@ -31,95 +64,106 @@ export default function Header() {
     setLoginPopup(false);
   };
 
+  const closeProfileDropdown = () => {
+    setProfileDropdown(false);
+  };
+
+  const toggleProfileDropdown = () => setProfileDropdown(!showProfileDropdown);
+
+  const userIconClicked = () => {
+    const token = TokenService.getToken() || false;
+
+    if (!token) {
+      return openLoginPopup();
+    }
+    return toggleProfileDropdown();
+  };
+
+  const signUpClicked = () => {
+    closeLoginPopup();
+    openRegisterPopup();
+  };
+
+  const loginClicked = () => {
+    closeRegisterPopup();
+    openLoginPopup();
+  };
   return (
-    <div className="justify-center items-center bg-primary3 flex flex-col  py-5 body-padding-x ">
-      <div className="flex w-full justify-between gap-5 items-start max-md:max-w-full max-md:flex-wrap">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
-          className="aspect-[2.55] object-contain object-center w-[125px] justify-center items-center overflow-hidden shrink-0 max-w-full"
-        />
-        <span className="items-stretch self-center flex justify-between gap-5 my-auto max-md:max-w-full max-md:flex-wrap">
-          <span className="justify-between items-stretch flex gap-0">
-            <button
-              onClick={() => setLocation(!openLocation)}
-              className="text-slate-700 text-lg grow relative whitespace-nowrap"
+    <>
+      <div className="body-padding-x body-padding-y text-primary bg-primary3">
+        <nav className="flex items-center justify-between">
+          <div id="logo">
+            <Link href="/">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
+                className="aspect-[2.55] object-contain object-center w-[125px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+              />
+            </Link>
+          </div>
+          <Menus show applyParentClass="hidden lg:flex" />
+          <div className="flex items-center gap-2">
+            <Button
+              label="Book a Visit"
+              color="secondary"
+              className="hidden md:block"
+            />
+            <div
+              onClick={userIconClicked}
+              className="flex items-center justify-center hover:shadow cursor-pointer h-10 w-10 relative"
             >
-              Locations
-              {openLocation && (
-                <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-12">
-                  <ul>
-                    {Location.map((locations) => (
-                      <li
-                        className="p-2 text-lg hover:bg-primary3 rounded cursor-pointer"
-                        key={locations}
-                      >
-                        {locations}
-                      </li>
-                    ))}
-                  </ul>
+              <img
+                className=""
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
+              />
+
+              {showProfileDropdown && (
+                <div className="absolute top-14 w-screen sm:w-auto">
+                  <ProfileDropdown onLogout={closeProfileDropdown} />
                 </div>
               )}
-            </button>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0f372d083cf6f9cec23df15e44da8f3bfe6d4be0d4d9c2497390f00bcd7db8b?"
-              className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full self-start"
-            />
-          </span>
-          <div className="text-slate-700 text-lg">Our Services</div>
-          <div className="text-slate-700 text-lg">Our Team</div>
-          <div className="text-slate-700 text-lg grow whitespace-nowrap">
-            Membership
+            </div>
+            <div className="block md:hidden">
+              <button
+                onClick={toggleMenu}
+                type="button"
+                className="ml-1 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 inline-flex items-center justify-center w-10 h-10"
+              >
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  ></path>
+                </svg>
+              </button>
+            </div>
           </div>
-        </span>
-        <div className="items-stretch self-stretch flex justify-between gap-5">
-          <button
-            onClick={openRegisterPopup}
-            className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5"
-          >
-            Book a Visit
-          </button>
-
-          <button
-            onClick={openLoginPopup}
-            className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 grow px-14 py-3.5 rounded-[86px] max-md:px-5"
-          >
-            Login
-          </button>
-          {/* {isRegisterPopupOpen && <RegisterPopup onClose={closeRegisterPopup} />} */}
-          <div className="justify-center items-center relative border-[color:var(--Accent,#74A7B3)] flex aspect-square flex-col w-[50px] h-[50px] px-3.5 rounded-[71px] border-2 border-solid cursor-pointer">
-            <img
-              onClick={() => setOpen(!open)}
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
-              className="aspect-square object-contain object-center w-full overflow-hidden"
-            />
-            {open && (
-              <div className="bg-white p-4 w-52 shadow-lg absolute -left-14 top-16">
-                <ul>
-                  {Profile.map((profile) => (
-                    <li
-                      className="p-2 text-lg cursor-pointer rounded hover:bg-primary3 text-primary"
-                      key={profile}
-                    >
-                      {profile}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
+        </nav>
+        <Menus show={showMenu} applyParentClass="block lg:hidden" />
       </div>
 
       <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>
-        <RegisterForm onSuccess={closeRegisterPopup} />
+        <RegisterForm
+          onSuccess={closeRegisterPopup}
+          loginClicked={loginClicked}
+        />
       </Popup>
 
       <Popup isOpen={isLoginPopupOpen} onClose={closeLoginPopup}>
-        <LoginForm onSuccess={closeLoginPopup} />
+        <LoginForm onSuccess={closeLoginPopup} signUpClicked={signUpClicked} />
       </Popup>
-    </div>
+    </>
   );
-}
+};
+
+export default Header;

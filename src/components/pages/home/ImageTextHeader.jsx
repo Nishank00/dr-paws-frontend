@@ -6,10 +6,10 @@ const ImageTextHeader = ({
   text,
   imagePosition,
   buttonText,
-  buttonVisibility=true
+  buttonVisibility = true,
 }) => {
   return (
-    <div className={"grid grid-cols-1 sm:grid-cols-2 gap-1 pb-12"}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 pb-12 overflow-hidden">
       <div
         style={{
           backgroundImage: "url(" + imageUrl + ")",
@@ -25,7 +25,11 @@ const ImageTextHeader = ({
       <div className="w-full flex flex-col justify-center p-10">
         <h2 className="text-primary font-medium text-5xl mb-6">{header}</h2>
         <p className="text-primary mb-6">{text}</p>
-        <Button label={buttonText}  style={{display:!buttonVisibility?"none":""}}/>
+        <Button
+          color="secondary"
+          label={buttonText}
+          style={{ display: !buttonVisibility ? "none" : "" }}
+        />
       </div>
     </div>
   );
