@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import AuthService from "@/services/Auth.service";
 import { TokenService } from "@/services/Storage.service";
 
-const LoginForm = ({ onSuccess }) => {
+const LoginForm = ({ onSuccess, signUpClicked }) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -33,14 +33,14 @@ const LoginForm = ({ onSuccess }) => {
       });
   };
   return (
-    <div className="p-10 text-primary w-full">
-      <div className="">
-        <div className="">
-          <h5>Log in to book a visit</h5>
+    <div className="p-10 text-primary w-full md:w-[430px]">
+      <div className="text-center">
+        <div className="mb-10">
+          <h5 className="font-bold text-3xl mb-2">Log in to book a visit</h5>
           <p>Add your phone number. We'll send you a verification code.</p>
         </div>
 
-        <div className="">
+        <div className="mb-10">
           <TextInput
             placeholder={"Email"}
             type="email"
@@ -56,10 +56,15 @@ const LoginForm = ({ onSuccess }) => {
             onChange={formValueChanged}
           />
 
-          <Button label="Login" onClick={loginUser} />
+          <Button color="secondary" label="Login" onClick={loginUser} />
         </div>
         <div className="">
-          <p>Don’t have an Account? Sign Up</p>
+          <p>
+            Don’t have an Account?{" "}
+            <span className="cursor-pointer italic" onClick={signUpClicked}>
+              Sign Up
+            </span>
+          </p>
         </div>
       </div>
     </div>

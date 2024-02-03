@@ -4,7 +4,7 @@ export default {
 
     getData ( params )
     {
-        return API().get( `clinic/getData`, { params } )
+        return API().get( `service/getData`, { params } )
     },
 
 }

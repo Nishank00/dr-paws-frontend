@@ -1,83 +1,60 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import ClinicServiceService from '@/services/ClinicService.service';
+import Tab from './Tab';
 
 const OverviewTabs = () => {
-    const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
+  const [services, setServices] = useState([]);
 
-    const handleTabClick = (tabNumber) => {
-        setActiveTab(tabNumber);
-    }
+  const handleTabClick = (tabNumber) => {
+    setActiveTab(Number(tabNumber) + 1);
+  }
 
-    return (
-        <div className='w-full mx-auto flex items-center justify-center'>
-          <div className="flex mb-4 border-b-2">
+  const getServiceData = () => {
+    ClinicServiceService.getData().then((r) => {
+      if (r.data.status) {
+        setServices(r.data.data)
+      }
+      else {
+        alert(r.data.message)
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    getServiceData();
+  }, [activeTab])
+
+  return (
+    <div  className='w-full mx-auto   '>
+      <div   className=" w-full flex justify-between  border-b-2 items-baseline">
+        {
+          services && services.map((service, index) => (
             <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 1
-                ? 'border-b-8 border-secondary2'
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(1)}
+              className={`text-slate-700 text-lg leading-4 tracking-normal  px-4  focus:outline-none`}
+              onClick={() => handleTabClick(index)}
             >
-              Planned check-ups
+              {service.name}
+              {activeTab === (Number(index) + 1) && <div className='h-[7px] mt-4 w-full rounded-full bg-secondary2 align-baseline'></div>}
             </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 2
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(2)}
-            >
-              Sickness & Emergency
-            </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 3
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(3)}
-            >
-              Diagnostics
-            </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 4
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(4)}
-            >
-              Planned surgeries
-            </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 5
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(5)}
-            >
-              Dental
-            </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 6
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(6)}
-            >
-              Grooming
-            </button>
-            <button
-              className={`text-slate-700 text-xl leading-4 tracking-normal ${activeTab === 7
-                ? 'border-b-8 border-secondary2 '
-                : 'text-gray-700'
-                } px-4 py-2 focus:outline-none`}
-              onClick={() => handleTabClick(7)}
-            >
-              Pet services
-            </button>
-          </div>
-        </div>
-      );
-      
+          ))
+        }
+
+      </div>
+      <p className=" body-padding-y text-18  mt-4 italic font-bold mb-4 text-primary text-center">
+        Regular check-ups and preventative measures are essential to keep your pet in <br />
+        the best health. Take care of any vaccinations, get any help you need, or simply <br />
+        visit us to ensure your pet is doing just fine!
+      </p>
+      <div className='w-full '>
+        <Tab {...services[activeTab-1]}/>
+      </div>
+    </div>
+  );
+
 }
 
 export default OverviewTabs

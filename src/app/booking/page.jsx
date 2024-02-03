@@ -1,4 +1,5 @@
 "use client";
+import isAuth from "@/components/auth/isAuth";
 import Form from "@/components/pages/booking/Form";
 
 const Booking = () => {
@@ -9,4 +10,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default isAuth(Booking);

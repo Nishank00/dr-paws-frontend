@@ -26,10 +26,12 @@ const Popup = ({ isOpen, onClose, hideClose, children }) => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "auto";
     };
   }, [isOpen, onClose]);
 

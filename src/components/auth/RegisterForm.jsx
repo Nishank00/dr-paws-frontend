@@ -3,8 +3,9 @@ import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import AuthService from "@/services/Auth.service";
 import useToast from "@/components/ui/Toast";
+import UploadProfile from "./UploadProfile";
 
-const RegisterForm = ({ onSuccess }) => {
+const RegisterForm = ({ onSuccess, loginClicked }) => {
   const { showToast, ToastComponent } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState({
@@ -47,13 +48,16 @@ const RegisterForm = ({ onSuccess }) => {
     switch (page) {
       case 1:
         return (
-          <div className="">
-            <div className="">
-              <h5>Log in to book a visit</h5>
+          <div className="text-center">
+            <div className=" mb-10">
+              <h5 className="text-2xl font-bold mb-3">
+                Let's get started by creating your account.
+              </h5>
               <p>Add your phone number. We'll send you a verification code.</p>
             </div>
 
-            <div className="">
+            <div className="mb-10">
+              <UploadProfile />
               <TextInput
                 placeholder={"Email"}
                 name="email"
@@ -70,15 +74,22 @@ const RegisterForm = ({ onSuccess }) => {
               <Button label="Next" onClick={handleNext} />
             </div>
             <div className="">
-              <p>Don’t have an Account? Sign Up</p>
+              <p>
+                Already have an Account?{" "}
+                <span className="cursor-pointer italic" onClick={loginClicked}>
+                  Log In
+                </span>
+              </p>
             </div>
           </div>
         );
       case 2:
         return (
-          <div className="">
-            <div className="">
-              <h5>Generate your password</h5>
+          <div className="text-center">
+            <div className="mb-10">
+              <h5 className="text-3xl font-bold mb-3">
+                Generate your password
+              </h5>
               <p>
                 Both fields should match, to successfully create the password
               </p>
@@ -102,9 +113,6 @@ const RegisterForm = ({ onSuccess }) => {
 
               <Button label="Submit" onClick={registerUser} />
             </div>
-            <div className="">
-              <p>Don’t have an Account? Sign Up</p>
-            </div>
           </div>
         );
       default:
@@ -113,7 +121,9 @@ const RegisterForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="p-10 text-primary w-full">{renderPage(currentPage)}</div>
+    <div className="p-10 text-primary w-full md:w-[430px]">
+      {renderPage(currentPage)}
+    </div>
   );
 };
 

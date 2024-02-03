@@ -1,6 +1,7 @@
 import React from 'react'
 import DoctorSlider from './DoctorSlider'
-const TabOne = () => {
+const TabOne = ( { contact_numbers, address } ) =>
+{
   return (
     <div>
       <div className='w-full flex justify-between items-center'>
@@ -16,7 +17,7 @@ const TabOne = () => {
                 className="aspect-[0.9] mr-4 object-contain object-center w-[18px] stroke-[2px] stroke-slate-600 overflow-hidden shrink-0 max-w-full"
               />
               <div className="text-slate-700 text-md leading-4 tracking-tight my-auto">
-                +91 987654321 / +91 987654321
+                {contact_numbers}
               </div>
             </div>
           </div>
@@ -73,16 +74,16 @@ const TabOne = () => {
               className="aspect-[1.54] object-contain object-center w-full overflow-hidden self-center max-w-[333px] mt-5"
             />
             <div className="text-slate-700 text-base leading-5 tracking-normal w-full mt-5">
-              3rd Floor, om heera Panna Mall, Oshiwara, Andheri West, Mumbai
+              {address}
             </div>
-            <div className="text-white text-base font-bold justify-center items-stretch bg-slate-500 mt-5 px-8 py-2.5 rounded-3xl">
+            <div className="text-white text-center font-bold justify-center items-stretch bg-slate-500 mt-5 px-8 py-2.5 rounded-3xl">
               Get Directions
             </div>
           </div>
         </div>
 
       </div>
-      <DoctorSlider/>
+      <DoctorSlider />
     </div>
   )
 }

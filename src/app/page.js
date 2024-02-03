@@ -4,11 +4,13 @@ import ImageTextHeader from "@/components/pages/home/ImageTextHeader"
 import Reviews from "@/components/pages/home/Reviews"
 import FriendlyDoctor from "@/components/pages/home/FriendlyDoctor"
 import Banner from "@/components/pages/home/Banner"
+import NewBanner from "@/components/pages/home/NewBanner"
 
 export default function Home() {
   return (
     <>
-      <Banner />
+      <NewBanner />
+      {/* <Banner /> */}
       <div className="body-padding-x mt-5 sm:mt-10">
         <h2 className="text-primary font-medium text-4xl mb-5 md:mb-10 text-center">
           Veterinary care, redesigned to be better
