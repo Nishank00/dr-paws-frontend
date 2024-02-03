@@ -1,4 +1,5 @@
 const TOKEN_KEY = "access_token";
+const USER_KEY = "user_info";
 
 const TokenService = {
   getToken() {
@@ -14,6 +15,20 @@ const TokenService = {
   }
 };
 
+const UserService = {
+  getUserInfo() {
+    return JSON.parse(window.localStorage.getItem(USER_KEY));
+  },
+
+  setUserInfo(userInfo) {
+    window.localStorage.setItem(USER_KEY, JSON.stringify(userInfo));
+  },
+
+  removeUserInfo() {
+    window.localStorage.removeItem(USER_KEY);
+  }
+}
 export {
-  TokenService
+  TokenService,
+  UserService
 };

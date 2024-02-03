@@ -1,6 +1,29 @@
-import React from 'react'
+"use client"
+import React ,{useState,useEffect} from 'react'
+import UserService from '@/services/User.Service';
+import PetService from '@/services/Pet.Service';
 
 const PetProfile = () => {
+  const [userData, setUserData] = useState({});
+
+  const getPetData = () => {
+    console.log('getUserData running');
+    PetService.getPetById(id)
+        .then((response) => {
+            if(!response.data.status){
+                console.log('error');
+                return;
+            }
+            setUserData(response.data.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+      }
+
+      useEffect(() => {
+          getPetData();
+      }, [])
     return (
         <div className='w-full pt-[101px]'>
             <div className='w-full flex justify-between bg-primary3 px-4 py-4 '>
