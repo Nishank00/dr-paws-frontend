@@ -1,4 +1,3 @@
-// components/Footer.js
 const Footer = () => {
   return (
     <footer className="bg-primary3 body-padding-x body-padding-y grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">

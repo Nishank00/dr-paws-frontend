@@ -1,15 +1,14 @@
-import ECommerce from "@/components/admin/Dashboard/E-commerce";
+import HomePage from "@/components/pages/admin/home/HomePage";
 
-export const metadata = {
-  title: "TailAdmin | Next.js E-commerce Dashboard Template",
-  description: "This is Home Blog page for TailAdmin Next.js",
-  // other metadata
-};
+// export const metadata = {
+//   title: "Dr Paw | Admin",
+//   description: "This is Home Page for Admin",
+// };
 
 export default function Home() {
   return (
     <>
-      <ECommerce />
+      <HomePage />
     </>
   );
 }

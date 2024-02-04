@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Button from "../ui/Button";
-import Popup from "../ui/Popup";
-import RegisterForm from "../auth/RegisterForm";
-import LoginForm from "../auth/LoginForm";
-import ProfileDropdown from "../pages/profile/ProfileDropdown";
 import { TokenService } from "@/services/Storage.service";
+import Button from "@/components/ui/Button";
+import ProfileDropdown from "@/components/pages/profile/ProfileDropdown";
+import Popup from "@/components/ui/Popup";
+import RegisterForm from "@/components/auth/RegisterForm";
+import LoginForm from "@/components/auth/LoginForm";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
   <div className={show ? "" : "hidden md:block"}>
