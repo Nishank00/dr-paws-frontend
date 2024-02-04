@@ -39,7 +39,7 @@ const ClinicCard = ({ imageUrl, clinic }) => {
         }}
       />
       <div className="p-4 text-primary grow">
-        <h4 className="font-bold">Dr. Paw | {name}</h4>
+        <h4 className="font-bold text-xl">Dr. Paw | {name}</h4>
         <p className="text-sm">{serviceString || "OPD | Surgery"}</p>
       </div>
       <div

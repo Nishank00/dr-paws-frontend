@@ -38,9 +38,9 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <div className="text-slate-700 text-center text-3xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+      <h4 className="text-primary font-semibold text-center text-2xl mt-14">
         Our Clinics
-      </div>
+      </h4>
 
       <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {clincs &&
