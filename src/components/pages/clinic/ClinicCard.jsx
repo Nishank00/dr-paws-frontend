@@ -1,28 +1,17 @@
+"use client";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const ClinicCard = ({ imageUrl, clinic }) => {
+const ClinicCard = ({ imageUrl, clinic = {} }) => {
+  const [serviceString, setServiceString] = useState();
   const router = useRouter();
-  const {
-    id,
-    name,
-    services,
-    contact_numbers,
-    contact_emails,
-    address,
-    city_id,
-    state_id,
-    postal_code,
-    latitude,
-    longitude,
-    created_by,
-    updated_by,
-    created_at,
-    updated_at,
-  } = clinic;
 
-  const serviceString = [
-    ...new Set(services.map((service) => service.service_name)),
-  ].join(" | ");
+  const { id, name, services } = clinic;
+  useEffect(() => {
+    setServiceString(
+      [...new Set(services?.map((service) => service.service_name))].join(" | ")
+    );
+  }, []);
   return (
     <div
       className="bg-primary3 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"
