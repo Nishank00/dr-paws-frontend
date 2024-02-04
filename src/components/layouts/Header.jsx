@@ -20,13 +20,13 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
       </li>
 
       <li className="my-1 md:mx-3">
-        <Link className="" href="#">
+        <Link className="" href="/services">
           Our Services
         </Link>
       </li>
 
       <li className="my-1 md:mx-3">
-        <Link className="" href="#">
+        <Link className="" href="/team">
           Our Team
         </Link>
       </li>

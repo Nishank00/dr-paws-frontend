@@ -29,6 +29,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       email: form.email,
       phone: form.phone,
       password: form.password,
+      user_type: "CUSTOMER",
     };
     AuthService.register(payload)
       .then((response) => {

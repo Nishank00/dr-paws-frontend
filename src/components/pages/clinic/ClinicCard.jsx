@@ -2,7 +2,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const ClinicCard = ({ imageUrl, clinic = {} }) => {
+const ClinicCard = ({
+  imageUrl = "	https://s3-alpha-sig.figma.com/img/37d3/bc60/7a1b0…EN7VtkrATb653Ka~bZagHLXr~4K8AyBZGLWMtGXzy4SxFVQ__",
+  clinic = {},
+}) => {
   const [serviceString, setServiceString] = useState();
   const router = useRouter();
 
