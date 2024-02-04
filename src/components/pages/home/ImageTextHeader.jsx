@@ -26,9 +26,9 @@ const ImageTextHeader = ({
         <h2 className="text-primary font-medium text-5xl mb-6">{header}</h2>
         <p className="text-primary mb-6">{text}</p>
         <Button
+          className={!buttonVisibility && "hidden"}
           color="secondary"
           label={buttonText}
-          style={{ display: !buttonVisibility ? "none" : "" }}
         />
       </div>
     </div>
