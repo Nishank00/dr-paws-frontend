@@ -37,7 +37,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
       <div className="text-center">
         <div className="mb-10">
           <h5 className="font-bold text-3xl mb-2">Log in to book a visit</h5>
-          <p>Add your phone number. We'll send you a verification code.</p>
+          <p>Add your phone number. We&apos;ll send you a verification code.</p>
         </div>
 
         <div className="mb-10">
