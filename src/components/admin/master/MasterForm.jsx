@@ -1,9 +1,10 @@
 import Button from "@/components/ui/Button";
+import MultipleSelect from "@/components/ui/MultipleSelect";
 import TextInput from "@/components/ui/TextInput";
 import MasterService from "@/services/Master.service";
 import { useEffect, useState } from "react";
 
-const MasterForm = ({ masterType }) => {
+const MasterForm = ({ masterType, closeFormPopup }) => {
   const [form, setForm] = useState({
     name: "",
     master_type_id: masterType.id,
@@ -21,7 +22,7 @@ const MasterForm = ({ masterType }) => {
     MasterService.getMastersByTypeId({ is_child_of: masterType.is_child_of })
       .then((response) => {
         if (response.data.status) {
-          setMasters(response.data.data);
+          setParents(response.data.data);
         }
       })
       .catch((error) => {
@@ -29,12 +30,23 @@ const MasterForm = ({ masterType }) => {
       });
   };
 
+  const parentSelected = (selectedValue) => {
+    setForm({ ...form, parent_id: selectedValue });
+    console.log("selectedValue => ", selectedValue);
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
     MasterService.addMaster(form)
       .then((response) => {
         if (response.data.status) {
-          setMasters(response.data.data);
+          alert(response.data.message);
+          setForm({
+            name: "",
+            master_type_id: masterType.id,
+            parent_id: null,
+          });
+          closeFormPopup();
         }
       })
       .catch((error) => {
@@ -47,13 +59,14 @@ const MasterForm = ({ masterType }) => {
       getParents();
     }
   }, [masterType]);
+
   return (
-    <div>
+    <div className="p-5">
       <div id="form-header">
         <h2>{masterType.name} Form</h2>
       </div>
 
-      <div id="form">
+      <div id="form" className="text-primary">
         <form>
           <TextInput
             name="name"
@@ -63,26 +76,24 @@ const MasterForm = ({ masterType }) => {
           />
 
           {masterType.is_child_of && (
-            <select name="parent_id" className="w-full">
-              {parents.map((parent, i) => (
-                <option
-                  className="text-primary w-full z-10"
-                  key={"parent" + i}
-                  value={parent.id}
-                >
-                  {parent.name}
-                </option>
-              ))}
-            </select>
+            <MultipleSelect
+              label={"Master"}
+              options={parents}
+              optionLabel={"name"}
+              optionValue={"id"}
+              onSelect={parentSelected}
+              selectedValue={form.parent_id}
+            />
           )}
 
-          <button
+          <Button label="Save" onClick={submitForm} />
+          {/* <button
             className="bg-primary text-primary3 p-1 block"
             type="submit"
             onClick={submitForm}
           >
             Save
-          </button>
+          </button> */}
         </form>
       </div>
     </div>

@@ -28,12 +28,12 @@ const MasterSidebar = ({ selectedMasterType, setSelectedMasterType }) => {
   }, []);
 
   return (
-    <div className="flex items-center gap-4 bg-primary3 text-primary">
+    <div className="flex items-center gap-4 md:gap-1 bg-primary3 text-primary md:w-48 md:flex-col md:items-start h-12 md:h-[81vh]">
       {masterTypes.map((master_type, i) => {
         return (
           <div
             onClick={() => selectMasterType(master_type)}
-            className={`inline-block w-auto p-2 cursor-pointer font-bold ${
+            className={`min-w-28 w-full p-2 cursor-pointer rounded font-bold ${
               master_type.id == selectedMasterType.id
                 ? "bg-primary text-primary3"
                 : ""

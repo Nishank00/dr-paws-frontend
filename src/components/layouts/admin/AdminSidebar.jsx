@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const AdminSidebar = () => {
@@ -7,12 +8,19 @@ const AdminSidebar = () => {
         <a className="flex-1 hover:ring hover:bg-primary2" href="#">
           Home
         </a>
-        <a className="flex-1 hover:ring hover:bg-primary2" href="#">
+        <Link
+          className="flex-1 hover:ring hover:bg-primary2"
+          href="/admin/master"
+        >
           Masters
-        </a>
-        <a className="flex-1 hover:ring hover:bg-primary2" href="#">
+        </Link>
+
+        <Link
+          className="flex-1 hover:ring hover:bg-primary2"
+          href="/admin/doctor"
+        >
           Doctors
-        </a>
+        </Link>
         <a className="flex-1 hover:ring hover:bg-primary2" href="#">
           Clinics
         </a>

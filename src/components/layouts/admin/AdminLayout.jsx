@@ -8,7 +8,7 @@ const AdminLayout = ({ children }) => {
       <div className="col-span-12 row-span-1 md:col-start-3 md:col-span-10">
         <AdminHeader />
       </div>
-      <main className="col-span-12 row-span-10 md:col-start-3 md:col-span-10 md:row-span-11 shadow-md bg-primary4 overflow-scroll">
+      <main className="col-span-12 row-span-10 md:col-start-3 md:col-span-10 md:row-span-11 shadow-md bg-primary4 overflow-y-scroll overflow-x-hidden">
         {children}
       </main>
       <div className="col-span-12 row-span-1 md:row-start-1 md:col-span-2 md:row-span-12">
