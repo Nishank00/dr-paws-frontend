@@ -10,4 +10,4 @@ const Booking = () => {
   );
 };
 
-export default isAuth(Booking);
+export default Booking;
