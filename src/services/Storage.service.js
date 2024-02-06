@@ -1,3 +1,4 @@
+"use client"
 const TOKEN_KEY = "access_token";
 const USER_KEY = "user_info";
 

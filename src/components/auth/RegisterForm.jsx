@@ -52,9 +52,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
           <div className="text-center">
             <div className=" mb-10">
               <h5 className="text-2xl font-bold mb-3">
-                Let's get started by creating your account.
+                Let&apos;s get started by creating your account.
               </h5>
-              <p>Add your phone number. We'll send you a verification code.</p>
+              <p>
+                Add your phone number. We&apos;ll send you a verification code.
+              </p>
             </div>
 
             <div className="mb-10">

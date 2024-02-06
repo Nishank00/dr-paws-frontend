@@ -60,7 +60,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         </div>
         <div className="">
           <p>
-            Don’t have an Account?{" "}
+            Don&apos;t have an Account?{" "}
             <span className="cursor-pointer italic" onClick={signUpClicked}>
               Sign Up
             </span>

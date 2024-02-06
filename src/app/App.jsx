@@ -15,9 +15,9 @@ const App = ({ children }) => {
   return (
     <div>
       {isAdminRoute ? (
-        <AdminLayout children={children} />
+        <AdminLayout>{children}</AdminLayout>
       ) : (
-        <MainLayout children={children} />
+        <MainLayout>{children}</MainLayout>
       )}
     </div>
   );
