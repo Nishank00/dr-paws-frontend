@@ -1,47 +1,58 @@
 import React from "react";
 import { useRef, useEffect } from "react";
-const Popup = ({ isOpen, onClose, hideClose, children }) => {
+const Popup = ( { isOpen, onClose, hideClose, children } ) =>
+{
   const popupRef = useRef();
 
-  useEffect(() => {
-    const handleEscapeKeyPress = (event) => {
-      if (event.key === "Escape" && isOpen) {
+  useEffect( () =>
+  {
+    const handleEscapeKeyPress = ( event ) =>
+    {
+      if ( event.key === "Escape" && isOpen )
+      {
         onClose();
       }
     };
 
-    document.addEventListener("keydown", handleEscapeKeyPress);
+    document.addEventListener( "keydown", handleEscapeKeyPress );
 
-    return () => {
-      document.removeEventListener("keydown", handleEscapeKeyPress);
+    return () =>
+    {
+      document.removeEventListener( "keydown", handleEscapeKeyPress );
     };
-  }, [isOpen, onClose]);
+  }, [ isOpen, onClose ] );
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
+  useEffect( () =>
+  {
+    const handleClickOutside = ( event ) =>
+    {
+      if ( popupRef.current && !popupRef.current.contains( event.target ) )
+      {
         onClose();
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+    if ( isOpen )
+    {
+      document.addEventListener( "mousedown", handleClickOutside );
       document.body.style.overflow = "hidden";
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+    {
+      document.removeEventListener( "mousedown", handleClickOutside );
       document.body.style.overflow = "auto";
     };
-  }, [isOpen, onClose]);
+  }, [ isOpen, onClose ] );
 
-  if (!isOpen) {
+  if ( !isOpen )
+  {
     return null;
   }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-      <div ref={popupRef} className="bg-white rounded-md relative">
+      <div ref={popupRef} className=" rounded-md relative overflow-scroll">
         {children}
         {hideClose ?? (
           <span

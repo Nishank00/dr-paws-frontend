@@ -1,6 +1,7 @@
 import React from "react";
 
-const UploadProfile = () => {
+const UploadProfile = () =>
+{
   return (
     <div className="flex items-center justify-center mb-5">
       <div className="w-32 h-32 rounded-full bg-accent relative">
