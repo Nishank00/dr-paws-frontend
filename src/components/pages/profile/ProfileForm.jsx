@@ -8,6 +8,10 @@ const ProfileForm = () => {
     const handleTabClick = (tabNumber) => {
         setActiveTab(tabNumber);
     }
+
+    useEffect(()=>{
+
+    },[])
     return (
         <div className='bg-primary3 w-[430px]'>
             <div className="flex justify-between w-[80%] m-auto mb-4 border-b-2 mt-16">

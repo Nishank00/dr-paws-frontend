@@ -1,13 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const UserForm = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [imageUrl, setImageUrl] = useState("");
+
+
+
+    const handleFileChange = (event) => {
+        console.log("file changed")
+        setSelectedFile(event.target.files[0]);
+        handleUpload()
+    };
+
+    const handleUpload = async () => {
+        try {
+            console.log("start")
+            const formData = new FormData();
+            formData.append('files', selectedFile);
+
+            const response = await fetch('http://localhost:8004/api/files', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to upload file');
+            }
+
+            const data = await response.json();
+            alert('Upload successful')
+            console.log('Upload successful', data);
+        } catch (error) {
+            console.error('Error uploading file', error);
+        }
+    };
+
     return (
         <div className='w-full m-auto'>
-            <div className='w-fit m-auto'>
-                <img
-                    loading="lazy"
-                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&"
-                    className="aspect-square object-contain object-center w-full max-w-[125px] rounded-full"
+
+            <div className="relative w-fit m-auto">
+                <label htmlFor="file-input" className="cursor-pointer block">
+                    <div className="w-48 h-48  flex items-center justify-center">
+                        <img
+                            loading="lazy"
+                            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/d0bd915a160bb4063a969c2d12bfc7f7cb6608b6cb929adecdc924449e864c42?apiKey=22a36eade5734692978208fb0d2f5c62&"
+                            className="aspect-square object-contain object-center w-full max-w-[125px] rounded-full"
+                        />
+                    </div>
+                </label>
+                <input
+                    type="file"
+                    id="file-input"
+                    className="hidden"
+                    accept="image/*"
+                    onChange={(e) => handleFileChange(e)}
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto'>
