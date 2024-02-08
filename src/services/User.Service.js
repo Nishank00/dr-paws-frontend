@@ -11,6 +11,10 @@ export default {
 
   updateUser(payload) {
     return API().post(`user/updateProfile`, payload)
+  },
+
+  getDoctors() {
+    return API().get(`doctors`)
   }
 
 }

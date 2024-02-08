@@ -4,7 +4,7 @@ import UserService from '@/services/User.Service';
 import PetService from '@/services/Pet.Service';
 
 const PetProfile = () => {
-  const [userData, setUserData] = useState({});
+  const [petData, setPetData] = useState({});
 
   const getPetData = () => {
     console.log('getUserData running');
@@ -38,7 +38,7 @@ const PetProfile = () => {
                     <div className=' w-[75%] grid grid-cols-3 gap-1 '>
                         <div  >
                             <div className="text-slate-700 text-xl  h-10 italic font-semibold grow shrink basis-auto">
-                                Rahul Shah
+                              {petData.name}
                             </div>
                             <div className="text-slate-500 text-sm leading-9 tracking-normal mt-1">
                                 <div className="text-slate-500 text-sm leading-9 tracking-normal ">
