@@ -1,23 +1,45 @@
 import React, { useState } from "react";
 
-const Select = ({ options = [], placeholder }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const Select = ({
+  options = [],
+  placeholder,
+  label,
+  optionLabel,
+  optionValue,
+  onSelect,
+  returnObject = false,
+  selectedValue,
+}) => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
+  const handleSelect = (e) => {
+    setSelectedOptions(returnObject ? options[e.target.value] : e.target.value);
+
+    onSelect
+      ? onSelect(returnObject ? options[e.target.value] : e.target.value)
+      : null;
   };
 
   return (
     <div className="mb-4">
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
       <select
-        placeholder={placeholder}
         className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
-        onChange={(e) => handleSelect(e.target.value)}
+        onChange={handleSelect}
+        value={selectedValue || selectedOptions}
       >
-        <option value="0">{placeholder}</option>
+        {<option value="">{placeholder || "Select an option"}</option>}
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+          <option
+            className=""
+            key={option[optionValue]}
+            value={option[optionValue]}
+          >
+            {option[optionLabel]}
           </option>
         ))}
       </select>
