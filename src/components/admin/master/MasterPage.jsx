@@ -21,7 +21,7 @@ const MasterPage = () => {
 
   return (
     <>
-      <div className="p-6 flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         <MasterSidebar
           selectedMasterType={selectedMasterType}
           setSelectedMasterType={setSelectedMasterType}

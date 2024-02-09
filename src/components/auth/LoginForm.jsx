@@ -21,7 +21,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     AuthService.login(payload)
       .then((response) => {
         if (!response.data.status) {
-          showToast(response.data.message, "warning");
+          // showToast(response.data.message, "warning");
           console.log("False received");
           return;
         }

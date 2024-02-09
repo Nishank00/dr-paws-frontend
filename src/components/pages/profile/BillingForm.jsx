@@ -1,6 +1,28 @@
-import React from 'react'
+"use client"
+import React ,{useState,useEffect} from 'react'
+import UserService from '@/services/User.Service'
 
-const BillingForm = () => {
+const BillingForm = ({user_id}) => {
+const [account,setAccount]=useState({});
+
+const getBillingData=()=>{
+    UserService.getBillingDetails({user_id}).then((r)=>{
+        if(r.data.status){
+            setAccount(r.data.data)
+        }else{
+            alert(r.data.message)
+            console.log(r.data)
+        }
+    }).catch((err)=>{
+
+        console.log(err)
+    })
+}
+    useEffect(()=>{
+if(user_id){
+    getBillingData()
+}
+    },[])
     return (
 
         <div className='w-full m-auto'>
@@ -10,8 +32,8 @@ const BillingForm = () => {
                         First Name
                     </label>
                     <input
-                        className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                        placeholder=''
+        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+        placeholder=''
                     />
                 </div>
                 <div className='w-[45%] flex flex-col'>
@@ -19,8 +41,8 @@ const BillingForm = () => {
                         First Name
                     </label>
                     <input
-                        className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                        placeholder=''
+        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+        placeholder=''
                     />
                 </div>
 
@@ -28,22 +50,22 @@ const BillingForm = () => {
             <div className='flex flex-col w-[80%] m-auto mt-3'>
                 <label className='text-sm'>Card Details</label>
                 <input
-                    className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                    placeholder=''
+        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+        placeholder=''
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-3'>
                 <label className='text-sm'>Name on card</label>
                 <input
-                    className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                    placeholder=''
+        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+        placeholder=''
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-3'>
                 <label className='text-sm'>Billing Address</label>
                 <input
-                    className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                    placeholder=''
+        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+        placeholder=''
                 />
             </div>
             <div className='flex  justify-between  w-[80%] m-auto mt-3'>

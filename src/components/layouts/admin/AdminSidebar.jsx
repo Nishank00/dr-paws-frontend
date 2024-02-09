@@ -5,9 +5,10 @@ const AdminSidebar = () => {
   return (
     <>
       <aside className="flex md:flex-col  h-full bg-primary3 text-primary">
-        <a className="flex-1 hover:ring hover:bg-primary2" href="#">
+        <Link className="flex-1 hover:ring hover:bg-primary2" href="#">
           Home
-        </a>
+        </Link>
+
         <Link
           className="flex-1 hover:ring hover:bg-primary2"
           href="/admin/master"
@@ -21,12 +22,17 @@ const AdminSidebar = () => {
         >
           Doctors
         </Link>
-        <a className="flex-1 hover:ring hover:bg-primary2" href="#">
+
+        <Link
+          className="flex-1 hover:ring hover:bg-primary2"
+          href="/admin/clinic"
+        >
           Clinics
-        </a>
-        <a className="flex-1 hover:ring hover:bg-primary2" href="#">
+        </Link>
+
+        <Link className="flex-1 hover:ring hover:bg-primary2" href="#">
           Appointments
-        </a>
+        </Link>
       </aside>
     </>
   );

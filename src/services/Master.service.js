@@ -14,6 +14,14 @@ export default {
     return API().get("master/masters_by_type_id", { params })
   },
 
+  getChildsByParentId(params) {
+    return API().get("master/childs_by_parent_id", { params })
+  },
+
+  getMastersWithChildsByCode(params) {
+    return API().get("master/get_masters_with_childs", { params })
+  },
+
   addMaster(payload) {
     return API().post("master", payload)
   }
