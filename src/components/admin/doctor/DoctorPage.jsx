@@ -1,9 +1,9 @@
-import React from "react";
+"use client";
 import DoctorList from "./DoctorList";
 
 const DoctorPage = () => {
   return (
-    <div>
+    <div className="text-primary">
       <DoctorList />
     </div>
   );
