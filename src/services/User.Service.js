@@ -15,6 +15,12 @@ export default {
 
   getDoctors() {
     return API().get(`doctors`)
+  },
+  saveBillingDetails(payload){
+    return ApiError().post("user/updateBillingDetails",payload)
+  },
+  getBillingDetails(params){
+    return Api().get("user/getBillingDetails",{params})
   }
 
 }
