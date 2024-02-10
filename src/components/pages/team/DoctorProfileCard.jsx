@@ -28,8 +28,8 @@ const DoctorProfileCard = ({
       <div className="px-8 flex flex-col items-center text-center">
         <h4 className="font-bold text-xl mt-3">{profileData.full_name}</h4>
 
-        <p className="mt-3 text-xs">DMV - Animal Welfare</p>
-        <p className="text-xs">10 Years of Experience</p>
+        <p className="mt-3 text-xs">{profileData.introduction}</p>
+        <p className="text-xs">{profileData.experience}</p>
 
         <p className="mt-3 text-sm ">A - Andheri West, Indiranagar</p>
 

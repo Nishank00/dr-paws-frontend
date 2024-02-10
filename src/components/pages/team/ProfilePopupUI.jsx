@@ -1,11 +1,16 @@
 import { useState } from "react";
 import Image from "next/image";
+import {
+  ExperienceIcon,
+  LocationIcon,
+  SpecializationIcon,
+} from "@/components/ui/Icons";
 
-const ProfilePopupUI = () => {
+const ProfilePopupUI = ({ selectedDoctor }) => {
   const [isOpen, setIsOpen] = useState(true);
   const iconName = "";
   return (
-    <div className=" p-12 rounded-sm">
+    <div className="  p-12 rounded-sm bg-white w-full rounded-2xl md:w-[1040px]">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-3">
         <div id="doc_image" className="md:order-1">
           <Image
@@ -15,45 +20,48 @@ const ProfilePopupUI = () => {
             height={158}
             className="w-full"
           />
-          <p>Passionate about animal care and active member of AVMA.</p>
+          <p>{selectedDoctor?.introduction}</p>
         </div>
-
-        <div className="">
-          <div
-            className="flex cursor-pointer items-center space-x-4 hover:text-blue-500"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <span
-              className={`text-2xl font-bold inline-flex items-center ${
-                isOpen ? "text-blue-500" : ""
-              }`}
-            >
-              <svg
-                className="w-6 h-6 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Replace with your desired icon based on the title or subtitle */}
-                <path d={iconName} />
-              </svg>
-              Hii
+        <div
+          className="flex flex-col cursor-pointer items-left space-x-4"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <h1 className=" font-primary font-bold text-4xl w-full">
+            {selectedDoctor?.full_name}
+          </h1>
+          <div className="mt-5">
+            <span className="flex">
+              <ExperienceIcon />
+              <h3 className=" text-xl font-normal ml-3">Experience</h3>
             </span>
-            {!isOpen && <span className="font-medium text-gray-500">MF</span>}
+            <h2 className=" text-2xl font-semibold">
+              {selectedDoctor?.experience}
+            </h2>
           </div>
-          {isOpen && (
-            <div className="mt-4 text-sm text-gray-500 leading-loose">
-              {/* Your content here */}
-              <p>Veterinarian with DVM from National Veterinary University.</p>
-              <p>
-                Associate Vet at City Animal Hospital, Emergency Vet at
-                Emergency Veterinary Services, and currently Director & Senior
-                Vet at Companion Care Vet Hospital.
-              </p>
-              <p>Active member of AVMA.</p>
-              <p>Passionate about animal care.</p>
-            </div>
-          )}
+          <div className="mt-5">
+            <span className="flex">
+              <SpecializationIcon />
+              <h3 className="text-xl font-normal ml-3">Specialization</h3>
+            </span>
+            <h2 className="text-2xl font-semibold">
+              {selectedDoctor?.specialization}
+            </h2>
+          </div>
+          <div className="mt-5">
+            <span className="flex">
+              <LocationIcon />
+              <h3 className="text-xl font-normal ml-3">Clinics</h3>
+            </span>
+            <h2 className="text-2xl font-semibold">
+              Andheri West, Indiranagar
+            </h2>
+          </div>
+          <div className="mt-5">
+            <span className="text-2xl font-bold">About the vet</span>
+            <p className="text-xl font-normal">
+              {selectedDoctor?.about}
+            </p>
+          </div>
         </div>
       </div>
     </div>
