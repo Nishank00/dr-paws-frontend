@@ -3,7 +3,7 @@ import { TokenService } from "./Storage.service";
 
 export default function API() {
   const instance = axios.create({
-    baseURL: "http://localhost:8004/api",
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   });
 
   instance.defaults.headers.common["Access-Control-Allow-Origin"] = "*";

@@ -6,8 +6,8 @@ const Checkbox = ({ label, checked, onChange, data = null }) => {
   };
 
   return (
-    <div className="flex items-center">
-      <label className=" text-primary">
+    <div className="">
+      <label className=" text-primary flex items-center">
         <input
           type="checkbox"
           checked={checked}
