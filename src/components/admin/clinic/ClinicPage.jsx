@@ -6,7 +6,7 @@ const ClinicPage = () => {
   const [clinics, setClinics] = useState([]);
 
   const getClinics = () => {
-    ClinicService.getData()
+    ClinicService.getClinics()
       .then((response) => {
         if (response.data.status) {
           setClinics(response.data.data);

@@ -38,7 +38,7 @@ const ClinicCard = ({
         className="text-center text-white font-semibold bg-secondary hover:bg-primary py-2 rounded-b-md"
         onClick={(e) => {
           e.stopPropagation();
-          router.push("/booking");
+          router.push("/admin/clinic/form?id=" + clinic.id);
         }}
       >
         Edit

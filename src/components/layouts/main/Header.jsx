@@ -14,7 +14,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
       className={`${applyParentClass} flex flex-col md:flex-row md:items-center md:justify-center mt-5 lg:mt-0`}
     >
       <li className="my-1 md:mx-3">
-        <Link className="" href="#">
+        <Link className="" href="/clinics">
           Locations
         </Link>
       </li>
@@ -32,7 +32,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
       </li>
 
       <li className="my-1 md:mx-3">
-        <Link className="" href="#">
+        <Link className="" href="/membership">
           Membership
         </Link>
       </li>
