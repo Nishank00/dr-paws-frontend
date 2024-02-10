@@ -1,7 +1,7 @@
 import PetService from '@/services/Pet.Service';
 import React from 'react'
 
-const PetCard = ({petInfo = {}}) => {
+const PetCard = ({name,age,weight,date_of_birh}) => {
     return (
         <div>
             <div className="items-stretch border-[color:var(--Primary-1,#33495F)] bg-slate-700 flex flex-col rounded-2xl border-[3px] border-solid flex-1">
@@ -12,7 +12,7 @@ const PetCard = ({petInfo = {}}) => {
                         className="aspect-square object-contain object-center w-28 rounded-full"
                     />
                     <div className="text-white text-2xl leading-6 capitalize mt-5">
-                        {petInfo.name}
+                        {name}
                     </div>
                 </div>
                 <div className="justify-center flex gap-1.5 px-8 py-2.5 items-start max-md:px-5">
