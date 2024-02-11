@@ -44,7 +44,7 @@ const UserPofile = () => {
                 }
                 setUserData(response.data.data);
                 UserStorageService.setUserInfo(response.data.data);
-                getPets(response.data.data.id);
+                // getPets(response.data.data.id);
             })
             .catch((error) => {
                 console.log(error);
@@ -91,7 +91,8 @@ const UserPofile = () => {
             <div className='w-full pt-[101px] flex flex-col-reverse lg:flex-col'>
                 <div>
                     <div className='w-full flex items-center justify-center lg:justify-end sm:mt-5 md:mt-5'>
-                        <button onClick={openPopup} className="justify-center items-stretch w-fit-content border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-4 rounded-[86px] border-2 border-solid">
+                        <button onClick={openPopup}
+                        className="justify-center items-stretch w-[180px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-4 rounded-[86px] border-2 border-solid">
                             <img
                                 loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/4de235d9b77455aa5f7570010e4b94c0b4e21c41aa50f4e54f6bc6467e5db216?apiKey=22a36eade5734692978208fb0d2f5c62&"
@@ -156,16 +157,7 @@ const UserPofile = () => {
 
             </div>
             <hr className='mt-10' />
-            <div className='w-full mt-5 '>
-                <div className='flex justify-between items-center w-full'>
-                    <div className="text-primary flex items-center  text-center lg:text-left text-xl leading-9 tracking-normal mt-5">
-                        Your Pets
-                    </div>
-
-                    <PetForm user_id={userData.id} />
-                </div>
-
-            </div>
+           
             <div className='w-full'>
                 <PetList user_id={userData.id} />
             </div>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import Popup from '@/components/ui/Popup';
-import Select from '@/components/ui/Select';
-import PetService from '@/services/Pet.Service';
-const PetForm = ({ user_id, getPets, petData = {} }) => {
-    const gridData = [1, 2, 3, 4, 5];
+"use client"
+
+import React, { useEffect } from 'react'
+import Popup from '@/components/ui/Popup'
+const EditForm = ({pet_id}) => {
+    
     const [isOpen, setIsOpen] = useState(false);
     const [userData, setUserData] = useState({});
     const [pet, setPet] = useState({
@@ -27,89 +27,14 @@ const PetForm = ({ user_id, getPets, petData = {} }) => {
     const closePopup = () => {
         setIsOpen(false);
     };
+    useEffect
 
-    const getPetsType = () => {
-        PetService.getPetTypes().then((r) => {
-            if (r.data.status) {
-                setPetTypes(r.data.data)
-            }
-            else {
-                alert(r.data.message)
-            }
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-    const getPetBreedData = (data) => {
-        // let payload = {};
-        // pet.pet_type && (payload.parent_id = pet.pet_type)
-        PetService.getPetBreeds(data).then((r) => {
-            if (r.data.status) {
-                setBreeds(r.data.data)
-            } else {
-                alert(r.data.message)
-            }
-        })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
-
-
-    const hanldeSubmit = () => {
-        let payload = { ...pet, user_id };
-        PetService.savePet(payload).then((r) => {
-            if (r.data.status) {
-                handleCancel()
-                console.log("getpets start")
-                getPets();
-                console.log("getpets end")
-            } else {
-                alert(r.data.message)
-            }
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-    const handlePetTypeChange = (e) => {
-        setPet({ ...pet, pet_type: e.target.value })
-        console.log("pet_type_id=>", e.target.value)
-        getPetBreedData({ parent_id: e.target.value })
-
-    }
-    const handleCancel = () => {
-        closePopup()
-        setPet({
-            pet_type: null,
-            breed: null,
-            user_id: null,
-            name: null,
-            gender: null,
-            age: null,
-            date_of_birth: null,
-            weight: null,
-        });
-    }
-    useEffect(() => {
-
-        if (petData) {
-            getPetsType();
-            getPetBreedData({ parent_id: petData.pet_type });
-            setPet({ ...petData })
-        }
-        else {
-            getPetsType();
-        }
-
-
-    }, [petData])
     return (
         <>
             <div>
                 <button onClick={openPopup}
                     className="justify-center items-stretch w-[180px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-4 rounded-[86px] border-2 border-solid">
-                   { petData ?"Edit Profile":"Add Pet"}
+                    Edit Pet
                 </button>
             </div>
             <Popup isOpen={isOpen} onClose={closePopup} hideClose>
@@ -121,7 +46,6 @@ const PetForm = ({ user_id, getPets, petData = {} }) => {
                         <input
                             className="input rounded-lg px-4 py-2 w-full border-2 border-secondary2 text-lg text-primary"
                             placeholder='Pets name'
-                            value={pet.name}
                             onChange={(e) => setPet({ ...pet, name: e.target.value })}
                         />
                     </div>
@@ -212,4 +136,4 @@ const PetForm = ({ user_id, getPets, petData = {} }) => {
     )
 }
 
-export default PetForm
+export default EditForm

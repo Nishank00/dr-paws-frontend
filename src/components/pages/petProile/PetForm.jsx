@@ -3,7 +3,8 @@ import Button from "@/components/ui/Button";
 import React, { useState } from "react";
 import Select from "@/components/ui/Select";
 
-const PetForm = ({ closePopup }) => {
+
+const PetForm = ({ closePopup,pet_id }) => {
   const [formData, setFormData] = useState({ pet_name: "", pet_type: null });
 
   const setPetName = (e) => {
