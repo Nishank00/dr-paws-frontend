@@ -98,7 +98,10 @@ const UserPofile = () => {
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/4de235d9b77455aa5f7570010e4b94c0b4e21c41aa50f4e54f6bc6467e5db216?apiKey=22a36eade5734692978208fb0d2f5c62&"
                                 className="aspect-[1.08] object-contain object-center w-[15px] shrink-0 my-auto"
                             />
+                            
+                            <div className='text-primary'>
                             Edit Profile
+                            </div>
 
                         </button>
                     </div>

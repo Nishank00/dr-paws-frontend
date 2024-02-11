@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Popup from '@/components/ui/Popup';
 import Select from '@/components/ui/Select';
 import PetService from '@/services/Pet.Service';
-const PetForm = ({ user_id, getPets, petData = {} }) => {
+const PetForm = ({ user_id, getPets, petData  }) => {
     const gridData = [1, 2, 3, 4, 5];
     const [isOpen, setIsOpen] = useState(false);
     const [userData, setUserData] = useState({});
@@ -103,19 +103,21 @@ const PetForm = ({ user_id, getPets, petData = {} }) => {
         }
 
 
-    }, [petData])
+    }, [])
     return (
         <>
             <div>
                 <button onClick={openPopup}
                     className="justify-center items-stretch w-[180px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-4 rounded-[86px] border-2 border-solid">
-                   { petData ?"Edit Profile":"Add Pet"}
+                                    <div className="text-primary">
+                                    { petData ? "Edit Profile":"Add Pet"}
+                                    </div>
                 </button>
             </div>
             <Popup isOpen={isOpen} onClose={closePopup} hideClose>
                 <div className='bg-primary3 w-[430px] flex flex-col py-5 justify-center items-center pt-10 '>
                     <div className=' w-full  flex justify-center items-center text-xl text-primary'>
-                        Add Pet
+                    { petData ?"Edit Profile":"Add Pet"}
                     </div>
                     <div className='w-[80%]'>
                         <input

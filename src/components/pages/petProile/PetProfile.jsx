@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import UserService from '@/services/User.Service';
 import PetService from '@/services/Pet.Service';
 import PetForm from '../profile/PetForm';
-
+import DocumentForm from './DocumentForm';
 
 const PetProfile = ({ pet_id }) => {
   const [petData, setPetData] = useState({});
@@ -123,6 +123,7 @@ const PetProfile = ({ pet_id }) => {
             <div className="text-slate-500 text-base font-bold leading-4 capitalize grow whitespace-nowrap">
               Edit Medical History
             </div>
+            <DocumentForm/>
           </div>
         </div>
         <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">
