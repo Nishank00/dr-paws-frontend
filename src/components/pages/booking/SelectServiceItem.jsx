@@ -1,6 +1,7 @@
 import ServiceSelect from "@/components/pages/booking/ServiceSelect";
 import PetSelect from "@/components/pages/booking/PetSelect";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import PetService from "@/services/Pet.Service";
 
 const SelectLabel = ({ heading = "Heading", subheading = "Sub Heading.." }) => {
   return (
@@ -11,71 +12,23 @@ const SelectLabel = ({ heading = "Heading", subheading = "Sub Heading.." }) => {
   );
 };
 
-const SelectServiceItem = ({
-  onChange,
-  service = [
-    {
-      id: 5,
-      service_name: "Dental",
-      service_items: [
-        { item_name: "lethargy" },
-        { item_name: "vomiting" },
-        { item_name: "limping" },
-      ],
-    },
-  ],
-}) => {
-  const [pets, setPets] = useState([
-    {
-      id: 1,
-      isSelected: false,
-      name: "Ranbir Kapoor",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 2,
-      isSelected: false,
-      name: "Ranveer Kapoor",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 3,
-      isSelected: false,
-      name: "Dhawan",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 4,
-      isSelected: false,
-      name: "Aditya",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 5,
-      isSelected: false,
-      name: "Ranveer Kapoor",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 6,
-      isSelected: false,
-      name: "Dhawan",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-    {
-      id: 7,
-      isSelected: false,
-      name: "Aditya",
-      image:
-        "https://www.thesprucepets.com/thmb/Vm4ICOSLxOlHGDJqbLSSfv0kFME=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/english-dog-breeds-4788340-hero-14a64cf053ca40f78e5bd078b052d97f.jpg",
-    },
-  ]);
+const SelectServiceItem = ({ onChange, service = [] }) => {
+  const [subHeading, setSubHeading] = useState("");
+  const [pets, setPets] = useState([]);
+
+  const getPets = () => {
+    PetService.getPetsByUserId(5)
+      .then((response) => {
+        if (response.data.status) {
+          setPets(
+            response.data.data.map((pet) => ({ ...pet, isSelected: false }))
+          );
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const onPetSelect = (selectedPet) => {
     setPets(
@@ -88,6 +41,15 @@ const SelectServiceItem = ({
     );
   };
 
+  useEffect(() => {
+    let str = (service.childs || [])
+      .map((service_item) => service_item.name)
+      .join();
+
+    setSubHeading(str.slice(0, 20) + " ...");
+    getPets();
+  }, []);
+
   return (
     <div
       className={`bg-primary3 rounded-lg flex flex-col
@@ -97,16 +59,7 @@ const SelectServiceItem = ({
         <ServiceSelect
           isChecked={service.is_checked}
           onChange={() => onChange(service)}
-          label={
-            <SelectLabel
-              heading={service.service_name}
-              subheading={` ${
-                (service.service_items || [])
-                  .map((service_item) => service_item.item_name)
-                  .join() || "Sub Heading"
-              } ...`}
-            />
-          }
+          label={<SelectLabel heading={service.name} subheading={subHeading} />}
         />
       </div>
 

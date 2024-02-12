@@ -2,19 +2,37 @@ import React from "react";
 import DoctorSelect from "./DoctorSelect";
 import Calendar from "./Calender";
 
-const SelectDoctorAndDateTimePage = () => {
+const SelectDoctorAndDateTimePage = ({
+  doctors = [],
+  setDoctors,
+  className,
+}) => {
   return (
-    <div>
+    <div className={className}>
       <div className="mb-24">
         <h2 className="text-primary font-medium text-5xl mb-1">Select Vet</h2>
         <p className="text-primary mb-6"> Book a spot for your visit</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          <DoctorSelect selected />
-          <DoctorSelect />
-          <DoctorSelect />
-          <DoctorSelect />
-          <DoctorSelect />
+          {doctors.map((doctor, i) => (
+            <DoctorSelect
+              key={"doctor" + i}
+              doctor={doctor}
+              selected={doctor.selected}
+              onClick={() => {
+                setDoctors(
+                  doctors.map((d, index) => {
+                    if (index === i) {
+                      d.selected = !d.selected;
+                    } else {
+                      d.selected = false;
+                    }
+                    return d;
+                  })
+                );
+              }}
+            />
+          ))}
         </div>
       </div>
 

@@ -1,8 +1,9 @@
 import React from "react";
 
-const DoctorSelect = ({ selected = false }) => {
+const DoctorSelect = ({ doctor = {}, selected = false, onClick }) => {
   return (
     <div
+      onClick={onClick}
       className={`flex flex-col items-center bg-primary4 rounded-lg ${
         selected ? "ring-4 ring-secondary" : ""
       }`}
@@ -20,7 +21,7 @@ const DoctorSelect = ({ selected = false }) => {
         }}
       />
       <div className="p-4 text-primary">
-        <h4 className="font-bold">Dr. Emily Thompson</h4>
+        <h4 className="font-bold">{doctor.doctor_name}</h4>
       </div>
     </div>
   );

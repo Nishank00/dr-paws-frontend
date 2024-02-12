@@ -7,6 +7,7 @@ import ProfileDropdown from "@/components/pages/profile/ProfileDropdown";
 import Popup from "@/components/ui/Popup";
 import RegisterForm from "@/components/auth/RegisterForm";
 import LoginForm from "@/components/auth/LoginForm";
+import { useRouter } from "next/navigation";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
   <div className={show ? "" : "hidden md:block"}>
@@ -47,6 +48,7 @@ const Header = () => {
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
 
   const toggleMenu = () => setMenu(!showMenu);
+  const router = useRouter();
 
   const openRegisterPopup = () => {
     setRegisterPopup(true);
@@ -88,6 +90,11 @@ const Header = () => {
     closeRegisterPopup();
     openLoginPopup();
   };
+
+  const bookingButtonClicked = () => {
+    router.push("/booking");
+  };
+
   return (
     <>
       <div className="body-padding-x body-padding-y text-primary bg-primary3">
@@ -107,6 +114,7 @@ const Header = () => {
               label="Book a Visit"
               color="secondary"
               className="hidden md:block"
+              onClick={bookingButtonClicked}
             />
             <div
               onClick={userIconClicked}

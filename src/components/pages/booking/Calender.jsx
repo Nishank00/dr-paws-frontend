@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import moment from "moment";
 
 const Calendar = () => {
+  const [currentTime, setCurrentTime] = useState(moment().format("hh:mm A"));
   const [selectedDate, setSelectedDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const daysInMonth = (date) => {
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    const firstDayIndex = firstDay.getDay();
     const days = [];
+    for (let x = 0; x < firstDayIndex; x++) {
+      days.push(null);
+    }
 
     for (let day = firstDay; day <= lastDay; day.setDate(day.getDate() + 1)) {
       days.push(new Date(day));
@@ -78,15 +84,18 @@ const Calendar = () => {
             key={index}
             onClick={() => handleDateClick(date)}
             className={`p-2 text-sm cursor-pointer text-center ${
-              date.getMonth() !== currentMonth.getMonth() ? "text-gray-400" : ""
+              date && date.getMonth() !== currentMonth.getMonth()
+                ? "text-gray-400"
+                : ""
             } ${
               selectedDate &&
+              date &&
               date.toDateString() === selectedDate.toDateString()
                 ? "bg-primary text-white rounded-full"
                 : ""
             }`}
           >
-            {date.getDate()}
+            {date && date.getDate()}
           </div>
         ))}
       </div>
@@ -97,10 +106,17 @@ const Calendar = () => {
     return (
       <div className=" text-primary">
         <p>Time zone</p>
-        <p>India Standard Time (2:30pm)</p>
+        <p>India Standard Time ({currentTime})</p>
       </div>
     );
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(moment().format("hh:mm A"));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="w-full border p-10 rounded shadow bg-primary4 text-primary">
