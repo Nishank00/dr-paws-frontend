@@ -114,16 +114,9 @@ const PetProfile = ({ pet_id }) => {
               Buddy’s Medical History
             </div>
           </div>
-          <div className="items-stretch border border-[color:var(--Secondary-1,#5281A2)] flex gap-1.5 my-auto px-5 py-3 rounded-[40px] border-solid">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/061674e38d127e94ee655e16dc9d2cb44d0e8e238000003a0ccb965ad5a24b1a?apiKey=22a36eade5734692978208fb0d2f5c62&"
-              className="aspect-[1.08] object-contain object-center w-[15px] shrink-0 self-start"
-            />
-            <div className="text-slate-500 text-base font-bold leading-4 capitalize grow whitespace-nowrap">
-              Edit Medical History
-            </div>
-            <DocumentForm/>
+          <div>
+
+            <DocumentForm />
           </div>
         </div>
         <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">

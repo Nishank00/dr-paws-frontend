@@ -27,7 +27,6 @@ const EditForm = ({pet_id}) => {
     const closePopup = () => {
         setIsOpen(false);
     };
-    useEffect
 
     return (
         <>
