@@ -33,7 +33,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
       });
   };
   return (
-    <div className="p-10 text-primary w-full md:w-[430px]">
+    <div className="p-10 text-primary bg-white w-full md:w-[430px]">
       <div className="text-center">
         <div className="mb-10">
           <h5 className="font-bold text-3xl mb-2">Log in to book a visit</h5>

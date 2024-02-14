@@ -36,7 +36,13 @@ const ClinicForm = () => {
     MasterService.getDaysOfWeek()
       .then((response) => {
         if (response.data.status) {
-          setDays(response.data.data);
+          setDays(
+            response.data.data.map((day) => ({
+              ...day,
+              start_time: null,
+              end_time: null,
+            }))
+          );
         }
       })
       .catch((error) => console.log("Error: ", error));
@@ -389,8 +395,18 @@ const ClinicForm = () => {
                   <td>
                     <div className="flex items-center justify-center">
                       <TimePicker
+                        value={day.start_time}
                         onChange={(selectedTime) =>
-                          console.log("selectedTime => ", selectedTime)
+                          setDays(
+                            days.map((day) =>
+                              day.name === day.name
+                                ? {
+                                    ...day,
+                                    start_time: selectedTime,
+                                  }
+                                : day
+                            )
+                          )
                         }
                       />
                     </div>
@@ -398,8 +414,18 @@ const ClinicForm = () => {
                   <td>
                     <div className="flex items-center justify-center">
                       <TimePicker
+                        value={day.end_time}
                         onChange={(selectedTime) =>
-                          console.log("selectedTime => ", selectedTime)
+                          setDays(
+                            days.map((day) =>
+                              day.name === day.name
+                                ? {
+                                    ...day,
+                                    end_time: selectedTime,
+                                  }
+                                : day
+                            )
+                          )
                         }
                       />
                     </div>

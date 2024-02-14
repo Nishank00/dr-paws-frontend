@@ -9,10 +9,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   const { showToast, ToastComponent } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState({
-    phone: "",
-    email: "",
-    password: "",
-    confirm_password: "",
+    profile_image: null,
+    phone: null,
+    email: null,
+    password: null,
+    confirm_password: null,
   });
 
   const handleNext = () => {
@@ -24,13 +25,19 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     setForm({ ...form, [name]: value });
   };
 
+  const profileUploaded = (filename) => {
+    setForm({ ...form, profile_image: filename });
+  };
+
   const registerUser = () => {
     const payload = {
+      profile_image: form.profile_image,
       email: form.email,
       phone: form.phone,
       password: form.password,
       user_type: "CUSTOMER",
     };
+
     AuthService.register(payload)
       .then((response) => {
         if (!response.data.status) {
@@ -60,7 +67,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
             </div>
 
             <div className="mb-10">
-              <UploadProfile />
+              <UploadProfile onUpload={profileUploaded} />
               <TextInput
                 placeholder={"Email"}
                 name="email"
@@ -124,7 +131,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   };
 
   return (
-    <div className="p-10 text-primary w-full md:w-[430px]">
+    <div className="p-10 text-primary bg-white w-full md:w-[430px]">
       {renderPage(currentPage)}
     </div>
   );
