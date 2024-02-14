@@ -24,6 +24,9 @@ export default {
     },
     getDocumentType(){
         return API().get(`pet/getDocumentType`)
+    },
+    savePetDocumnets(payload){
+        return API().post(`pet/savePetDocumnets`, payload)
     }
 
 }

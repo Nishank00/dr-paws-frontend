@@ -116,7 +116,7 @@ const PetProfile = ({ pet_id }) => {
           </div>
           <div>
 
-            <DocumentForm />
+            <DocumentForm pet_id={petData.id}/>
           </div>
         </div>
         <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">

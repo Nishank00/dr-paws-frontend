@@ -10,8 +10,8 @@ const DocumentForm = ({ pet_id }) => {
   const [docTypes, setDocTypes] = useState([]);
   const [selectedFiles, setSelectedFiles] = useState(null);
   const [urlList, setUrlList] = useState([]);
-  const [doc,setDoc]=useState({
-    doc_type:null
+  const [doc, setDoc] = useState({
+    doc_type: null
   })
 
   const openPopup = () => {
@@ -22,12 +22,12 @@ const DocumentForm = ({ pet_id }) => {
     setIsOpen(false);
   };
 
-  
+
   const onCancel = () => {
     closePopup();
     setUrlList([])
-   setDoc({doc_type:null})
-}
+    setDoc({ doc_type: null })
+  }
   const handleFileChange = (e) => {
     setSelectedFiles(Array.from(e.target.files))
   }
@@ -46,7 +46,7 @@ const DocumentForm = ({ pet_id }) => {
       .then((r) => {
         if (r.data.status) {
           setUrlList(r.data.data)
-          setUserData({ ...user, profile_image: r.data.data[0] })
+          setUserData({ ...user, profile_image: r.data.data })
           alert("upload successfull!")
         }
         else {
@@ -59,16 +59,29 @@ const DocumentForm = ({ pet_id }) => {
       });
   }
 
-  const selectDocType=(e)=>{
-    setDoc({...doc,doc_type:e.target.value})
+  const selectDocType = (e) => {
+    setDoc({ ...doc, doc_type: e.target.value })
   }
-  const handleSubmit=()=>{
-    let payload={
-      url:urlList,
-      pet_id,
-      doc_file_type:"PDF",
-      doc_type:doc.doc_type,
+  const handleSubmit = () => {
+    let payload = {
+      url: urlList,
+      pet_id:pet_id,
+      doc_file_type: "PDF",
+      doc_type: doc.doc_type,
     }
+    PetService.savePetDocumnets(payload).then((r) => {
+      if (r.data.status) {
+        closePopup();
+        setUrlList([])
+        setDoc({ doc_type: null })
+      }
+      else {
+        alert(r.data.message)
+      }
+    })
+      .catch((err) => {
+        console.log(errr)
+      })
   }
   const getDocumentType = () => {
     PetService.getDocumentType().then((r) => {
@@ -105,6 +118,7 @@ const DocumentForm = ({ pet_id }) => {
             className="hidden"
             accept="image/*"
             onChange={(e) => handleFileChange(e)}
+            multiple
           />
         </button>
       </div>
@@ -114,7 +128,7 @@ const DocumentForm = ({ pet_id }) => {
             Upload Files
           </div>
           <div className='w-[80%] mt-5'>
-            <select value={doc.doc_type} onChange={(e)=>selectDocType(e)} className="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
+            <select value={doc.doc_type} onChange={(e) => selectDocType(e)} className="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
               <option value="" disabled selected>Select documnet type</option>
               {
                 docTypes && docTypes.map((type, index) => (
@@ -125,7 +139,7 @@ const DocumentForm = ({ pet_id }) => {
             </select>
           </div>
           <div className='mt-2'>
-           
+
           </div>
           <div className='w-[80%] flex   justify-between items-center'>
             <input
@@ -141,16 +155,16 @@ const DocumentForm = ({ pet_id }) => {
             </button>
           </div>
           <div className='flex  justify-between  w-[80%] m-auto mt-3'>
-                <button onClick={onCancel} className="justify-center items-stretch w-[150px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-3 rounded-[86px] border-2 border-solid">
+            <button onClick={onCancel} className="justify-center items-stretch w-[150px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-3 rounded-[86px] border-2 border-solid">
 
-                    {/* <button onClick={onCancel} className="text-slate-500 text-base font-bold leading-4 tracking-normal grow whitespace-nowrap"> */}
-                        Cancel
-                    {/* </div> */}
-                </button>
-                <button onClick={handleSubmit} className="text-white text-base font-bold  w-[150px] leading-4 tracking-normal justify-center items-center bg-slate-500 max-w-[155px] px-16 py-3 rounded-[86px]">
-                    Save
-                </button>
-            </div>
+              {/* <button onClick={onCancel} className="text-slate-500 text-base font-bold leading-4 tracking-normal grow whitespace-nowrap"> */}
+              Cancel
+              {/* </div> */}
+            </button>
+            <button onClick={handleSubmit} className="text-white text-base font-bold  w-[150px] leading-4 tracking-normal justify-center items-center bg-slate-500 max-w-[155px] px-16 py-3 rounded-[86px]">
+              Save
+            </button>
+          </div>
         </div>
       </Popup>
 
