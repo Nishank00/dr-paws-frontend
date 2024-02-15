@@ -38,7 +38,7 @@ export default {
     },
     getPetDocuments ( params )
     {
-        return API().get( `pet/getPetDocuments` )
+        return API().get( `pet/getPetDocuments`,{params} )
     }
 
 }
