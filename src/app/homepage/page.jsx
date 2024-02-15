@@ -15,7 +15,7 @@ export default function Homepage() {
             <span className="text-orange-100">by pet lovers </span>
           </div>
           <div className="text-white  text-sm md:text-2xl mt-10 max-md:max-w-5/6">
-            Book a visit to one of our clinics right now. Which friend will we
+            Book a visit to one of our clinics right<br/> now. Which friend will we
             meet?
           </div>
           <div className="flex gap-5 items-stretch  flex-row max-md:w-full ">
