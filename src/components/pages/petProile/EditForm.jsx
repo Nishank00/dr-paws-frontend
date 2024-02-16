@@ -2,11 +2,12 @@
 
 import React, { useEffect } from 'react'
 import Popup from '@/components/ui/Popup'
-const EditForm = ({pet_id}) => {
-    
-    const [isOpen, setIsOpen] = useState(false);
-    const [userData, setUserData] = useState({});
-    const [pet, setPet] = useState({
+const EditForm = ( { pet_id } ) =>
+{
+
+    const [ isOpen, setIsOpen ] = useState( false );
+    const [ userData, setUserData ] = useState( {} );
+    const [ pet, setPet ] = useState( {
         pet_type: null,
         breed: null,
         user_id: null,
@@ -15,19 +16,20 @@ const EditForm = ({pet_id}) => {
         age: null,
         date_of_birth: null,
         weight: null,
-    });
-    const [petTypes, setPetTypes] = useState();
-    const [breeds, setBreeds] = useState([])
-    const [isEditMode, setIsEditMode] = useState(false);
+    } );
+    const [ petTypes, setPetTypes ] = useState();
+    const [ breeds, setBreeds ] = useState( [] )
+    const [ isEditMode, setIsEditMode ] = useState( false );
 
-    const openPopup = () => {
-        setIsOpen(true);
+    const openPopup = () =>
+    {
+        setIsOpen( true );
     };
 
-    const closePopup = () => {
-        setIsOpen(false);
+    const closePopup = () =>
+    {
+        setIsOpen( false );
     };
-    useEffect
 
     return (
         <>
@@ -46,28 +48,28 @@ const EditForm = ({pet_id}) => {
                         <input
                             className="input rounded-lg px-4 py-2 w-full border-2 border-secondary2 text-lg text-primary"
                             placeholder='Pets name'
-                            onChange={(e) => setPet({ ...pet, name: e.target.value })}
+                            onChange={( e ) => setPet( { ...pet, name: e.target.value } )}
                         />
                     </div>
                     <div className='w-[80%] mt-5'>
-                        <select value={pet.pet_type} onChange={(e) => handlePetTypeChange(e)} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
+                        <select value={pet.pet_type} onChange={( e ) => handlePetTypeChange( e )} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
                             <option value="" disabled selected>Select your pet</option>
 
                             {
-                                petTypes && petTypes.map((pettype, index) => (
+                                petTypes && petTypes.map( ( pettype, index ) => (
                                     <option key={index} value={pettype.id} >{pettype.name}</option>
-                                ))
+                                ) )
                             }
                         </select>
                     </div>
                     {pet.pet_type && <div className='w-[80%] mt-5'>
-                        <select value={pet.breed} onChange={(e) => setPet({ ...pet, breed: e.target.value })} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
+                        <select value={pet.breed} onChange={( e ) => setPet( { ...pet, breed: e.target.value } )} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
                             <option value="" disabled selected>Select your pet</option>
 
                             {
-                                breeds && breeds.map((pettype) => (
-                                    <option value={pettype.id} >{pettype.name}</option>
-                                ))
+                                breeds && breeds.map( ( pettype, index ) => (
+                                    <option key={"pettype" + index} value={pettype.id} >{pettype.name}</option>
+                                ) )
                             }
                         </select>
                     </div>}
@@ -77,7 +79,7 @@ const EditForm = ({pet_id}) => {
                             <div className='flex justify-between w-[80%] m-auto mt-4'>
                                 <div className='w-[45%] flex flex-col'>
 
-                                    <select value={pet.gender} onChange={(e) => setPet({ ...pet, gender: e.target.value })} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
+                                    <select value={pet.gender} onChange={( e ) => setPet( { ...pet, gender: e.target.value } )} class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
                                         <option value="" disabled selected> Gender</option>
                                         <option value="MALE" >Male</option>
                                         <option value="FEMALE" >Female</option>
@@ -88,7 +90,7 @@ const EditForm = ({pet_id}) => {
                                     <input
                                         className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
                                         placeholder='Age'
-                                        onChange={(e) => setPet({ ...pet, age: e.target.value })}
+                                        onChange={( e ) => setPet( { ...pet, age: e.target.value } )}
                                         value={pet.age}
                                     />
                                 </div>
@@ -100,7 +102,7 @@ const EditForm = ({pet_id}) => {
                                     <input type='date'
                                         className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
                                         placeholder='Age'
-                                        onChange={(e) => setPet({ ...pet, date_of_birth: e.target.value })}
+                                        onChange={( e ) => setPet( { ...pet, date_of_birth: e.target.value } )}
                                         value={pet.date_of_birth}
                                     />
                                 </div>
@@ -109,7 +111,7 @@ const EditForm = ({pet_id}) => {
                                     <input
                                         className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
                                         placeholder='Weight (Kg}'
-                                        onChange={(e) => setPet({ ...pet, weight: e.target.value })}
+                                        onChange={( e ) => setPet( { ...pet, weight: e.target.value } )}
                                         value={pet.weight}
                                     />
                                 </div>

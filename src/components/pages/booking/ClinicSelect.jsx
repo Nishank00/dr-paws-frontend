@@ -1,11 +1,17 @@
 import React from "react";
 
-const ClinicSelect = ({ hideVisitButton = false, selected = false }) => {
+const ClinicSelect = ({
+  hideVisitButton = false,
+  selected = false,
+  clinic = {},
+  onClick,
+}) => {
   return (
     <div
       className={`bg-primary3 rounded-lg ${
         selected ? "ring-4 ring-secondary" : ""
       }`}
+      onClick={onClick}
     >
       <div
         className="rounded-t-lg"
@@ -21,7 +27,7 @@ const ClinicSelect = ({ hideVisitButton = false, selected = false }) => {
         }}
       />
       <div className="p-4 text-primary">
-        <h4 className="font-bold">Indiranagar Clinic</h4>
+        <h4 className="font-bold">{clinic.name}</h4>
         <p className="text-sm">OPD | Surgery</p>
       </div>
       {!hideVisitButton && (

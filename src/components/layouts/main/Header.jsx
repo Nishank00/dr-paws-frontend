@@ -7,37 +7,90 @@ import ProfileDropdown from "@/components/pages/profile/ProfileDropdown";
 import Popup from "@/components/ui/Popup";
 import RegisterForm from "@/components/auth/RegisterForm";
 import LoginForm from "@/components/auth/LoginForm";
+import { useRouter } from "next/navigation";
+import MenuBar from "./MenuBar";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
-  <div className={show ? "" : "hidden md:block"}>
-    <ul
-      className={`${applyParentClass} flex flex-col md:flex-row md:items-center md:justify-center mt-5 lg:mt-0`}
-    >
-      <li className="my-1 md:mx-3">
-        <Link className="" href="/clinics">
+  <>
+    <div className={`${show ? "" : "hidden md:block"} lg:w-[1020px] bg-red-600`}>
+      <ul
+        className={`${applyParentClass} flex flex-col md:flex-row  md:items-center md:justify-center mt-5 lg:mt-0`}
+      >
+        <li className="my-1 md:mx-3">
+          <Link className="" href="/clinics">
+            Locations
+          </Link>
+        </li>
+
+        <li className="my-1 md:mx-3">
+          <Link className="" href="/services">
+            Our Services
+          </Link>
+        </li>
+
+        <li className="my-1 md:mx-3">
+          <Link className="" href="/team">
+            Our Team
+          </Link>
+        </li>
+
+        <li className="my-1 md:mx-3">
+          <Link className="" href="/membership">
+            Membership
+          </Link>
+        </li>
+      </ul>
+    </div>
+    {/* <div className={` hidden sm:hidden md:hidden lg:flex lg:flex-row  lg:justify-around items-center lg:w-[950px]  border-solid border-red-700 h-14`}>
+      <div className="my-1 md:mx-3 ">
+        <Link className="text-xl" href="/clinics">
           Locations
         </Link>
-      </li>
-
-      <li className="my-1 md:mx-3">
-        <Link className="" href="/services">
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/services">
           Our Services
         </Link>
-      </li>
-
-      <li className="my-1 md:mx-3">
-        <Link className="" href="/team">
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/team">
           Our Team
         </Link>
-      </li>
-
-      <li className="my-1 md:mx-3">
-        <Link className="" href="/membership">
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/membership">
           Membership
         </Link>
-      </li>
-    </ul>
-  </div>
+      </div>
+    </div>
+    <div>
+    {
+      <div className={`${show? "block":"hidden"} w-full`}>
+         <div className="my-1 md:mx-3 ">
+        <Link className="text-xl" href="/clinics">
+          Locations
+        </Link>
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/services">
+          Our Services
+        </Link>
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/team">
+          Our Team
+        </Link>
+      </div>
+      <div className="my-1 md:mx-3">
+        <Link className="text-xl" href="/membership">
+          Membership
+        </Link>
+      </div>
+      </div>
+    }
+    </div> */}
+  </>
+
 );
 
 const Header = () => {
@@ -47,6 +100,7 @@ const Header = () => {
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
 
   const toggleMenu = () => setMenu(!showMenu);
+  const router = useRouter();
 
   const openRegisterPopup = () => {
     setRegisterPopup(true);
@@ -88,32 +142,39 @@ const Header = () => {
     closeRegisterPopup();
     openLoginPopup();
   };
+
+  const bookingButtonClicked = () => {
+    router.push("/booking");
+  };
+
   return (
     <>
       <div className="body-padding-x body-padding-y text-primary bg-primary3">
         <nav className="flex items-center justify-between">
-          <div id="logo">
+          <div id="logo" className="h-14">
             <Link href="/">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
-                className="aspect-[2.55] object-contain object-center w-[125px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+                className="aspect-[2.55] object-contain object-center w-[160px] justify-center items-center overflow-hidden shrink-0 max-w-full"
               />
             </Link>
           </div>
-          <Menus show applyParentClass="hidden lg:flex" />
-          <div className="flex items-center gap-2">
+          {!showMenu && <MenuBar show={showMenu}/>}
+          {/* <Menus show applyParentClass="hidden lg:flex" /> */}
+          <div className="flex items-center gap-5">
             <Button
               label="Book a Visit"
               color="secondary"
-              className="hidden md:block"
+              className="hidden md:block w-52 h-12"
+              onClick={bookingButtonClicked}
             />
             <div
               onClick={userIconClicked}
-              className="flex items-center justify-center hover:shadow cursor-pointer h-10 w-10 relative"
+              className="flex items-center   p-2  border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-12 w-12 relative"
             >
               <img
-                className=""
+                className="w-full h-full"
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
               />
@@ -124,7 +185,7 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <div className="block md:hidden">
+            <div className="block lg:hidden">
               <button
                 onClick={toggleMenu}
                 type="button"
@@ -149,7 +210,8 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <Menus show={showMenu} applyParentClass="block lg:hidden" />
+       { showMenu && <MenuBar show={showMenu}/>}
+        {/* <Menus show={showMenu} applyParentClass="block lg:hidden  lg:justify-around" /> */}
       </div>
 
       <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>

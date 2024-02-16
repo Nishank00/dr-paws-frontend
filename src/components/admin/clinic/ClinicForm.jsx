@@ -9,6 +9,7 @@ import DoctorCardCheck from "./DoctorCardCheck";
 import Button from "@/components/ui/Button";
 import ClinicService from "@/services/Clinic.service";
 import { useSearchParams } from "next/navigation";
+import TimePicker from "@/components/ui/TimePicker";
 
 const ClinicForm = () => {
   const searchParams = useSearchParams();
@@ -18,6 +19,7 @@ const ClinicForm = () => {
   const [cities, setCities] = useState([]);
   const [services, setServices] = useState([]);
   const [doctors, setDoctors] = useState([]);
+  const [days, setDays] = useState([]);
   const [form, setForm] = useState({
     name: null,
     contact_numbers: null,
@@ -29,6 +31,22 @@ const ClinicForm = () => {
     state_id: null,
     city_id: null,
   });
+
+  const getDays = () => {
+    MasterService.getDaysOfWeek()
+      .then((response) => {
+        if (response.data.status) {
+          setDays(
+            response.data.data.map((day) => ({
+              ...day,
+              start_time: null,
+              end_time: null,
+            }))
+          );
+        }
+      })
+      .catch((error) => console.log("Error: ", error));
+  };
 
   const formValueChanged = (e) => {
     const { name, value } = e.target;
@@ -231,6 +249,7 @@ const ClinicForm = () => {
   };
 
   useEffect(() => {
+    getDays();
     getStates();
     getServices();
     getDoctors();
@@ -359,6 +378,62 @@ const ClinicForm = () => {
               />
             ))}
           </div>
+        </section>
+
+        <section id="clinic-timings" className="mt-10">
+          <hr className="mb-3" />
+          <h3 className="text-2xl font-bold">Clinic Timings</h3>
+          <hr className="mb-3" />
+
+          <table className="w-full text-right">
+            <thead>
+              {days.map((day, i) => (
+                <tr key={"day_" + i}>
+                  <td>
+                    <h2 className="text-lg font-semibold">{day.name}</h2>
+                  </td>
+                  <td>
+                    <div className="flex items-center justify-center">
+                      <TimePicker
+                        value={day.start_time}
+                        onChange={(selectedTime) =>
+                          setDays(
+                            days.map((day) =>
+                              day.name === day.name
+                                ? {
+                                    ...day,
+                                    start_time: selectedTime,
+                                  }
+                                : day
+                            )
+                          )
+                        }
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex items-center justify-center">
+                      <TimePicker
+                        value={day.end_time}
+                        onChange={(selectedTime) =>
+                          setDays(
+                            days.map((day) =>
+                              day.name === day.name
+                                ? {
+                                    ...day,
+                                    end_time: selectedTime,
+                                  }
+                                : day
+                            )
+                          )
+                        }
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </thead>
+          </table>
         </section>
 
         <div className="flex items-center justify-end">

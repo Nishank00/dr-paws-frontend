@@ -10,23 +10,28 @@ import NewBanner from "@/components/pages/home/NewBanner";
 import ClinicService from "@/services/Clinic.service";
 import { useEffect, useState } from "react";
 
-const Homepage = () => {
-  const [clinics, setClinics] = useState([]);
+const Homepage = () =>
+{
+  const [ clinics, setClinics ] = useState( [] );
 
-  const getClinics = () => {
+  const getClinics = () =>
+  {
     ClinicService.getData()
-      .then((response) => {
-        setClinics([]);
-        if (response.data.status) {
-          setClinics(response.data.data);
+      .then( ( response ) =>
+      {
+        setClinics( [] );
+        if ( response.data.status )
+        {
+          setClinics( response.data.data );
         }
-      })
-      .catch((error) => console.error("Error:", error));
+      } )
+      .catch( ( error ) => console.error( "Error:", error ) );
   };
 
-  useEffect(() => {
+  useEffect( () =>
+  {
     getClinics();
-  }, []);
+  }, [] );
 
   return (
     <>
@@ -37,9 +42,8 @@ const Homepage = () => {
           Veterinary care, redesigned to be better
         </h2>
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_one.png"}
+
           header={"A Clinic That Feels Like Home"}
           text={
             "Our modern clinics make you feel like you never left home, making visits stress-free for you and your pet"
@@ -49,9 +53,7 @@ const Homepage = () => {
         />
 
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_two.png"}
           header={"Memberships that work"}
           text={
             "Our memberships provide great value care and provide all the services you’re likely to need. Even if you’re facing an emergency, our memberships cover you."
@@ -61,9 +63,8 @@ const Homepage = () => {
         />
 
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_three.png"}
+
           header={"Doctors that care"}
           text={
             "We’re in the business of looking after your best friend. We’ll listen and answer all your questions and treat your pet like our own"
@@ -73,9 +74,8 @@ const Homepage = () => {
         />
 
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_four.png"}
+
           header={"Everything in your control"}
           text={
             "Book appointments in a few taps, and always stay updated and informed on your pet’s health with our app"
@@ -85,9 +85,8 @@ const Homepage = () => {
         />
 
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_five.png"}
+
           header={"Only the necessary care"}
           text={
             "We’re pet-lovers first and business-people second. No over-testing, prescribing unnecessary medicines, or pushing procedures that are not needed"
@@ -97,9 +96,7 @@ const Homepage = () => {
         />
 
         <ImageTextHeader
-          imageUrl={
-            "https://cdn.builder.io/api/v1/image/assets/TEMP/669bca2fbece07c5713ebffc2c3bbaf28cc8b619507b404fcce2b83302f85e8f?apiKey=22a36eade5734692978208fb0d2f5c62&"
-          }
+          imageUrl={"/home/grid_pic_six.png"}
           header={"All the services you need, under one roof"}
           text={
             "Aside from our world-class veterinary care, our clinics offer grooming, boarding, sitting, nutritionist, and training services"
@@ -109,19 +106,24 @@ const Homepage = () => {
         />
       </div>
 
-      <h2 className="text-primary font-medium text-4xl mb-6 text-center">
+      <h2 className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
         Check out the places
         <br /> we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 body-padding-x">
-        {clinics &&
-          clinics.length > 0 &&
-          clinics.map((clinic, i) => (
-            <ClinicCard clinic={clinic} key={"clinic" + i} />
-          ))}
+        {
+          Array.from( { length: 8 } ).map( ( clinic, i ) => (
+            <ClinicCard clinic={{ imageUrl: "/home/clinic_image.png" }} key={"clinic" + i} />
+          ) )}
       </div>
 
-      <div className="body-padding-x">
+      <div className="body-padding-x hidden lg:flex lg:flex-col">
+        <h2 className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
+          Whatever your pet needs,<br /> we&apos;re there
+        </h2>
+        <p className="text-primary text-center   text-md mb-6">
+          Discover our most commonly requested services. For anything not listed,please <br />  get in touch with your local clinic
+        </p>
         <VerticalTabs />
       </div>
 

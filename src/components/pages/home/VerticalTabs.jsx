@@ -7,7 +7,7 @@ export default function VerticalTabs() {
 
     const [activeTab, setActiveTab] = useState('tab1');
 
-    const activeButonStyle = "text-white text-lg font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-slate-500 pl-7 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
+    const activeButonStyle = "text-white text-lg font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-7 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
     const buttonStyle = "text-slate-700 text-lg capitalize whitespace-nowrap justify-center items-stretch bg-white pl-7 pr-16 py-5 max-md:pl-5 max-md:pr-7";
 
     const handleTabClick = (tabId) => {
@@ -155,7 +155,7 @@ export default function VerticalTabs() {
                                     </div>
                                 </div>
                             </div>
-                            <span className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-stone-400 mt-20 px-12 py-3.5 rounded-[86px] max-md:mt-10 max-md:px-5">
+                            <span className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-[#9fa983] mt-20 px-12 py-3.5 rounded-[86px] max-md:mt-10 max-md:px-5">
                                 View Services
                             </span>
                         </span>

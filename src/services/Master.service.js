@@ -24,6 +24,10 @@ export default {
 
   addMaster(payload) {
     return API().post("master", payload)
+  },
+
+  getDaysOfWeek() {
+    return API().get("master/masters_by_code", { params: { code: "DAYS_OF_WEEK" } })
   }
 
 }

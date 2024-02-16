@@ -1,75 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@/components/ui/Button";
 import Popup from "@/components/ui/Popup";
 import SelectServiceItem from "@/components/pages/booking/SelectServiceItem";
 import PetForm from "../petProile/PetForm";
 import { useState } from "react";
 
-const SelectServicePage = () => {
+const SelectServicePage = ({ services = [], setServices, className = "" }) => {
   // Variables
   const [isPopupOpen, setPopupOpen] = useState(false);
-
-  const [services, setServices] = useState([
-    {
-      id: 1,
-      is_checked: false,
-      service_name: "Planned Checkup",
-      service_items: [
-        { item_name: "Vaccination" },
-        { item_name: "health checkup" },
-      ],
-    },
-    {
-      id: 2,
-      is_checked: false,
-      service_name: "Sickness & Emergency",
-      service_items: [
-        { item_name: "lethargy" },
-        { item_name: "vomiting" },
-        { item_name: "limping" },
-      ],
-    },
-    {
-      id: 3,
-      is_checked: false,
-      service_name: "Diagnostics",
-      service_items: [
-        { item_name: "blood test" },
-        { item_name: "tick fever test" },
-      ],
-    },
-    {
-      id: 4,
-      is_checked: false,
-      service_name: "Planned Surgeries",
-      service_items: [
-        { item_name: "Vaccination" },
-        { item_name: "health checkup" },
-      ],
-    },
-    {
-      id: 5,
-      is_checked: false,
-      service_name: "Dental",
-      service_items: [
-        { item_name: "lethargy" },
-        { item_name: "vomiting" },
-        { item_name: "limping" },
-      ],
-    },
-    {
-      id: 6,
-      is_checked: false,
-      service_name: "Grooming",
-      service_items: [{ item_name: "haircut" }, { item_name: "spa" }],
-    },
-    {
-      id: 7,
-      is_checked: false,
-      service_name: "Pet Services",
-      service_items: [{ item_name: "training" }, { item_name: "boarding" }],
-    },
-  ]);
 
   // Methods
   const checkUncheckItem = (item) =>
@@ -84,8 +22,19 @@ const SelectServicePage = () => {
 
   const openPopup = () => setPopupOpen(true);
   const closePopup = () => setPopupOpen(false);
+
+  useEffect(() => {
+    console.log("services =>", services);
+    setServices(
+      services.map((service) => ({
+        ...service,
+        is_checked: false,
+      }))
+    );
+  }, []);
+
   return (
-    <div className="pt-10">
+    <div className={"pt-10 " + className}>
       <h2 className="text-primary font-medium text-5xl mb-1">
         Select Services
       </h2>
@@ -101,13 +50,15 @@ const SelectServicePage = () => {
           "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-start gap-5 mt-10"
         }
       >
-        {services.map((service) => (
-          <SelectServiceItem
-            key={service.id}
-            service={service}
-            onChange={checkUncheckItem}
-          />
-        ))}
+        {services &&
+          services.length > 0 &&
+          services.map((service) => (
+            <SelectServiceItem
+              key={"service" + service.id}
+              service={service}
+              onChange={checkUncheckItem}
+            />
+          ))}
       </div>
     </div>
   );

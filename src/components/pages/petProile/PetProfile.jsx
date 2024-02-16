@@ -4,6 +4,7 @@ import UserService from '@/services/User.Service';
 import PetService from '@/services/Pet.Service';
 import PetForm from '../profile/PetForm';
 import DocumentForm from './DocumentForm';
+import PetDocumentList from './PetDocumentList';
 
 const PetProfile = ({ pet_id }) => {
   const [petData, setPetData] = useState({});
@@ -98,13 +99,13 @@ const PetProfile = ({ pet_id }) => {
         <div className='lg:h-[14rem] flex flex-col justify-start '>
 
           <div className="text-slate-500 h-full text-base font-bold leading-5 tracking-normal grow whitespace-nowrap">
-            <PetForm user_id={petData.user_id} petData={...petData} />
+            <PetForm user_id={petData.user_id} petData={petData} />
           </div>
         </div>
       </div>
       <div className="justify-end items-stretch flex flex-col p-8 rounded-md max-md:px-5">
         <div className="flex w-full items-stretch justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
-          <div className="items-stretch flex justify-between gap-2.5">
+          <div className="items-stretch flex flex-col md:flex-row justify-between gap-2.5">
             <img
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/f24b0496dc1d470705bcba23c6855075643de0a5e63c2a6d315dfbf516e3d5bc?apiKey=22a36eade5734692978208fb0d2f5c62&"
@@ -114,19 +115,17 @@ const PetProfile = ({ pet_id }) => {
               Buddy’s Medical History
             </div>
           </div>
-          <div className="items-stretch border border-[color:var(--Secondary-1,#5281A2)] flex gap-1.5 my-auto px-5 py-3 rounded-[40px] border-solid">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/061674e38d127e94ee655e16dc9d2cb44d0e8e238000003a0ccb965ad5a24b1a?apiKey=22a36eade5734692978208fb0d2f5c62&"
-              className="aspect-[1.08] object-contain object-center w-[15px] shrink-0 self-start"
-            />
-            <div className="text-slate-500 text-base font-bold leading-4 capitalize grow whitespace-nowrap">
-              Edit Medical History
-            </div>
-            <DocumentForm/>
+          <div>
+
+            <DocumentForm pet_id={petData.id} />
           </div>
         </div>
-        <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">
+        <PetDocumentList pet_id={petData.id} doc_type_name={"Scans and X-rays"} />
+        <PetDocumentList pet_id={petData.id} doc_type_name={"Dog Training"} />
+
+        <PetDocumentList pet_id={petData.id} doc_type_name={"Dog and Cat Slitting"} />
+
+        {/* <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">
           Past Diagnostic Reports
         </div>
         <div className="items-stretch flex gap-4 mt-5 max-md:max-w-full max-md:flex-wrap">
@@ -255,7 +254,7 @@ const PetProfile = ({ pet_id }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
