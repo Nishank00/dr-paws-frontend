@@ -99,7 +99,7 @@ const PetProfile = ({ pet_id }) => {
         <div className='lg:h-[14rem] flex flex-col justify-start '>
 
           <div className="text-slate-500 h-full text-base font-bold leading-5 tracking-normal grow whitespace-nowrap">
-            <PetForm user_id={petData.user_id} petData={...petData} />
+            <PetForm user_id={petData.user_id} petData={petData} />
           </div>
         </div>
       </div>

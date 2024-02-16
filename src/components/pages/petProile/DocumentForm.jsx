@@ -5,100 +5,124 @@ import Popup from '@/components/ui/Popup';
 import PetService from '@/services/Pet.Service';
 import UploadService from '@/services/Upload.service';
 
-const DocumentForm = ({ pet_id }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [docTypes, setDocTypes] = useState([]);
-  const [selectedFiles, setSelectedFiles] = useState(null);
-  const [urlList, setUrlList] = useState([]);
-  const [doc, setDoc] = useState({
+const DocumentForm = ( { pet_id } ) =>
+{
+  const [ isOpen, setIsOpen ] = useState( false );
+  const [ docTypes, setDocTypes ] = useState( [] );
+  const [ selectedFiles, setSelectedFiles ] = useState( null );
+  const [ urlList, setUrlList ] = useState( [] );
+  const [ doc, setDoc ] = useState( {
     doc_type: null
-  })
+  } )
 
-  const openPopup = () => {
-    setIsOpen(true);
+  const openPopup = () =>
+  {
+    setIsOpen( true );
   };
 
-  const closePopup = () => {
-    setIsOpen(false);
+  const closePopup = () =>
+  {
+    setIsOpen( false );
   };
 
 
-  const onCancel = () => {
+  const onCancel = () =>
+  {
     closePopup();
-    setUrlList([])
-    setDoc({ doc_type: null })
+    setUrlList( [] )
+    setDoc( { doc_type: null } )
   }
-  const handleFileChange = (e) => {
-    setSelectedFiles(Array.from(e.target.files))
+  const handleFileChange = ( e ) =>
+  {
+    setSelectedFiles( Array.from( e.target.files ) )
   }
 
-  const handleUploadFiles = () => {
-    if (selectedFiles.length === 0) {
-      alert('Please select at least one file.');
+  const handleUploadFiles = () =>
+  {
+    if ( selectedFiles.length === 0 )
+    {
+      alert( 'Please select at least one file.' );
       return;
     }
     const formData = new FormData();
-    selectedFiles.forEach(file => {
-      formData.append('files', file); // Append each selected file to the FormData object
-    });
+    selectedFiles.forEach( file =>
+    {
+      formData.append( 'files', file ); // Append each selected file to the FormData object
+    } );
 
-    UploadService.uploadFile(formData)
-      .then((r) => {
-        if (r.data.status) {
-          setUrlList(r.data.data)
-          setUserData({ ...user, profile_image: r.data.data })
-          alert("upload successfull!")
+    UploadService.uploadFile( formData )
+      .then( ( r ) =>
+      {
+        if ( r.data.status )
+        {
+          setUrlList( r.data.data )
+          setUserData( { ...user, profile_image: r.data.data } )
+          alert( "upload successfull!" )
         }
-        else {
-          console.log(r.data.message)
+        else
+        {
+          console.log( r.data.message )
         }
-      })
-      .catch((err) => {
+      } )
+      .catch( ( err ) =>
+      {
         uploading.value = false;
-        console.log("err in upload=>", err);
-      });
+        console.log( "err in upload=>", err );
+      } );
   }
 
-  const selectDocType = (e) => {
-    setDoc({ ...doc, doc_type: e.target.value })
+  const selectDocType = ( e ) =>
+  {
+    setDoc( { ...doc, doc_type: e.target.value } )
   }
-  const handleSubmit = () => {
+  const handleSubmit = () =>
+  {
     let payload = {
       url: urlList,
-      pet_id:pet_id,
+      pet_id: pet_id,
       doc_file_type: "PDF",
       doc_type: doc.doc_type,
     }
-    PetService.savePetDocumnets(payload).then((r) => {
-      if (r.data.status) {
+    PetService.savePetDocumnets( payload ).then( ( r ) =>
+    {
+      if ( r.data.status )
+      {
         closePopup();
-        setUrlList([])
-        setDoc({ doc_type: null })
+        setUrlList( [] )
+        setDoc( { doc_type: null } )
       }
-      else {
-        alert(r.data.message)
+      else
+      {
+        alert( r.data.message )
       }
-    })
-      .catch((err) => {
-        console.log(errr)
-      })
+    } )
+      .catch( ( err ) =>
+      {
+        console.log( errr )
+      } )
   }
-  const getDocumentType = () => {
-    PetService.getDocumentType().then((r) => {
-      if (r.data.status) {
-        setDocTypes(r.data.data)
+  const getDocumentType = () =>
+  {
+    PetService.getDocumentType().then( ( r ) =>
+    {
+      if ( r.data.status )
+      {
+        setDocTypes( r.data.data )
       }
-      else {
-        alert(r.data.message)
+      else
+      {
+        alert( r.data.message )
       }
-    })
-      .catch(err => {
-        console.log(err);
-      })
+    } )
+      .catch( err =>
+      {
+        console.log( err );
+      } )
   }
-  useEffect(() => {
+  useEffect( () =>
+  {
     getDocumentType()
-  }, [])
+  }, [] )
   return (
     <>
       <div>
@@ -117,7 +141,7 @@ const DocumentForm = ({ pet_id }) => {
             id="file-input"
             className="hidden"
             accept="image/*"
-            onChange={(e) => handleFileChange(e)}
+            onChange={( e ) => handleFileChange( e )}
             multiple
           />
         </button>
@@ -128,12 +152,12 @@ const DocumentForm = ({ pet_id }) => {
             Upload Files
           </div>
           <div className='w-[80%] mt-5'>
-            <select value={doc.doc_type} onChange={(e) => selectDocType(e)} className="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
+            <select value={doc.doc_type} onChange={( e ) => selectDocType( e )} className="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary">
               <option value="" disabled selected>Select documnet type</option>
               {
-                docTypes && docTypes.map((type, index) => (
-                  <option value={type.id} >{type.name}</option>
-                ))
+                docTypes && docTypes.map( ( type, index ) => (
+                  <option key={"types" + index} value={type.id} >{type.name}</option>
+                ) )
               }
 
             </select>
@@ -146,7 +170,7 @@ const DocumentForm = ({ pet_id }) => {
               type="file"
               id="file-input"
               accept="image/*"
-              onChange={(e) => handleFileChange(e)}
+              onChange={( e ) => handleFileChange( e )}
             />
             <button onClick={handleUploadFiles}
               className="justify-center items-stretch w-[260px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-2 py-2 rounded-[40px] border-2 border-solid">

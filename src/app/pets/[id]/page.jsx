@@ -5,16 +5,17 @@ import { useParams } from 'next/navigation'
 
 
 
-const page = () => {
+const Page = () =>
+{
 
-    const {id}=useParams();
+    const { id } = useParams();
 
-    
+
     return (
         <div className='body-padding-x'>
-            <PetProfile pet_id={id}/>
+            <PetProfile pet_id={id} />
         </div>
     )
 }
 
-export default page
+export default Page;

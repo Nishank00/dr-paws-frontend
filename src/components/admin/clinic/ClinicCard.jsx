@@ -2,23 +2,25 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const ClinicCard = ({
+const ClinicCard = ( {
   imageUrl = "	https://s3-alpha-sig.figma.com/img/37d3/bc60/7a1b0…EN7VtkrATb653Ka~bZagHLXr~4K8AyBZGLWMtGXzy4SxFVQ__",
   clinic = {},
-}) => {
-  const [serviceString, setServiceString] = useState();
+} ) =>
+{
+  const [ serviceString, setServiceString ] = useState();
   const router = useRouter();
 
   const { id, name, services } = clinic;
-  useEffect(() => {
+  useEffect( () =>
+  {
     setServiceString(
-      [...new Set(services?.map((service) => service.service_name))].join(" | ")
+      [ ...new Set( services?.map( ( service ) => service.service_name ) ) ].join( " | " )
     );
-  }, []);
+  }, [] );
   return (
     <div
       className="bg-primary3 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"
-      onClick={() => router.push(`/clinics/overview/${id}`)}
+      onClick={() => router.push( `/clinics/overview/${ id }` )}
     >
       <div
         className="rounded-t-md"
@@ -36,9 +38,10 @@ const ClinicCard = ({
       </div>
       <div
         className="text-center text-white font-semibold bg-secondary hover:bg-primary py-2 rounded-b-md"
-        onClick={(e) => {
+        onClick={( e ) =>
+        {
           e.stopPropagation();
-          router.push("/admin/clinic/form?id=" + clinic.id);
+          router.push( "/admin/clinic/form?id=" + clinic.id );
         }}
       >
         Edit
