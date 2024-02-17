@@ -4,12 +4,13 @@ import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";
 import MasterService from "@/services/Master.service";
 import UserService from "@/services/User.Service";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import DoctorCardCheck from "./DoctorCardCheck";
 import Button from "@/components/ui/Button";
 import ClinicService from "@/services/Clinic.service";
 import { useSearchParams } from "next/navigation";
-import TimePicker from "@/components/ui/TimePicker";
+import TimePicker from "@/components/admin/clinic/TimePicker";
+import moment from "moment";
 
 const ClinicForm = () => {
   const searchParams = useSearchParams();
@@ -39,8 +40,8 @@ const ClinicForm = () => {
           setDays(
             response.data.data.map((day) => ({
               ...day,
-              start_time: null,
-              end_time: null,
+              opening_time: null,
+              closing_time: null,
             }))
           );
         }
@@ -154,19 +155,23 @@ const ClinicForm = () => {
   const saveClinic = () => {
     const payload = {
       clinic_details: form,
-      services: [],
-      doctors: doctors.filter((doctor) => doctor.selected),
+      clinic_services: [],
+      clinic_doctors: doctors.filter((doctor) => doctor.selected),
+      clinic_timings: days.map((day) => ({
+        day_id: day.id,
+        opening_time: formatTimeForMySQL(day.opening_time),
+        closing_time: formatTimeForMySQL(day.closing_time),
+      })),
     };
 
     services.forEach((service) => {
       service.childs.forEach((service_item) => {
         if (service_item.selected) {
-          payload.services.push(service_item);
+          payload.clinic_services.push(service_item);
         }
       });
     });
 
-    console.log("payload: ", payload);
     clinic_id
       ? ClinicService.updateClinic(clinic_id, payload)
       : ClinicService.addClinic(payload)
@@ -248,16 +253,50 @@ const ClinicForm = () => {
       });
   };
 
+  const timeSelected = (time, isStartTime, day_id) => {
+    console.log("time, isStartTime, day_id: ", time, isStartTime, day_id);
+
+    setDays(
+      days.map((day) => {
+        if (day.id === day_id) {
+          return {
+            ...day,
+            [isStartTime ? "opening_time" : "closing_time"]: time,
+          };
+        } else {
+          return day;
+        }
+      })
+    );
+  };
+
+  function formatTimeForMySQL(time) {
+    const [timePart, ampmPart] = time.split(" ");
+    let [hour, minute] = timePart.split(":").map(Number);
+
+    // Convert hour to 24-hour format if it's PM
+    if (ampmPart === "PM" && hour !== 12) {
+      hour += 12;
+    } else if (ampmPart === "AM" && hour === 12) {
+      hour = 0; // Midnight
+    }
+
+    // Pad single-digit hour or minute with leading zero
+    hour = hour < 10 ? `0${hour}` : hour;
+    minute = minute < 10 ? `0${minute}` : minute;
+
+    return `${hour}:${minute}:00`;
+  }
+
   useEffect(() => {
     getDays();
     getStates();
     getServices();
     getDoctors();
-    setTimeout(() => {
-      if (clinic_id) {
-        getClinic();
-      }
-    }, 10000);
+
+    if (clinic_id) {
+      getClinic();
+    }
   }, []);
 
   return (
@@ -380,6 +419,7 @@ const ClinicForm = () => {
           </div>
         </section>
 
+        {/* Clinic Timings */}
         <section id="clinic-timings" className="mt-10">
           <hr className="mb-3" />
           <h3 className="text-2xl font-bold">Clinic Timings</h3>
@@ -395,38 +435,19 @@ const ClinicForm = () => {
                   <td>
                     <div className="flex items-center justify-center">
                       <TimePicker
-                        value={day.start_time}
-                        onChange={(selectedTime) =>
-                          setDays(
-                            days.map((day) =>
-                              day.name === day.name
-                                ? {
-                                    ...day,
-                                    start_time: selectedTime,
-                                  }
-                                : day
-                            )
-                          )
-                        }
+                        value={day.opening_time}
+                        day={day}
+                        isStartTime
+                        onChange={timeSelected}
                       />
                     </div>
                   </td>
                   <td>
                     <div className="flex items-center justify-center">
                       <TimePicker
-                        value={day.end_time}
-                        onChange={(selectedTime) =>
-                          setDays(
-                            days.map((day) =>
-                              day.name === day.name
-                                ? {
-                                    ...day,
-                                    end_time: selectedTime,
-                                  }
-                                : day
-                            )
-                          )
-                        }
+                        value={day.closing_time}
+                        day={day}
+                        onChange={timeSelected}
                       />
                     </div>
                   </td>

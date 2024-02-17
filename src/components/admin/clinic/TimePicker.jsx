@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const TimePicker = ({ label, value, onChange }) => {
+const TimePicker = ({ label, value, day, isStartTime = false, onChange }) => {
   const [hour, setHour] = useState(12); // Default to 12
   const [minute, setMinute] = useState(0); // Default to 0
   const [ampm, setAmPm] = useState("AM"); // Default to AM
@@ -21,19 +21,29 @@ const TimePicker = ({ label, value, onChange }) => {
   // Handle changes in hour, minute, and AM/PM
   const handleHourChange = (e) => {
     setHour(parseInt(e.target.value));
-    onChange(`${e.target.value}:${minute < 10 ? "0" : ""}${minute} ${ampm}`);
+    onChange(
+      `${e.target.value}:${minute < 10 ? "0" : ""}${minute} ${ampm}`,
+      isStartTime,
+      day.id
+    );
   };
 
   const handleMinuteChange = (e) => {
     setMinute(parseInt(e.target.value));
     onChange(
-      `${hour}:${e.target.value < 10 ? "0" : ""}${e.target.value} ${ampm}`
+      `${hour}:${e.target.value < 10 ? "0" : ""}${e.target.value} ${ampm}`,
+      isStartTime,
+      day.id
     );
   };
 
   const handleAmPmChange = (e) => {
     setAmPm(e.target.value);
-    onChange(`${hour}:${minute < 10 ? "0" : ""}${minute} ${e.target.value}`);
+    onChange(
+      `${hour}:${minute < 10 ? "0" : ""}${minute} ${e.target.value}`,
+      isStartTime,
+      day.id
+    );
   };
 
   return (
