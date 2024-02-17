@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 
-const Calendar = () => {
+const Calendar = ({ onSelect }) => {
   const [currentTime, setCurrentTime] = useState(moment().format("hh:mm A"));
   const [selectedDate, setSelectedDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -25,6 +25,7 @@ const Calendar = () => {
   const handleDateClick = (date) => {
     setSelectedDate(date);
     // Add any other logic you want to perform on date selection
+    onSelect(date);
   };
 
   const handleMonthChange = (change) => {

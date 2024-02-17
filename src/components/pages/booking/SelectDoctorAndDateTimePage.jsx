@@ -44,7 +44,7 @@ const SelectDoctorAndDateTimePage = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pb-10 items-start justify-start">
           <div className="col-span-2">
-            <Calendar />
+            <Calendar onSelect={(date) => console.log(date)} />
           </div>
 
           <div className="text-primary font-semibold">
