@@ -25,7 +25,7 @@ const SelectClinicPage = ({
                     c.selected = !c.selected;
                     setDoctors(
                       c.selected
-                        ? c.doctors.map((doctor) => ({
+                        ? c.clinic_doctors.map((doctor) => ({
                             ...doctor,
                             selected: false,
                           }))
