@@ -8,7 +8,7 @@ const BannerPetCard = ({
     <>
 
       <div className="w-[110px] h-[140px] flex flex-col justify-between text-center bg-white rounded-2xl">
-        <h3 className="text-secondary mt-2 text-lg font-semibold">{pet_type}</h3>
+        <h3 className="text-secondary font-custom-roca mt-2 text-lg font-semibold">{pet_type}</h3>
         <div className="p-2">
           <Image
             src={pet_image}

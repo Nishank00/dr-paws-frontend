@@ -70,7 +70,7 @@ export default function VerticalTabs() {
                 <div className="flex flex-col items-stretch w-[71%] ml-5 max-md:w-full max-md:ml-0">
                     <div id="tab1" className={`tab-content ${activeTab === 'tab1' ? '' : 'hidden'}`}>
                         <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
-                            <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
+                            <div className="text-slate-700  font-custom-roca text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
                             <div className="justify-center self-stretch mt-8 max-md:max-w-full">
@@ -161,7 +161,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab2" className={`tab-content ${activeTab === 'tab2' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
@@ -253,7 +253,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab3" className={`tab-content ${activeTab === 'tab3' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
@@ -345,7 +345,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab4" className={`tab-content ${activeTab === 'tab4' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
@@ -437,7 +437,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab5" className={`tab-content ${activeTab === 'tab5' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
@@ -529,7 +529,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab6" className={`tab-content ${activeTab === 'tab6' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>
@@ -621,7 +621,7 @@ export default function VerticalTabs() {
                         </span>
                     </div>
                     <div id="tab7" className={`tab-content ${activeTab === 'tab7' ? '' : 'hidden'}`}>
-                    <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
+                        <span className="justify-between items-center bg-orange-100 flex grow flex-col w-full px-16 py-10 max-md:max-w-full max-md:px-5">
                             <div className="text-slate-700 text-2xl capitalize self-stretch max-md:max-w-full">
                                 Planned check-ups
                             </div>

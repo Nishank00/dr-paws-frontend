@@ -10,35 +10,30 @@ import NewBanner from "@/components/pages/home/NewBanner";
 import ClinicService from "@/services/Clinic.service";
 import { useEffect, useState } from "react";
 
-const Homepage = () =>
-{
-  const [ clinics, setClinics ] = useState( [] );
+const Homepage = () => {
+  const [clinics, setClinics] = useState([]);
 
-  const getClinics = () =>
-  {
+  const getClinics = () => {
     ClinicService.getData()
-      .then( ( response ) =>
-      {
-        setClinics( [] );
-        if ( response.data.status )
-        {
-          setClinics( response.data.data );
+      .then((response) => {
+        setClinics([]);
+        if (response.data.status) {
+          setClinics(response.data.data);
         }
-      } )
-      .catch( ( error ) => console.error( "Error:", error ) );
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
-  useEffect( () =>
-  {
+  useEffect(() => {
     getClinics();
-  }, [] );
+  }, []);
 
   return (
     <>
       <NewBanner />
       {/* <Banner /> */}
       <div className="body-padding-x mt-5 sm:mt-10">
-        <h2 className="text-primary font-medium text-4xl mb-5 md:mb-10 text-center">
+        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary font-medium text-4xl mb-5 md:mb-10 text-center">
           Veterinary care, redesigned to be better
         </h2>
         <ImageTextHeader
@@ -106,22 +101,22 @@ const Homepage = () =>
         />
       </div>
 
-      <h2 className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
+      <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
         Check out the places
         <br /> we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 body-padding-x">
         {
-          Array.from( { length: 8 } ).map( ( clinic, i ) => (
+          Array.from({ length: 8 }).map((clinic, i) => (
             <ClinicCard clinic={{ imageUrl: "/home/clinic_image.png" }} key={"clinic" + i} />
-          ) )}
+          ))}
       </div>
 
       <div className="body-padding-x hidden lg:flex lg:flex-col">
-        <h2 className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
+        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary font-medium  mt-10 text-4xl mb-6 text-center">
           Whatever your pet needs,<br /> we&apos;re there
         </h2>
-        <p className="text-primary text-center   text-md mb-6">
+        <p style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-primary text-center   text-md mb-6">
           Discover our most commonly requested services. For anything not listed,please <br />  get in touch with your local clinic
         </p>
         <VerticalTabs />
@@ -136,10 +131,10 @@ const Homepage = () =>
       </div>
 
       <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
-        <div className="text-slate-700  text-center text-3xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-slate-700  text-center text-3xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
           Still have questions?
         </div>
-        <div className="text-slate-700 text-center text-sm leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+        <div style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-slate-700 text-center text-sm leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
           If your question is still not answered, please get in touch and we’d
           be happy to help
         </div>
