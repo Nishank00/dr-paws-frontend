@@ -18,6 +18,7 @@ const Form = () => {
 
   const [services, setServices] = useState([]);
   const [clinics, setClinics] = useState([]);
+  const [selectedClinic, setSelectedClinic] = useState({});
 
   const getClinics = () => {
     ClinicService.getClinics()
@@ -71,6 +72,7 @@ const Form = () => {
         <SelectClinicPage
           clinics={clinics}
           setClinics={setClinics}
+          setSelectedClinic={setSelectedClinic}
           setDoctors={setDoctors}
           className={"w-full " + (currentPage == 2 ? "block" : "hidden")}
         />
@@ -78,6 +80,7 @@ const Form = () => {
           className={"w-full " + (currentPage == 3 ? "block" : "hidden")}
           doctors={doctors}
           setDoctors={setDoctors}
+          selectedClinic={selectedClinic}
         />
       </>
     );
