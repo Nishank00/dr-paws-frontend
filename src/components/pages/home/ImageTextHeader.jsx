@@ -23,9 +23,9 @@ const ImageTextHeader = ({
         }
       />
       <div className="  flex flex-col justify-center md:pl-16">
-        <div className="w-[70%] ">
-        <h2 className="text-primary font-Roca-Two-Bold font-medium text-5xl mb-6">{header}</h2>
-        <p className="text-primary  text-sm mb-6">{text}</p>
+        <div className="w-[55%] ">
+          <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  font-medium text-4xl mb-6">{header}</h2>
+          <p style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-primary  text-sm mb-6">{text}</p>
 
         </div>
 

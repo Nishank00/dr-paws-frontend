@@ -2,6 +2,14 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import App from './App'
+// import localFont from 'next/font/local'
+// import { initializeFonts } from '@next/font'
+
+// initializeFonts()
+// const myFont = localFont({
+//   src: './my-font.woff2',
+//   display: 'swap',
+// })
 
 const inter = Inter({ subsets: ['latin'] })
 
