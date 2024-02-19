@@ -8,12 +8,13 @@ const SelectDoctorAndDateTimePage = ({
   doctors = [],
   selectedClinic = {},
   setDoctors,
+  selectedDate,
+  setSelectedDate,
+  setSelectedSlot,
+  onConfirmBooking,
   className,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-
   const [availableSlots, setAvailableSlots] = useState([]);
-  const [selectedSlot, setSelectedSlot] = useState(null);
   const dateSelected = (date) => {
     setSelectedDate(date);
     const selectedDay = date.getDay();
@@ -35,6 +36,7 @@ const SelectDoctorAndDateTimePage = ({
     const openingMoment = moment(opening_time, "HH:mm:ss");
     const closingMoment = moment(closing_time, "HH:mm:ss");
     const timeArray = [];
+
     let currentTime = moment(openingMoment);
     while (currentTime <= closingMoment) {
       const formattedTime = currentTime.format("hh:mma");
@@ -71,9 +73,6 @@ const SelectDoctorAndDateTimePage = ({
   };
 
   const router = useRouter();
-  const bookingConfirmed = () => {
-    router.push(`/booking/confirmed`);
-  };
 
   return (
     <div className={className}>
@@ -116,7 +115,7 @@ const SelectDoctorAndDateTimePage = ({
               ))}
             </div>
             <div className="">
-              <h2 className="text-primary font-medium text-5xl mb-1">
+              <h2 className="text-primary font-medium text-5xl mt-10 mb-1">
                 Select Date and Time
               </h2>
               <p className="text-primary mb-6"> Book a spot for your visit</p>
@@ -146,7 +145,7 @@ const SelectDoctorAndDateTimePage = ({
                                     <span>{avaliableSlot.formattedTime}</span>
                                   </div>
                                   <button
-                                    onClick={bookingConfirmed}
+                                    onClick={onConfirmBooking}
                                     className="rounded-lg shadow-lg bg-secondary hover:bg-primary text-white border-2 border-secondary w-full sm:w-30 py-4 flex items-center justify-center mb-3"
                                   >
                                     Confirm

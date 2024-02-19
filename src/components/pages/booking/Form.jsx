@@ -5,6 +5,7 @@ import SelectClinicPage from "./SelectClinicPage";
 import SelectDoctorAndDateTimePage from "./SelectDoctorAndDateTimePage";
 import MasterService from "@/services/Master.service";
 import ClinicService from "@/services/Clinic.service";
+import moment from "moment";
 
 const Form = () => {
   const totalPages = 3;
@@ -19,6 +20,8 @@ const Form = () => {
   const [services, setServices] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState({});
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
 
   const getClinics = () => {
     ClinicService.getClinics()
@@ -61,6 +64,48 @@ const Form = () => {
       });
   };
 
+  const onConfirmBooking = () => {
+    const selectedStartTime = moment(
+      selectedSlot.formattedTime,
+      "hh:mm:ss"
+    ).format("hh:mm:ss");
+    const endTime = moment(selectedSlot.formattedTime, "hh:mm:ss")
+      .add(1, "hour")
+      .format("hh:mm:ss");
+
+    const appointment = {
+      clinic_id: null,
+      doctor_id: null,
+      date: moment(selectedDate).format("YYYY-MM-DD"),
+      start_time: selectedStartTime,
+      end_time: endTime,
+    };
+
+    clinics.map((clinic) => {
+      if (clinic.selected) {
+        appointment.clinic_id = clinic.id;
+      }
+    });
+
+    doctors.map((doctor) => {
+      if (doctor.selected) {
+        appointment.doctor_id = doctor.id;
+      }
+    });
+
+    const appointment_items = [
+      {
+        service_id: 1,
+        pet_id: 1,
+      },
+    ];
+
+    const payload = { appointment, appointment_items };
+
+    console.log("payload => ", payload);
+    console.log("confirm booking clicked...");
+  };
+
   const renderPage = () => {
     return (
       <>
@@ -81,6 +126,10 @@ const Form = () => {
           doctors={doctors}
           setDoctors={setDoctors}
           selectedClinic={selectedClinic}
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          setSelectedSlot={setSelectedSlot}
+          onConfirmBooking={onConfirmBooking}
         />
       </>
     );

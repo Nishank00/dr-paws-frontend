@@ -70,7 +70,7 @@ const SelectServiceItem = ({ onChange, service = [] }) => {
             {pets.map((pet) => (
               <PetSelect
                 onSelect={() => onPetSelect(pet)}
-                key={service.service_name + pet.id}
+                key={`service_${service.id}_pet_${pet.id}`}
                 pet={pet}
               />
             ))}

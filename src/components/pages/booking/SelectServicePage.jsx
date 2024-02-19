@@ -40,7 +40,7 @@ const SelectServicePage = ({ services = [], setServices, className = "" }) => {
       </h2>
       <p className="text-primary mb-6">Choose from the our services</p>
 
-      <Button label={"Add Pet"} onClick={openPopup} />
+      <Button label={"Add Pet"} onClick={openPopup} className="w-auto" />
       <Popup isOpen={isPopupOpen} onClose={closePopup} hideClose={true}>
         <PetForm closePopup={closePopup} />
       </Popup>
