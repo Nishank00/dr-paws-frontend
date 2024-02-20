@@ -4,6 +4,7 @@ const SelectClinicPage = ({
   className = "",
   clinics,
   setClinics,
+  setSelectedClinic,
   setDoctors,
 }) => {
   return (
@@ -20,21 +21,22 @@ const SelectClinicPage = ({
             hideVisitButton
             onClick={() =>
               setClinics(
-                clinics.map((c, index) => {
+                clinics.map((clinic, index) => {
                   if (index === i) {
-                    c.selected = !c.selected;
+                    clinic.selected = !clinic.selected;
+                    if (clinic.selected) setSelectedClinic(clinic);
                     setDoctors(
-                      c.selected
-                        ? c.clinic_doctors.map((doctor) => ({
+                      clinic.selected
+                        ? clinic.clinic_doctors.map((doctor) => ({
                             ...doctor,
                             selected: false,
                           }))
                         : []
                     );
                   } else {
-                    c.selected = false;
+                    clinic.selected = false;
                   }
-                  return c;
+                  return clinic;
                 })
               )
             }
