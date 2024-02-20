@@ -113,7 +113,7 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-3xl md:text-4xl mb-6 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-3xl md:text-4xl pb-6 text-center"
       >
         Check out the places
         <br /> we call home
