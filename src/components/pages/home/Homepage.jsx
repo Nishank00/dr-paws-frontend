@@ -53,7 +53,7 @@ const Homepage = () => {
               buttonText="See Our Clinics"
             />
           </div>
-          <div className="py-4 rounded-lg bg-white">
+          <div className="py-4 rounded-lg bg-white m-4">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_two.png"}
               header={"Memberships that work"}
@@ -64,7 +64,7 @@ const Homepage = () => {
               buttonText="Become a Member"
             />
           </div>
-          <div className="py-4 rounded-lg bg-white">
+          <div className="py-4 rounded-lg bg-white m-4">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_three.png"}
               header={"Doctors that care"}
@@ -75,7 +75,7 @@ const Homepage = () => {
               buttonText="Book a Visit"
             />
           </div>
-          <div className="py-4 rounded-lg bg-white">
+          <div className="py-4 rounded-lg bg-white m-4 ">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_four.png"}
               header={"Everything in your control"}
@@ -86,7 +86,7 @@ const Homepage = () => {
               buttonText="Become a Member"
             />
           </div>
-          <div className="py-4 rounded-lg bg-white">
+          <div className="py-4 rounded-lg bg-white m-4 ">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_five.png"}
               header={"Only the necessary care"}
@@ -97,7 +97,7 @@ const Homepage = () => {
               buttonText="Book a Visit"
             />
           </div>
-          <div className="py-4 rounded-lg bg-white">
+          <div className="py-4 rounded-lg bg-white m-4 ">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_six.png"}
               header={"All the services you need, under one roof"}
