@@ -15,12 +15,12 @@ const NewBanner = () => {
     >
 
       <div className="w-full lg:w-1/2 h-full flex-col flex justify-center gap-5">
-        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-6xl custom-open-sans font-bold">
+        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className=" text-3xl md:text-6xl custom-open-sans font-bold">
           Veterinary Care <br />
           re-imagined <br />
           by pet lovers
         </h2>
-        <p style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-lg custom-open-sans">
+        <p style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-sm  md:text-lg custom-open-sans">
           Book a visit to one of our clinics <br />right now. Which friend will we
           meet?
         </p>
