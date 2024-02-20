@@ -152,7 +152,7 @@ const Homepage = () => {
           be happy to help
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">
-          <p className="text-left">About Bearhug</p>
+          <p className="text-left text-primary">About Bearhug</p>
         </div>
         <Dropdown title="What animals does BearHug treat?">
           <p style={{ fontFamily: 'Open Sans, sans-serif' }} className="text-slate-700 text-left text-sm leading-7 tracking-tight self-center  max-md:max-w-full ">

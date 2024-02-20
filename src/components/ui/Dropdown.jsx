@@ -12,10 +12,10 @@ const Dropdown = ({ title, children }) => {
         <div className="flex justify-between items-center py-4 cursor-pointer" onClick={toggleDropdown}>
           <h2 className="text-md font-bold text-primary">{title}</h2>
           <svg
-            className={`w-6 h-6 ${isOpen ? 'transform rotate-180' : ''}`}
+            className={`w-6 h-6  ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
+            stroke="primary"
           >
             <path
               strokeLinecap="round"
