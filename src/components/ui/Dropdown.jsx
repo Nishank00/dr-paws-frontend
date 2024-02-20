@@ -29,7 +29,7 @@ const Dropdown = ({ title, children }) => {
             />
           </svg> */}
           <Image
-            className={`w-6 h-6  ${isOpen ? "transform rotate-180" : ""}`}
+            className={`w-6 h-6  ${isOpen ? "transform rotate-180" : ""} ml-1`}
             src="dropdown.svg"
             alt=""
             width={20}
