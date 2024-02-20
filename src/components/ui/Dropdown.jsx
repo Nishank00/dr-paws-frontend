@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import Image from "next/image";
+import React, { useState } from "react";
 
 const Dropdown = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +10,12 @@ const Dropdown = ({ title, children }) => {
   return (
     <div className="w-full  mx-auto border-b border-gray-300  px-10 rounded-lg  ">
       <div className="">
-        <div className="flex justify-between items-center py-4 cursor-pointer" onClick={toggleDropdown}>
+        <div
+          className="flex justify-between items-center py-4 cursor-pointer"
+          onClick={toggleDropdown}
+        >
           <h2 className="text-md font-bold text-primary">{title}</h2>
-          <svg
+          {/* <svg
             className={`w-6 h-6  ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
@@ -23,16 +27,21 @@ const Dropdown = ({ title, children }) => {
               strokeWidth={2}
               d={isOpen ? 'M19 9l-7 7-7-7' : 'M5 15l7-7 7 7'}
             />
-          </svg>
+          </svg> */}
+          <Image
+            className={`w-6 h-6  ${isOpen ? "transform rotate-180" : ""}`}
+            src="dropdown.svg"
+            alt=""
+            width={20}
+            height={20}
+          />
         </div>
         {isOpen && (
-          <div className="py-2  pr-20 border-gray-300">
-            {children}
-          </div>
+          <div className="py-2  md:pr-20 border-gray-300">{children}</div>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dropdown
+export default Dropdown;
