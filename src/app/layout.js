@@ -11,14 +11,15 @@ import App from './App'
 //   display: 'swap',
 // })
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter( { subsets: [ 'latin' ] } )
 
 export const metadata = {
   title: 'Dr. Paws',
   description: 'Dashoard for Dr. Paws',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout ( { children } )
+{
   return (
     <html lang="en">
       <body className={inter.className}>

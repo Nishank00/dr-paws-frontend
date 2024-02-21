@@ -127,10 +127,10 @@ const Homepage = () => {
         ))}
       </div>
 
-      <div className="body-padding-x hidden lg:flex lg:flex-col">
+      <div className="body-padding-x  flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium  mt-10 text-4xl mb-6 text-center"
+          className="text-primary font-medium  mt-10 text-3xl md:text-4xl mb-6 text-center"
         >
           Whatever your pet needs,
           <br /> we&apos;re there

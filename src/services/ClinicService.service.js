@@ -6,5 +6,9 @@ export default {
     {
         return API().get( `service/getData`, { params } )
     },
+    getServiceItems ( params )
+    {
+        return API().get( `service/getServiceItems`, { params } )
+    },
 
 }
