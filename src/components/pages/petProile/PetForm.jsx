@@ -1,39 +1,176 @@
 import TextInput from "@/components/ui/TextInput";
 import Button from "@/components/ui/Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "@/components/ui/Select";
+import PetService from "@/services/Pet.Service";
+import UploadProfile from "@/components/auth/UploadProfile";
 
+const PetForm = ({ closePopup, pet_id }) => {
+  const [formData, setFormData] = useState({
+    pet_image: null,
+    name: null,
+    pet_type: null,
+    breed: null,
+    gender: null,
+    date_of_birth: null,
+    age: null,
+    weight: null,
+  });
+  const [petTypes, setPetTypes] = useState([]);
+  const [breeds, setBreeds] = useState([]);
+  const [genders, setGenders] = useState([
+    { value: "MALE", label: "Male" },
+    { value: "FEMALE", label: "Female" },
+  ]);
 
-const PetForm = ({ closePopup,pet_id }) => {
-  const [formData, setFormData] = useState({ pet_name: "", pet_type: null });
+  const profileUploaded = (filename) => {
+    setFormData({ ...formData, pet_image: filename });
+  };
 
-  const setPetName = (e) => {
+  const updateFormData = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const getPetsType = () => {
+    PetService.getPetTypes()
+      .then((response) => {
+        if (!response.data.status) return;
+        setPetTypes(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getBreeds = () => {
+    if (!formData.pet_type) return;
+
+    PetService.getPetBreeds({ parent_id: formData.pet_type })
+      .then((response) => {
+        if (!response.data.status) return;
+        setBreeds(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const selectPetType = (selectedValue) => {
+    setFormData({ ...formData, pet_type: selectedValue });
+  };
+
+  const selectBreed = (selectedValue) => {
+    setFormData({ ...formData, breed: selectedValue });
+  };
+
+  const selectGender = (selectedValue) => {
+    setFormData({ ...formData, gender: selectedValue });
+  };
+
+  const submitForm = () => {
+    const payload = {
+      ...formData,
+      user_id: JSON.parse(localStorage.getItem("user_info")).id,
+    };
+
+    console.log("payload => ", payload);
+    PetService.savePet(payload)
+      .then((response) => {
+        if (response.data.status) {
+          console.log(response.data.data);
+          closePopup();
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getPetsType();
+  }, []);
+
+  useEffect(() => {
+    getBreeds();
+  }, [formData.pet_type]);
 
   return (
     <div className="bg-primary3 w-96 p-5 rounded-lg">
       <h4 className="text-primary text-center font-bold mb-4 text-3xl">
         Add a pet
       </h4>
+      <UploadProfile onUpload={profileUploaded} />
 
       <TextInput
-        name="pet_name"
-        value={formData.pet_name}
+        name="name"
+        value={formData.name}
         placeholder={"Pet's Name"}
-        onChange={setPetName}
+        onChange={updateFormData}
       />
 
       <Select
+        name="pet_type"
         value={formData.pet_type}
+        options={petTypes}
+        optionLabel={"name"}
+        optionValue={"id"}
         placeholder={"Type of Pet"}
-        onChange={setPetName}
+        onSelect={selectPetType}
       />
 
+      <Select
+        name="breed"
+        value={formData.breed}
+        options={breeds}
+        optionLabel={"name"}
+        optionValue={"id"}
+        placeholder={"Breed"}
+        onSelect={selectBreed}
+      />
+
+      <div className="grid grid-cols-2 gap-x-2">
+        <Select
+          name="gender"
+          value={formData.gender}
+          options={genders}
+          optionLabel={"label"}
+          optionValue={"value"}
+          placeholder={"Gender"}
+          onSelect={selectGender}
+        />
+
+        <TextInput
+          type="date"
+          name="date_of_birth"
+          value={formData.date_of_birth}
+          placeholder={"Date of Birth"}
+          onChange={updateFormData}
+        />
+
+        <TextInput
+          type="number"
+          name="age"
+          value={formData.age}
+          placeholder={"Age"}
+          onChange={updateFormData}
+        />
+
+        <TextInput
+          type="number"
+          name="weight"
+          value={formData.weight}
+          placeholder={"Weight"}
+          onChange={updateFormData}
+        />
+      </div>
+
       <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
-        <Button color="primary3" label="Cancel" onClick={closePopup} />
-        <Button color="secondary" label="Save" />
+        <Button
+          color="primary4"
+          label="Cancel"
+          onClick={closePopup}
+          className="bg-primary3 text-secondary border-2 border-secondary hover:text-white hover:bg-secondary"
+        />
+        <Button color="secondary" label="Save" onClick={submitForm} />
       </div>
     </div>
   );

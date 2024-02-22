@@ -28,7 +28,7 @@ const Select = ({
         </label>
       )}
       <select
-        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
+        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300 h-12"
         onChange={handleSelect}
         value={selectedValue || selectedOptions}
       >

@@ -1,7 +1,6 @@
 import ServiceSelect from "@/components/pages/booking/ServiceSelect";
 import PetSelect from "@/components/pages/booking/PetSelect";
 import React, { useEffect, useState } from "react";
-import PetService from "@/services/Pet.Service";
 
 const SelectLabel = ({ heading = "Heading", subheading = "Sub Heading.." }) => {
   return (
@@ -12,31 +11,29 @@ const SelectLabel = ({ heading = "Heading", subheading = "Sub Heading.." }) => {
   );
 };
 
-const SelectServiceItem = ({ onChange, service = [] }) => {
+const SelectServiceItem = ({
+  onChange,
+  service = [],
+  services,
+  setServices,
+  openPetPopup,
+}) => {
+  // Variables
   const [subHeading, setSubHeading] = useState("");
-  const [pets, setPets] = useState([]);
 
-  const getPets = () => {
-    PetService.getPetsByUserId(5)
-      .then((response) => {
-        if (response.data.status) {
-          setPets(
-            response.data.data.map((pet) => ({ ...pet, isSelected: false }))
-          );
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  // Methods
   const onPetSelect = (selectedPet) => {
-    setPets(
-      pets.map((pet) => {
-        if (pet.id == selectedPet.id) {
-          pet.isSelected = !pet.isSelected;
+    setServices(
+      services.map((ser) => {
+        if (ser.id === service.id) {
+          ser.pets.map((pet) => {
+            if (pet.id == selectedPet.id) {
+              pet.isSelected = !pet.isSelected;
+            }
+            return pet;
+          });
         }
-        return pet;
+        return ser;
       })
     );
   };
@@ -47,7 +44,6 @@ const SelectServiceItem = ({ onChange, service = [] }) => {
       .join();
 
     setSubHeading(str.slice(0, 20) + " ...");
-    getPets();
   }, []);
 
   return (
@@ -64,16 +60,26 @@ const SelectServiceItem = ({ onChange, service = [] }) => {
       </div>
 
       {service.is_checked && (
-        <div className="p-4 bg-white rounded-lg">
-          <p className="text-primary">Select your pet/pets</p>
-          <div className="flex flex-nowrap justify-start gap-5 pt-4">
-            {pets.map((pet) => (
+        <div className=" bg-white h-32 p-3 rounded-md ">
+          <p className="text-primary mb-2">Select your pet/pets</p>
+          <div className="flex justify-start gap-5">
+            {service.pets.map((pet) => (
               <PetSelect
                 onSelect={() => onPetSelect(pet)}
                 key={`service_${service.id}_pet_${pet.id}`}
                 pet={pet}
               />
             ))}
+
+            <div className="flex flex-col items-center gap-1">
+              <div
+                onClick={openPetPopup}
+                className={`w-12 h-12 rounded-full cursor-pointer hover:bg-primary3 flex items-center justify-center border-2 border-dashed border-secondary3`}
+              >
+                <span className="text-[#7E8AA2] text-lg">+</span>
+              </div>
+              <p className="text-sm">Add Pet</p>
+            </div>
           </div>
         </div>
       )}

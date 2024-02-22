@@ -4,7 +4,7 @@ const DoctorSelect = ({ doctor = {}, selected = false, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`flex flex-col items-center bg-primary4 rounded-lg ${
+      className={`p-3 flex flex-col items-center bg-primary4 rounded-lg ${
         selected ? "ring-4 ring-secondary" : ""
       }`}
     >

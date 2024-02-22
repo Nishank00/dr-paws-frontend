@@ -17,7 +17,8 @@ module.exports = {
         "primary3": "#F7F1DE",
         "primary4": "#FFFCF3",
         "secondary": "#5281A2",
-        "secondary2": "#9FA983"
+        "secondary2": "#9FA983",
+        "secondary3": "#D4DDF1"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -27,9 +28,9 @@ module.exports = {
       fontFamily: {
         'custom-roca': ['Roca Bold, sans-serif'],
         'custom-open-sans': ["Open Sans, sans-serif"]
-    
-         
-        
+
+
+
       },
     },
   },
