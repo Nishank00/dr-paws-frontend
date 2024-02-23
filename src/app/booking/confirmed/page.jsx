@@ -1,3 +1,4 @@
+"use client";
 import BookingConfirmedPage from "@/components/pages/booking/BookingConfirmedPage";
 
 const page = () => {

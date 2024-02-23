@@ -9,10 +9,10 @@ import moment from "moment";
 import PetService from "@/services/Pet.Service";
 
 const Form = () => {
-  const user_id = JSON.parse(localStorage.getItem("user_info")).id;
   const totalPages = 3;
   const [currentPage, setCurrentPage] = useState(1);
   const [doctors, setDoctors] = useState([]);
+  const [user_id, setUserID] = useState(null);
   const [formData, setFormData] = useState({
     page1: { field1: "" },
     page2: { field2: "" },
@@ -173,6 +173,7 @@ const Form = () => {
   };
 
   useEffect(() => {
+    setUserID(JSON.parse(localStorage.getItem("user_info")).id);
     async function getEffects() {
       await getPets();
       await getClinics();

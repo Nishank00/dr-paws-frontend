@@ -805,7 +805,11 @@ export default function VerticalTabs() {
       <div className=" w-full flex flex-col lg:hidden">
         {serviceList &&
           serviceList.map((service, index) => (
-            <TabModule title={service.name} service_id={service.id}></TabModule>
+            <TabModule
+              key={index + "service"}
+              title={service.name}
+              service_id={service.id}
+            ></TabModule>
           ))}
       </div>
     </>
