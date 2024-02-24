@@ -35,14 +35,12 @@ const TabModule = ({ title, children, service_id }) => {
         <div className="flex justify-between items-center  cursor-pointer">
           <button
             onClick={toggleDropdown}
-            className={`w-full tab-button border-b border-gray-300 flex justify-between text-white text-md font-bold capitalize whitespace-nowrap  border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-7 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5`}
+            className={`w-full tab-button border-b border-gray-300 flex justify-between  text-md font-bold capitalize whitespace-nowrap ${isOpen ? "text-white bg-[#5281a2]" :"text-primary bg-white font-semibold"}  pl-7 pr-16 py-5 items-center max-md:px-5`}
           >
-            <div>{title}</div>
+            <div className="font-custome-open-sans">{title}</div>
             <Image
-              className={`w-6 h-6  ${
-                isOpen ? "transform rotate-180" : ""
-              } ml-1`}
-              src="dropdown.svg"
+              className={`w-4 h-2   ml-1`}
+              src={isOpen? "/home/up_white_arrow.png":"dropdown.svg"}
               alt=""
               width={20}
               height={20}
