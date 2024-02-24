@@ -14,7 +14,7 @@ const Dropdown = ({ title, children }) => {
           className="flex justify-between items-center py-4 cursor-pointer"
           onClick={toggleDropdown}
         >
-          <h2 className="text-md font-bold text-primary">{title}</h2>
+          <h2 className=" font-custome-inter  text-sm font-bold text-primary">{title}</h2>
           {/* <svg
             className={`w-6 h-6  ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
@@ -29,11 +29,11 @@ const Dropdown = ({ title, children }) => {
             />
           </svg> */}
           <Image
-            className={`w-6 h-6  ${isOpen ? "transform rotate-180" : ""} ml-1`}
+            className={`w-4 h-2  ${isOpen ? "transform rotate-180" : ""} ml-1`}
             src="dropdown.svg"
             alt=""
-            width={20}
-            height={20}
+            width={15}
+            height={15}
           />
         </div>
         {isOpen && (

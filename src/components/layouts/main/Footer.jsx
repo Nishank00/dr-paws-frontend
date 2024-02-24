@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-primary3 body-padding-x py-20 lg:h-[400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
+    <footer className="bg-primary3 body-padding-x py-20 lg:h-[400px]  mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
       {/* Logo and Contact */}
       <div className="flex flex-col  items-center md:items-start">
         <img
@@ -69,36 +69,36 @@ const Footer = () => {
         </a>
       </div> */}
       <div className="flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Company </p>
+        <p className="text-lg font-semibold mb-4 text-primary"> Company </p>
 
-        <a href="#" className="text-primary text-2xl  hover:text-secondary">
+        <a href="#" className="text-primary text-lg  hover:text-secondary">
           Team     
              </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Careers    
               </a>
 
       </div>
       <div className="flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Get Care</p>
+        <p className="text-lg font-semibold mb-4 text-primary"> Get Care</p>
 
-        <a href="#" className="text-primary text-2xl  hover:text-secondary">
+        <a href="#" className="text-primary text-lg  hover:text-secondary">
           Services        </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Locations        </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Membership       </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Download app       </a>
       </div>
       <div className="flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Social</p>
+        <p className="text-lg font-semibold mb-4 text-primary"> Social</p>
 
-        <a href="#" className="text-primary text-2xl  hover:text-secondary">
+        <a href="#" className="text-primary text-lg  hover:text-secondary">
           Instagram        </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Linkedin        </a>
-        <a href="#" className="text-primary text-2xl mt-3 hover:text-secondary">
+        <a href="#" className="text-primary text-lg mt-3 hover:text-secondary">
           Twitter       </a>
       </div>
     </footer>

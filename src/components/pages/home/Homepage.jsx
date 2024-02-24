@@ -33,16 +33,16 @@ const Homepage = () => {
     <>
       <NewBanner />
       {/* <Banner /> */}
-      <div className="body-padding-x pt-5 bg-[#cbd9e3] md:bg-white sm:mt-10">
+      <div className="body-padding-x pt-5 bg-[#cbd9e3] lg:bg-white sm:mt-10">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium text-3xl md:text-4xl mb-5 md:mb-10 text-center"
+          className="text-primary font-medium text-2xl md:text-[26px] mb-5 md:mb-10 text-center"
         >
           Veterinary care, redesigned to be better
         </h2>
 
-        <div className=" flex flex-row md:flex-col overflow-hidden overflow-x-auto">
-          <div className="py-4 rounded-lg bg-white">
+        <div className=" flex flex-row lg:flex-col overflow-hidden overflow-x-auto">
+          <div className="py-4  m-4 lg:m-0 rounded-lg bg-white">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_one.png"}
               header={"A Clinic That Feels Like Home"}
@@ -113,12 +113,12 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-3xl md:text-4xl pb-6 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[26px] pb-6 text-center"
       >
         Check out the places
         <br /> we call home
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-4 gap-10 md:gap-3 body-padding-x">
+      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-4 gap-10 md:gap-10 body-padding-x">
         {Array.from({ length: 8 }).map((clinic, i) => (
           <ClinicCard
             clinic={{ imageUrl: "/home/clinic_image.png" }}
@@ -130,14 +130,14 @@ const Homepage = () => {
       <div className="body-padding-x  flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium  mt-10 text-3xl md:text-4xl mb-6 text-center"
+          className="text-primary font-medium  mt-10 text-2xl md:text-[26px] mb-6 text-center"
         >
           Whatever your pet needs,
           <br /> we&apos;re there
         </h2>
         <p
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center   text-md mb-6"
+          className="text-primary text-center font-custom-open-sans  text-sm mb-6"
         >
           Discover our most commonly requested services. For anything not
           listed,please <br /> get in touch with your local clinic
@@ -156,24 +156,24 @@ const Homepage = () => {
       <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-slate-700  text-center text-3xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-slate-700  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-slate-700 text-center text-lg leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-slate-700 text-center font-custome-open-sans text-sm leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
           If your question is still not answered, please get in touch and we’d
           be happy to help
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">
-          <p className="text-left text-primary">About Bearhug</p>
+          <p className="text-left font-custome-inter font-bold text-sm text-primary">About Bearhug</p>
         </div>
         <Dropdown title="What animals does BearHug treat?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
-            className="text-slate-700 text-left text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
+            className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
             Dr. Paws is a versatile veterinarian, offering expert care to a
             variety of animals, including cats, dogs, hamsters, unicorns (just
@@ -185,7 +185,7 @@ const Homepage = () => {
         <Dropdown title="What animals does BearHug treat?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
-            className="text-slate-700 text-left text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
+            className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
             Dr. Paws is a versatile veterinarian, offering expert care to a
             variety of animals, including cats, dogs, hamsters, unicorns (just
@@ -197,7 +197,46 @@ const Homepage = () => {
         <Dropdown title="What animals does BearHug treat?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
-            className="text-slate-700 text-left text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
+            className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Dr. Paws is a versatile veterinarian, offering expert care to a
+            variety of animals, including cats, dogs, hamsters, unicorns (just
+            kidding, we wish!), and many more. Whether your pet has fur,
+            feathers, or scales, Dr. Paws is here to provide top-notch
+            veterinary services.
+          </p>
+        </Dropdown>
+        <div className="w-full border-b border-solid border-grey  md:mt-10 px-5 py-4">
+          <p className="text-left font-custome-inter font-bold text-sm text-primary">At Clinic</p>
+        </div>
+        <Dropdown title="What animals does BearHug treat?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Dr. Paws is a versatile veterinarian, offering expert care to a
+            variety of animals, including cats, dogs, hamsters, unicorns (just
+            kidding, we wish!), and many more. Whether your pet has fur,
+            feathers, or scales, Dr. Paws is here to provide top-notch
+            veterinary services.
+          </p>
+        </Dropdown>
+        <Dropdown title="What animals does BearHug treat?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Dr. Paws is a versatile veterinarian, offering expert care to a
+            variety of animals, including cats, dogs, hamsters, unicorns (just
+            kidding, we wish!), and many more. Whether your pet has fur,
+            feathers, or scales, Dr. Paws is here to provide top-notch
+            veterinary services.
+          </p>
+        </Dropdown>
+        <Dropdown title="What animals does BearHug treat?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
             Dr. Paws is a versatile veterinarian, offering expert care to a
             variety of animals, including cats, dogs, hamsters, unicorns (just

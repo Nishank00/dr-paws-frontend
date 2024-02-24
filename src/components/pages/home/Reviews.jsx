@@ -4,7 +4,7 @@ const Reviews = () => {
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
-        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-3xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
           Reviews
         </div>
         <div className="hidden md:block ">
