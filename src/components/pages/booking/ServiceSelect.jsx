@@ -22,8 +22,8 @@ const Service = ({ label, isChecked = false, onChange }) => {
               <path
                 d="M2 8L7.66667 14L19 2"
                 stroke="white"
-                stroke-width="3"
-                stroke-linecap="round"
+                strokeWidth="3"
+                strokeLinecap="round"
               />
             </svg>
           ) : (

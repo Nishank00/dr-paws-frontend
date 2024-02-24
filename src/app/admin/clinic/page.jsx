@@ -1,6 +1,6 @@
 "use client";
 
-import ClinicPage from "@/components/admin/clinic/ClinicPage";
+import ClinicPage from "@/components/pages/admin/clinic/ClinicPage";
 
 const page = () => {
   return (

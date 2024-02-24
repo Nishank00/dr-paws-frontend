@@ -7,18 +7,17 @@ import MasterService from "@/services/Master.service";
 import ClinicService from "@/services/Clinic.service";
 import moment from "moment";
 import PetService from "@/services/Pet.Service";
+import BookingService from "@/services/Booking.service";
+import { Router } from "react-router-dom";
+import { redirect, useRouter } from "next/navigation";
 
 const Form = () => {
+  // Variables
+  const router = useRouter();
   const totalPages = 3;
   const [currentPage, setCurrentPage] = useState(1);
   const [doctors, setDoctors] = useState([]);
   const [user_id, setUserID] = useState(null);
-  const [formData, setFormData] = useState({
-    page1: { field1: "" },
-    page2: { field2: "" },
-    page3: { field3: "" },
-  });
-
   const [services, setServices] = useState([]);
   const [pets, setPets] = useState([]);
   const [clinics, setClinics] = useState([]);
@@ -26,6 +25,7 @@ const Form = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
 
+  // Methods
   const getPets = async () => {
     try {
       const response = await PetService.getPetsByUserId(user_id);
@@ -54,16 +54,6 @@ const Form = () => {
 
   const handleBack = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
-
-  const handleChange = (fieldName, value) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [`page${currentPage}`]: {
-        ...prevFormData[`page${currentPage}`],
-        [fieldName]: value,
-      },
-    }));
   };
 
   const getServices = async () => {
@@ -113,6 +103,10 @@ const Form = () => {
       }
     });
 
+    if (!appointment.clinic_id || !appointment.doctor_id) {
+      return alert("Please select Clinic and Doctor");
+    }
+
     const appointment_items = [];
 
     services.forEach((service) => {
@@ -131,7 +125,17 @@ const Form = () => {
     const payload = { appointment, appointment_items };
 
     console.log("payload => ", payload);
-    console.log("confirm booking clicked...");
+
+    BookingService.bookAppointment(payload)
+      .then((response) => {
+        if (response.data.status) {
+          getPets();
+          console.log("response.data.data => ", response.data.data);
+          const appointment_id = response.data.data.appointment_id;
+          router.push(`/booking/${appointment_id}`);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   const renderPage = () => {
@@ -172,14 +176,18 @@ const Form = () => {
     );
   };
 
+  // Lifecycle hooks
   useEffect(() => {
     setUserID(JSON.parse(localStorage.getItem("user_info")).id);
     async function getEffects() {
-      await getPets();
       await getClinics();
     }
     getEffects();
   }, []);
+
+  useEffect(() => {
+    getPets();
+  }, [user_id]);
 
   useEffect(() => {
     getServices();

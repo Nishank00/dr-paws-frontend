@@ -20,8 +20,8 @@ const PetSelect = ({ onSelect = () => this.pet, pet = {} }) => {
             <path
               d="M2.66406 8.37891L8.41406 14.0039L19.9141 2.75391"
               stroke="white"
-              stroke-width="3.75"
-              stroke-linecap="round"
+              strokeWidth="3.75"
+              strokeLinecap="round"
             />
           </svg>
         )}

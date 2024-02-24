@@ -9,7 +9,7 @@ import DoctorCardCheck from "./DoctorCardCheck";
 import Button from "@/components/ui/Button";
 import ClinicService from "@/services/Clinic.service";
 import { useSearchParams } from "next/navigation";
-import TimePicker from "@/components/admin/clinic/TimePicker";
+import TimePicker from "@/components/pages/admin/clinic/TimePicker";
 import moment from "moment";
 
 const ClinicForm = () => {

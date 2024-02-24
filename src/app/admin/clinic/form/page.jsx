@@ -1,5 +1,5 @@
 "use client";
-import ClinicForm from "@/components/admin/clinic/ClinicForm";
+import ClinicForm from "@/components/pages/admin/clinic/ClinicForm";
 
 const page = () => {
   return (

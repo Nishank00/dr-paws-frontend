@@ -1,4 +1,4 @@
-import MasterPage from "@/components/admin/master/MasterPage";
+import MasterPage from "@/components/pages/admin/master/MasterPage";
 import React from "react";
 
 const page = () => {

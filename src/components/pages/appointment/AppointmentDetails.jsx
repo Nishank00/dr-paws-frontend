@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const BookingConfirmedPage = ({ appointment_id = 0 }) => {
+const AppointmentDetails = ({ appointment_id }) => {
   // Variables
   const router = useRouter();
   const [appointment, setAppointment] = useState({});
@@ -57,31 +57,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
 
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
-      <h2 className="font-bold text-4xl flex gap-2 mb-8">
-        Booking Confirmed{" "}
-        <svg
-          width="36"
-          height="36"
-          viewBox="0 0 36 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            x="0.5"
-            y="0.75"
-            width="35"
-            height="35"
-            rx="17.5"
-            fill="#5281A2"
-          />
-          <path
-            d="M9.5 19.625L15.25 25.25L26.75 14"
-            stroke="white"
-            strokeWidth="3.75"
-            strokeLinecap="round"
-          />
-        </svg>
-      </h2>
+      <h2 className="font-bold text-4xl flex gap-2 mb-8">Your Booking</h2>
 
       <div className="bg-primary4 px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg">
         <h3 className="text-2xl font-extrabold ">
@@ -189,17 +165,24 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           </p>
         </div>
 
-        <p className="underline text-sm my-8">+ Add to Calendar</p>
+        <p className="underline text-sm mt-8 mb-6">+ Add to Calendar</p>
 
-        <Button
-          color="secondary"
-          label="Done"
-          className="w-52 h-12 px-3 py-2"
-          onClick={() => router.push("/appointments")}
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
+          <Button
+            color="primary4"
+            label="Cancel"
+            className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
+          />
+
+          <Button
+            color="primary4"
+            label="Reschedule"
+            className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default BookingConfirmedPage;
+export default AppointmentDetails;

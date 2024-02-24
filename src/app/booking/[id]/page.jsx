@@ -1,10 +1,13 @@
 "use client";
 import BookingConfirmedPage from "@/components/pages/booking/BookingConfirmedPage";
+import React from "react";
 
-const page = () => {
+const page = ({ params }) => {
+  // Vaiables
+  const id = Number(params.id || 0);
   return (
     <div>
-      <BookingConfirmedPage />
+      <BookingConfirmedPage appointment_id={id} />
     </div>
   );
 };

@@ -31,7 +31,7 @@ const ProfileDropdown = ({ onLogout }) => {
         </li>
 
         <li className="py-2 border-b border-accent">
-          <Link href="#">
+          <Link href="/appointments">
             <p>My Appointments</p>
           </Link>
         </li>
