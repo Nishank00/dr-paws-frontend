@@ -8,7 +8,7 @@ import Image from "next/image";
 const PetForm = ({ user_id, getPets, petData }) => {
   const gridData = [1, 2, 3, 4, 5];
   const [isOpen, setIsOpen] = useState(false);
-  const [ishover,setIsHover]=useState(false)
+  const [ishover, setIsHover] = useState(false)
   const [userData, setUserData] = useState({});
   const [pet, setPet] = useState({
     pet_type: null,
@@ -110,35 +110,35 @@ const PetForm = ({ user_id, getPets, petData }) => {
       <div>
         <button
           onClick={openPopup}
-          onMouseEnter={()=> setIsHover(true)}
-          onMouseLeave={()=> setIsHover(false)}
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
 
           className=" justify-center  items-center font-custom-open-sans text-sm font-semibold   w-[166px] h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary"
         >
           {/* <div className="w-full flex items-center "> */}
-            <Image 
-            src={ishover ? "plus_white_icon.svg":"plus_blue_icon.svg"}
-             alt=""
-             width={12.5}
-             height={11.5}
-             />
-           
-             {petData ? "Edit Profile" : "Add Pet"}
+          <Image
+            src={ishover ? "plus_white_icon.svg" : "plus_blue_icon.svg"}
+            alt=""
+            width={12.5}
+            height={11.5}
+          />
+
+          {petData ? "Edit Profile" : "Add Pet"}
           {/* </div> */}
         </button>
-       
+
       </div>
       <Popup isOpen={isOpen} onClose={closePopup} hideClose>
-        <div className="bg-primary3 w-[430px] flex flex-col py-5 justify-center items-center pt-10 ">
-          <div className=" w-full  flex justify-center items-center text-xl text-primary">
+        <div className="bg-primary3 w-[430px] rounded-md flex flex-col py-5 justify-center items-center pt-6 ">
+          <div className=" w-full  flex justify-center items-center text-2xl font-custom-roca text-primary">
             {petData ? "Edit Profile" : "Add Pet"}
           </div>
           <div className="">
-            <UploadProfile onUpload={() => {}} />
+            <UploadProfile onUpload={() => { }} />
           </div>
           <div className="w-[80%]">
             <input
-              className="input rounded-lg px-4 py-2 w-full border-2 border-secondary2 text-lg text-primary"
+              className="input rounded-lg px-4 py-2 w-full border-2  text-md text-primary"
               placeholder="Pets name"
               value={pet.name}
               onChange={(e) => setPet({ ...pet, name: e.target.value })}
@@ -148,15 +148,17 @@ const PetForm = ({ user_id, getPets, petData }) => {
             <select
               value={pet.pet_type}
               onChange={(e) => handlePetTypeChange(e)}
-              class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary"
+              class="rounded-lg px-4  font-custom-open-sans h-[45px] w-full border-2  text-md text-primary"
             >
-              <option value="" disabled selected>
+              <option className=" text-sm font-custom-open-sans" value="" disabled selected>
                 Select your pet
               </option>
 
               {petTypes &&
                 petTypes.map((pettype, index) => (
-                  <option key={index} value={pettype.id}>
+                  <option
+                    className=" text-sm font-custom-open-sans"
+                    key={index} value={pettype.id}>
                     {pettype.name}
                   </option>
                 ))}
@@ -167,7 +169,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
               <select
                 value={pet.breed}
                 onChange={(e) => setPet({ ...pet, breed: e.target.value })}
-                class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary"
+                class="rounded-lg px-4  w-full border-2 h-[45px] text-md text-primary"
               >
                 <option value="" disabled selected>
                   Select your pet
@@ -175,7 +177,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
 
                 {breeds &&
                   breeds.map((pettype, index) => (
-                    <option key={index + petData?.id} value={pettype?.id}>
+                    <option className=" text-sm font-custom-open-sans" key={index + petData?.id} value={pettype?.id}>
                       {pettype.name}
                     </option>
                   ))}
@@ -189,19 +191,19 @@ const PetForm = ({ user_id, getPets, petData }) => {
                   <select
                     value={pet.gender}
                     onChange={(e) => setPet({ ...pet, gender: e.target.value })}
-                    class="rounded-lg px-4 py-3 w-full border-2 border-secondary2 text-lg text-primary"
+                    class="rounded-lg px-4  w-full h-[45px] border-2  text-md text-primary"
                   >
-                    <option value="" disabled selected>
+                    <option className=" text-sm font-custom-open-sans" value="" disabled selected>
                       {" "}
                       Gender
                     </option>
-                    <option value="MALE">Male</option>
-                    <option value="FEMALE">Female</option>
+                    <option className=" text-sm font-custom-open-sans" value="MALE">Male</option>
+                    <option className=" text-sm font-custom-open-sans" value="FEMALE">Female</option>
                   </select>
                 </div>
                 <div className="w-[45%] flex flex-col">
                   <input
-                    className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
+                    className="input rounded-lg px-4 font-custom-open-sans h-[45px] border-2  text-md text-primary"
                     placeholder="Age"
                     onChange={(e) => setPet({ ...pet, age: e.target.value })}
                     value={pet.age}
@@ -212,7 +214,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
                 <div className="w-[45%] flex flex-col">
                   <input
                     type="date"
-                    className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
+                    className="input rounded-lg px-4 font-custom-open-sans border-2 h-[45px] text-md text-primary"
                     placeholder="Age"
                     onChange={(e) =>
                       setPet({ ...pet, date_of_birth: e.target.value })
@@ -222,25 +224,22 @@ const PetForm = ({ user_id, getPets, petData }) => {
                 </div>
                 <div className="w-[45%] flex flex-col">
                   <input
-                    className="input rounded-lg px-4 py-3 border-2 border-secondary2 text-md text-primary"
+                    className="input rounded-lg px-4 h-[45px] border-2 text-md text-primary"
                     placeholder="Weight (Kg}"
                     onChange={(e) => setPet({ ...pet, weight: e.target.value })}
                     value={pet.weight}
                   />
                 </div>
               </div>
-              <div className="flex  justify-between  w-[80%] m-auto mt-5">
+              <div className="flex  justify-between  w-[80%] m-auto mt-5 h-[50px]">
                 <button
                   onClick={() => handleCancel()}
-                  className="justify-center items-stretch w-[156px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-3 rounded-[86px] border-2 border-solid"
-                >
+                  className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
                   Cancel
                 </button>
-
                 <button
                   onClick={hanldeSubmit}
-                  className="text-white text-base font-bold  w-[156px] leading-4 tracking-normal justify-center items-center bg-slate-500 max-w-[160px] px-16 py-3 rounded-[86px]"
-                >
+                  className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
                   Save
                 </button>
               </div>
