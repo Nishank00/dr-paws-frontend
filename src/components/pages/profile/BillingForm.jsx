@@ -52,22 +52,22 @@ const BillingForm = ({ user_id, closePopup }) => {
         <div className='w-full m-auto'>
             <div className='flex justify-between w-[80%] m-auto'>
                 <div className='w-[45%] flex flex-col'>
-                    <label>
+                    <label className='text-sm font-custom-open-sans'>
                         First Name
                     </label>
                     <input
-                        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                        className="input  font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
                         placeholder=''
                         onChange={(e) => setAccount({ ...account, first_name: e.target.value })}
                         value={account.first_name}
                     />
                 </div>
                 <div className='w-[45%] flex flex-col'>
-                    <label>
+                    <label className='text-sm font-custom-open-sans'>
                         Last Name
                     </label>
                     <input
-                        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                        className="input font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
                         placeholder=''
                         onChange={(e) => setAccount({ ...account, last_name: e.target.value })}
                         value={account.last_name}
@@ -77,11 +77,11 @@ const BillingForm = ({ user_id, closePopup }) => {
             </div>
             <div className='flex justify-between w-[80%] m-auto mt-5'>
                 <div className='w-[20%] flex flex-col'>
-                    <label>
+                    <label className='text-sm font-custom-open-sans'>
                         CVV
                     </label>
                     <input
-                        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                        className="input rounded-lg px-4 py-2 border-2  text-md text-primary text-md"
                         placeholder=''
                         onChange={(e) => setAccount({ ...account, cvv_code: e.target.value })}
                         value={account.cvv_code}
@@ -89,11 +89,11 @@ const BillingForm = ({ user_id, closePopup }) => {
                     />
                 </div>
                 <div className='w-[78%] flex flex-col'>
-                    <label>
+                    <label className='text-sm font-custom-open-sans'>
                         Card Details
                     </label>
                     <input
-                        className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                        className="input rounded-lg px-4 py-2 border-2  text-md text-primary"
                         placeholder=''
                         onChange={(e) => setAccount({ ...account, card_details: e.target.value })}
                         value={account.card_details}
@@ -104,9 +104,9 @@ const BillingForm = ({ user_id, closePopup }) => {
             </div>
 
             <div className='flex flex-col w-[80%] m-auto mt-5'>
-                <label className='text-sm'>Name on card</label>
+                <label className='text-sm font-custom-open-sans'>Name on card</label>
                 <input
-                    className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                    className="input font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
                     placeholder=''
                     onChange={(e) => setAccount({ ...account, name_on_card: e.target.value })}
                     value={account.name_on_card}
@@ -114,20 +114,20 @@ const BillingForm = ({ user_id, closePopup }) => {
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-5'>
-                <label className='text-sm'>Billing Address</label>
+                <label className='text-sm font-custom-open-sans text-primary'>Billing Address</label>
                 <input
-                    className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                    className="input font-custom-open-sans  rounded-lg px-4 py-2 border-2  text-md text-primary"
                     placeholder=''
                     onChange={(e) => setAccount({ ...account, billing_address: e.target.value })}
                     value={account.billing_address}
                 />
             </div>
-            <div className='flex  justify-between  w-[80%] m-auto mt-5'>
-                <button onClick={() => closePopup()} className="justify-center items-stretch w-[156px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-3 rounded-[86px] border-2 border-solid">
-                    Cancel
-                </button>
-
-                <button onClick={updateBillingData} className="text-white text-base font-bold  w-[156px] leading-4 tracking-normal justify-center items-center bg-slate-500 max-w-[160px] px-16 py-3 rounded-[86px]">
+            <div className='flex  justify-between  w-[80%] m-auto mt-5 h-[50px]'>
+             
+                <button onClick={() => closePopup()} className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
+                    Cancel           
+                         </button>
+                <button onClick={updateBillingData} className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
                     Save
                 </button>
             </div>
