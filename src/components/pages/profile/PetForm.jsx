@@ -113,24 +113,24 @@ const PetForm = ({ user_id, getPets, petData }) => {
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
 
-          className=" justify-center  items-center font-custom-open-sans text-sm font-semibold   w-[166px] h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary"
+          className={`justify-center  items-center font-custom-open-sans text-sm font-semibold  ${petData ?"w-[96px]": "w-[166px]"} h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
         >
           {/* <div className="w-full flex items-center "> */}
-          <Image
+       {  !petData && <Image
             src={ishover ? "plus_white_icon.svg" : "plus_blue_icon.svg"}
             alt=""
             width={12.5}
             height={11.5}
-          />
+          />}
 
-          {petData ? "Edit Profile" : "Add Pet"}
+          {petData ? "Edit" : "Add Pet"}
           {/* </div> */}
         </button>
 
       </div>
       <Popup isOpen={isOpen} onClose={closePopup} hideClose>
         <div className="bg-primary3 w-[430px] rounded-md flex flex-col py-5 justify-center items-center pt-6 ">
-          <div className=" w-full  flex justify-center items-center text-2xl font-custom-roca text-primary">
+          <div className=" w-full  flex justify-center items-center text-2xl font-custom-roca text-secondary">
             {petData ? "Edit Profile" : "Add Pet"}
           </div>
           <div className="">

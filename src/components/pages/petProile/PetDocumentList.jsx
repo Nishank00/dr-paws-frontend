@@ -40,7 +40,7 @@ const PetDocumentList = ( { doc_type_name, pet_id } ) =>
     return (
         <>
             <div className="w-full grid">
-                <div className="text-slate-700 text-lg font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">
+                <div className="text-primary text-lg text-center md:text-left font-custom-open-sans font-bold leading-6 tracking-normal mt-8 max-md:max-w-full">
                     Past Diagnostic Reports
                 </div>
                 <div className="w-full grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-2">
