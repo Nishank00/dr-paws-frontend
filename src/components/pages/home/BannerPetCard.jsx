@@ -19,7 +19,7 @@ const BannerPetCard = ({
           />
 
         </div>
-        <button className="bg-secondary font-light font-custome-open-sans rounded-b-2xl text-[10px] py-2">
+        <button className="bg-secondary font-light font-custom-open-sans rounded-b-2xl text-[10px] py-2">
           Book a visit
         </button>
       </div>

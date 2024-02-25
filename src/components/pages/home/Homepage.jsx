@@ -162,7 +162,7 @@ const Homepage = () => {
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-slate-700 text-center font-custome-open-sans text-sm leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-slate-700 text-center font-custom-open-sans text-sm leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
           If your question is still not answered, please get in touch and we’d
           be happy to help
