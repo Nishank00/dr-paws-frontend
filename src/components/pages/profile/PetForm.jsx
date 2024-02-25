@@ -3,9 +3,12 @@ import Popup from "@/components/ui/Popup";
 import Select from "@/components/ui/Select";
 import PetService from "@/services/Pet.Service";
 import UploadProfile from "@/components/auth/UploadProfile";
+import Button from "@/components/ui/Button";
+import Image from "next/image";
 const PetForm = ({ user_id, getPets, petData }) => {
   const gridData = [1, 2, 3, 4, 5];
   const [isOpen, setIsOpen] = useState(false);
+  const [ishover,setIsHover]=useState(false)
   const [userData, setUserData] = useState({});
   const [pet, setPet] = useState({
     pet_type: null,
@@ -107,12 +110,23 @@ const PetForm = ({ user_id, getPets, petData }) => {
       <div>
         <button
           onClick={openPopup}
-          className="justify-center items-stretch w-[180px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-4 rounded-[86px] border-2 border-solid"
+          onMouseEnter={()=> setIsHover(true)}
+          onMouseLeave={()=> setIsHover(false)}
+
+          className=" justify-center  items-center font-custom-open-sans text-sm font-semibold   w-[166px] h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary"
         >
-          <div className="text-primary">
-            {petData ? "Edit Profile" : "Add Pet"}
-          </div>
+          {/* <div className="w-full flex items-center "> */}
+            <Image 
+            src={ishover ? "plus_white_icon.svg":"plus_blue_icon.svg"}
+             alt=""
+             width={12.5}
+             height={11.5}
+             />
+           
+             {petData ? "Edit Profile" : "Add Pet"}
+          {/* </div> */}
         </button>
+       
       </div>
       <Popup isOpen={isOpen} onClose={closePopup} hideClose>
         <div className="bg-primary3 w-[430px] flex flex-col py-5 justify-center items-center pt-10 ">

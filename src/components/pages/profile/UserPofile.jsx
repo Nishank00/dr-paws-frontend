@@ -89,14 +89,14 @@ const UserPofile = () => {
   return (
     <>
       <div className=" mt-10 lg:mt-14">
-        <div className="text-secondary flex flex-col lg:flex-row items-center gap-2 lg:gap-1">
-          <div id="profile-image w-full lg:w-1/5">
+        <div   className="text-secondary  flex flex-col lg:flex-row items-center gap-2 lg:gap-1">
+          <div   id="profile-image w-full lg:w-1/5">
             <Image
               src={
                 userData.profile_image
                   ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
-                    "/" +
-                    userData.profile_image
+                  "/" +
+                  userData.profile_image
                   : "/defaultUserProfileImage.png"
               }
               alt="Profile Image"
@@ -108,42 +108,42 @@ const UserPofile = () => {
 
           <div
             id="details"
-            className="flex flex-col gap-5 w-full lg:w-3/5 lg:pl-2 "
+            className="flex flex-col justify-center gap-5 w-full lg:w-3/5 lg:pl-2 "
           >
-            <h2 className="font-semibold text-3xl">
+            <h2 className="font-semibold font-custom-roca text-center lg:text-left text-3xl">
               {userData.full_name || "Not Available"}
             </h2>
 
-            <div className="flex flex-col lg:flex-row justify-between">
-              <div className="">
-                <h4 className="text-sm mb-2">Contact No</h4>
-                <h3 className="text-lg text-primary">
+            <div className="flex flex-col md:flex-row justify-between">
+            <div className="mt-10 md:mt-0">
+                <h4 className="text-sm mb-2 font-custom-open-sans text-center md:text-left">Contact No</h4>
+                <h3 className="text-lg font-custom-open-sans font-semibold text-primary text-center md:text-left">
                   {userData.phone || "NA"}
                 </h3>
               </div>
 
-              <div className="">
-                <h4 className="text-sm mb-2">Email Id</h4>
-                <h3 className="text-lg text-primary">
+              <div className="mt-10 md:mt-0">
+                <h4 className="text-sm mb-2 text-center md:text-left">Email Id</h4>
+                <h3 className="text-lg font-custom-open-sans font-semibold text-primary text-center md:text-left">
                   {userData.email || "NA"}
                 </h3>
               </div>
 
-              <div className="">
-                <h4 className="text-sm mb-2">Address</h4>
-                <h3 className="text-lg text-primary">
+              <div className="mt-10 md:mt-0">
+                <h4 className="text-sm mb-2 text-center md:text-left">Address</h4>
+                <h3 className="text-lg font-custom-open-sans font-semibold  text-primary text-center md:text-left ">
                   {userData.address || "NA"}
                 </h3>
               </div>
             </div>
           </div>
 
-          <div className="self-start w-full lg:w-1/5">
+          <div className="self-start mt-10 lg:mt-0 w-full text-center lg:text-left lg:w-1/5">
             <Button
               label={"🖊️ Edit Profile"}
               color="primary4"
               onClick={openPopup}
-              className="bg-white text-secondary border-2 border-secondary hover:text-white hover:bg-secondary"
+              className="bg-white w-[166px] font-custom-open-sans font-semibold text-sm text-secondary border-2 border-secondary hover:text-white hover:bg-secondary"
             />
           </div>
         </div>
