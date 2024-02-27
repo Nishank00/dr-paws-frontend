@@ -46,10 +46,10 @@ const OverviewTabs = () => {
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-[81%] max-md:w-full max-md:ml-0">
               <span className="flex grow flex-col items-stretch max-md:mt-7">
-                <div className="text-slate-700 text-3xl leading-9 capitalize whitespace-nowrap">
-                  {clinic.name}
+                <div className="text-primary text-4xl font-custom-roca capitalize whitespace-nowrap">
+                  {clinic.name || "NA"}
                 </div>
-                <div className="text-slate-700 text-xl leading-6 tracking-tight whitespace-nowrap mt-7">
+                <div className="text-primary text-[22px]  tracking-tight whitespace-nowrap mt-4">
                   Grooming | OPD | Surgery
                 </div>
               </span>
@@ -57,31 +57,29 @@ const OverviewTabs = () => {
             <div className="flex flex-col items-stretch w-[19%] ml-5 max-md:w-full max-md:ml-0"></div>
           </div>
         </div>
-        <span className="text-white text-xl h-[64px] font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 mt-1 px-12 py-4 rounded-[43.2px] self-start max-md:px-5">
+        <span className="text-white text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5">
           Book a Visit
         </span>
       </span>
       <div className="flex mb-4 border-b-2 mt-16">
-        <button
-          className={`text-slate-700 text-md leading-4 tracking-normal ${
-            activeTab === 1 ? "border-b-2 border-blue-500 " : "text-gray-700"
-          } px-1  py-2 focus:outline-none`}
-          onClick={() => handleTabClick(1)}
-        >
+      
+        <button onClick={() => handleTabClick(1)}
+          className=' h-full  flex flex-col justify-between items-center'>
+          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
           Overview
-        </button>
+          </div>
+          {activeTab === 1 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
+        <button />
         <button
-          className={`text-slate-700 text-md leading-4 tracking-normal ${
-            activeTab === 2 ? "border-b-2 border-blue-500 " : "text-gray-700"
-          } px-4 py-2 ml-10 focus:outline-none`}
+          className={`text-slate-700 text-md leading-4 tracking-normal ${activeTab === 2 ? "border-b-2 border-blue-500 " : "text-gray-700"
+            } px-4 py-2 ml-10 focus:outline-none`}
           onClick={() => handleTabClick(2)}
         >
           Photo
         </button>
         <button
-          className={`text-slate-700 text-md leading-4 tracking-normal ${
-            activeTab === 3 ? "border-b-2 border-blue-500 " : "text-gray-700"
-          } px-4 py-2 ml-10 focus:outline-none`}
+          className={`text-slate-700 text-md leading-4 tracking-normal ${activeTab === 3 ? "border-b-2 border-blue-500 " : "text-gray-700"
+            } px-4 py-2 ml-10 focus:outline-none`}
           onClick={() => handleTabClick(3)}
         >
           Surgery

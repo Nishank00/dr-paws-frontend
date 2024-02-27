@@ -19,7 +19,7 @@ const GallaryBox = ({ photoArray = [] }) => {
       {gridData.map((item, index) => (
         <div
           key={"itemm" + item}
-          className="flex flex-col relative items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden"
+          className="flex flex-col relative items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden  bg-black bg-opacity-50 z-40"
         >
           <img
             loading="lazy"
@@ -33,7 +33,7 @@ const GallaryBox = ({ photoArray = [] }) => {
               onClick={openPopup}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center"
             >
-              <p className="text-lg ">View more</p>
+              <p className="text-lg font-custom-open-sans text-white ">View more</p>
             </div>
           )}
         </div>
