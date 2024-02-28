@@ -31,7 +31,7 @@ const Form = () => {
       .then((response) => {
         if (response.data.status) setPets(response.data.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   const getClinics = () => {
@@ -43,7 +43,7 @@ const Form = () => {
           );
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error.message));
   };
 
   const handleNext = () => {
@@ -66,7 +66,7 @@ const Form = () => {
           );
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   const onConfirmBooking = () => {
@@ -130,7 +130,7 @@ const Form = () => {
           router.push(`/booking/${appointment_id}`);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   const renderPage = () => {
