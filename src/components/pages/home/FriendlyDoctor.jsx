@@ -28,7 +28,7 @@ const FriendlyDoctor = () => {
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Animals first. Always.
                     </div>
-                    <div className="text-slate-700 font-custome-open-sans text-sm mt-2.5">
+                    <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
                       Unlike other clinics, we evaluate our vets based on
                       customer satisfaction over revenue. This ensure we never
                       over-medicate or suggest unnecessary treatments.
@@ -45,7 +45,7 @@ const FriendlyDoctor = () => {
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Highly qualified, trained on the latest methods
                     </div>
-                    <div className="text-slate-700 font-custome-open-sans text-sm mt-2.5">
+                    <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
                       We only hire vets from the best veterinary schools, and
                       make sure they are supported to attend courses and learn
                       new techniques across the world
@@ -62,7 +62,7 @@ const FriendlyDoctor = () => {
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Your best friend is our best friend
                     </div>
-                    <div className="text-slate-700 font-custome-open-sans text-sm mt-2.5">
+                    <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
                       All our vets are passionate about animals, and love being
                       around them. Rest assured your animal will feel
                       comfortable and at home with us

@@ -103,22 +103,22 @@ const UserForm = ({ closePopup, user_id }) => {
     useEffect(() => {
         getUserDataById(user_id)
 
-    }, [user_id,userData.profile_image])
+    }, [user_id, userData.profile_image])
 
 
     return (
-        <div className='w-full m-auto h-[550px] overflow-scroll'>
+        <div className='w-full m-auto h-[530px] overflow-scroll'>
 
             <div className="relative w-fit m-auto">
                 <label htmlFor="file-input" className="cursor-pointer block">
-                    <div className="w-48 h-48  flex items-center justify-center">
-                      
-                          <img
+                    <div className="w-48 h-36  flex items-center justify-center">
+
+                        <img
                             loading="lazy"
                             srcSet={userData.profile_image || "dummyProfilePic.jpg"}
                             className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
                         />
-                        <div className="w-6 h-6 rounded-full bg-secondary absolute right-10 bottom-10"></div>
+                        <div className="w-6 h-6 rounded-full bg-secondary absolute right-10 bottom-5"></div>
 
                     </div>
                 </label>
@@ -131,10 +131,10 @@ const UserForm = ({ closePopup, user_id }) => {
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto'>
-                <label className='text-sm'>Name</label>
+                <label className='text-sm font-custom-open-sans'>Name</label>
                 <input
                     // className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                    className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                    className="input font-custom-open-sansrounded-lg px-4 py-2 border-2  text-md rounded-lg text-primary"
 
 
 
@@ -144,11 +144,11 @@ const UserForm = ({ closePopup, user_id }) => {
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-3'>
-                <label className='text-sm'>Contact No</label>
+                <label className='text-sm font-custom-open-sans'>Contact No</label>
                 <div className='flex justify-between mt-2 '>
                     <input
                         // className="text-slate-700 w-[15%] text-base leading-5 whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-                        className=" w-[15%] input rounded-lg px-2 py-2 border-2 border-secondary2 text-md text-primary"
+                        className=" w-[15%]  font-custom-open-sans input rounded-lg px-2 py-2 border-2  text-md text-primary"
 
                         placeholder=''
                         value="+91"
@@ -156,7 +156,7 @@ const UserForm = ({ closePopup, user_id }) => {
 
                     />
                     <input
-                        className="input w-[80%] rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                        className="input w-[80%] font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
                         placeholder=''
                         onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
                         value={userData.phone}
@@ -165,9 +165,9 @@ const UserForm = ({ closePopup, user_id }) => {
                 </div>
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-3'>
-                <label className='text-sm'>Email</label>
+                <label className='text-sm font-custom-open-sans'>Email</label>
                 <input
-                    className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                    className="input font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
                     type="text"
                     placeholder=''
                     onChange={(e) => setUserData({ ...userData, email: e.target.value })}
@@ -175,27 +175,25 @@ const UserForm = ({ closePopup, user_id }) => {
                 />
             </div>
             <div className='flex flex-col w-[80%] m-auto mt-3'>
-                <label className='text-sm'>Address</label>
+                <label className='text-sm font-custom-open-sans'>Address</label>
                 <input
-                    className="input rounded-lg px-4 py-2 border-2 border-secondary2 text-lg text-primary"
+                    className="input font-custom-open-sans  rounded-lg px-4 py-2 border-2  text-md text-primary"
                     placeholder=''
                     onChange={(e) => setUserData({ ...userData, address: e.target.value })}
                     value={userData.address}
                 />
             </div>
 
-            <div className='flex  justify-between  w-[80%] m-auto mt-3'>
-                <button onClick={onCancel} className="justify-center items-stretch w-[150px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-8 py-3 rounded-[86px] border-2 border-solid">
-
-                    {/* <button onClick={onCancel} className="text-slate-500 text-base font-bold leading-4 tracking-normal grow whitespace-nowrap"> */}
-                        Cancel
-                    {/* </div> */}
-                </button>
-                <button onClick={handleSubmit} className="text-white text-base font-bold  w-[150px] leading-4 tracking-normal justify-center items-center bg-slate-500 max-w-[155px] px-16 py-3 rounded-[86px]">
+            <div className='flex  justify-between  w-[80%] m-auto mt-3 h-[50px]'>
+                          
+                <button onClick={onCancel} className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
+                    Cancel           
+                         </button>
+                <button onClick={handleSubmit} className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
                     Save
                 </button>
             </div>
-        
+
 
         </div>
     )

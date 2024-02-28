@@ -27,8 +27,8 @@ module.exports = {
       },
       fontFamily: {
         'custom-roca': ['Roca Bold, sans-serif'],
-        'custome-open-sans': ["Open Sans", "sans-serif"],
-        'custome-inter':["Inter", "sans-serif"]
+        'custom-open-sans': ["Open Sans", "sans-serif"],
+        'custom-inter':["Inter", "sans-serif"]
 
 
 

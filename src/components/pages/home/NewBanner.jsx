@@ -20,7 +20,7 @@ const NewBanner = () => {
           re-imagined <br />
           by pet lovers
         </h2>
-        <p  className="text-sm font-custome-open-sans  md:text-xl font-light custom-open-sans">
+        <p  className="text-sm font-custom-open-sans  md:text-xl font-light custom-open-sans">
           Book a visit to one of our clinics <br />right now. Which friend will we
           meet?
         </p>

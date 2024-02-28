@@ -76,7 +76,7 @@ const ImageTextHeader = ({
                   {header}
                 </h2>
                 <p
-                  className="text-primary font-custome-open-sans text-sm mb-6"
+                  className="text-primary font-custom-open-sans text-sm mb-6"
                 >
                   {text}
                 </p>
