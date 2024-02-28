@@ -22,7 +22,7 @@ const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
           setAppointment(response.data.data[0]);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   const prepareData = () => {

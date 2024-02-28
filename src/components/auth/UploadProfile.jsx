@@ -36,7 +36,7 @@ const UploadProfile = ({ onUpload }) => {
         if (data.status) onUpload(data.data[0]);
         console.log("data => ", data);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error", error.message));
   };
 
   useEffect(() => {

@@ -22,7 +22,7 @@ const Homepage = () => {
           setClinics(response.data.data);
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error.message));
   };
 
   useEffect(() => {
@@ -168,7 +168,9 @@ const Homepage = () => {
           be happy to help
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">
-          <p className="text-left font-custome-inter font-bold text-sm text-primary">About Bearhug</p>
+          <p className="text-left font-custome-inter font-bold text-sm text-primary">
+            About Bearhug
+          </p>
         </div>
         <Dropdown title="What animals does BearHug treat?">
           <p
@@ -207,7 +209,9 @@ const Homepage = () => {
           </p>
         </Dropdown>
         <div className="w-full border-b border-solid border-grey  md:mt-10 px-5 py-4">
-          <p className="text-left font-custome-inter font-bold text-sm text-primary">At Clinic</p>
+          <p className="text-left font-custome-inter font-bold text-sm text-primary">
+            At Clinic
+          </p>
         </div>
         <Dropdown title="What animals does BearHug treat?">
           <p

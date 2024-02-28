@@ -82,7 +82,7 @@ const PetForm = ({ closePopup, pet_id }) => {
           closePopup();
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   useEffect(() => {

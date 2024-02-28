@@ -21,7 +21,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           setAppointment(response.data.data[0]);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   // Lifecycle Hooks

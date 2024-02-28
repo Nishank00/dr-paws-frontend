@@ -25,7 +25,7 @@ const TeamPage = () => {
           setDoctors(response.data.data);
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error.message));
   };
 
   useEffect(() => {
