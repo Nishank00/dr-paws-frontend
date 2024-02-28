@@ -70,20 +70,21 @@ const OverviewTabs = () => {
           </div>
           {activeTab === 1 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
         <button />
-        <button
-          className={`text-slate-700 text-md leading-4 tracking-normal ${activeTab === 2 ? "border-b-2 border-blue-500 " : "text-gray-700"
-            } px-4 py-2 ml-10 focus:outline-none`}
-          onClick={() => handleTabClick(2)}
-        >
+        <button onClick={() => handleTabClick(2)}
+          className=' h-full ml-10 flex flex-col justify-between items-center'>
+          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
           Photo
-        </button>
-        <button
-          className={`text-slate-700 text-md leading-4 tracking-normal ${activeTab === 3 ? "border-b-2 border-blue-500 " : "text-gray-700"
-            } px-4 py-2 ml-10 focus:outline-none`}
-          onClick={() => handleTabClick(3)}
-        >
-          Surgery
-        </button>
+          </div>
+          {activeTab === 2 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
+        <button />
+        <button onClick={() => handleTabClick(3)}
+          className=' h-full ml-10 flex flex-col justify-between items-center'>
+          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
+          Reviews
+                    </div>
+          {activeTab === 3 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
+        <button />
+  
       </div>
       <div className="w-[100%] m-auto flex-auto justify-center  items-center">
         {/* Content for Tab 1 */}
