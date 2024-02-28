@@ -8,7 +8,7 @@ import Image from "next/image";
 const PetForm = ({ user_id, getPets, petData }) => {
   const gridData = [1, 2, 3, 4, 5];
   const [isOpen, setIsOpen] = useState(false);
-  const [ishover, setIsHover] = useState(false)
+  const [ishover, setIsHover] = useState(false);
   const [userData, setUserData] = useState({});
   const [pet, setPet] = useState({
     pet_type: null,
@@ -42,7 +42,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
   const getPetBreedData = (data) => {
@@ -57,7 +57,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -75,7 +75,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
   const handlePetTypeChange = (e) => {
@@ -112,21 +112,23 @@ const PetForm = ({ user_id, getPets, petData }) => {
           onClick={openPopup}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
-
-          className={`justify-center  items-center font-custom-open-sans text-sm font-semibold  ${petData ?"w-[96px]": "w-[166px]"} h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
+          className={`justify-center  items-center font-custom-open-sans text-sm font-semibold  ${
+            petData ? "w-[96px]" : "w-[166px]"
+          } h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
         >
           {/* <div className="w-full flex items-center "> */}
-       {  !petData && <Image
-            src={ishover ? "plus_white_icon.svg" : "plus_blue_icon.svg"}
-            alt=""
-            width={12.5}
-            height={11.5}
-          />}
+          {!petData && (
+            <Image
+              src={ishover ? "plus_white_icon.svg" : "plus_blue_icon.svg"}
+              alt=""
+              width={12.5}
+              height={11.5}
+            />
+          )}
 
           {petData ? "Edit" : "Add Pet"}
           {/* </div> */}
         </button>
-
       </div>
       <Popup isOpen={isOpen} onClose={closePopup} hideClose>
         <div className="bg-primary3 w-[430px] rounded-md flex flex-col py-5 justify-center items-center pt-6 ">
@@ -134,7 +136,7 @@ const PetForm = ({ user_id, getPets, petData }) => {
             {petData ? "Edit Profile" : "Add Pet"}
           </div>
           <div className="">
-            <UploadProfile onUpload={() => { }} />
+            <UploadProfile onUpload={() => {}} />
           </div>
           <div className="w-[80%]">
             <input
@@ -150,7 +152,12 @@ const PetForm = ({ user_id, getPets, petData }) => {
               onChange={(e) => handlePetTypeChange(e)}
               class="rounded-lg px-4  font-custom-open-sans h-[45px] w-full border-2  text-md text-primary"
             >
-              <option className=" text-sm font-custom-open-sans" value="" disabled selected>
+              <option
+                className=" text-sm font-custom-open-sans"
+                value=""
+                disabled
+                selected
+              >
                 Select your pet
               </option>
 
@@ -158,7 +165,9 @@ const PetForm = ({ user_id, getPets, petData }) => {
                 petTypes.map((pettype, index) => (
                   <option
                     className=" text-sm font-custom-open-sans"
-                    key={index} value={pettype.id}>
+                    key={index}
+                    value={pettype.id}
+                  >
                     {pettype.name}
                   </option>
                 ))}
@@ -177,7 +186,11 @@ const PetForm = ({ user_id, getPets, petData }) => {
 
                 {breeds &&
                   breeds.map((pettype, index) => (
-                    <option className=" text-sm font-custom-open-sans" key={index + petData?.id} value={pettype?.id}>
+                    <option
+                      className=" text-sm font-custom-open-sans"
+                      key={index + petData?.id}
+                      value={pettype?.id}
+                    >
                       {pettype.name}
                     </option>
                   ))}
@@ -193,12 +206,27 @@ const PetForm = ({ user_id, getPets, petData }) => {
                     onChange={(e) => setPet({ ...pet, gender: e.target.value })}
                     class="rounded-lg px-4  w-full h-[45px] border-2  text-md text-primary"
                   >
-                    <option className=" text-sm font-custom-open-sans" value="" disabled selected>
+                    <option
+                      className=" text-sm font-custom-open-sans"
+                      value=""
+                      disabled
+                      selected
+                    >
                       {" "}
                       Gender
                     </option>
-                    <option className=" text-sm font-custom-open-sans" value="MALE">Male</option>
-                    <option className=" text-sm font-custom-open-sans" value="FEMALE">Female</option>
+                    <option
+                      className=" text-sm font-custom-open-sans"
+                      value="MALE"
+                    >
+                      Male
+                    </option>
+                    <option
+                      className=" text-sm font-custom-open-sans"
+                      value="FEMALE"
+                    >
+                      Female
+                    </option>
                   </select>
                 </div>
                 <div className="w-[45%] flex flex-col">
@@ -234,12 +262,14 @@ const PetForm = ({ user_id, getPets, petData }) => {
               <div className="flex  justify-between  w-[80%] m-auto mt-5 h-[50px]">
                 <button
                   onClick={() => handleCancel()}
-                  className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
+                  className=" w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary"
+                >
                   Cancel
                 </button>
                 <button
                   onClick={hanldeSubmit}
-                  className=' w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary'>
+                  className=" w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary"
+                >
                   Save
                 </button>
               </div>

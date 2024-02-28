@@ -32,7 +32,7 @@ export default function VerticalTabs() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -46,7 +46,7 @@ export default function VerticalTabs() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
   useEffect(() => {
