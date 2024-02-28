@@ -38,7 +38,9 @@ const SelectServicePage = ({ services = [], setServices, className = "" }) => {
         <h2 className="text-primary font-medium text-5xl mb-1">
           Select Services
         </h2>
-        <p className="text-primary mb-6">Choose from the our services</p>
+        <p className="text-primary mb-6 font-roca-thin-italic">
+          Choose from the our services
+        </p>
 
         <div
           className={

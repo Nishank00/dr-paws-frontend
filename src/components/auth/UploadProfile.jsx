@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const UploadProfile = ({ onUpload }) => {
   const [profileImage, setProfileImage] = useState(null);
@@ -38,6 +38,10 @@ const UploadProfile = ({ onUpload }) => {
       })
       .catch((error) => console.log("error", error));
   };
+
+  useEffect(() => {
+    if (profileImage) onUpload(profileImage);
+  }, []);
 
   return (
     <div className="flex items-center justify-center mb-5">

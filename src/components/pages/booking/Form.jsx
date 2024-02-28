@@ -26,26 +26,24 @@ const Form = () => {
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   // Methods
-  const getPets = async () => {
-    try {
-      const response = await PetService.getPetsByUserId(user_id);
-      if (response.data.status) setPets(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const getPets = () => {
+    PetService.getPetsByUserId(user_id)
+      .then((response) => {
+        if (response.data.status) setPets(response.data.data);
+      })
+      .catch((error) => console.log(error));
   };
 
-  const getClinics = async () => {
-    try {
-      const response = await ClinicService.getClinics();
-      if (response.data.status) {
-        setClinics(
-          response.data.data.map((clinic) => ({ ...clinic, selected: false }))
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const getClinics = () => {
+    ClinicService.getClinics()
+      .then((response) => {
+        if (response.data.status) {
+          setClinics(
+            response.data.data.map((clinic) => ({ ...clinic, selected: false }))
+          );
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   const handleNext = () => {
@@ -57,21 +55,18 @@ const Form = () => {
   };
 
   const getServices = async () => {
-    try {
-      const response = await MasterService.getMastersWithChildsByCode({
-        code: "SERVICE",
-      });
-      if (response.data.status) {
-        setServices(
-          response.data.data.map((item) => ({
-            ...item,
-            pets: pets.map((pet) => ({ ...pet, isSelected: false })),
-          }))
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
+      .then((response) => {
+        if (response.data.status) {
+          setServices(
+            response.data.data.map((item) => ({
+              ...item,
+              pets: pets.map((pet) => ({ ...pet, isSelected: false })),
+            }))
+          );
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   const onConfirmBooking = () => {
@@ -178,11 +173,8 @@ const Form = () => {
 
   // Lifecycle hooks
   useEffect(() => {
+    getClinics();
     setUserID(JSON.parse(localStorage.getItem("user_info")).id);
-    async function getEffects() {
-      await getClinics();
-    }
-    getEffects();
   }, []);
 
   useEffect(() => {
@@ -190,7 +182,7 @@ const Form = () => {
   }, [user_id]);
 
   useEffect(() => {
-    getServices();
+    if (pets.length > 0) getServices();
   }, [pets]);
 
   return (
@@ -216,7 +208,7 @@ const Form = () => {
               />
             </svg>
           </span>
-          <span className="text-xl ml-2">{"Back"}</span>
+          <span className="text-xl ml-2 font-open-sans">{"Back"}</span>
         </button>
       </div>
       <div className="mt-4 min-h-[100vh]">{renderPage()}</div>

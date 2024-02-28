@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Tabs = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
+const Tabs = ({ tabs, active }) => {
+  const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (id) => {
     setActiveTab(id);
   };
 
+  useEffect(() => {
+    if (active) setActiveTab(active);
+  }, [active]);
   return (
     <div>
       <div className="flex flex-wrap">

@@ -5,13 +5,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const AppointmentDetails = ({ appointment_id }) => {
+const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
   // Variables
   const router = useRouter();
   const [appointment, setAppointment] = useState({});
   const [pets, setPets] = useState([]);
   const [doctor, setDoctor] = useState({});
   const [timeString, setTimeString] = useState("");
+  const [isUpcoming, setIsUpcoming] = useState(false);
 
   // Methods
   const getAppointmentDetails = () => {
@@ -22,6 +23,25 @@ const AppointmentDetails = ({ appointment_id }) => {
         }
       })
       .catch((error) => console.log(error));
+  };
+
+  const prepareData = () => {
+    const currentDate = moment();
+    const appointmentDate = moment(appointment.date);
+    if (currentDate.isBefore(appointmentDate, "day")) {
+      setIsUpcoming(true);
+    } else if (currentDate.isSame(appointmentDate, "day")) {
+      const currentTime = moment();
+      const appointmentTime = moment(appointment.end_time);
+
+      if (currentTime.isBefore(appointmentTime, "minute")) {
+        setIsUpcoming(false);
+      } else {
+        setIsUpcoming(true);
+      }
+    } else {
+      setIsUpcoming(false);
+    }
   };
 
   // Lifecycle Hooks
@@ -53,10 +73,12 @@ const AppointmentDetails = ({ appointment_id }) => {
           : "End Time"
       }`
     );
+
+    prepareData();
   }, [appointment]);
 
   return (
-    <div className="text-primary flex flex-col items-center justify-center my-16">
+    <div className="flex flex-col items-center justify-center my-16">
       <h2 className="font-bold text-4xl flex gap-2 mb-8">Your Booking</h2>
 
       <div className="bg-primary4 px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg">
@@ -167,19 +189,22 @@ const AppointmentDetails = ({ appointment_id }) => {
 
         <p className="underline text-sm mt-8 mb-6">+ Add to Calendar</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-          <Button
-            color="primary4"
-            label="Cancel"
-            className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
-          />
+        {isUpcoming && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
+            <Button
+              onClick={onClickCancel}
+              color="primary4"
+              label="Cancel"
+              className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
+            />
 
-          <Button
-            color="primary4"
-            label="Reschedule"
-            className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
-          />
-        </div>
+            <Button
+              color="primary4"
+              label="Reschedule"
+              className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
