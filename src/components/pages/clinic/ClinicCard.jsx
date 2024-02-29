@@ -27,15 +27,15 @@ const ClinicCard = ({
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "158px",
+          height: "240px",
         }}
       />
-      <div className="p-4 text-primary grow">
-        <h4 className="font-bold text-xl">Dr. Paw | {name}</h4>
-        <p className="text-sm">{serviceString || "OPD | Surgery"}</p>
+      <div className="p-2 text-primary grow">
+        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1">Dr. Paw | {name}</h4>
+        <p className="text-sm font-custom-open-sans text-primary line-clamp-1">{serviceString || "OPD | Surgery"}</p>
       </div>
       <div
-        className="text-center font-semibold bg-secondary hover:bg-primary py-2 rounded-b-md"
+        className="text-center text-white text-sm h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
         onClick={(e) => {
           e.stopPropagation();
           router.push("/booking");

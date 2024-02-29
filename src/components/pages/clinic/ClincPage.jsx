@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import ClinicService from "@/services/Clinic.service";
 import ClinicCard from "./ClinicCard";
 import ImageTextHeader from "../home/ImageTextHeader";
+import ImageHeader from "@/components/ui/ImageHeader";
+import SuggestionForm from "./SuggestionForm";
 
 const ClinicPage = () => {
   const [clincs, setClincs] = useState([]);
@@ -26,10 +28,10 @@ const ClinicPage = () => {
   return (
     <div className="pb-10">
       <div className="pt-24">
-        <ImageTextHeader
+        <ImageHeader
           header={"Come and visit us at our place!"}
           imagePosition={"left"}
-          imageUrl={imageurl}
+          imageUrl={"/clinics/clinicheader.svg"}
           text={
             "We are opening our homely Dr. Paws clinics across neighbourhoods all over the country. If we’re not near you right now, we hope to be very soon!"
           }
@@ -38,25 +40,28 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <h4 className="text-primary font-semibold text-center text-2xl mt-14">
+      <h4 className="text-primary  font-custom-roca font-semibold text-center text-3xl mt-14">
         Our Clinics
       </h4>
 
       <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {clincs &&
           clincs.map((item, index) => (
-            <ClinicCard key={index} imageUrl={imageurl} clinic={item} />
+            <ClinicCard key={index} imageUrl={"/home/clinic_image.png"} clinic={item} />
           ))}
-        <span className="justify-center items-center shadow-sm bg-orange-100 flex max-w-[331px] flex-col px-9 py-12 rounded-lg">
+        <span className="justify-center items-center shadow-sm bg-primary3 flex  flex-col px-9 py-12 rounded-lg">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c86bbb0d478f3d8bde31d329a0619c24df3bcebaa6c25902d2bc986a973a6de?apiKey=22a36eade5734692978208fb0d2f5c62&"
             className="aspect-[0.79] object-contain object-center w-[45px] overflow-hidden max-w-full mt-9"
           />
-          <div className="text-slate-700 text-center text-3xl leading-9 capitalize self-stretch mt-10 mb-9">
+          <div className="text-primary text-center  font-custom-roca text-2xl  capitalize self-stretch mt-10 mb-9">
             Where should the next Dr. Paws Clinic be?
           </div>
         </span>
+      </div>
+      <div className="mt-5">
+      <SuggestionForm/>
       </div>
     </div>
   );
