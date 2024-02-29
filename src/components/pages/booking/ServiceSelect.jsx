@@ -3,10 +3,12 @@ import React from "react";
 const Service = ({ label, isChecked = false, onChange }) => {
   return (
     <div className="w-full">
-      <label className="flex items-center justify-between">
+      <label
+        onClick={onChange}
+        className="flex items-center justify-between cursor-pointer"
+      >
         {label}
         <div
-          onClick={onChange}
           className={`flex items-center justify-center ml-2 h-8 w-8 rounded border-0 ${
             isChecked ? "bg-secondary" : "bg-white"
           }`}

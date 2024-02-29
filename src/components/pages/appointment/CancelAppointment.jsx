@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import RadioButtonGroup from "./RadioButtonGroup";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
+import BookingService from "@/services/Booking.service";
+import { useToast } from "@/components/ui/ToastProvider";
 
-const CancelAppointment = () => {
+const CancelAppointment = ({ appointment_id }) => {
   // variables
+  const { showToast } = useToast();
   const router = useRouter();
   const [cancelReasons, setCancelReasons] = useState([]);
   const [selectedCancelReason, setSelectedCancelReason] = useState(null);
@@ -22,8 +25,28 @@ const CancelAppointment = () => {
   };
 
   const cancelBooking = () => {
-    if (!selectedCancelReason) return alert("Reason not specified");
-    console.log("selectedCancelReason", selectedCancelReason);
+    if (!selectedCancelReason)
+      return showToast("Reason not specified", "warning");
+
+    const payload = {
+      appointment_id,
+      reason_id: selectedCancelReason.id,
+      description: null,
+    };
+
+    BookingService.cancelBooking(payload)
+      .then((response) => {
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        if (response.data.status) {
+          showToast(response.data.message, "success");
+          return router.push(`/booking/${appointment_id}`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error: ", error.message);
+        return showToast(error.message, "error");
+      });
   };
 
   useEffect(() => {

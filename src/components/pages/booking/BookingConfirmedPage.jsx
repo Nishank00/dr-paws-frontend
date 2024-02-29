@@ -24,6 +24,13 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
       .catch((error) => console.log(error.message));
   };
 
+  const doneClicked = () => {
+    if (appointment?.is_active == 0) {
+      return router.push("/appointments?list=CANCELLED");
+    }
+    return router.push("/appointments");
+  };
+
   // Lifecycle Hooks
   useEffect(() => {
     getAppointmentDetails();
@@ -215,7 +222,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           color="secondary"
           label="Done"
           className="w-52 h-12 px-3 py-2 mt-3"
-          onClick={() => router.push("/appointments")}
+          onClick={doneClicked}
         />
       </div>
     </div>

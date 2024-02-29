@@ -3,7 +3,8 @@ import React from "react";
 import MainLayout from "@/components/layouts/main/MainLayout";
 import AdminLayout from "@/components/layouts/admin/AdminLayout";
 import { useRouter } from "next/router";
-import {Open} from "@next/font/google"
+import { Open } from "@next/font/google";
+import { ToastProvider } from "@/components/ui/ToastProvider";
 
 const App = ({ children }) => {
   const isAdminRoute =
@@ -15,11 +16,13 @@ const App = ({ children }) => {
 
   return (
     <div>
-      {isAdminRoute ? (
-        <AdminLayout>{children}</AdminLayout>
-      ) : (
-        <MainLayout>{children}</MainLayout>
-      )}
+      <ToastProvider>
+        {isAdminRoute ? (
+          <AdminLayout>{children}</AdminLayout>
+        ) : (
+          <MainLayout>{children}</MainLayout>
+        )}
+      </ToastProvider>
     </div>
   );
 };

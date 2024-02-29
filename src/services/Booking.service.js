@@ -11,5 +11,9 @@ export default {
 
   bookAppointment(payload) {
     return API().post("/booking", payload)
+  },
+
+  cancelBooking(payload) {
+    return API().post("/booking/cancel", payload)
   }
 }
