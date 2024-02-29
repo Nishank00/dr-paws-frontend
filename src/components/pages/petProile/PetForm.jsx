@@ -39,7 +39,7 @@ const PetForm = ({ closePopup, pet_id }) => {
         setPetTypes(response.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -52,7 +52,7 @@ const PetForm = ({ closePopup, pet_id }) => {
         setBreeds(response.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -82,7 +82,7 @@ const PetForm = ({ closePopup, pet_id }) => {
           closePopup();
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   useEffect(() => {

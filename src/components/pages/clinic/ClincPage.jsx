@@ -19,7 +19,7 @@ const ClinicPage = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
   useEffect(() => {

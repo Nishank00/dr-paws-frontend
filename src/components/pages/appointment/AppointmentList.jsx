@@ -12,7 +12,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
       .then((response) => {
         if (response.data.status) setAppointments(response.data.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
 
   return (
     <>
-      {appointments ? (
+      {appointments && appointments.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {appointments?.map((appointment) => (
             <AppointmentCard

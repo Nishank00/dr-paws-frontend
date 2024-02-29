@@ -46,7 +46,7 @@ const ClinicForm = () => {
           );
         }
       })
-      .catch((error) => console.log("Error: ", error));
+      .catch((error) => console.log("Error: ", error.message));
   };
 
   const formValueChanged = (e) => {

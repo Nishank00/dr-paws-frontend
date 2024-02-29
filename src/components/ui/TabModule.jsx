@@ -20,7 +20,7 @@ const TabModule = ({ title, children, service_id }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   };
 
@@ -35,12 +35,16 @@ const TabModule = ({ title, children, service_id }) => {
         <div className="flex justify-between items-center  cursor-pointer">
           <button
             onClick={toggleDropdown}
-            className={`w-full tab-button border-b border-gray-300 flex justify-between  text-md font-bold capitalize whitespace-nowrap ${isOpen ? "text-white bg-[#5281a2]" :"text-primary bg-white font-semibold"}  pl-7 pr-16 py-5 items-center max-md:px-5`}
+            className={`w-full tab-button border-b border-gray-300 flex justify-between  text-md font-bold capitalize whitespace-nowrap ${
+              isOpen
+                ? "text-white bg-[#5281a2]"
+                : "text-primary bg-white font-semibold"
+            }  pl-7 pr-16 py-5 items-center max-md:px-5`}
           >
             <div className="font-custom-open-sans">{title}</div>
             <Image
               className={`w-4 h-2   ml-1`}
-              src={isOpen? "/home/up_white_arrow.png":"dropdown.svg"}
+              src={isOpen ? "/home/up_white_arrow.png" : "dropdown.svg"}
               alt=""
               width={20}
               height={20}

@@ -21,7 +21,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           setAppointment(response.data.data[0]);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.message));
   };
 
   // Lifecycle Hooks
@@ -58,7 +58,9 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
       <h2 className="font-bold text-4xl flex gap-2 mb-8">
-        Booking Confirmed{" "}
+        {appointment && appointment.is_active == 1
+          ? "Booking Confirmed"
+          : "Booking Cancelled"}{" "}
         <svg
           width="36"
           height="36"
@@ -83,7 +85,11 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
         </svg>
       </h2>
 
-      <div className="bg-primary4 px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg">
+      <div
+        className={`${
+          appointment?.is_active == 1 ? "bg-primary4" : "bg-gray-100"
+        }  px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg`}
+      >
         <h3 className="text-2xl font-extrabold ">
           {pets?.map((pet) => pet?.pet_name).join(" & ")}&nbsp;
           {pets?.length > 0 && pets?.length === 1 ? "is" : "are"}&nbsp;scheduled
@@ -118,7 +124,11 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
         </div>
 
         <div className="">
-          <p className="flex items-center gap-2 text-xl mb-4">
+          <p
+            className={`flex items-center gap-2 text-xl mb-4 ${
+              appointment?.is_active !== 1 && "line-through"
+            }`}
+          >
             <span className="flex-none w-6">
               <svg
                 width="25"
@@ -146,7 +156,11 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             <span>{appointment?.clinic_name}</span>
           </p>
 
-          <p className="flex items-center gap-2 text-xl mb-4">
+          <p
+            className={`flex items-center gap-2 text-xl mb-4 ${
+              appointment?.is_active !== 1 && "line-through"
+            }`}
+          >
             <span className="flex-none w-6">
               <svg
                 width="25"
@@ -167,7 +181,11 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             <span>{moment(appointment?.date).format("dddd, D MMM, YYYY")}</span>
           </p>
 
-          <p className="flex items-center gap-2 text-xl mb-4">
+          <p
+            className={`flex items-center gap-2 text-xl mb-4 ${
+              appointment?.is_active !== 1 && "line-through"
+            }`}
+          >
             <span className="flex-none w-6">
               <svg
                 width="21"
@@ -188,13 +206,15 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             <span>{timeString}</span>
           </p>
         </div>
-
-        <p className="underline text-sm my-8">+ Add to Calendar</p>
-
+        {appointment?.is_active == 1 && (
+          <p className="underline text-sm my-8 cursor-pointer">
+            + Add to Calendar
+          </p>
+        )}
         <Button
           color="secondary"
           label="Done"
-          className="w-52 h-12 px-3 py-2"
+          className="w-52 h-12 px-3 py-2 mt-3"
           onClick={() => router.push("/appointments")}
         />
       </div>
