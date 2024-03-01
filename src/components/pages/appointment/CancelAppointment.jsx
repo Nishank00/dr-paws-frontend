@@ -8,7 +8,7 @@ import { useToast } from "@/components/ui/ToastProvider";
 
 const CancelAppointment = ({ appointment_id }) => {
   // variables
-  const { showToast } = useToast();
+  const showToast = useToast();
   const router = useRouter();
   const [cancelReasons, setCancelReasons] = useState([]);
   const [selectedCancelReason, setSelectedCancelReason] = useState(null);

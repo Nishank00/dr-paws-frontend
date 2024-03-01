@@ -2,11 +2,12 @@ import { useState } from "react";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import AuthService from "@/services/Auth.service";
-import useToast from "@/components/ui/Toast";
 import UploadProfile from "./UploadProfile";
+import { useToast } from "../ui/ToastProvider";
 
 const RegisterForm = ({ onSuccess, loginClicked }) => {
-  const { showToast, ToastComponent } = useToast();
+  // Variables
+  const showToast = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState({
     profile_image: null,
@@ -16,6 +17,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     confirm_password: null,
   });
 
+  // Methods
   const handleNext = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -40,12 +42,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
 
     AuthService.register(payload)
       .then((response) => {
-        if (!response.data.status) {
-          showToast(response.data.message, "warning");
-          console.log("False received");
-          return;
-        }
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+
         onSuccess();
+        return showToast(response.data.message, "success");
       })
       .catch((error) => {
         console.error(error);

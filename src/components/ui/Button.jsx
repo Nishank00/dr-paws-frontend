@@ -10,7 +10,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${className} ${color}-btn`}
+      className={`flex items-center justify-center gap-1 ${className} ${color}-btn`}
       onClick={onClick}
     >
       {label}

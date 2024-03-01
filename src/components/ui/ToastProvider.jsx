@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from "react";
+// toast.js
+import React, { createContext, useContext, useState } from "react";
 import Toast from "./Toast";
 
 const ToastContext = createContext();
@@ -10,16 +11,15 @@ export const ToastProvider = ({ children }) => {
 
   const showToast = (message, type) => {
     setToast({ message, type });
-  };
-
-  const hideToast = () => {
-    setToast(null);
+    setTimeout(() => {
+      setToast(null);
+    }, 5000);
   };
 
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={showToast}>
       {children}
-      <Toast toast={toast} onClose={hideToast} />
+      {toast && <Toast message={toast.message} type={toast.type} />}
     </ToastContext.Provider>
   );
 };

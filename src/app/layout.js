@@ -25,11 +25,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <style>
-          @import url( https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap)
-        </style>
-      </head>
       <body className={inter.className + open.variable}>
         <App>{children}</App>
       </body>

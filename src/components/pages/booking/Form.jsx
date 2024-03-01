@@ -8,11 +8,12 @@ import ClinicService from "@/services/Clinic.service";
 import moment from "moment";
 import PetService from "@/services/Pet.Service";
 import BookingService from "@/services/Booking.service";
-import { Router } from "react-router-dom";
 import { redirect, useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/ToastProvider";
 
 const Form = () => {
   // Variables
+  const showToast = useToast();
   const router = useRouter();
   const totalPages = 3;
   const [currentPage, setCurrentPage] = useState(1);
@@ -81,6 +82,7 @@ const Form = () => {
     const appointment = {
       clinic_id: null,
       doctor_id: null,
+      user_id,
       date: moment(selectedDate).format("YYYY-MM-DD"),
       start_time: selectedStartTime,
       end_time: endTime,
@@ -123,12 +125,14 @@ const Form = () => {
 
     BookingService.bookAppointment(payload)
       .then((response) => {
-        if (response.data.status) {
-          getPets();
-          console.log("response.data.data => ", response.data.data);
-          const appointment_id = response.data.data.appointment_id;
-          router.push(`/booking/${appointment_id}`);
-        }
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+
+        showToast(response.data.message, "success");
+        getPets();
+        const appointment_id = response.data.data.appointment_id;
+        router.push(`/booking/${appointment_id}`);
+        return;
       })
       .catch((error) => console.log(error.message));
   };

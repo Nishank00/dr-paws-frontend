@@ -189,7 +189,7 @@ const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
 
         <p className="underline text-sm mt-8 mb-6">+ Add to Calendar</p>
 
-        {isUpcoming && (
+        {isUpcoming && appointment?.is_active == 1 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
             <Button
               onClick={onClickCancel}
