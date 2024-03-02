@@ -75,7 +75,7 @@ const OverviewTabs = () => {
 
         {services &&
           services.map((service, index) => (
-<Module title={service.name}>
+<Module key={index} title={service.name}>
 <div className="w-full py-2 md:w-[80%] md:m-auto">
           <p className="  font-semibold text-md  font-custom-open-sans italic mt-2 mb-5 text-primary text-center">
             Regular check-ups and preventative measures are essential to keep your
