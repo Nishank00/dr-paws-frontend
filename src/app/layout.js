@@ -11,7 +11,11 @@ import App from './App'
 //   display: 'swap',
 // })
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+   subsets: ['latin'],
+  variable:"--font-inter"
+  });
+
 const open = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans"
@@ -25,7 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className + open.variable}>
+      <body className={`${inter.className} ${ open.variable}`}>
         <App>{children}</App>
       </body>
     </html>

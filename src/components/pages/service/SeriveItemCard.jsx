@@ -14,7 +14,7 @@ const SeriveItemCard = ({name}) => {
     <img className=' w-[180px] h-[180px] rounded-full' src="/petting-dog.png" alt="Profile Image" />
 
     </div>
-    <p className="text-primary text-center">{name}</p>
+    <h3 className="text-primary text-lg font-custom-open-sans text-center">{name}</h3>
   </div>
   )
 }

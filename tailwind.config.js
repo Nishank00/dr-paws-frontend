@@ -26,11 +26,10 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
+        'custom-open-sans':'[var(--font-open-sans)]',
         'custom-roca': ['Roca Bold, sans-serif'],
-        'custom-open-sans': ["Open Sans", "sans-serif"],
-        'custom-inter':["Inter", "sans-serif"]
-
-
+        // 'custom-open-sans': ["Open Sans", "sans-serif"],
+        'custom-inter':`[var(--font-inter)]`
 
       },
     },

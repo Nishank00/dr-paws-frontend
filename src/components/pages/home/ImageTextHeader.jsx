@@ -50,7 +50,7 @@ const ImageTextHeader = ({
         </div>
       </div> */}
       <div className=" w-[300px] lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5 pb-12 overflow-hidden bg-white">
-        <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
+      <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
               backgroundImage: "url(" + imageUrl + ")",

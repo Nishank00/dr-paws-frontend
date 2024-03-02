@@ -5,6 +5,7 @@ import DoctorProfileCard from "./DoctorProfileCard";
 import Popup from "@/components/ui/Popup";
 import UserService from "@/services/User.Service";
 import ProfilePopupUI from "./ProfilePopupUI";
+import ImageHeader from "@/components/ui/ImageHeader";
 
 const TeamPage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -35,7 +36,7 @@ const TeamPage = () => {
   return (
     <div className="body-padding-x text-primary">
       <div className="mt-14">
-        <ImageTextHeader
+        <ImageHeader
           imageUrl={"/image139.png"}
           imagePosition={"left"}
           header={"Meet our very own Superheroes"}
@@ -44,11 +45,12 @@ const TeamPage = () => {
           }
           buttonVisibility={false}
         />
+
       </div>
 
-      <h2 className="text-center text-3xl">Our Team</h2>
+      <h2 className="text-center text-primary  font-custom-roca text-4xl">Our Team</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className=" mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {doctors.map((doctor) => (
           <DoctorProfileCard
             key={doctor.id}
