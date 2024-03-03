@@ -22,15 +22,15 @@ const SelectServicePage = ({ services = [], setServices, className = "" }) => {
   const openPopup = () => setPopupOpen(true);
   const closePopup = () => setPopupOpen(false);
 
-  useEffect(() => {
-    console.log("services =>", services);
-    setServices(
-      services.map((service) => ({
-        ...service,
-        is_checked: false,
-      }))
-    );
-  }, []);
+  // useEffect(() => {
+  //   console.log("services =>", services);
+  //   setServices(
+  //     services.map((service) => ({
+  //       ...service,
+  //       is_checked: false,
+  //     }))
+  //   );
+  // }, []);
 
   return (
     <>

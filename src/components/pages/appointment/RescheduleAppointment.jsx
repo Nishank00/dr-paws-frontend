@@ -6,69 +6,71 @@ import { useRouter } from "next/navigation";
 import BookingService from "@/services/Booking.service";
 import { useToast } from "@/components/ui/ToastProvider";
 
-const CancelAppointment = ({ appointment_id }) => {
+const RescheduleAppointment = ({ appointment_id }) => {
   // variables
   const showToast = useToast();
   const router = useRouter();
-  const [cancelReasons, setCancelReasons] = useState([]);
-  const [selectedCancelReason, setSelectedCancelReason] = useState(null);
+  const [rescheduleReasons, setRescheduleReasons] = useState([]);
+  const [selectedRescheduleReason, setSelectedRescheduleReason] =
+    useState(null);
 
   // Methods
-  const getCancelReasons = () => {
-    MasterService.getMastersByCode({ code: "CANCEL_REASON" })
+  const getRescheduleReasons = () => {
+    MasterService.getMastersByCode({ code: "RESCHEDULE_REASON" })
       .then((response) => {
         if (response.data.status) {
-          setCancelReasons(response.data.data);
+          setRescheduleReasons(response.data.data);
         }
       })
       .catch((error) => console.log(error.message));
   };
 
-  const cancelBooking = () => {
-    if (!selectedCancelReason)
+  const RescheduleBooking = () => {
+    if (!selectedRescheduleReason)
       return showToast("Reason not specified", "warning");
 
-    const payload = {
-      appointment_id,
-      reason_id: selectedCancelReason.id,
-      description: null,
-    };
+    router.push(`/booking?id=${appointment_id}`);
+    // const payload = {
+    //   appointment_id,
+    //   reason_id: selectedCancelReason.id,
+    //   description: null,
+    // };
 
-    BookingService.cancelBooking(payload)
-      .then((response) => {
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
-        if (response.data.status) {
-          showToast(response.data.message, "success");
-          return router.push(`/booking/${appointment_id}`);
-        }
-      })
-      .catch((error) => {
-        console.error("Error: ", error.message);
-        return showToast(error.message, "error");
-      });
+    // BookingService.cancelBooking(payload)
+    //   .then((response) => {
+    //     if (!response.data.status)
+    //       return showToast(response.data.message, "warning");
+    //     if (response.data.status) {
+    //       showToast(response.data.message, "success");
+    //       return router.push(`/booking/${appointment_id}`);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error: ", error.message);
+    //     return showToast(error.message, "error");
+    //   });
   };
 
   useEffect(() => {
-    getCancelReasons();
+    getRescheduleReasons();
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center my-16 text-center">
-      <h2 className="font-bold text-4xl flex gap-2 mb-8">Cancel Booking</h2>
+      <h2 className="font-bold text-4xl flex gap-2 mb-8">Reschedule Booking</h2>
 
       <div className="bg-primary4 px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg">
         <h3 className="text-2xl font-extrabold ">
-          Are you sure you want to cancel this booking?
+          Are you sure you want to reschedule this booking?
         </h3>
-        <p>You will receive a cancellation email for the booking</p>
+        <p>You will receive an email for the rescheduled booking</p>
 
-        <div className="my-10 text-left">
+        <div className="my-10">
           <RadioButtonGroup
-            options={cancelReasons}
-            selectedOption={selectedCancelReason}
+            options={rescheduleReasons}
+            selectedOption={selectedRescheduleReason}
             onChange={(selectedOption) => {
-              setSelectedCancelReason(selectedOption);
+              setSelectedRescheduleReason(selectedOption);
             }}
           />
         </div>
@@ -82,7 +84,7 @@ const CancelAppointment = ({ appointment_id }) => {
           />
 
           <Button
-            onClick={cancelBooking}
+            onClick={RescheduleBooking}
             color="primary4"
             label="Yes"
             className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
@@ -93,4 +95,4 @@ const CancelAppointment = ({ appointment_id }) => {
   );
 };
 
-export default CancelAppointment;
+export default RescheduleAppointment;

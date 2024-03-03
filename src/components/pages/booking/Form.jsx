@@ -8,15 +8,19 @@ import ClinicService from "@/services/Clinic.service";
 import moment from "moment";
 import PetService from "@/services/Pet.Service";
 import BookingService from "@/services/Booking.service";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/ToastProvider";
+import { useLoader } from "@/components/ui/LoaderContext";
 
 const Form = () => {
   // Variables
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const showToast = useToast();
   const router = useRouter();
+  const { startLoading, stopLoading } = useLoader();
   const totalPages = 3;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(id ? 3 : 1);
   const [doctors, setDoctors] = useState([]);
   const [user_id, setUserID] = useState(null);
   const [services, setServices] = useState([]);
@@ -25,6 +29,7 @@ const Form = () => {
   const [selectedClinic, setSelectedClinic] = useState({});
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [appointment, setAppointment] = useState(null);
 
   // Methods
   const getPets = () => {
@@ -55,13 +60,14 @@ const Form = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  const getServices = async () => {
+  const getServices = () => {
     MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
       .then((response) => {
         if (response.data.status) {
           setServices(
             response.data.data.map((item) => ({
               ...item,
+              is_checked: false,
               pets: pets.map((pet) => ({ ...pet, isSelected: false })),
             }))
           );
@@ -71,13 +77,9 @@ const Form = () => {
   };
 
   const onConfirmBooking = () => {
-    const selectedStartTime = moment(
-      selectedSlot.formattedTime,
-      "hh:mm:ss"
-    ).format("hh:mm:ss");
-    const endTime = moment(selectedSlot.formattedTime, "hh:mm:ss")
-      .add(1, "hour")
-      .format("hh:mm:ss");
+    startLoading();
+    const selectedStartTime = selectedSlot.sqlStartTime;
+    const endTime = selectedSlot.sqlEndTime;
 
     const appointment = {
       clinic_id: null,
@@ -87,6 +89,7 @@ const Form = () => {
       start_time: selectedStartTime,
       end_time: endTime,
     };
+    if (id) appointment.id = id;
 
     clinics.map((clinic) => {
       if (clinic.selected) {
@@ -101,7 +104,7 @@ const Form = () => {
     });
 
     if (!appointment.clinic_id || !appointment.doctor_id) {
-      return alert("Please select Clinic and Doctor");
+      return showToast("Please select Clinic and Doctor", "warning");
     }
 
     const appointment_items = [];
@@ -121,10 +124,9 @@ const Form = () => {
 
     const payload = { appointment, appointment_items };
 
-    console.log("payload => ", payload);
-
     BookingService.bookAppointment(payload)
       .then((response) => {
+        stopLoading();
         if (!response.data.status)
           return showToast(response.data.message, "warning");
 
@@ -134,7 +136,67 @@ const Form = () => {
         router.push(`/booking/${appointment_id}`);
         return;
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        stopLoading();
+        console.log(error.message);
+      });
+  };
+
+  const getAppointment = () => {
+    BookingService.getAppointment(id)
+      .then((response) => {
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+
+        console.log("response.data.data => ", response.data.data[0]);
+        setAppointment(response.data.data[0]);
+      })
+      .catch((error) => {
+        showToast(error.message, "error");
+      });
+  };
+
+  const prepareForm = () => {
+    console.log("runnig prepare form");
+    if (!appointment) return showToast("Appointment not found", "warning");
+    if (!services || services.length == 0)
+      return showToast("Services not found", "warning");
+
+    // setSelectedDate(new Date(appointment.date));
+    // setSelectedSlot({ formattedTime: appointment.start_time, selected: true });
+    setServices(
+      services.map((service) => {
+        appointment.appointment_items.map((appointment_item) => {
+          if (service.id == appointment_item.service_id) {
+            service.is_checked = true;
+            service.pets = service.pets.map((pet) => {
+              if (pet.id == appointment_item.pet_id) {
+                pet.isSelected = true;
+              }
+              return pet;
+            });
+          }
+        });
+        return service;
+      })
+    );
+
+    setClinics(
+      clinics.map((clinic) => {
+        if (clinic.id == appointment.clinic_id) {
+          clinic.selected = true;
+          setSelectedClinic(clinic);
+          clinic.clinic_doctors.forEach((clinic_doctor) => {
+            clinic_doctor.selected = false;
+            if (clinic_doctor.id == appointment.doctor_id) {
+              clinic_doctor.selected = true;
+            }
+          });
+          setDoctors(clinic.clinic_doctors);
+        }
+        return clinic;
+      })
+    );
   };
 
   const renderPage = () => {
@@ -189,6 +251,17 @@ const Form = () => {
     if (pets.length > 0) getServices();
   }, [pets]);
 
+  useEffect(() => {
+    console.log("services =>", services);
+    if (id && !appointment && services && services.length > 0) getAppointment();
+  }, [services]);
+
+  useEffect(() => {
+    if (appointment && services) {
+      prepareForm();
+    }
+  }, [appointment]);
+
   return (
     <div className="text-primary">
       <div className="pt-4">
@@ -215,8 +288,8 @@ const Form = () => {
           <span className="text-xl ml-2 font-open-sans">{"Back"}</span>
         </button>
       </div>
-      <div className="mt-4 min-h-[100vh]">{renderPage()}</div>
-      <div className="my-4 text-center">
+      <div className="mt-4 min-h-[60vh]">{renderPage()}</div>
+      <div className="my-4 flex items-center justify-center">
         {currentPage < totalPages && (
           <Button
             color="secondary"

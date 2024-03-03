@@ -40,7 +40,14 @@ const SelectDoctorAndDateTimePage = ({
     let currentTime = moment(openingMoment);
     while (currentTime <= closingMoment) {
       const formattedTime = currentTime.format("hh:mma");
-      timeArray.push({ formattedTime, selected: false });
+      const sqlStartTime = currentTime.format("HH:mm:ss");
+      const sqlEndTime = currentTime.add(1, "hour").format("HH:mm:ss");
+      timeArray.push({
+        formattedTime,
+        sqlStartTime,
+        sqlEndTime,
+        selected: false,
+      });
       currentTime.add(1, "hour");
     }
 
@@ -72,7 +79,9 @@ const SelectDoctorAndDateTimePage = ({
     );
   };
 
-  const router = useRouter();
+  useEffect(() => {
+    if (selectedDate) dateSelected(selectedDate);
+  }, [selectedClinic]);
 
   return (
     <div className={className}>
@@ -98,7 +107,7 @@ const SelectDoctorAndDateTimePage = ({
                 <DoctorSelect
                   key={"doctor" + i}
                   doctor={doctor}
-                  selected={doctor.selected}
+                  selected={doctor?.selected}
                   onClick={() => {
                     setDoctors(
                       doctors.map((d, index) => {
@@ -120,9 +129,9 @@ const SelectDoctorAndDateTimePage = ({
               </h2>
               <p className="text-primary mb-6"> Book a spot for your visit</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pb-10 items-start justify-start">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
                 <div className="col-span-2">
-                  <Calendar onSelect={dateSelected} />
+                  <Calendar selected={selectedDate} onSelect={dateSelected} />
                 </div>
 
                 <div className="text-primary font-semibold">
@@ -140,7 +149,7 @@ const SelectDoctorAndDateTimePage = ({
                           availableSlots.map((avaliableSlot, index) => (
                             <div key={"slot" + index}>
                               {avaliableSlot.selected ? (
-                                <div className="grid grid-cols-2 gap-2 w-full sm:w-60">
+                                <div className="grid grid-cols-2 gap-2 w-full sm:max-w-60">
                                   <div className="rounded-lg shadow-lg bg-primary4 border-2 border-primary w-full sm:w-30 py-4 flex items-center justify-center mb-3">
                                     <span>{avaliableSlot.formattedTime}</span>
                                   </div>
@@ -154,7 +163,7 @@ const SelectDoctorAndDateTimePage = ({
                               ) : (
                                 <div
                                   onClick={() => slotClicked(avaliableSlot)}
-                                  className="rounded-lg shadow-lg bg-primary4 w-full sm:w-60 py-4 flex items-center justify-center mb-3 cursor-pointer hover:shadow-2xl"
+                                  className="rounded-lg shadow-lg bg-primary4 w-full sm:max-w-60 py-4 flex items-center justify-center mb-3 cursor-pointer hover:shadow-2xl"
                                 >
                                   <span>{avaliableSlot.formattedTime}</span>
                                 </div>
