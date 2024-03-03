@@ -3,9 +3,10 @@ import React from 'react';
 
 const PlanPopUp = ({ onClosePopup }) => {
   return (
-    <div className="flex">
+    <div className="flex md:w-[770px] bg-white">
     {/* Left Form */}
-    <form className="justify-between items-stretch self-stretch bg-white flex max-w-[249px] flex-col text-sm pt-12 pb-5 px-5 rounded-2xl">
+    <div className=''>
+
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/203598efe0aad57662374b2a714bf58c611e5057e88689988b20e81944beaf33?apiKey=392c8c276f1d4889be04ee754c529ee3&"
@@ -20,25 +21,25 @@ const PlanPopUp = ({ onClosePopup }) => {
       </div>
       <div className="text-slate-700 leading-6 mt-5">
         <span className="font-bold text-slate-700">Includes:</span>
-        <div>
-          <div>6 free-of-cost consultations every year</div>
-          <div>50% discount on additional consultations</div>
-          <div>Comprehensive vaccination programme</div>
-          <div>Annual deworming</div>
-          <div>10 free training sessions</div>
-          <div>10% discount on diagnostic tests and scans</div>
-          <div>10% off retail products & medicines</div>
-          <div>10% off any grooming service</div>
-        </div>
+        <ul>
+          <li>6 free-of-cost consultations every year</li>
+          <li>50% discount on additional consultations</li>
+          <li>Comprehensive vaccination programme</li>
+          <li>Annual deworming</li>
+          <li>10 free training sessions</li>
+          <li>10% discount on diagnostic tests and scans</li>
+          <li>10% off retail products & medicines</li>
+          <li>10% off any grooming service</li>
+        </ul>
       </div>
       <br />
       <button className="text-white text-base font-bold justify-center items-center bg-slate-400 mt-3 px-16 py-3.5 rounded-[86px]">
         Select
       </button>
-    </form>
+      </div>
 
     {/* Right Form */}
-    <form>
+    <form className='bg-white'>
       <header className="header">Choose a payment plan:</header>
 
       <div className="payment-option">
@@ -61,6 +62,9 @@ const PlanPopUp = ({ onClosePopup }) => {
       <button className="continue-button">Continue</button>
     </form>
   </div>
+  // <div className='w-[770px] h-10 bg-white'>
+
+  // </div>
   );
 };
 

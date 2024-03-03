@@ -38,17 +38,51 @@ const MembershipPage = () => {
                     imagePosition={"left"}
                 />
             </div>
-            <div className="body-padding-x py-20 bg-primary3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+            <div className='w-full mt-14'>
+                <div className='w-full relative' >
+
+                    <div
+                        style={{
+                            clipPath: 'polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 6% 52%)',
+                            width: '70%',
+                            margin: 'auto',
+                            height: '73px',
+                            position: 'relative'
+                        }}
+                        className='bg-primary3'
+                    >
+                    </div>
+                    <div
+                        style={{
+                            clipPath: 'polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 6% 52%)',
+                            position: 'absolute',
+                            top: '-10px', // Adjust as needed for the gap between the two divs
+                            width: '70%',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            height: '73px'
+                        }}
+                        className='bg-primary2 flex justify-center items-center'
+                    >
+                        <h3 className='text-primary text-xl sm:text-4xl text-center font-bold font-custom-roca'>Become A Member</h3>
+                    </div>
+                </div>
+                <div className=" py-20  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
                 {memberships.map((membership, index) => (
                     <MembershipCard
                         key={index}
-                        image={membership.image}
+                        index={index}
+                        image={"/Membership/membership_card.png"}
                         title={membership.title}
                         description={membership.description}
                         includes={membership.items.membership_description}
                     />
                 ))}
             </div>
+
+            </div>
+
+
         </div>
     )
 }
