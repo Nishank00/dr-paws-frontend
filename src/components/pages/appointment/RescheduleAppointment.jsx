@@ -29,26 +29,9 @@ const RescheduleAppointment = ({ appointment_id }) => {
     if (!selectedRescheduleReason)
       return showToast("Reason not specified", "warning");
 
-    router.push(`/booking?id=${appointment_id}`);
-    // const payload = {
-    //   appointment_id,
-    //   reason_id: selectedCancelReason.id,
-    //   description: null,
-    // };
-
-    // BookingService.cancelBooking(payload)
-    //   .then((response) => {
-    //     if (!response.data.status)
-    //       return showToast(response.data.message, "warning");
-    //     if (response.data.status) {
-    //       showToast(response.data.message, "success");
-    //       return router.push(`/booking/${appointment_id}`);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error: ", error.message);
-    //     return showToast(error.message, "error");
-    //   });
+    return router.push(
+      `/booking?id=${appointment_id}&reason=${selectedRescheduleReason.id}`
+    );
   };
 
   useEffect(() => {

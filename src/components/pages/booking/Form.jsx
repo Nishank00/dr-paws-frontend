@@ -16,6 +16,7 @@ const Form = () => {
   // Variables
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const reason_id = searchParams.get("reason");
   const showToast = useToast();
   const router = useRouter();
   const { startLoading, stopLoading } = useLoader();
@@ -77,7 +78,6 @@ const Form = () => {
   };
 
   const onConfirmBooking = () => {
-    startLoading();
     const selectedStartTime = selectedSlot.sqlStartTime;
     const endTime = selectedSlot.sqlEndTime;
 
@@ -90,6 +90,7 @@ const Form = () => {
       end_time: endTime,
     };
     if (id) appointment.id = id;
+    if (reason_id) appointment.reason_id = reason_id;
 
     clinics.map((clinic) => {
       if (clinic.selected) {
@@ -123,7 +124,7 @@ const Form = () => {
     });
 
     const payload = { appointment, appointment_items };
-
+    startLoading();
     BookingService.bookAppointment(payload)
       .then((response) => {
         stopLoading();
@@ -133,8 +134,10 @@ const Form = () => {
         showToast(response.data.message, "success");
         getPets();
         const appointment_id = response.data.data.appointment_id;
-        router.push(`/booking/${appointment_id}`);
-        return;
+
+        return router.push(
+          `/booking/${appointment_id}${reason_id ? "?rescheduled=true" : ""}`
+        );
       })
       .catch((error) => {
         stopLoading();

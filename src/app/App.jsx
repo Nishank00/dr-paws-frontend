@@ -13,8 +13,6 @@ const App = ({ children }) => {
     window.location.pathname &&
     window.location.pathname.startsWith("/admin");
 
-  console.log("isAdminRoute => ", isAdminRoute);
-
   return (
     <div>
       <LoaderProvider>
