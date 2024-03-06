@@ -3,9 +3,9 @@ import React from 'react';
 
 const PlanPopUp = ({ onClosePopup }) => {
   return (
-    <div className="flex md:w-[770px] bg-white">
+    <div className="flex flex-col h-[400px] md:h-auto md:flex-row overflow-y-scroll rounded-lg bg-white">
     {/* Left Form */}
-    <div className=''>
+    <div className='md:w-[435px] p-4'>
 
       <img
         loading="lazy"
@@ -33,33 +33,33 @@ const PlanPopUp = ({ onClosePopup }) => {
         </ul>
       </div>
       <br />
-      <button className="text-white text-base font-bold justify-center items-center bg-slate-400 mt-3 px-16 py-3.5 rounded-[86px]">
-        Select
-      </button>
+     
       </div>
 
     {/* Right Form */}
-    <form className='bg-white'>
-      <header className="header">Choose a payment plan:</header>
+    <form className='bg-primary3 md:w-[435px] p-10'>
+      <header className="text-sm text-primary font-custom-open-sans font-bold">Choose a payment plan:</header>
 
-      <div className="payment-option">
-        <div className="price">₹6,999/yr</div>
-        <div className="duration">For 1 Year</div>
+      <div className="payment-option bg-white rounded-2xl mt-5 p-5">
+        <div className="font-custom-roca text-primary text-xl">₹6,999/yr</div>
+        <div className="text-sm font-custom-open-sans text-primary mt-2">For 1 Year</div>
       </div>
 
-      <div className="payment-option">
-        <div className="price">₹6,999/yr</div>
-        <div className="duration">For 2 Year</div>
+      <div className="payment-option bg-white rounded-2xl mt-5 p-5">
+        <div className="font-custom-roca text-primary text-xl">₹6,999/yr</div>
+        <div className="text-sm font-custom-open-sans text-primary mt-2">For 1 Year</div>
       </div>
 
-      <div className="payment-option">
-        <div className="price">₹5,499/yr</div>
-        <div className="duration">For 3 Year</div>
+      <div className="payment-option bg-white rounded-2xl mt-5 p-5">
+        <div className="font-custom-roca text-primary text-xl">₹5,499/yr</div>
+        <div className="text-sm font-custom-open-sans text-primary mt-2">For 3 Year</div>
       </div>
 
-      <div className="benefits">Total benefits worth ₹15,000</div>
+      <div className="text-sm text-primary font-custom-open-sans font-bold mt-5">Total benefits worth ₹15,000</div>
+<div className='w-full flex justify-end mt-5'>
+<button className="bg-secondary text-white h-10 w-[154px] rounded-full ">Continue</button>
 
-      <button className="continue-button">Continue</button>
+</div>
     </form>
   </div>
   // <div className='w-[770px] h-10 bg-white'>
