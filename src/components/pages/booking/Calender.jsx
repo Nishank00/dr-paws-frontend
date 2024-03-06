@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 
-const Calendar = ({ onSelect }) => {
+const Calendar = ({ onSelect, selected = null }) => {
   const [currentTime, setCurrentTime] = useState(moment().format("hh:mm A"));
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(selected);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const daysInMonth = (date) => {

@@ -5,7 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
+const AppointmentDetails = ({
+  appointment_id,
+  onClickCancel,
+  onClickReschedule,
+}) => {
   // Variables
   const router = useRouter();
   const [appointment, setAppointment] = useState({});
@@ -78,7 +82,7 @@ const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
   }, [appointment]);
 
   return (
-    <div className="flex flex-col items-center justify-center my-16">
+    <div className="flex flex-col items-center justify-center my-16 text-center">
       <h2 className="font-bold text-4xl flex gap-2 mb-8">Your Booking</h2>
 
       <div className="bg-primary4 px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg">
@@ -187,7 +191,9 @@ const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
           </p>
         </div>
 
-        <p className="underline text-sm mt-8 mb-6">+ Add to Calendar</p>
+        <p className="underline text-sm mt-8 mb-6 cursor-pointer">
+          + Add to Calendar
+        </p>
 
         {isUpcoming && appointment?.is_active == 1 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
@@ -199,6 +205,7 @@ const AppointmentDetails = ({ appointment_id, onClickCancel }) => {
             />
 
             <Button
+              onClick={onClickReschedule}
               color="primary4"
               label="Reschedule"
               className="w-full bg-inherit text-lg text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"

@@ -2,6 +2,7 @@ import { useState } from "react";
 import AppointmentDetails from "./AppointmentDetails";
 import { useRouter } from "next/navigation";
 import CancelAppointment from "./CancelAppointment";
+import RescheduleAppointment from "./RescheduleAppointment";
 
 const SingleAppointment = ({ appointment_id }) => {
   // Variables
@@ -19,7 +20,11 @@ const SingleAppointment = ({ appointment_id }) => {
   };
 
   const onClickCancel = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage(2);
+  };
+
+  const onClickReschedule = () => {
+    setCurrentPage(3);
   };
 
   return (
@@ -54,11 +59,16 @@ const SingleAppointment = ({ appointment_id }) => {
             <AppointmentDetails
               appointment_id={appointment_id}
               onClickCancel={onClickCancel}
+              onClickReschedule={onClickReschedule}
             />
           )}
 
           {currentPage === 2 && (
             <CancelAppointment appointment_id={appointment_id} />
+          )}
+
+          {currentPage === 3 && (
+            <RescheduleAppointment appointment_id={appointment_id} />
           )}
         </div>
       </div>

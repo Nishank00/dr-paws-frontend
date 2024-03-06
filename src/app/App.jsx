@@ -5,6 +5,7 @@ import AdminLayout from "@/components/layouts/admin/AdminLayout";
 import { useRouter } from "next/router";
 import { Open } from "@next/font/google";
 import { ToastProvider } from "@/components/ui/ToastProvider";
+import { LoaderProvider } from "@/components/ui/LoaderContext";
 
 const App = ({ children }) => {
   const isAdminRoute =
@@ -12,17 +13,17 @@ const App = ({ children }) => {
     window.location.pathname &&
     window.location.pathname.startsWith("/admin");
 
-  console.log("isAdminRoute => ", isAdminRoute);
-
   return (
     <div>
-      <ToastProvider>
-        {isAdminRoute ? (
-          <AdminLayout>{children}</AdminLayout>
-        ) : (
-          <MainLayout>{children}</MainLayout>
-        )}
-      </ToastProvider>
+      <LoaderProvider>
+        <ToastProvider>
+          {isAdminRoute ? (
+            <AdminLayout>{children}</AdminLayout>
+          ) : (
+            <MainLayout>{children}</MainLayout>
+          )}
+        </ToastProvider>
+      </LoaderProvider>
     </div>
   );
 };

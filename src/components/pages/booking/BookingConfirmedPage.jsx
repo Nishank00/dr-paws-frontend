@@ -2,16 +2,19 @@ import Button from "@/components/ui/Button";
 import BookingService from "@/services/Booking.service";
 import moment from "moment";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const BookingConfirmedPage = ({ appointment_id = 0 }) => {
   // Variables
+  const searchParams = useSearchParams();
+  const rescheduled = searchParams.get("rescheduled");
   const router = useRouter();
   const [appointment, setAppointment] = useState({});
   const [pets, setPets] = useState([]);
   const [doctor, setDoctor] = useState({});
   const [timeString, setTimeString] = useState("");
+  const [formerTimeString, setFormerTimeString] = useState("");
 
   // Methods
   const getAppointmentDetails = () => {
@@ -60,12 +63,35 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           : "End Time"
       }`
     );
+    if (rescheduled && appointment.appointment_logs) {
+      setFormerTimeString(
+        `${
+          appointment.appointment_logs &&
+          appointment.appointment_logs[0].start_time
+            ? moment(
+                appointment.appointment_logs[0]?.start_time,
+                "hh:mm:ss"
+              ).format("hh:mm A")
+            : "Start Time"
+        } - ${
+          appointment.appointment_logs &&
+          appointment.appointment_logs[0].end_time
+            ? moment(
+                appointment.appointment_logs[0]?.end_time,
+                "hh:mm:ss"
+              ).format("hh:mm A")
+            : "End Time"
+        }`
+      );
+    }
   }, [appointment]);
 
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
       <h2 className="font-bold text-4xl flex gap-2 mb-8">
-        {appointment && appointment.is_active == 1
+        {appointment && appointment.is_active == 1 && rescheduled
+          ? "Booking rescheduled"
+          : appointment && appointment.is_active == 1 && !rescheduled
           ? "Booking Confirmed"
           : "Booking Cancelled"}{" "}
         <svg
@@ -212,6 +238,67 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             </span>
             <span>{timeString}</span>
           </p>
+
+          {rescheduled &&
+            appointment &&
+            appointment.appointment_logs &&
+            appointment.appointment_logs[0] && (
+              <>
+                <p className="text-xl font-semibold mb-3 mt-10">
+                  Former Timings
+                </p>
+
+                <p
+                  className={`flex items-center gap-2 text-xl mb-4 line-through`}
+                >
+                  <span className="flex-none w-6">
+                    <svg
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.5 7.25V3.25M16.5 7.25V3.25M7.5 11.25H17.5M5.5 21.25H19.5C20.6046 21.25 21.5 20.3546 21.5 19.25V7.25C21.5 6.14543 20.6046 5.25 19.5 5.25H5.5C4.39543 5.25 3.5 6.14543 3.5 7.25V19.25C3.5 20.3546 4.39543 21.25 5.5 21.25Z"
+                        stroke="#5281A2"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>
+                    {moment(appointment?.appointment_logs[0].date).format(
+                      "dddd, D MMM, YYYY"
+                    )}
+                  </span>
+                </p>
+
+                <p
+                  className={`flex items-center gap-2 text-xl mb-4 line-through`}
+                >
+                  <span className="flex-none w-6">
+                    <svg
+                      width="21"
+                      height="21"
+                      viewBox="0 0 21 21"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.5 6.25V10.25L13.5 13.25M19.5 10.25C19.5 15.2206 15.4706 19.25 10.5 19.25C5.52944 19.25 1.5 15.2206 1.5 10.25C1.5 5.27944 5.52944 1.25 10.5 1.25C15.4706 1.25 19.5 5.27944 19.5 10.25Z"
+                        stroke="#5281A2"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>{formerTimeString}</span>
+                </p>
+              </>
+            )}
         </div>
         {appointment?.is_active == 1 && (
           <p className="underline text-sm my-8 cursor-pointer">

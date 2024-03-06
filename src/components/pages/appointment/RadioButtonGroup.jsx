@@ -7,7 +7,7 @@ const RadioButtonGroup = ({
 }) => {
   return (
     <div className="flex flex-col gap-2 space-y-2">
-      {options.map((option) => (
+      {options?.map((option) => (
         <label key={option.id} className="inline-flex items-center w-full">
           <input
             type="radio"
