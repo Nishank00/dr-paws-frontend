@@ -112,7 +112,7 @@ const PaymentsLeft = () => {
                             <input type="checkbox" />
                         </div>
                         <div className='pl-2'>
-                            <h4 className='text-xs font-custom-open-sans text-primary'>By clicking on ‘Subscribe’ you accept Dr. Paws's Terms & Conditions. We will process your personal data in accordance with Design anything’s Privacy Notice.</h4>
+                            <h4 className='text-xs font-custom-open-sans text-primary'>By clicking on &aposSubscribe&apos you accept Dr. Paws's Terms & Conditions. We will process your personal data in accordance with Design anything’s Privacy Notice.</h4>
                         </div>
                     </div>
                     <div className='w-full flex justify-start m-4'>
