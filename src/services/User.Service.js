@@ -13,14 +13,16 @@ export default {
     return API().post(`user/updateProfile`, payload)
   },
 
+  saveBillingDetails(payload) {
+    return API().post("user/updateBillingDetails", payload)
+  },
+
+  getBillingDetails(params) {
+    return API().get("user/getBillingDetails", { params })
+  },
+
   getDoctors() {
-    return API().get(`doctors`)
+    return API().get(`doctor`)
   },
-  saveBillingDetails(payload){
-    return API().post("user/updateBillingDetails",payload)
-  },
-  getBillingDetails(params){
-    return API().get("user/getBillingDetails",{params})
-  }
 
 }

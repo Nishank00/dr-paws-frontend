@@ -1,36 +1,28 @@
-import React, { useEffect } from "react";
-import Popup from "@/components/ui/Popup";
 import SelectServiceItem from "@/components/pages/booking/SelectServiceItem";
-import PetForm from "../petProile/PetForm";
-import { useState } from "react";
 
-const SelectServicePage = ({ services = [], setServices, className = "" }) => {
-  // Variables
-  const [isPopupOpen, setPopupOpen] = useState(false);
-
+const SelectServicePage = ({
+  services = [],
+  setServices,
+  className = "",
+  openPopup,
+  closePopup,
+}) => {
   // Methods
-  const checkUncheckItem = (item) =>
+  const toggleService = (service) =>
     setServices(
-      services.map((service) => {
-        if (service.id == item.id) {
-          service.is_checked = !service.is_checked;
+      services.map((s) => {
+        if (s.id === service.id) {
+          s.is_checked = !s.is_checked;
+          if (!s.is_checked) {
+            s.pets.map((pet) => {
+              pet.isSelected = false;
+              return pet;
+            });
+          }
         }
-        return service;
+        return s;
       })
     );
-
-  const openPopup = () => setPopupOpen(true);
-  const closePopup = () => setPopupOpen(false);
-
-  // useEffect(() => {
-  //   console.log("services =>", services);
-  //   setServices(
-  //     services.map((service) => ({
-  //       ...service,
-  //       is_checked: false,
-  //     }))
-  //   );
-  // }, []);
 
   return (
     <>
@@ -55,15 +47,12 @@ const SelectServicePage = ({ services = [], setServices, className = "" }) => {
                 service={service}
                 services={services}
                 setServices={setServices}
-                onChange={checkUncheckItem}
+                onChange={toggleService}
                 openPetPopup={openPopup}
               />
             ))}
         </div>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup}>
-        <PetForm closePopup={closePopup} />
-      </Popup>
     </>
   );
 };

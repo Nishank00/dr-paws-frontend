@@ -4,8 +4,11 @@ import React, { useEffect, useState } from "react";
 import Select from "@/components/ui/Select";
 import PetService from "@/services/Pet.Service";
 import UploadProfile from "@/components/auth/UploadProfile";
+import { useToast } from "@/components/ui/ToastProvider";
 
-const PetForm = ({ closePopup, pet_id }) => {
+const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
+  // Variables
+  const showToast = useToast();
   const [formData, setFormData] = useState({
     pet_image: null,
     name: null,
@@ -23,6 +26,7 @@ const PetForm = ({ closePopup, pet_id }) => {
     { value: "FEMALE", label: "Female" },
   ]);
 
+  // Methods
   const profileUploaded = (filename) => {
     setFormData({ ...formData, pet_image: filename });
   };
@@ -78,13 +82,16 @@ const PetForm = ({ closePopup, pet_id }) => {
     PetService.savePet(payload)
       .then((response) => {
         if (response.data.status) {
+          showToast("Pet Added Successfully", "success");
           console.log(response.data.data);
+          onPetAdded();
           closePopup();
         }
       })
       .catch((error) => console.log(error.message));
   };
 
+  // Lifecycle Hooks
   useEffect(() => {
     getPetsType();
   }, []);

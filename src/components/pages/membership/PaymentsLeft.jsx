@@ -1,11 +1,11 @@
-import React from 'react'
-import { IoChevronBackOutline } from 'react-icons/io5';
-import { VisaIcon } from '@/components/ui/Icons';
+import React from "react";
+import { IoChevronBackOutline } from "react-icons/io5";
+import { VisaIcon } from "@/components/ui/Icons";
 
 const PaymentsLeft = () => {
-    return (
-        <>
-            {/* <div className='flex'>
+  return (
+    <>
+      {/* <div className='flex'>
                 <div className="flex-1">
                     <div className=' bg-primary4  '>
                         <form className="self-stretch flex max-w-[842px] flex-col justify-center px-6 sm:px-10 lg:px-16 py-6 sm:py-8 lg:py-11 mx-auto">
@@ -58,73 +58,130 @@ const PaymentsLeft = () => {
                     </div>
                 </div>
             </div> */}
-            <div className='w-full flex flex-col justify-center items-center bg-primary4'>
-                <div className='w-[70%] p-2 h-auto  mt-10'>
-                    <div className="flex items-center">
-                        <IoChevronBackOutline className="text-2xl" color='#33495F' />
-                        <button className="text-primary font-custom-open-sans text-sm ml-1">Back</button>
-                    </div>
-                    <h1 className="text-primary text-[40px] font-custom-roca font-bold tracking-tighter mt-2  max-w-full">Enter payment details</h1>
-                    <div className='w-full mt-4'>
-                        <h4 className="text-primary text-md ">Sign in as</h4>
-                        <h4 className="text-primary text-md  ">unicorn2023@gmail.com</h4>
-                    </div>
-                    <div>
-                        <h2 className="text-primary text-xl  font-custom-open-sans font-bold mt-8 max-md:max-w-full">Your payment details</h2>
-                        <div className='flex justify-between mt-5'>
-                            <div className="w-[48%] flex flex-col ">
-                                <label className="text-primary text-sm font-custom-open-sans">First name</label>
-                                <input className="text-primary text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="first-name" aria-label="First name" />
-                            </div>
-                            <div className=" w-[48%]   flex flex-col">
-                                <label className="text-primary text-sm font-sans">Last name</label>
-                                <input className="text-primary text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="last-name" aria-label="Last name" />
-                            </div>
-                        </div>
-                        <div className=" w-full   flex flex-col mt-5 ">
-                            <label className="text-primary text-sm font-custom-open-sans">Card Details</label>
-                            <div className='flex h-11 justify-between mt-2 items-center px-2 border  bg-white'>
-                                <input placeholder='1234 1234 1234 1234' className="text-primary text-base  focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="last-name" aria-label="Last name" />
-                                <VisaIcon />
-                            </div>
-                        </div>
-                        <div className='flex justify-between mt-2'>
-                            <div className="w-[48%] flex flex-col ">
-                                <input placeholder='MM/YY' className="text-slate-700 text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="first-name" aria-label="First name" />
-                            </div>
-                            <div className=" w-[48%]   flex flex-col">
-                                <input placeholder='CVV' className="text-slate-700 text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="last-name" aria-label="Last name" />
-                            </div>
-                        </div>
-                        <div className=" w-full   flex flex-col mt-5 ">
-                            <label className="text-primary text-sm font-custom-open-sans">Name on Card</label>
-                            <input className="text-primary text-base border focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="last-name" aria-label="Last name" />
-                        </div>
-                        <div className=" w-full   flex flex-col mt-5 ">
-                            <label className="text-primary text-sm font-custom-open-sans">country or region</label>
-                            <input className="text-primary text-base border focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5" type="text" id="last-name" aria-label="Last name" />
-                        </div>
-                    </div>
-                </div>
-                <div className='w-[70%]  p-2 h-auto '>
-                    <div className='flex'>
-                        <div>
-                            <input type="checkbox" />
-                        </div>
-                        <div className='pl-2'>
-                            <h4 className='text-xs font-custom-open-sans text-primary'>By clicking on &aposSubscribe&apos you accept Dr. Paws's Terms & Conditions. We will process your personal data in accordance with Design anything’s Privacy Notice.</h4>
-                        </div>
-                    </div>
-                    <div className='w-full flex justify-start m-4'>
-                    <button className='w-[210px] h-[50px] bg-secondary text-white rounded-full ' >
-                        Subscribe
-                    </button>
-                </div>
-                </div>
-               
+      <div className="w-full flex flex-col justify-center items-center bg-primary4">
+        <div className="w-[70%] p-2 h-auto  mt-10">
+          <div className="flex items-center">
+            <IoChevronBackOutline className="text-2xl" color="#33495F" />
+            <button className="text-primary font-custom-open-sans text-sm ml-1">
+              Back
+            </button>
+          </div>
+          <h1 className="text-primary text-[40px] font-custom-roca font-bold tracking-tighter mt-2  max-w-full">
+            Enter payment details
+          </h1>
+          <div className="w-full mt-4">
+            <h4 className="text-primary text-md ">Sign in as</h4>
+            <h4 className="text-primary text-md  ">unicorn2023@gmail.com</h4>
+          </div>
+          <div>
+            <h2 className="text-primary text-xl  font-custom-open-sans font-bold mt-8 max-md:max-w-full">
+              Your payment details
+            </h2>
+            <div className="flex justify-between mt-5">
+              <div className="w-[48%] flex flex-col ">
+                <label className="text-primary text-sm font-custom-open-sans">
+                  First name
+                </label>
+                <input
+                  className="text-primary text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                  type="text"
+                  id="first-name"
+                  aria-label="First name"
+                />
+              </div>
+              <div className=" w-[48%]   flex flex-col">
+                <label className="text-primary text-sm font-sans">
+                  Last name
+                </label>
+                <input
+                  className="text-primary text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                  type="text"
+                  id="last-name"
+                  aria-label="Last name"
+                />
+              </div>
             </div>
-        </>
-    )
-}
+            <div className=" w-full   flex flex-col mt-5 ">
+              <label className="text-primary text-sm font-custom-open-sans">
+                Card Details
+              </label>
+              <div className="flex h-11 justify-between mt-2 items-center px-2 border  bg-white">
+                <input
+                  placeholder="1234 1234 1234 1234"
+                  className="text-primary text-base  focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                  type="text"
+                  id="last-name"
+                  aria-label="Last name"
+                />
+                <VisaIcon />
+              </div>
+            </div>
+            <div className="flex justify-between mt-2">
+              <div className="w-[48%] flex flex-col ">
+                <input
+                  placeholder="MM/YY"
+                  className="text-slate-700 text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                  type="text"
+                  id="first-name"
+                  aria-label="First name"
+                />
+              </div>
+              <div className=" w-[48%]   flex flex-col">
+                <input
+                  placeholder="CVV"
+                  className="text-slate-700 text-base border h-11 bg-white justify-center mt-2 pl-4 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                  type="text"
+                  id="last-name"
+                  aria-label="Last name"
+                />
+              </div>
+            </div>
+            <div className=" w-full   flex flex-col mt-5 ">
+              <label className="text-primary text-sm font-custom-open-sans">
+                Name on Card
+              </label>
+              <input
+                className="text-primary text-base border focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                type="text"
+                id="last-name"
+                aria-label="Last name"
+              />
+            </div>
+            <div className=" w-full   flex flex-col mt-5 ">
+              <label className="text-primary text-sm font-custom-open-sans">
+                country or region
+              </label>
+              <input
+                className="text-primary text-base border focus:border-transparent focus:outline-none bg-white justify-center h-10 w-full pl-1 pr-16 py-3 rounded-md border-solid items-start max-md:pr-5"
+                type="text"
+                id="last-name"
+                aria-label="Last name"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-[70%]  p-2 h-auto ">
+          <div className="flex">
+            <div>
+              <input type="checkbox" />
+            </div>
+            <div className="pl-2">
+              <h4 className="text-xs font-custom-open-sans text-primary">
+                By clicking on &aposSubscribe&apos you accept Dr. Paws's Terms &
+                Conditions. We will process your personal data in accordance
+                with Design anything&pos;s Privacy Notice.
+              </h4>
+            </div>
+          </div>
+          <div className="w-full flex justify-start m-4">
+            <button className="w-[210px] h-[50px] bg-secondary text-white rounded-full ">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default PaymentsLeft;

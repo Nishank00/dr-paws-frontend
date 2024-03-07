@@ -11,6 +11,8 @@ import BookingService from "@/services/Booking.service";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/ToastProvider";
 import { useLoader } from "@/components/ui/LoaderContext";
+import Popup from "@/components/ui/Popup";
+import PetForm from "../petProile/PetForm";
 
 const Form = () => {
   // Variables
@@ -31,8 +33,11 @@ const Form = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [appointment, setAppointment] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   // Methods
+  const openPopup = () => setPopupOpen(true);
+  const closePopup = () => setPopupOpen(false);
   const getPets = () => {
     PetService.getPetsByUserId(user_id)
       .then((response) => {
@@ -208,6 +213,8 @@ const Form = () => {
         <SelectServicePage
           services={services}
           setServices={setServices}
+          openPopup={openPopup}
+          closePopup={closePopup}
           className={
             "w-full transition-all ease-out delay-1000 " +
             (currentPage == 1 ? "block" : "hidden")
@@ -302,6 +309,10 @@ const Form = () => {
           />
         )}
       </div>
+
+      <Popup isOpen={isPopupOpen} onClose={closePopup}>
+        <PetForm closePopup={closePopup} onPetAdded={getPets} />
+      </Popup>
     </div>
   );
 };

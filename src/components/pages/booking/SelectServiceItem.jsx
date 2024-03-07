@@ -60,9 +60,9 @@ const SelectServiceItem = ({
       </div>
 
       {service.is_checked && (
-        <div className=" bg-white h-32 p-3 rounded-md ">
+        <div className=" bg-white  p-3 rounded-md ">
           <p className="text-primary mb-2">Select your pet/pets</p>
-          <div className="flex justify-start gap-5">
+          <div className="flex flex-wrap justify-start gap-5">
             {service.pets.map((pet) => (
               <PetSelect
                 onSelect={() => onPetSelect(pet)}
