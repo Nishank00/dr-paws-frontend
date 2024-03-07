@@ -1,4 +1,5 @@
 import SelectServiceItem from "@/components/pages/booking/SelectServiceItem";
+import Button from "@/components/ui/Button";
 
 const SelectServicePage = ({
   services = [],
@@ -27,12 +28,24 @@ const SelectServicePage = ({
   return (
     <>
       <div className={"pt-10 " + className}>
-        <h2 className="text-primary font-medium text-5xl mb-1">
-          Select Services
-        </h2>
-        <p className="text-primary mb-6 font-roca-thin-italic">
-          Choose from the our services
-        </p>
+        <div className="flex justify-between items-center">
+          <div>
+            <h2 className="text-primary font-medium text-5xl mb-1">
+              Select Services
+            </h2>
+            <p className="text-primary mb-6 font-roca-thin-italic">
+              Choose from the our services
+            </p>
+          </div>
+          {(!services || services.length == 0) && (
+            <Button
+              label="Add Pet"
+              color="secondary"
+              onClick={openPopup}
+              className="px-4 py-2 rounded-full w-32 h-12 text-lg"
+            />
+          )}
+        </div>
 
         <div
           className={
