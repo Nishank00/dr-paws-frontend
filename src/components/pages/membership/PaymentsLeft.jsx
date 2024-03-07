@@ -167,9 +167,9 @@ const PaymentsLeft = () => {
             </div>
             <div className="pl-2">
               <h4 className="text-xs font-custom-open-sans text-primary">
-                By clicking on &aposSubscribe&apos you accept Dr. Paws's Terms &
-                Conditions. We will process your personal data in accordance
-                with Design anything&pos;s Privacy Notice.
+                By clicking on &aposSubscribe&apos you accept Dr. Paws&pos;s
+                Terms & Conditions. We will process your personal data in
+                accordance with Design anything&pos;s Privacy Notice.
               </h4>
             </div>
           </div>
