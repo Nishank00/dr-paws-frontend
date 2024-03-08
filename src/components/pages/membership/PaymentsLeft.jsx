@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { VisaIcon } from "@/components/ui/Icons";
 import { useRouter } from "next/navigation";
 
 const PaymentsLeft = () => {
-  const router=useRouter();
+  const router = useRouter();
   return (
     <>
       {/* <div className='flex'>
@@ -170,14 +170,17 @@ const PaymentsLeft = () => {
             </div>
             <div className="pl-2">
               <h4 className="text-xs font-custom-open-sans text-primary">
-                By clicking on &aposSubscribe&apos you accept Dr. Paws&pos;s
+                By clicking on &aposSubscribe&apos you accept Dr. Paws&apos;s
                 Terms & Conditions. We will process your personal data in
-                accordance with Design anything&pos;s Privacy Notice.
+                accordance with Design anything&apos;s Privacy Notice.
               </h4>
             </div>
           </div>
           <div className="w-full flex justify-start m-4">
-            <button onClick={()=>router.push("/membership/order_success")} className="w-[210px] h-[50px] bg-secondary text-white rounded-full ">
+            <button
+              onClick={() => router.push("/membership/order_success")}
+              className="w-[210px] h-[50px] bg-secondary text-white rounded-full "
+            >
               Subscribe
             </button>
           </div>
