@@ -4,12 +4,13 @@ import TabModule from "@/components/ui/TabModule";
 import ClinicService from "@/services/Clinic.service";
 import ClinicServiceService from "@/services/ClinicService.service";
 import ServiceItemList from "./ServiceItemList";
+import TabWindow from "./TabWindow";
 
 export default function VerticalTabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [serviceList, setServiceList] = useState([]);
   const [itemList, setItemList] = useState([]);
-  const [activeService, setActiveService] = useState("");
+  const [activeService, setActiveService] = useState({});
 
   const activeButonStyle =
     "text-white text-lg font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-7 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
@@ -19,7 +20,7 @@ export default function VerticalTabs() {
   const handleTabClick = (tabId, service_id, service_name) => {
     setActiveTab(tabId);
     getServiceItems(service_id);
-    setActiveService(service_name);
+    setActiveService({service_name,service_id});
     console.log(activeTab);
   };
   const getServices = () => {
@@ -27,6 +28,9 @@ export default function VerticalTabs() {
       .then((r) => {
         if (r.data.status) {
           setServiceList(r.data.data);
+         if(serviceList && itemList.length==0){
+          getServiceItems(serviceList[0].id)
+         }
         } else {
           alert(r.data.message);
         }
@@ -49,6 +53,12 @@ export default function VerticalTabs() {
         console.log(err.message);
       });
   };
+
+  useEffect(()=>{
+if(!activeService && serviceList){
+  setActiveService({service_name:serviceList[0].name,service_id:serviceList[0].id})
+}
+  },[serviceList])
   useEffect(() => {
     console.log("servicve is run");
     getServices();
@@ -131,9 +141,9 @@ export default function VerticalTabs() {
 
         {/* Tab content */}
         <div className="flex flex-col items-stretch w-[71%] ml-5 max-md:w-full max-md:ml-0">
-          <ServiceItemList
-            service_list={itemList}
-            service_name={activeService}
+          <TabWindow
+         title={activeService.service_name || "Panned Check-Ups"}
+         service_id={activeService.service_id || 9}
           />
           {/* <div
             id="tab1"
