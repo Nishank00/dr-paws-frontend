@@ -1,7 +1,16 @@
-// PlanPopUp.js
+"use client"
 import React from 'react';
+import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
-const PlanPopUp = ({ onClosePopup }) => {
+const PlanPopUp = ({ onClose }) => {
+  const router = useRouter();
+
+
+  const handleNavigate=()=>{
+    console.log("work")
+    router.push("/membership/payment")
+  }
   return (
     <div className="flex flex-col h-[400px] md:h-auto md:flex-row overflow-y-scroll rounded-lg bg-white">
     {/* Left Form */}
@@ -37,7 +46,7 @@ const PlanPopUp = ({ onClosePopup }) => {
       </div>
 
     {/* Right Form */}
-    <form className='bg-primary3 md:w-[435px] p-10'>
+    <div className='bg-primary3 md:w-[435px] p-10'>
       <header className="text-sm text-primary font-custom-open-sans font-bold">Choose a payment plan:</header>
 
       <div className="payment-option bg-white rounded-2xl mt-5 p-5">
@@ -57,10 +66,10 @@ const PlanPopUp = ({ onClosePopup }) => {
 
       <div className="text-sm text-primary font-custom-open-sans font-bold mt-5">Total benefits worth ₹15,000</div>
 <div className='w-full flex justify-end mt-5'>
-<button className="bg-secondary text-white h-10 w-[154px] rounded-full ">Continue</button>
+<button onClick={handleNavigate} className="bg-secondary text-white h-10 w-[154px] rounded-full ">Continue</button>
 
 </div>
-    </form>
+    </div>
   </div>
   // <div className='w-[770px] h-10 bg-white'>
 

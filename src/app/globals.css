@@ -59,6 +59,9 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.ribbin_shap {
+  clip-path: polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 6% 52%);
+}
 @layer components {
   .body-padding-x {
     @apply px-3 sm:px-16 md:px-36;

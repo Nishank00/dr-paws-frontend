@@ -1,8 +1,11 @@
+"use client"
 import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { VisaIcon } from "@/components/ui/Icons";
+import { useRouter } from "next/navigation";
 
 const PaymentsLeft = () => {
+  const router=useRouter();
   return (
     <>
       {/* <div className='flex'>
@@ -174,7 +177,7 @@ const PaymentsLeft = () => {
             </div>
           </div>
           <div className="w-full flex justify-start m-4">
-            <button className="w-[210px] h-[50px] bg-secondary text-white rounded-full ">
+            <button onClick={()=>router.push("/membership/order_success")} className="w-[210px] h-[50px] bg-secondary text-white rounded-full ">
               Subscribe
             </button>
           </div>
