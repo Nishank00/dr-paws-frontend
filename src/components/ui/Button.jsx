@@ -6,11 +6,15 @@ const Button = ({
   onClick = () => console.log("button clicked"),
   label = "button",
   className = "",
+  disabled = false,
 }) => {
   return (
     <button
+      disabled={disabled}
       type={type}
-      className={`flex items-center justify-center gap-1 ${className} ${color}-btn`}
+      className={`flex items-center justify-center gap-1 ${className} ${color}-btn ${
+        disabled && "cursor-not-allowed"
+      }`}
       onClick={onClick}
     >
       {label}

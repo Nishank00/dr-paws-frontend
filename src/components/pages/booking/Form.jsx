@@ -13,6 +13,7 @@ import { useToast } from "@/components/ui/ToastProvider";
 import { useLoader } from "@/components/ui/LoaderContext";
 import Popup from "@/components/ui/Popup";
 import PetForm from "../petProile/PetForm";
+import ConfirmBookingOTP from "./ConfirmBookingOTP";
 
 const Form = () => {
   // Variables
@@ -34,10 +35,14 @@ const Form = () => {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [appointment, setAppointment] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
 
   // Methods
   const openPopup = () => setPopupOpen(true);
   const closePopup = () => setPopupOpen(false);
+
+  const openOTPPopup = () => setOTPPopupOpen(true);
+  const closeOTPPopup = () => setOTPPopupOpen(false);
   const getPets = () => {
     PetService.getPetsByUserId(user_id)
       .then((response) => {
@@ -82,6 +87,9 @@ const Form = () => {
       .catch((error) => console.log(error.message));
   };
 
+  const otpConfirmed = () => {
+    onConfirmBooking();
+  };
   const onConfirmBooking = () => {
     const selectedStartTime = selectedSlot.sqlStartTime;
     const endTime = selectedSlot.sqlEndTime;
@@ -241,7 +249,7 @@ const Form = () => {
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           setSelectedSlot={setSelectedSlot}
-          onConfirmBooking={onConfirmBooking}
+          onConfirmBooking={openOTPPopup}
         />
       </>
     );
@@ -312,6 +320,10 @@ const Form = () => {
 
       <Popup isOpen={isPopupOpen} onClose={closePopup}>
         <PetForm closePopup={closePopup} onPetAdded={getPets} />
+      </Popup>
+
+      <Popup isOpen={isOTPPopupOpen} onClose={closeOTPPopup}>
+        <ConfirmBookingOTP onOTPConfirmed={otpConfirmed} />
       </Popup>
     </div>
   );
