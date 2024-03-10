@@ -13,8 +13,8 @@ const DocumentForm = ( { pet_id } ) =>
   const [ selectedFiles, setSelectedFiles ] = useState( null );
   const [ urlList, setUrlList ] = useState( [] );
   const router=useRouter();
-  const {id}=router.query
 
+  
   const [ doc, setDoc ] = useState( {
     doc_type: null
   } )
@@ -127,8 +127,8 @@ const DocumentForm = ( { pet_id } ) =>
   {
     
     getDocumentType()
-    console.log("router",router.query)
-  }, [id] )
+
+  }, [] )
   return (
     <>
       <div>
