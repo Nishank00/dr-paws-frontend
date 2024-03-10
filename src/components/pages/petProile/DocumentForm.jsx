@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Popup from '@/components/ui/Popup';
 import PetService from '@/services/Pet.Service';
 import UploadService from '@/services/Upload.service';
+import { useRouter } from 'next/navigation';
 
 const DocumentForm = ( { pet_id } ) =>
 {
@@ -11,6 +12,9 @@ const DocumentForm = ( { pet_id } ) =>
   const [ docTypes, setDocTypes ] = useState( [] );
   const [ selectedFiles, setSelectedFiles ] = useState( null );
   const [ urlList, setUrlList ] = useState( [] );
+  const router=useRouter();
+  const {id}=router.query
+
   const [ doc, setDoc ] = useState( {
     doc_type: null
   } )
@@ -121,12 +125,14 @@ const DocumentForm = ( { pet_id } ) =>
   }
   useEffect( () =>
   {
+    
     getDocumentType()
-  }, [] )
+    console.log("router",router.query)
+  }, [id] )
   return (
     <>
       <div>
-        <button onClick={openPopup}
+        <button onClick={()=>router.push(`/pets/${pet_id}/new_medical_history`)}
           className="justify-center items-stretch w-[260px] border-[color:var(--Secondary-1,#5281A2)] flex gap-2 px-2 py-2 rounded-[40px] border-2 border-solid">
           <img
             loading="lazy"
@@ -134,7 +140,7 @@ const DocumentForm = ( { pet_id } ) =>
             className="aspect-[1.08] object-contain object-center w-[15px] shrink-0 my-auto"
           />
           <div className='text-sm text-secondary  font-custom-open-sans font-bold'>
-            Update Medical History
+            Add Medical History
           </div>
           <input
             type="file"

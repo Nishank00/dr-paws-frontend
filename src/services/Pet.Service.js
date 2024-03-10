@@ -39,6 +39,9 @@ export default {
     getPetDocuments ( params )
     {
         return API().get( `pet/getPetDocuments`,{params} )
+    },
+    saveMultiPetDocumnets(payload){
+        return API().post( `pet/saveMultiPetDocumnets`, payload )
     }
 
 }
