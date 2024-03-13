@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { TokenService } from "@/services/Storage.service";
 import Button from "@/components/ui/Button";
@@ -9,10 +9,13 @@ import RegisterForm from "@/components/auth/RegisterForm";
 import LoginForm from "@/components/auth/LoginForm";
 import { useRouter } from "next/navigation";
 import MenuBar from "./MenuBar";
+import { useToast } from "@/components/ui/ToastProvider";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
   <>
-    <div className={`${show ? "" : "hidden md:block"} lg:w-[1020px] bg-red-600`}>
+    <div
+      className={`${show ? "" : "hidden md:block"} lg:w-[1020px] bg-red-600`}
+    >
       <ul
         className={`${applyParentClass} flex flex-col md:flex-row  md:items-center md:justify-center mt-5 lg:mt-0`}
       >
@@ -90,7 +93,6 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
     }
     </div> */}
   </>
-
 );
 
 const Header = () => {
@@ -98,9 +100,11 @@ const Header = () => {
   const [showProfileDropdown, setProfileDropdown] = useState(false);
   const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
+  const [user_id, setUserID] = useState(null);
 
   const toggleMenu = () => setMenu(!showMenu);
   const router = useRouter();
+  const showToast = useToast();
 
   const openRegisterPopup = () => {
     setRegisterPopup(true);
@@ -144,8 +148,16 @@ const Header = () => {
   };
 
   const bookingButtonClicked = () => {
+    if (!user_id) {
+      showToast("Please login in order to book the appointment", "warning");
+      return openLoginPopup();
+    }
     router.push("/booking");
   };
+
+  useEffect(() => {
+    setUserID(JSON.parse(localStorage.getItem("user_info"))?.id);
+  }, []);
 
   return (
     <>
@@ -160,7 +172,7 @@ const Header = () => {
               />
             </Link>
           </div>
-          {!showMenu && <MenuBar show={showMenu}/>}
+          {!showMenu && <MenuBar show={showMenu} />}
           {/* <Menus show applyParentClass="hidden lg:flex" /> */}
           <div className="flex items-center gap-5">
             <Button
@@ -210,7 +222,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-       { showMenu && <MenuBar show={showMenu}/>}
+        {showMenu && <MenuBar show={showMenu} />}
         {/* <Menus show={showMenu} applyParentClass="block lg:hidden  lg:justify-around" /> */}
       </div>
 

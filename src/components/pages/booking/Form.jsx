@@ -258,7 +258,7 @@ const Form = () => {
   // Lifecycle hooks
   useEffect(() => {
     getClinics();
-    setUserID(JSON.parse(localStorage.getItem("user_info")).id);
+    setUserID(JSON.parse(localStorage.getItem("user_info"))?.id);
   }, []);
 
   useEffect(() => {
@@ -280,7 +280,7 @@ const Form = () => {
     }
   }, [appointment]);
 
-  return (
+  return user_id ? (
     <div className="text-primary">
       <div className="pt-4">
         <button
@@ -325,6 +325,12 @@ const Form = () => {
       <Popup isOpen={isOTPPopupOpen} onClose={closeOTPPopup}>
         <ConfirmBookingOTP onOTPConfirmed={otpConfirmed} />
       </Popup>
+    </div>
+  ) : (
+    <div className="flex items-center justify-center text-primary mt-10">
+      <h2 className="text-3xl font-bold">
+        Please login to book the appointment
+      </h2>
     </div>
   );
 };

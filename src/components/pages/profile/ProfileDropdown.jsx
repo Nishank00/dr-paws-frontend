@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { TokenService } from "@/services/Storage.service";
+import { TokenService, UserService } from "@/services/Storage.service";
 import { redirect } from "next/navigation";
 
 const ProfileDropdown = ({ onLogout }) => {
   const logoutUser = () => {
     TokenService.removeToken();
+    UserService.removeUserInfo();
     onLogout();
     redirect("/");
   };
