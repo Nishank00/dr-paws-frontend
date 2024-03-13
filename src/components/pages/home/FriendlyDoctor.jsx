@@ -26,12 +26,10 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                      Animals first. Always.
+                    Highly qualified & always up-to-date
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                      Unlike other clinics, we evaluate our vets based on
-                      customer satisfaction over revenue. This ensure we never
-                      over-medicate or suggest unnecessary treatments.
+                    We only hire from the best veterinary colleges, and ensure our staff are supported to upskill themselves on the latest techniques
                     </div>
                   </span>
                 </div>
@@ -43,12 +41,10 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                      Highly qualified, trained on the latest methods
+                    Trained on the best machinery
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                      We only hire vets from the best veterinary schools, and
-                      make sure they are supported to attend courses and learn
-                      new techniques across the world
+                    Our vets are trained to use the latest cutting-edge machinery on all procedures
                     </div>
                   </span>
                 </div>
@@ -60,13 +56,25 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                      Your best friend is our best friend
+                    Animal-first approach. Always
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                      All our vets are passionate about animals, and love being
-                      around them. Rest assured your animal will feel
-                      comfortable and at home with us
+                    Unlike other clinics, we evaluate our vets based on customer satisfaction ahead of revenue. This ensures we never suggest unnecessary treatments
                     </div>
+                  </span>
+                </div>
+                <div className="flex justify-between gap-3.5 mt-9 items-start max-md:max-w-full max-md:flex-wrap">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/608e48060f45e85f7afeeb68228e4b04a71cb1221d9a8a3e95bb3e1780bf1c47?apiKey=22a36eade5734692978208fb0d2f5c62&"
+                    className="aspect-[0.98] object-contain object-center w-[43px] overflow-hidden shrink-0 max-w-full"
+                  />
+                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
+                    <div className="text-slate-700 font-custom-roca text-xl capitalize">
+                    Animal lovers first. Vets second
+                    </div>
+                    <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
+                    Our staff are passionate about animals and will ensure your pet is cared for with love and compassion                    </div>
                   </span>
                 </div>
               </div>

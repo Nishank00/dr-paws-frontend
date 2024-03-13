@@ -47,29 +47,29 @@ const Homepage = () => {
               imageUrl={"/home/grid_pic_one.png"}
               header={"A Clinic That Feels Like Home"}
               text={
-                "Our modern clinics make you feel like you never left home, making visits stress-free for you and your pet"
+                "Our warmly designed clinics take the stress out of visits to the vet"
               }
               imagePosition="left"
-              buttonText="See Our Clinics"
+              buttonText="Book a Visit"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_two.png"}
-              header={"Memberships that work"}
+              header={"Doctors that truly care"}
               text={
-                "Our memberships provide great value care and provide all the services you’re likely to need. Even if you’re facing an emergency, our memberships cover you."
+                "The bond you have with your pets is special, and we’ll treat them like our own"
               }
               imagePosition="right"
-              buttonText="Become a Member"
+              buttonText="Book a Visit"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_three.png"}
-              header={"Doctors that care"}
+              header={"Tech that makes things simple"}
               text={
-                "We’re in the business of looking after your best friend. We’ll listen and answer all your questions and treat your pet like our own"
+                "Book appointments, view your pet’s health records, or consult a doctor in a few taps on our app"
               }
               imagePosition="left"
               buttonText="Book a Visit"
@@ -78,12 +78,11 @@ const Homepage = () => {
           <div className="py-4 rounded-lg bg-white m-4 ">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_four.png"}
-              header={"Everything in your control"}
+              header={"Everything under one roof"}
               text={
-                "Book appointments in a few taps, and always stay updated and informed on your pet’s health with our app"
-              }
+                "Our clinics offer all the services you’ll need including grooming, behavioural counselling, nutritional consultations &  pet-boarding"}
               imagePosition="right"
-              buttonText="Become a Member"
+              buttonText="Book a Visit"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4 ">
@@ -100,12 +99,11 @@ const Homepage = () => {
           <div className="py-4 rounded-lg bg-white m-4 ">
             <ImageTextHeader
               imageUrl={"/home/grid_pic_six.png"}
-              header={"All the services you need, under one roof"}
+              header={"Memberships designed for modern pet-parents"}
               text={
-                "Aside from our world-class veterinary care, our clinics offer grooming, boarding, sitting, nutritionist, and training services"
-              }
+                "Our great-value memberships include all the services your pet is likely to need, all under one roof"}
               imagePosition="right"
-              buttonText="See Our Services"
+              buttonText="Become a Member"
             />
           </div>
         </div>
@@ -115,8 +113,7 @@ const Homepage = () => {
         style={{ fontFamily: "Roca Bold, sans-serif" }}
         className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[26px] pb-6 text-center"
       >
-        Check out the places
-        <br /> we call home
+        Check out the places we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-4 gap-10 md:gap-10 body-padding-x">
         {Array.from({ length: 8 }).map((clinic, i) => (
@@ -169,85 +166,83 @@ const Homepage = () => {
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
-            About Bearhug
+            About Dr. Paws
           </p>
         </div>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title="Which animals does Dr. Paws treat?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            We treat all small animals that can be considered as household pets. These include dogs, cats, small mammals (e.g. rabbits, guinea pigs), birds, and reptiles.
           </p>
         </Dropdown>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title="Do you take walk-in appointments?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            Yes, walk-in appointments are accepted. You will be seen by a veterinarian as soon as there is a slot available. For the best choice of appointments and no waiting times, we encourage you to pre-book appointments via our app or website.
           </p>
         </Dropdown>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title="If I have a regular Dr. Paws branch, can I also visit other branches?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            Yes, of course! Our technology ensures your pets medical records are instantly accessible from any clinic so that you have the same Dr. Paws experience wherever in the country you are.
           </p>
         </Dropdown>
+        <Dropdown title="Does Dr. Paws treat stray animals?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Stray animals need all the love, and we are committed to doing right by them. Any stray animal in need of trauma care can be brought to a Dr. Paws clinic and treated at minimal cost.          </p>
+        </Dropdown>
+        <Dropdown title="How many clinics does Dr. Paws have?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Currently, we have just started with our first clinics in Bengaluru, but plan to expend across other major cities in the very near future.          </p>
+        </Dropdown>
+
         <div className="w-full border-b border-solid border-grey  md:mt-10 px-5 py-4">
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
-            At Clinic
+            At a Dr. Paws Clinic
           </p>
         </div>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title="Does Dr. Paws offer emergency care?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            Yes, Dr. Paws clinics are equipped to perform trauma care after accidents, and treat critically ill animals. For any case that we cannot treat, we will  refer you to a facility that can.
           </p>
         </Dropdown>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title="Does Dr. Paws offer grooming?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            Yes, every Dr. Paws clinic has a grooming area, with separate spaces for dogs & cats. We believe grooming is an essential part of keeping your pet healthy and happy.
           </p>
         </Dropdown>
-        <Dropdown title="What animals does BearHug treat?">
+        <Dropdown title=" Do you have overnight care?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Dr. Paws is a versatile veterinarian, offering expert care to a
-            variety of animals, including cats, dogs, hamsters, unicorns (just
-            kidding, we wish!), and many more. Whether your pet has fur,
-            feathers, or scales, Dr. Paws is here to provide top-notch
-            veterinary services.
+            Yes, we offer overnight care for pets that have been operated on by us, and need close monitoring. At this moment in time, we do not offer emergency out-of-hours OPD veterinary consultations.
           </p>
+        </Dropdown>
+        <Dropdown title=" Can I buy food, accessories and medicines for my pet at Dr. Paws?">
+          <p
+            style={{ fontFamily: "Open Sans, sans-serif" }}
+            className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
+          >
+            Yes, every Dr. Paws store has a retail section stocked with doctor approved food, treats, accessories, and medicines.          </p>
         </Dropdown>
       </div>
     </>
