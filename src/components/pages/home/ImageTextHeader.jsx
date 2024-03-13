@@ -49,7 +49,7 @@ const ImageTextHeader = ({
 
         </div>
       </div> */}
-      <div className=" w-[300px] lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5 pb-12 overflow-hidden bg-white">
+      <div className=" w-[360px] lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5 pb-12 overflow-hidden bg-white">
       <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -59,9 +59,9 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "min-h-[340px]  rounded-md" +
+              "w-full h-[320px] lg:min-h-[400px] lg:max-w-[600px] rounded-md" +
               (imagePosition == "left" ? "" : "lg:order-2 ") +
-              "w-[250px] h-[250px] md:w-auto md:h-auto"
+              " "
             }
           />
         </div>

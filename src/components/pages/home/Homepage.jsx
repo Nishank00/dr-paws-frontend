@@ -127,7 +127,7 @@ const Homepage = () => {
         ))}
       </div>
 
-      <div className="body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
+      <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary font-medium  mt-10 text-2xl md:text-[26px] mb-6 text-center"

@@ -30,7 +30,7 @@ const TabModule = ({ title, children, service_id }) => {
     }
   }, [service_id]);
   return (
-    <div className="w-full  mx-auto  border-gray-300  px-10 rounded-lg  ">
+    <div className="w-full  mx-auto  border-gray-300  px-3 rounded-lg  ">
       <div className="">
         <div className="flex justify-between items-center  cursor-pointer">
           <button
