@@ -59,7 +59,7 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "w-full h-[320px] lg:min-h-[400px] lg:max-w-[600px] rounded-md" +
+              "w-full h-[320px] lg:min-h-[300px] lg:max-w-[600px] rounded-md" +
               (imagePosition == "left" ? "" : "lg:order-2 ") +
               " "
             }
