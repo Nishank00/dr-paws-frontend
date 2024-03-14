@@ -14,7 +14,7 @@ const ClinicCard = ({
     setServiceString(
       [...new Set(services?.map((service) => service.service_name))].join(" | ")
     );
-  }, []);
+  }, [services]);
   return (
     <div
       className="bg-primary3 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"
@@ -31,7 +31,7 @@ const ClinicCard = ({
         }}
       />
       <div className="p-2 text-primary grow">
-        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1">Dr. Paw | {name}</h4>
+        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1"> Dr Paw | {name} </h4>
         <p className="text-sm font-custom-open-sans text-primary line-clamp-1">{serviceString || "OPD | Surgery"}</p>
       </div>
       <div

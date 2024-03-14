@@ -115,11 +115,11 @@ const Homepage = () => {
       >
         Check out the places we call home
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-4 gap-10 md:gap-10 body-padding-x">
-        {Array.from({ length: 8 }).map((clinic, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
+        {clinics.map((clinic, i) => (
           <ClinicCard
-            clinic={{ imageUrl: "/home/clinic_image.png" }}
             key={"clinic" + i}
+            clinic={clinic}
           />
         ))}
       </div>

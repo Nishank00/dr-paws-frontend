@@ -7,19 +7,20 @@ const BannerPetCard = ({
   return (
     <>
 
-      <div className="w-[110px] h-[140px] flex flex-col justify-between text-center bg-white rounded-2xl">
-        <h3 className="text-secondary font-custom-roca mt-2 text-lg font-semibold">{pet_type}</h3>
-        <div className="p-2">
+      <div className="   border-blue-500   w-[70px] h-[80px] md:w-[110px] md:h-[140px] flex flex-col justify-between text-center bg-white rounded-2xl">
+        <h3 className="text-secondary font-custom-roca mt-2  text-sm md:text-lg font-semibold">{pet_type}</h3>
+        <div className=" border-red-700 bg-white h-12 w-12  md:h-20 md:w-[80px] m-auto p-2">
           <Image
             src={pet_image}
             alt={`${pet_type} Image`}
             layout="responsive"
             width={72}
             height={62}
+            className="w-full h-full"
           />
 
         </div>
-        <button className="bg-secondary font-light font-custom-open-sans rounded-b-2xl text-[10px] py-2">
+        <button className="bg-secondary font-light font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2">
           Book a visit
         </button>
       </div>

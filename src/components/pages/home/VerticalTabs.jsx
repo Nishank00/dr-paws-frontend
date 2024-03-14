@@ -142,7 +142,7 @@ if(!activeService && serviceList){
         {/* Tab content */}
         <div className="flex flex-col items-stretch w-[71%] ml-5 max-md:w-full max-md:ml-0">
           <TabWindow
-         title={activeService.service_name || "Panned Check-Ups"}
+         title={activeService.service_name || "Planned Check-Ups"}
          service_id={activeService.service_id || 9}
           />
           {/* <div
