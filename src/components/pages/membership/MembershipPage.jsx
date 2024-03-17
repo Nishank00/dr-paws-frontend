@@ -76,6 +76,7 @@ const MembershipPage = () => {
                         title={membership.title}
                         description={membership.description}
                         includes={membership.items.membership_description}
+                        membershipItems={membership.items}
                     />
                 ))}
             </div>
