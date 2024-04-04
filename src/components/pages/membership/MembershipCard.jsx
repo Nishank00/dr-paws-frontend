@@ -6,7 +6,7 @@ import DialogBox from '@/components/Common/DialogBox';
 import PlanPopUp from './PlanPopUp';
 import Popup from '@/components/ui/Popup';
 
-const MembershipCard = ({ index, image, title, description, includes }) => {
+const MembershipCard = ({ index, image, title, description, membershipItems }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [icon, setIcon] = useState();
   const [bgColor, setbgColor] = useState("")
@@ -44,24 +44,20 @@ const MembershipCard = ({ index, image, title, description, includes }) => {
             <li key={index}>{item}</li>
           ))}
         </ul> */}
-        <div className='flex mt-2'>
+        {
+          membershipItems && membershipItems.map((item,index)=>(
+<div className='flex mt-2' key={index}>
           <div>
             <Image src={icon} alt="err" width={100} height={100} className='w-6 h-6' />
           </div>
           <div className='pl-2'>
-            <h4 className='text-primary text-sm font-custom-open-sans'>6 free-of-cost consultations every year</h4>
+            <h4 className='text-primary text-sm font-custom-open-sans'>{item.description}</h4>
           </div>
         </div>
-        <div className='flex mt-2'>
-          <div>
-            <Image src={icon} alt="err" width={100} height={100} className='w-6 h-6' />
-          </div>
-          <div className='pl-2'>
-            <h4 className='text-primary text-sm font-custom-open-sans'>50% discount on additional consultations</h4>
-          </div>
-        </div>
-      </div>
-      <div >
+          ))
+        }
+        
+    
         <button onClick={handleSelectClick} className="w-[80%] m-auto text-white  font-bold  flex justify-center items-center bg-secondary mt-3  h-[50px] rounded-full">
           Select
         </button>

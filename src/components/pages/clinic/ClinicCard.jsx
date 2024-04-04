@@ -11,7 +11,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
     setServiceString(
       [...new Set(services?.map((service) => service.service_name))].join(" | ")
     );
-  }, []);
+  }, [services]);
   return (
     <div
       className="bg-primary3 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"

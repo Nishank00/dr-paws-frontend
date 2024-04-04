@@ -163,12 +163,12 @@ const Header = () => {
     <>
       <div className="body-padding-x body-padding-y text-primary bg-primary3">
         <nav className="flex items-center justify-between">
-          <div id="logo" className="h-14">
+          <div id="logo" className="h-14  flex justify-center items-center">
             <Link href="/">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
-                className="aspect-[2.55] object-contain object-center w-[160px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+                className="aspect-[2.55] object-contain object-center w-[80px] md:w-[120px] lg:w-[160px] justify-center items-center overflow-hidden shrink-0 max-w-full"
               />
             </Link>
           </div>
@@ -183,7 +183,7 @@ const Header = () => {
             />
             <div
               onClick={userIconClicked}
-              className="flex items-center   p-2  border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-12 w-12 relative"
+              className="flex items-center   p-2  border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
             >
               <img
                 className="w-full h-full"
@@ -201,7 +201,7 @@ const Header = () => {
               <button
                 onClick={toggleMenu}
                 type="button"
-                className="ml-1 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 inline-flex items-center justify-center w-10 h-10"
+                className="ml-1 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 inline-flex items-center justify-center w-8 h-8"
               >
                 <svg
                   className="w-5 h-5"
