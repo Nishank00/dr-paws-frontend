@@ -157,20 +157,20 @@ const Homepage = () => {
         <Reviews />
       </div>
 
-      <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-4">
+      <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-4 pb-8">
         <FriendlyDoctor />
       </div>
 
       <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-primary hidden md:block  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center font-custom-open-sans text-[22px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-primary text-center hidden md:block font-custom-open-sans text-[22px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
           If your question is still not answered, please get in touch and<br/> we’d
           be happy to help

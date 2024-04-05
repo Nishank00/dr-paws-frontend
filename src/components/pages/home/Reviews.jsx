@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Reviews = () => {
@@ -8,11 +9,18 @@ const Reviews = () => {
           Reviews
         </div>
         <div className="hidden md:block ">
-          <img
+          {/* <img
             loading="lazy"
-            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/279d7ce5-284a-4e14-8876-96ada79ec21e?apiKey=22a36eade5734692978208fb0d2f5c62&"
+            srcSet="clinic_quete.png"
             className="aspect-[2.28] object-contain object-center w-full fill-stone-400 overflow-hidden self-center max-w-[1078px] mt-14 max-md:max-w-full max-md:mt-10"
-          />
+          /> */}
+          <Image
+           src={"/home/clinic_quete.png"}
+            height={100} 
+            width={964} 
+            alt="Reviews"
+            className="aspect-[2.28] object-contain object-center w-full fill-stone-400 overflow-hidden self-center max-w-[1078px] mt-14 max-md:max-w-full max-md:mt-10"
+            />
         </div>
         <div className=" md:hidden flex flex-col items-center">
           <img

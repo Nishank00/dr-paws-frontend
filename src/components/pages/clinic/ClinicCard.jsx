@@ -14,7 +14,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
   }, [services]);
   return (
     <div
-      className="bg-primary3 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"
+      className="bg-primary4 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-150 hover:scale-105"
       onClick={() => router.push(`/clinics/overview/${id}`)}
     >
       <div
@@ -27,11 +27,11 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           height: "240px",
         }}
       />
-      <div className="p-2 text-primary grow">
+      <div className="pl-6 pr-2 py-4 text-primary grow">
         <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1">
           Dr. Paw | {name}
         </h4>
-        <p className="text-sm font-custom-open-sans text-primary line-clamp-1">
+        <p className="text-sm font-custom-open-sans mt-1 text-primary line-clamp-1">
           {serviceString || "OPD | Surgery"}
         </p>
       </div>

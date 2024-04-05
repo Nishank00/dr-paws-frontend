@@ -32,10 +32,11 @@ const ImageHeader = ({
             <div className="lg:w-[363px] flex flex-col justify-start">
               <h2
                 style={{ fontFamily: "Roca Bold, sans-serif" }}
-                className="text-primary  font-medium mt-10 lg:mt-0 text-3xl lg:w-[290px] md:text-[36px] mb-6"
+                className="text-primary leading-10  mt-10 lg:mt-0 sm:text-3xl lg:text-[48px] mb-6"
               >
                 {header}
               </h2>
+              {/* <h1 style={{ fontFamily: "Roca Bold, sans-serif" }}class=" text-primary  leading-10  lg:text-[50px]">{header}</h1> */}
               <p className="text-primary font-custom-open-sans text-sm mb-6">
                 {text}
               </p>

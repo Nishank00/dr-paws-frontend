@@ -8,28 +8,36 @@ import Popup from "@/components/ui/Popup";
 import RegisterForm from "@/components/auth/RegisterForm";
 import LoginForm from "@/components/auth/LoginForm";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const MenuBar = ({ show  }) => (
   <>
   
-    <div className={` hidden sm:hidden md:hidden lg:flex lg:flex-row  lg:justify-around items-center lg:w-[950px]  border-solid border-red-700 h-14`}>
+    <div className={` hidden sm:hidden md:hidden lg:flex lg:flex-row  lg:justify-around items-center lg:w-[575px] border-solid border-red-700 h-14`}>
       <div className="my-1 md:mx-3 ">
-        <Link className="text-xl" href="/clinics">
-          Locations
+        <Link className="text-md flex items-center" href="/clinics">
+          <span>Locations</span>
+          <Image
+              className={`w-4 h-2   ml-1`}
+              src={"dropdown.svg"}
+              alt=""
+              width={20}
+              height={20}
+            />
         </Link>
       </div>
       <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/services">
+        <Link className="text-md" href="/services">
           Our Services
         </Link>
       </div>
       <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/team">
+        <Link className="text-md" href="/team">
           Our Team
         </Link>
       </div>
       <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/membership">
+        <Link className="text-md" href="/membership">
           Membership
         </Link>
       </div>

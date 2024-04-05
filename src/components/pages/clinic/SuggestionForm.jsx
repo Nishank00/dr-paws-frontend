@@ -5,11 +5,14 @@ import TextInput from '@/components/ui/TextInput';
 const SuggestionForm = () => {
   return (
     <div className='w-full bg-primary3 '>
-      <form className=" w-[80%] items-center m-auto bg-primary3 py-[50px] flex flex-col justify-center rounded-md ">
-        <header className='text-center text-2xl text-primary font-custom-roca mb-4' >
+      <div class="w-[80%] pt-[50px] m-auto">
+      <header className='text-left text-2xl text-primary font-custom-roca mb-4' >
           Tell us where you’d like a new clinic so we know where to prioritize
         </header>
-        <div className=" w-full form-group mb-4 grid grid-cols-1 md:grid-cols-2 gap-1">
+      </div>
+      <form className=" w-[80%] items-center m-auto bg-primary3 pb-[50px] flex flex-col justify-center rounded-md ">
+      
+        <div className=" w-full form-group mb-[4px] grid grid-cols-1 md:grid-cols-2 gap-5">
           <TextInput
             type="text"
             placeholder={"Fist Name"}
@@ -19,7 +22,7 @@ const SuggestionForm = () => {
             placeholder={"Last Name"}
           />
         </div>
-        <div className="w-full form-group mb-4 grid grid-cols-1 md:grid-cols-2 gap-1">
+        <div className="w-full form-group mb-[6px] grid grid-cols-1 md:grid-cols-2 gap-5">
           <TextInput
             type="number"
             name="age"
@@ -68,15 +71,15 @@ const SuggestionForm = () => {
             />
           </div>
         </div> */}
-        <div className=" w-full flex items-center mb-4">
+        <div className=" w-full flex items-center mb-4 pl-2">
           <div className="checkbox" aria-role="checkbox" aria-label="Whatsapp Consent Checkbox">
-            <input type="checkbox" id="whatsapp-consent" />
+            <input type="checkbox" id="whatsapp-consent" class="h-[22px] w-[22px]" />
           </div>
-          <label htmlFor="whatsapp-consent" className="checkbox-label ml-2 text-primary">
+          <label htmlFor="whatsapp-consent" className="checkbox-label ml-2 text-[12px] text-primary">
             Ticking this box means we have your consent to chat on Whatsapp
           </label>
         </div>
-        <div className='w-full'>
+        <div className='w-full mt-5'>
         <button className="text-white font-custom-open-sans  w-[210px] h-[50px] text-base font-bold  justify-center  bg-secondary2  rounded-full">
           Submit
         </button> 
