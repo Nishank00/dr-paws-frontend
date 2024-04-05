@@ -2,10 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const ClinicCard = ({
-  imageUrl = "/home/clinic_image.png",
-  clinic = {},
-}) => {
+const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
   const [serviceString, setServiceString] = useState();
   const router = useRouter();
 
@@ -31,14 +28,18 @@ const ClinicCard = ({
         }}
       />
       <div className="p-2 text-primary grow">
-        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1"> Dr Paw | {name} </h4>
-        <p className="text-sm font-custom-open-sans text-primary line-clamp-1">{serviceString || "OPD | Surgery"}</p>
+        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1">
+          Dr. Paw | {name}
+        </h4>
+        <p className="text-sm font-custom-open-sans text-primary line-clamp-1">
+          {serviceString || "OPD | Surgery"}
+        </p>
       </div>
       <div
         className="text-center text-white text-sm h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
         onClick={(e) => {
           e.stopPropagation();
-          router.push("/booking");
+          router.push("/booking&clinic=" + id);
         }}
       >
         Book a Visit
