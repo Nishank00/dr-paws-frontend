@@ -50,6 +50,7 @@ const Homepage = () => {
                 "Our warmly designed clinics take the stress out of visits to the vet"
               }
               imagePosition="left"
+              buttonColor="secondary"
               buttonText="Book a Visit"
             />
           </div>
@@ -61,6 +62,8 @@ const Homepage = () => {
                 "The bond you have with your pets is special, and we’ll treat them like our own"
               }
               imagePosition="right"
+              buttonColor="accent"
+
               buttonText="Book a Visit"
             />
           </div>
@@ -72,6 +75,8 @@ const Homepage = () => {
                 "Book appointments, view your pet’s health records, or consult a doctor in a few taps on our app"
               }
               imagePosition="left"
+              buttonColor="secondary"
+
               buttonText="Book a Visit"
             />
           </div>
@@ -82,6 +87,8 @@ const Homepage = () => {
               text={
                 "Our clinics offer all the services you’ll need including grooming, behavioural counselling, nutritional consultations &  pet-boarding"}
               imagePosition="right"
+              buttonColor="accent"
+
               buttonText="Book a Visit"
             />
           </div>
@@ -93,6 +100,8 @@ const Homepage = () => {
                 "We’re pet-lovers first and business-people second. No over-testing, prescribing unnecessary medicines, or pushing procedures that are not needed"
               }
               imagePosition="left"
+              buttonColor="secondary"
+
               buttonText="Book a Visit"
             />
           </div>
@@ -103,6 +112,8 @@ const Homepage = () => {
               text={
                 "Our great-value memberships include all the services your pet is likely to need, all under one roof"}
               imagePosition="right"
+              buttonColor="secondary2"
+
               buttonText="Become a Member"
             />
           </div>
@@ -113,7 +124,7 @@ const Homepage = () => {
         style={{ fontFamily: "Roca Bold, sans-serif" }}
         className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[26px] pb-6 text-center"
       >
-        Check out the places we call home
+        Check out the places <br/>we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
@@ -153,15 +164,15 @@ const Homepage = () => {
       <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-slate-700  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-primary  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-slate-700 text-center font-custom-open-sans text-sm leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-primary text-center font-custom-open-sans text-[22px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
-          If your question is still not answered, please get in touch and we’d
+          If your question is still not answered, please get in touch and<br/> we’d
           be happy to help
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">

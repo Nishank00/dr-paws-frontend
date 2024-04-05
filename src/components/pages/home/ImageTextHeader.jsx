@@ -6,6 +6,8 @@ const ImageTextHeader = ({
   text,
   imagePosition,
   buttonText,
+  buttonColor,
+  Imageheight,
   buttonVisibility = true,
 }) => {
   return (
@@ -49,7 +51,7 @@ const ImageTextHeader = ({
 
         </div>
       </div> */}
-      <div className=" w-[320px] lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5  overflow-hidden bg-white">
+      <div className=" w-[320px] lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2  lg:gap-x-10 px-5  overflow-hidden bg-white">
       <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -59,7 +61,7 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "w-full h-[280px] lg:min-h-[300px] lg:max-w-[600px] rounded-md" +
+              "w-full h-[280px] lg:min-h-[300px] lg:max-w-[600px] lg:h-full rounded-md" +
               (imagePosition == "left" ? "" : "lg:order-2 ") +
               " "
             }
@@ -68,10 +70,10 @@ const ImageTextHeader = ({
         <div>
           <div  className="w-full  h-[240px] lg:h-full flex md:justify-end md:items-center">
             <div  className="  h-full lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-5 lg:justify-start ">
-              <div  className="  lg:w-[70%] flex flex-col justify-start">
+              <div  className="  lg:h-fit lg:w-[80%] flex flex-col justify-start">
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
-                  className="text-primary  font-medium   lg:text-3xl lg:w-[80%] text-2xl  mb-2 lg:mb-6"
+                  className="text-primary  font-medium   lg:text-[33px] lg:w-[80%]  text-2xl  mb-2 lg:mb-6"
                 >
                   {header}
                 </h2>
@@ -81,9 +83,9 @@ const ImageTextHeader = ({
                   {text}
                 </p>
               </div>
-              <Button
-                className={`${!buttonVisibility && "hidden"} w-[220px] md:mt-[14px] text-lg `}
-                color="secondary"
+              <Button 
+                className={`${!buttonVisibility && "hidden"} w-[220px] md:mt-[14px] lg:mt-1 text-lg `}
+                color={buttonColor}
                 label={buttonText}
               />
             </div>

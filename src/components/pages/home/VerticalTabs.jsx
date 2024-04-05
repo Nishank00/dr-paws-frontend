@@ -13,9 +13,9 @@ export default function VerticalTabs() {
   const [activeService, setActiveService] = useState({});
 
   const activeButonStyle =
-    "text-white text-lg font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-7 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
+    "text-white text-left text-[18px] font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-4 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
   const buttonStyle =
-    "text-slate-700 text-lg capitalize whitespace-nowrap justify-center items-stretch bg-white pl-7 pr-16 py-5 max-md:pl-5 max-md:pr-7";
+    "text-slate-700 text-[18px]  text-left capitalize whitespace-nowrap justify-center items-stretch bg-white pl-4 pr-16 py-5 max-md:pl-5 max-md:pr-7";
 
   const handleTabClick = (tabId, service_id, service_name) => {
     setActiveTab(tabId);
@@ -140,7 +140,7 @@ if(!activeService && serviceList){
         </div>
 
         {/* Tab content */}
-        <div className="flex flex-col items-stretch w-[71%] ml-5 max-md:w-full max-md:ml-0">
+        <div className="flex flex-col items-stretch w-[71%]  max-md:w-full max-md:ml-0">
           <TabWindow
          title={activeService.service_name || "Planned Check-Ups"}
          service_id={activeService.service_id || 9}
