@@ -22,6 +22,7 @@ const UserPofile = () => {
 
   const closePopup = () => {
     setIsOpen(false);
+    getUserData();
   };
 
   const getUserData = () => {
