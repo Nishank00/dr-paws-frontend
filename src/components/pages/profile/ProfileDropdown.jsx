@@ -37,7 +37,7 @@ const ProfileDropdown = ({ onLogout }) => {
         </li>
 
         <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
-          <Link href="#">
+          <Link href="/membership">
             <p>Become a Member</p>
           </Link>
         </li>
