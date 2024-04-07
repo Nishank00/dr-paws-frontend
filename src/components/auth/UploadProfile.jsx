@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-
-const UploadProfile = ({ onUpload }) => {
+import { useToast } from "@/components/ui/ToastProvider"
+const UploadProfile = ({ onUpload,image }) => {
   const [profileImage, setProfileImage] = useState(null);
+  const[url,setUrl]=useState("")
   const fileRef = useRef();
+  const showToast = useToast();
 
   const fileInputChanged = (e) => {
     const fileReader = new FileReader();
@@ -33,22 +35,32 @@ const UploadProfile = ({ onUpload }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (data.status) onUpload(data.data[0]);
-        console.log("data => ", data);
+        if (data.status){ 
+          onUpload(data.data[0])
+          showToast(data.message, "success");
+        }
+        else{
+          showToast(data.message, "error");
+        }
       })
       .catch((error) => console.log("error", error.message));
   };
 
   useEffect(() => {
-    if (profileImage) onUpload(profileImage);
-  }, []);
+    // if (profileImage) onUpload(onUpload);
+    image && setUrl(image)
+  }, [image]);
 
   return (
     <div className="flex items-center justify-center mb-5">
       <div
         className="w-32 h-32 rounded-full bg-accent relative"
         style={{
-          backgroundImage: `url(${profileImage})`,
+          backgroundImage: `url(${  url
+            ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+            "/" +
+            url:profileImage?profileImage
+            : "/defaultUserProfileImage.png"})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

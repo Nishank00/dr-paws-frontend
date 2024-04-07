@@ -41,7 +41,7 @@ const PetList = ( { user_id } ) =>
             </div>
             {petlist.length > 0 && <div className='w-full mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
                 {
-                    petlist.map( ( pet, index ) => <PetCard key={index} {...pet} />
+                    petlist.map( ( pet, index ) => <PetCard key={index} index={index} {...pet} />
                     )
                 }
             </div>
