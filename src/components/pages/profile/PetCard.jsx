@@ -26,7 +26,7 @@ const PetCard = ({ index, pet_image, name, age, weight, date_of_birh, id }) => {
                         className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
                         style={{
                             backgroundImage: `url(${pet_image
-                                ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${pet_image}` : "/duumyDog.svg"})`,
+                                ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${pet_image}` : "dummyDog.svg"})`,
                             backgroundPosition: "center",
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",

@@ -60,7 +60,7 @@ const UploadProfile = ({ onUpload,image }) => {
             ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
             "/" +
             url:profileImage?profileImage
-            : "/defaultUserProfileImage.png"})`,
+            : "/dummyDog.svg"})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

@@ -76,7 +76,7 @@ const PetProfile = ({ pet_id }) => {
               className="w-[160px] h-[160px] rounded-full bg-accent relative"
               style={{
                 backgroundImage: `url(${petData.pet_image
-                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${petData.pet_image}` : "/defaultUserProfileImage.png"})`,
+                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${petData.pet_image}` : "/dummyDog.svg"})`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
