@@ -33,23 +33,35 @@ const OverviewTabs = () => {
   return (
     <>
       <div className="w-full mx-auto hidden lg:block  ">
-        <div className=" w-full flex  justify-between  border-b-2 items-baseline">
-          {services &&
-            services.map((service, index) => (
-              <button
-                key={"service" + index}
-                className={`text-primary font-bold  font-custom-open-sans w-auto text-md    px-4  focus:outline-none`}
-                onClick={() => handleTabClick(index)}
-              >
-                {service.name}
-                {activeTab === Number(index) + 1 && (
-                  <div className="h-[7px] mt-1 w-full rounded-full bg-secondary2 align-baseline"></div>
-                )}
-              </button>
-            ))}
-        </div>
+        
+        <div className="flex flex-col items-start mt-4">
+      <div className="w-full flex  justify-between mt-2">
+    {services &&
+            services.map((tab, index) => (
+      <div
+        key={index}
+        className={`text-primary font-bold  font-custom-open-sans w-auto text-md  cursor-pointer ${index==0?'text-left':index==6?"text-right":"text-center"}   mx-1 rounded-full `}
+        onClick={() => handleTabClick(index)}
+      >
+        {tab.name}
+
+      </div>
+    ))}
+  </div>
+  <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
+    <div
+      className="absolute top-0 left-0 h-full bg-secondary2 rounded-full"
+      style={{
+        width: `${(activeTab -1)==0?"160":(activeTab-1)==1?"190":(activeTab-1)==3?"150":(activeTab-1)==4?"70":(activeTab-1)==5?"100":(activeTab-1)==6?"110":"100"}px`, // Adjust based on the number of tabs
+        transform: `translateX(${(activeTab -1)==0?"0":(activeTab-1)==1?"190":(activeTab-1)==2?"410":(activeTab-1)==3?"540":(activeTab-1)==4?"720":(activeTab-1)==5?"810":(activeTab-1)==6?"930":""}px)`, // Adjust based on the number of tabs
+        transition: 'transform 0.3s ease-in-out',
+      }}
+    />
+  </div>
+  
+</div>
         <div className="w-full md:w-[80%] md:m-auto">
-          <p className=" body-padding-y font-semibold text-md  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
+          <p className=" body-padding-y w-[80%] m-auto text-[18px]  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
             Regular check-ups and preventative measures are essential to keep your
             pet in
             the best health. Take care of any vaccinations, get any help you need,
@@ -59,7 +71,7 @@ const OverviewTabs = () => {
           <div className="w-full ">
             <Tab {...services[activeTab - 1]} />
           </div>
-          <p className=" body-padding-y font-semibold text-md  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
+          <p className=" body-padding-y  w-[80%] m-auto  font-semibold text-[18px]  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
             We’ve listed our most commonly requested services, but cater to many other needs.
             If you don’t find what you need please get in touch and we’d be happy to help or
             refer you to someone that can

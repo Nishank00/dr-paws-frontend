@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DoctorProfileCard = () => {
+const DoctorProfileCard = ({full_name,experience,specialization}) => {
   return (
     <div className="justify-center bg-primary3 py-2 items-stretch self-stretch flex max-w-[292px] flex-col px-10">
     <img
@@ -9,13 +9,13 @@ const DoctorProfileCard = () => {
       className="aspect-square object-contain object-center w-[115px] overflow-hidden self-center max-w-full"
     />
     <div className="text-slate-700 text-center text-lg font-semibold whitespace-nowrap mt-5">
-      Dr. Emily Thompson
+     Dr. {full_name || "NA" }
     </div>
     <div className="text-slate-700 text-center text-sm whitespace-nowrap mt-5">
-      DMV - Animal Welfare
+      {specialization}
     </div>
     <div className="text-slate-700 text-center text-sm whitespace-nowrap mt-1">
-      10 Years of Experience
+      {experience}
     </div>
     <div className="justify-between items-stretch flex gap-2.5 mt-5">
       <img

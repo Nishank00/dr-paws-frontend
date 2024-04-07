@@ -3,8 +3,8 @@ import DoctorSlider from './DoctorSlider'
 const TabOne = ( { contact_numbers, address } ) =>
 {
   return (
-    <div>
-      <div style={{border:"1px solid red"}} className='w-full flex flex-col md:flex-row justify-between items-center'>
+    <div class="py-4">
+      <div  className='w-full flex flex-col md:flex-row justify-between items-center'>
         <div  className='w-full  h-full md:w-[48%] '>
           <div className="items-stretch flex max-w-[326px] flex-col">
             <div className="text-primary font-custom-roca text-2xl leading-6 capitalize w-full">
@@ -21,38 +21,38 @@ const TabOne = ( { contact_numbers, address } ) =>
               </div>
             </div>
           </div>
-          <div className="items-stretch flex max-w-[504px] mt-5 flex-col">
+          <div className="items-stretch flex max-w-[504px] mt-10 flex-col">
             <div className="text-primary text-2xl font-custom-roca leading-6 capitalize w-full max-md:max-w-full">
               Timings
             </div>
             <div className="w-full mt-4  max-md:max-w-full">
               <div className="gap-5 flex  max-md:items-stretch max-md:gap-0">
                 <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-                  <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                  <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
                     Monday to Friday
 
                   </div>
-                  <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                  <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
 
                     Saturday
                   </div>
-                  <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                  <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
 
                     Sunday
                   </div>
                 </div>
                 <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-                <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
                     09:00 - 19:00
 
                   </div>
-                  <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                  <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
 
                     10:00 - 17:00
 
                     <br />
                   </div>
-                  <div className="text-primary  font-custom-open-sans text-xd  mt-2 leading-4 tracking-tight max-md:mt-8">
+                  <div className="text-primary  font-custom-open-sans text-xl  mt-2 leading-4 tracking-tight max-md:mt-8">
 
                     10:00 - 15:00
 
@@ -63,8 +63,8 @@ const TabOne = ( { contact_numbers, address } ) =>
           </div>
 
         </div>
-        <div style={{border:"1px solid blue"}} className='w-full mt-10 md:mt-0 md:w-[48%] '>
-          <div style={{border:"1px solid blue"}} className="items-stretch flex max-w-[369px] flex-col pb-9">
+        <div  className='w-full mt-10 md:mt-0 md:w-[48%] '>
+          <div  className="items-stretch flex max-w-[369px] flex-col p-4 border-2 border-accent  rounded-xl pt-6  pb-9">
             <div className="text-primary text-2xl font-custom-roca font-semibold leading-4 tracking-tight w-full">
               Location
             </div>
@@ -83,7 +83,15 @@ const TabOne = ( { contact_numbers, address } ) =>
         </div>
 
       </div>
-      <DoctorSlider />
+    <div className='mt-10'>
+    <h2
+        style={{ fontFamily: "Roca Bold, sans-serif" }}
+        className="text-primary font-medium  pt-10  text-2xl md:text-[26px] pb-6 text-center"
+      >
+       Meet the superheroes
+      </h2>
+    <DoctorSlider />
+    </div>
     </div>
   )
 }

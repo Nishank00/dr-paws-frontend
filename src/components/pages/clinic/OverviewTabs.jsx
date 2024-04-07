@@ -41,8 +41,8 @@ const OverviewTabs = () => {
     <div className="w-[100%] m-auto flex-auto justify-center  items-center">
       <div className="w-full py-10">{<GallaryBox />}</div>
 
-      <span className="self-center flex w-full max-w-[1042px]  items-stretch justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
-        <div className="px-5 max-md:max-w-full">
+      <span className=" self-center flex w-full max-w-[1042px]  items-center justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
+        <div className="   max-md:max-w-full">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-[81%] max-md:w-full max-md:ml-0">
               <span className="flex grow flex-col items-stretch max-md:mt-7">
@@ -61,31 +61,32 @@ const OverviewTabs = () => {
           Book a Visit
         </span>
       </span>
-      <div className="flex mb-4 border-b-2 mt-16">
-      
-        <button onClick={() => handleTabClick(1)}
-          className=' h-full  flex flex-col justify-between items-center'>
-          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
-          Overview
-          </div>
-          {activeTab === 1 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
-        <button />
-        <button onClick={() => handleTabClick(2)}
-          className=' h-full ml-10 flex flex-col justify-between items-center'>
-          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
-          Photo
-          </div>
-          {activeTab === 2 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
-        <button />
-        <button onClick={() => handleTabClick(3)}
-          className=' h-full ml-10 flex flex-col justify-between items-center'>
-          <div className='text-primary text-md  font-semi-bold font-custom-open-sans mt-3'>
-          Reviews
-                    </div>
-          {activeTab === 3 && <div className='w-full border-2 rounded-full align-baseline border-solid border-secondary'></div>}</button>
-        <button />
-  
+     
+      <div className="flex flex-col items-start mt-4">
+      <div className="flex mt-2">
+    {["Overviews", "Photo","Reviews"].map((tab, index) => (
+      <div
+        key={index}
+        className={` w-[100px] cursor-pointer ${index==0?'text-left':index==2?"text-right":"text-center"}   mx-1 rounded-full `}
+        onClick={() => handleTabClick(index + 1)}
+      >
+        {tab}
       </div>
+    ))}
+  </div>
+  <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
+    <div
+      className="absolute top-0 left-0 h-full bg-secondary rounded-full"
+      style={{
+        width: `${(activeTab -1)==0?"100":(activeTab-1)==1?"80":"100"}px`, // Adjust based on the number of tabs
+        transform: `translateX(${(activeTab -1)==0?"0":(activeTab-1)==1?"120":"240"}px)`, // Adjust based on the number of tabs
+        transition: 'transform 0.3s ease-in-out',
+      }}
+    />
+  </div>
+  
+</div>
+
       <div className="w-[100%] m-auto flex-auto justify-center  items-center">
         {/* Content for Tab 1 */}
         {activeTab === 1 && (
