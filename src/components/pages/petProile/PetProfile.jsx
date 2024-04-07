@@ -162,7 +162,7 @@ const PetProfile = ({ pet_id }) => {
         <div class="w-full">
           {
            documentlist && documentlist.map((doc, index) => (
-            <PetDocumentList pet_id={petData.id} {...doc} />
+            <PetDocumentList key={index} pet_id={petData.id} {...doc} />
             ))
 
           }
