@@ -124,6 +124,7 @@ const Header = () => {
 
   const closeProfileDropdown = () => {
     setProfileDropdown(false);
+    router.push("/");
   };
 
   const toggleProfileDropdown = () => setProfileDropdown(!showProfileDropdown);
@@ -183,7 +184,7 @@ const Header = () => {
             />
             <div
               onClick={userIconClicked}
-              className="flex items-center   p-2  border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
+              className="flex items-center p-2 border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
             >
               <img
                 className="w-full h-full"
