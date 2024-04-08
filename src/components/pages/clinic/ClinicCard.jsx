@@ -24,19 +24,19 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "240px",
         }}
+        class="w-full h-[92px] md:w-full md:h-[240px] "
       />
       <div className="pl-6 pr-2 py-4 text-primary grow">
-        <h4 className="font-semibold font-custom-open-sans text-xl line-clamp-1">
+        <h4 className="font-semibold font-custom-open-sans text-xs md:text-xl line-clamp-1">
           Dr. Paw | {name}
         </h4>
-        <p className="text-sm font-custom-open-sans mt-1 text-primary line-clamp-1">
+        <p className=" text-xs md:text-sm font-custom-open-sans mt-1 text-primary line-clamp-1">
           {serviceString || "OPD | Surgery"}
         </p>
       </div>
       <div
-        className="text-center text-white text-sm h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
+        className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
         onClick={(e) => {
           e.stopPropagation();
           router.push("/booking&clinic=" + id);

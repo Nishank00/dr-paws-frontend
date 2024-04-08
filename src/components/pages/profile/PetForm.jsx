@@ -122,8 +122,8 @@ setPet({...pet,pet_image:url})
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           className={`justify-center  items-center font-custom-open-sans text-sm font-semibold  ${
-            petData ? "w-[96px]" : "w-[166px]"
-          } ${petData?"h-[40px]":"h-[50px]"} border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
+            petData ? "w-[70px] md:w-[96px]" : " w-[90px] md:w-[166px]"
+          } ${petData?"md:h-[40px]":"md:h-[50px]"} border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
         >
           {/* <div className="w-full flex items-center "> */}
           {!petData && (
