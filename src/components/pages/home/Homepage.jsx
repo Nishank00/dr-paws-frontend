@@ -51,7 +51,8 @@ const Homepage = () => {
               }
               imagePosition="left"
               buttonColor="secondary"
-              buttonText="Book a Visit"
+              buttonText="View our Clinics"
+              buttonUrl="/clinics"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4">
@@ -63,8 +64,8 @@ const Homepage = () => {
               }
               imagePosition="right"
               buttonColor="accent"
-
-              buttonText="Book a Visit"
+              buttonText="Meet our Doctors"
+              buttonUrl="/team"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4">
@@ -89,7 +90,8 @@ const Homepage = () => {
               imagePosition="right"
               buttonColor="accent"
 
-              buttonText="Book a Visit"
+              buttonText="View our Services"
+              buttonurl="/services"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4 ">
@@ -122,9 +124,9 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[26px] pb-6 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[28px] pb-6 text-center"
       >
-        Check out the places <br/>we call home
+        Check out the places , we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
@@ -138,14 +140,13 @@ const Homepage = () => {
       <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium  mt-10 text-2xl md:text-[26px] mb-6 text-center"
+          className="text-primary font-medium  mt-10 text-2xl md:text-[28px] mb-6 text-center"
         >
-          Whatever your pet needs,
-          <br /> we&apos;re there
+          Whatever your pet needs, we&apos;re there
         </h2>
         <p
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center font-custom-open-sans  text-sm mb-6"
+          className="text-primary text-center font-custom-open-sans  text-[16] mb-6"
         >
           Discover our most commonly requested services. For anything not
           listed,please <br /> get in touch with your local clinic
@@ -164,13 +165,13 @@ const Homepage = () => {
       <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary hidden md:block  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-primary hidden md:block  text-center text-2xl md:text-[28px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center hidden md:block font-custom-open-sans text-[22px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-primary text-center hidden md:block font-custom-open-sans text-[16px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
           If your question is still not answered, please get in touch and<br/> we’d
           be happy to help

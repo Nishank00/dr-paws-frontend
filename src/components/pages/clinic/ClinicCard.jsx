@@ -28,10 +28,10 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
         class="w-full h-[92px] md:w-full md:h-[240px] "
       />
       <div className="pl-6 pr-2 py-4 text-primary grow">
-        <h4 className="font-semibold font-custom-open-sans text-xs md:text-xl line-clamp-1">
+        <h4 className="font-semibold font-custom-open-sans text-xs md:text-[18px] line-clamp-1">
           Dr. Paw | {name}
         </h4>
-        <p className=" text-xs md:text-sm font-custom-open-sans mt-1 text-primary line-clamp-1">
+        <p className=" text-[10px] md:text-[12px] font-custom-open-sans mt-2 text-primary line-clamp-1">
           {serviceString || "OPD | Surgery"}
         </p>
       </div>

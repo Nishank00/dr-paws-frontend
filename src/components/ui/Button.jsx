@@ -3,7 +3,7 @@
 const Button = ({
   type = "button",
   color = "primary",
-  onClick = () => console.log("button clicked"),
+  onClick ,
   label = "button",
   className = "",
   disabled = false,

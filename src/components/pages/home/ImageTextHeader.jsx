@@ -1,15 +1,23 @@
 import Button from "../../ui/Button";
 import "../../../../src/app/font.css";
+import { useRouter } from "next/navigation";
 const ImageTextHeader = ({
   imageUrl,
   header,
   text,
   imagePosition,
   buttonText,
+  buttonUrl,
   buttonColor,
   Imageheight,
   buttonVisibility = true,
 }) => {
+  const router=useRouter()
+  const handleClick=()=>{
+if(buttonUrl){
+  router.push(buttonUrl)
+}
+  }
   return (
     <>
       {/* <div className=" w-[350px] md:w-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 px-5 pb-12 overflow-hidden bg-white">
@@ -87,6 +95,7 @@ const ImageTextHeader = ({
                 className={`${!buttonVisibility && "hidden"} w-[220px] md:mt-[14px] lg:mt-1 text-lg `}
                 color={buttonColor}
                 label={buttonText}
+                onClick={handleClick}
               />
             </div>
           </div>

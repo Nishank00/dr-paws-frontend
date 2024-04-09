@@ -13,13 +13,13 @@ const Footer = () => {
           href="mailto:hello@bearhug.co"
           className="text-primary text-[20px]  hover:text-secondary mb-2"
         >
-          hello@bearhug.co
+          hello@drpaws.care
         </a>
         <a
           href="tel:+123 456 789"
           className="text-primary text-[20px]  hover:text-secondary"
         >
-          +123 456 789
+          +91 96069 94629
         </a>
       </div>
 
@@ -69,7 +69,7 @@ const Footer = () => {
         </a>
       </div> */}
       <div className=" flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Company </p>
+        <p className="text-2xl  font-custom-roca font-semibold mb-4 text-primary"> Company </p>
 
         <a href="#" className="text-primary text-[22px]  hover:text-secondary">
           Team     
@@ -80,7 +80,7 @@ const Footer = () => {
 
       </div>
       <div className="flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Get Care</p>
+        <p className="text-2xl  font-custom-roca font-semibold mb-4 text-primary"> Get Care</p>
 
         <a href="#" className="text-primary text-[22px]  hover:text-secondary">
           Services        </a>
@@ -92,7 +92,7 @@ const Footer = () => {
           Download app       </a>
       </div>
       <div className="flex flex-col mt-6  items-center md:items-start">
-        <p className="text-2xl font-semibold mb-4 text-primary"> Social</p>
+        <p className="text-2xl  font-custom-roca font-semibold mb-4 text-primary"> Social</p>
 
         <a href="#" className="text-primary text-[22px]  hover:text-secondary">
           Instagram        </a>
