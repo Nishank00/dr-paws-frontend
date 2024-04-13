@@ -33,15 +33,15 @@ const PetList = ( { user_id } ) =>
     return (
         <div className='w-full'>
             <div className='flex justify-between items-center w-full mt-5'>
-                <div className="text-primary font-custom-roca flex items-center  text-center lg:text-left text-2xl leading-9 tracking-normal ">
+                <div className="text-primary font-custom-roca flex items-center  text-center lg:text-left md:text-md md:text-2xl leading-9 tracking-normal ">
                     Your Pets
                 </div>
 
                 <PetForm user_id={user_id} getPets={getPets} />
             </div>
-            {petlist.length > 0 && <div className='w-full mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
+            {petlist.length > 0 && <div className='w-full mt-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5'>
                 {
-                    petlist.map( ( pet, index ) => <PetCard key={index} {...pet} />
+                    petlist.map( ( pet, index ) => <PetCard key={index} index={index} {...pet} />
                     )
                 }
             </div>

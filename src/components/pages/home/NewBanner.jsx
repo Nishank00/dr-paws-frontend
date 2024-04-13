@@ -1,6 +1,7 @@
 "use client"
 import React,{useState,useEffect} from "react";
 import BannerPetCard from "./BannerPetCard";
+import BannerPetCardTwo from "./BannerPetCardTwo";
 import "@/app/globals.css"
 const NewBanner = () => {
   // const [backgroundUrl, setBackgroundUrl] = useState('');
@@ -33,19 +34,19 @@ const NewBanner = () => {
     >
 
       <div className=" w-full lg:w-1/2 h-full flex-col flex justify-center gap-5">
-        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className=" text-3xl md:text-6xl custom-open-sans font-bold">
+        <h2 style={{ fontFamily: 'Roca Bold, sans-serif' }} className=" text-3xl md:text-[64px] leading-none custom-open-sans font-bold">
          The Veterinary  <br />
          Care our best  <br />
           friends deserve
         </h2>
-        <p  className="text-sm font-custom-open-sans  md:text-xl font-light custom-open-sans">
+        <p  className="text-sm font-custom-open-sans  md:text-[22px] font-light custom-open-sans">
         Book a visit now. Who will we be meeting?
         </p>
 
         <div className="flex gap-4 w-full">
-          <BannerPetCard pet_type="Dog" pet_image="/home/dog.png" />
-          <BannerPetCard pet_type="Cat" pet_image="/home/cat.png" />
-          <BannerPetCard pet_type="Others" pet_image="/home/bird.png" />
+          <BannerPetCard pet_type="Dog" width={"70px"} height={"70px"} pet_image="/home/dog.svg" />
+          <BannerPetCard pet_type="Cat"width={"70px"} height={"70px"}  pet_image="/home/cat.svg" />
+          <BannerPetCardTwo pet_type="Small Pets" width={"70px"} height={"80px"} pet_image="/home/rabbit.svg" />
         </div>
       </div>
     </div>

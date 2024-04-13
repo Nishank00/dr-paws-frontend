@@ -51,7 +51,7 @@ const UserPofile = () => {
       <div className=" mt-10 lg:mt-14">
         <div className="text-secondary  flex flex-col lg:flex-row items-center gap-2 lg:gap-1">
           <div id="profile-image w-full lg:w-1/5">
-            <Image
+            {/* <Image
               src={
                 userData.profile_image
                   ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
@@ -62,8 +62,18 @@ const UserPofile = () => {
               alt="Profile Image"
               width={100}
               height={100}
-              className="aspect-square object-cover object-center w-40 h-40 rounded-full"
-            />
+              className="aspect-square object-cover object-center w-[160px] h-[160px] rounded-full"
+            /> */}
+             <div
+              className="w-[160px] h-[160px] rounded-full bg-accent relative"
+              style={{
+                backgroundImage: `url(${userData.profile_image
+                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}` : "/defaultUserProfileImage.png"})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            ></div>
           </div>
 
           <div
@@ -74,12 +84,12 @@ const UserPofile = () => {
               {userData.full_name || "Not Available"}
             </h2>
 
-            <div className="flex flex-col md:flex-row justify-between">
+            <div className=" flex flex-col md:flex-row justify-between">
               <div className="mt-5 md:mt-0">
                 <h4 className="text-sm mb-2 font-custom-open-sans text-center md:text-left">
                   Contact No
                 </h4>
-                <h3 className="text-lg font-custom-open-sans font-semibold text-primary text-center md:text-left">
+                <h3 className="text-md font-custom-open-sans font-semibold text-primary text-center md:text-left">
                   {userData.phone || "NA"}
                 </h3>
               </div>
@@ -88,7 +98,7 @@ const UserPofile = () => {
                 <h4 className="text-sm mb-2 text-center md:text-left">
                   Email Id
                 </h4>
-                <h3 className="text-lg font-custom-open-sans font-semibold text-primary text-center md:text-left">
+                <h3 className="text-md font-custom-open-sans font-semibold text-primary text-center md:text-left">
                   {userData.email || "NA"}
                 </h3>
               </div>
@@ -97,7 +107,7 @@ const UserPofile = () => {
                 <h4 className="text-sm mb-2 text-center md:text-left">
                   Address
                 </h4>
-                <h3 className="text-lg font-custom-open-sans font-semibold  text-primary text-center md:text-left ">
+                <h3 className="text-sm font-custom-open-sans font-semibold  text-primary text-center md:text-left ">
                   {userData.address || "NA"}
                 </h3>
               </div>

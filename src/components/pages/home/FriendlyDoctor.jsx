@@ -4,7 +4,7 @@ const FriendlyDoctor = () => {
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
-        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-2xl md:text-[28px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
           Our vets bring the magic to Dr. Paws
         </div>
         <div className="self-center w-full max-w-[1045px] mt-14 max-md:max-w-full max-md:mt-10">

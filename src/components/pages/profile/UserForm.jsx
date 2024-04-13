@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from "react";
 import UploadService from "@/services/Upload.service";
 import UserService from "@/services/User.Service";
+import { useToast } from "@/components/ui/ToastProvider"
+import Image from "next/image";
 
 const UserForm = ({ closePopup, user_id }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const showToast = useToast();
   const [imageUrl, setImageUrl] = useState("");
   const [token, setToken] = useState("");
   const [userData, setUserData] = useState({
@@ -32,9 +35,12 @@ const UserForm = ({ closePopup, user_id }) => {
       UploadService.uploadFile(formData)
         .then((r) => {
           if (r.data.status) {
-            setUserData({ ...user, profile_image: r.data.data[0] });
+            setUserData({ ...userData, profile_image: r.data.data[0] });
+            showToast("uploaded successfully", "success");
+
           } else {
             console.log(r.data.message);
+            showToast(r.data.message, "error");
           }
         })
         .catch((err) => {
@@ -42,7 +48,6 @@ const UserForm = ({ closePopup, user_id }) => {
           console.log("err in upload=>", err.message);
         });
 
-      alert("Upload successful");
     } catch (error) {
       console.error("Error uploading file", error);
     }
@@ -99,18 +104,41 @@ const UserForm = ({ closePopup, user_id }) => {
 
   useEffect(() => {
     getUserDataById(user_id);
-  }, [user_id, userData.profile_image]);
+  }, [user_id]);
 
   return (
     <div className="w-full m-auto h-[530px] overflow-scroll">
       <div className="relative w-fit m-auto">
         <label htmlFor="file-input" className="cursor-pointer block">
           <div className="w-48 h-36  flex items-center justify-center">
-            <img
+            {/* <img
               loading="lazy"
               srcSet={userData.profile_image || "dummyProfilePic.jpg"}
               className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
-            />
+            /> */}
+            {/* <Image
+              src={
+                userData.profile_image
+                  ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+                  "/" +
+                  userData.profile_image
+                  : "/defaultUserProfileImage.png"
+              }
+              alt="Profile Image"
+              width={100}
+              height={100}
+              className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
+            /> */}
+             <div
+              className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
+              style={{
+                backgroundImage: `url(${userData.profile_image
+                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}` : "/defaultUserProfileImage.png"})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            ></div>
             <div className="w-6 h-6 rounded-full bg-secondary absolute right-10 bottom-5"></div>
           </div>
         </label>

@@ -40,22 +40,22 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <h4 className="text-primary  font-custom-roca font-semibold text-center text-3xl mt-14">
+      <h4 className="text-primary  font-custom-roca font-semibold text-center text-xl md:text-3xl mt-1 md:mt-14">
         Our Clinics
       </h4>
 
-      <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+      <div className="w-full m-auto mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
         {clincs &&
           clincs.map((item, index) => (
             <ClinicCard key={index} imageUrl={"/home/clinic_image.png"} clinic={item} />
           ))}
-        <span className="justify-center items-center shadow-sm bg-primary3 flex  flex-col px-9 py-12 rounded-lg">
+        <span className="justify-center w-full items-center shadow-sm bg-primary3 flex  flex-col px-2 md:px-9 md:py-12 rounded-lg">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c86bbb0d478f3d8bde31d329a0619c24df3bcebaa6c25902d2bc986a973a6de?apiKey=22a36eade5734692978208fb0d2f5c62&"
-            className="aspect-[0.79] object-contain object-center w-[45px] overflow-hidden max-w-full mt-9"
+            className="aspect-[0.79] object-contain object-center w-[15px] md:w-[45px] overflow-hidden max-w-full mt-1 md:mt-9"
           />
-          <div className="text-primary text-center  font-custom-roca text-2xl  capitalize self-stretch mt-10 mb-9">
+          <div className="text-primary text-center  font-custom-roca text-sm md:text-2xl  capitalize self-stretch mt-1 mb-1 md:mt-10 md:mb-9">
             Where should the next Dr. Paws Clinic be?
           </div>
         </span>
