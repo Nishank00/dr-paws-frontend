@@ -18,14 +18,13 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
       onClick={() => router.push(`/clinics/overview/${id}`)}
     >
       <div
-        className="rounded-t-md"
+        className="rounded-t-md w-full h-[92px] md:h-[240px]"
         style={{
           backgroundImage: "url(" + imageUrl + ")",
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        className="w-full h-[92px] md:w-full md:h-[240px] "
       />
       <div className="pl-6 pr-2 py-4 text-primary grow">
         <h4 className="font-semibold font-custom-open-sans text-xs md:text-[18px] line-clamp-1">
