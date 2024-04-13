@@ -5,7 +5,7 @@ import PetService from "@/services/Pet.Service";
 import UploadProfile from "@/components/auth/UploadProfile";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
-const PetForm = ({ user_id, getPets, petData,getPetData }) => {
+const PetForm = ({ user_id, getPets, petData, getPetData }) => {
   const gridData = [1, 2, 3, 4, 5];
   const [isOpen, setIsOpen] = useState(false);
   const [ishover, setIsHover] = useState(false);
@@ -19,7 +19,7 @@ const PetForm = ({ user_id, getPets, petData,getPetData }) => {
     age: null,
     date_of_birth: null,
     weight: null,
-    pet_image:null,
+    pet_image: null,
   });
   const [petTypes, setPetTypes] = useState();
   const [breeds, setBreeds] = useState([]);
@@ -31,7 +31,7 @@ const PetForm = ({ user_id, getPets, petData,getPetData }) => {
 
   const closePopup = () => {
     setIsOpen(false);
-    if(petData){
+    if (petData) {
       getPetData();
     }
   };
@@ -98,20 +98,20 @@ const PetForm = ({ user_id, getPets, petData,getPetData }) => {
       age: null,
       date_of_birth: null,
       weight: null,
-      pet_image:null
+      pet_image: null,
     });
   };
-  const onUpload=(url)=>{
-setPet({...pet,pet_image:url})
-  }
+  const onUpload = (url) => {
+    setPet({ ...pet, pet_image: url });
+  };
   useEffect(() => {
     if (petData) {
-      console.log("petdatain petForm=>",petData)
+      console.log("petdatain petForm=>", petData);
       getPetsType();
       getPetBreedData({ parent_id: petData.pet_type });
       setPet(petData);
     } else {
-      getPetsType()
+      getPetsType();
     }
   }, [petData]);
   return (
@@ -123,7 +123,9 @@ setPet({...pet,pet_image:url})
           onMouseLeave={() => setIsHover(false)}
           className={`justify-center  items-center font-custom-open-sans text-sm font-semibold  ${
             petData ? "w-[70px] md:w-[96px]" : " w-[90px] md:w-[166px]"
-          } ${petData?"md:h-[40px]":"md:h-[50px]"} border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
+          } ${
+            petData ? "md:h-[40px]" : "md:h-[50px]"
+          } border-[color:var(--Secondary-1,#5281A2)] flex gap-2  rounded-full border-2 border-solid text-secondary hover:text-white hover:bg-secondary`}
         >
           {/* <div className="w-full flex items-center "> */}
           {!petData && (
@@ -145,7 +147,7 @@ setPet({...pet,pet_image:url})
             {petData ? "Edit Profile" : "Add Pet"}
           </div>
           <div className="">
-            <UploadProfile onUpload={onUpload}  image={pet.pet_image}/>
+            <UploadProfile onUpload={onUpload} image={pet.pet_image} />
           </div>
           <div className="w-[80%]">
             <input
@@ -159,7 +161,7 @@ setPet({...pet,pet_image:url})
             <select
               value={pet.pet_type}
               onChange={(e) => handlePetTypeChange(e)}
-              class="rounded-lg px-4  font-custom-open-sans h-[45px] w-full border-2  text-md text-primary"
+              className="rounded-lg px-4  font-custom-open-sans h-[45px] w-full border-2  text-md text-primary"
             >
               <option
                 className=" text-sm font-custom-open-sans"
@@ -187,7 +189,7 @@ setPet({...pet,pet_image:url})
               <select
                 value={pet.breed}
                 onChange={(e) => setPet({ ...pet, breed: e.target.value })}
-                class="rounded-lg px-4  w-full border-2 h-[45px] text-md text-primary"
+                className="rounded-lg px-4  w-full border-2 h-[45px] text-md text-primary"
               >
                 <option value="" disabled selected>
                   Select your pet
@@ -213,7 +215,7 @@ setPet({...pet,pet_image:url})
                   <select
                     value={pet.gender}
                     onChange={(e) => setPet({ ...pet, gender: e.target.value })}
-                    class="rounded-lg px-4  w-full h-[45px] border-2  text-md text-primary"
+                    className="rounded-lg px-4  w-full h-[45px] border-2  text-md text-primary"
                   >
                     <option
                       className=" text-sm font-custom-open-sans"

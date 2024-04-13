@@ -25,7 +25,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        class="w-full h-[92px] md:w-full md:h-[240px] "
+        className="w-full h-[92px] md:w-full md:h-[240px] "
       />
       <div className="pl-6 pr-2 py-4 text-primary grow">
         <h4 className="font-semibold font-custom-open-sans text-xs md:text-[18px] line-clamp-1">

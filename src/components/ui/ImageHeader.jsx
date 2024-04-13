@@ -36,7 +36,7 @@ const ImageHeader = ({
               >
                 {header}
               </h2>
-              {/* <h1 style={{ fontFamily: "Roca Bold, sans-serif" }}class=" text-primary  leading-10  lg:text-[50px]">{header}</h1> */}
+              {/* <h1 style={{ fontFamily: "Roca Bold, sans-serif" }}className=" text-primary  leading-10  lg:text-[50px]">{header}</h1> */}
               <p className="text-primary font-custom-open-sans text-sm mb-6">
                 {text}
               </p>
