@@ -77,8 +77,7 @@ const Homepage = () => {
               }
               imagePosition="left"
               buttonColor="secondary"
-
-              buttonText="Book a Visit"
+              buttonText="Download App"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4 ">
@@ -86,12 +85,12 @@ const Homepage = () => {
               imageUrl={"/home/grid_pic_four.png"}
               header={"Everything under one roof"}
               text={
-                "Our clinics offer all the services you’ll need including grooming, behavioural counselling, nutritional consultations &  pet-boarding"}
+                "Our clinics offer all the services you’ll need including grooming, behavioural counselling, nutritional consultations &  pet-boarding"
+              }
               imagePosition="right"
               buttonColor="accent"
-
               buttonText="View our Services"
-              buttonurl="/services"
+              buttonUrl="/services"
             />
           </div>
           <div className="py-4 rounded-lg bg-white m-4 ">
@@ -103,7 +102,6 @@ const Homepage = () => {
               }
               imagePosition="left"
               buttonColor="secondary"
-
               buttonText="Book a Visit"
             />
           </div>
@@ -112,10 +110,10 @@ const Homepage = () => {
               imageUrl={"/home/grid_pic_six.png"}
               header={"Memberships designed for modern pet-parents"}
               text={
-                "Our great-value memberships include all the services your pet is likely to need, all under one roof"}
+                "Our great-value memberships include all the services your pet is likely to need, all under one roof"
+              }
               imagePosition="right"
-              buttonColor="secondary2"
-
+              buttonColor="secondary"
               buttonText="Become a Member"
             />
           </div>
@@ -130,10 +128,7 @@ const Homepage = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
-          <ClinicCard
-            key={"clinic" + i}
-            clinic={clinic}
-          />
+          <ClinicCard key={"clinic" + i} clinic={clinic} />
         ))}
       </div>
 
@@ -171,10 +166,10 @@ const Homepage = () => {
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center hidden md:block font-custom-open-sans text-[16px] leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-primary text-center hidden md:block font-custom-open-sans text-lg leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
         >
-          If your question is still not answered, please get in touch and<br/> we’d
-          be happy to help
+          If your question is still not answered, please get in touch and
+          <br /> we’d be happy to help
         </div>
         <div className="w-full border-b border-solid border-grey px-5 py-4">
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
@@ -186,7 +181,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            We treat all small animals that can be considered as household pets. These include dogs, cats, small mammals (e.g. rabbits, guinea pigs), birds, and reptiles.
+            We treat all small animals that can be considered as household pets.
+            These include dogs, cats, small mammals (e.g. rabbits, guinea pigs),
+            birds, and reptiles.
           </p>
         </Dropdown>
         <Dropdown title="Do you take walk-in appointments?">
@@ -194,7 +191,10 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, walk-in appointments are accepted. You will be seen by a veterinarian as soon as there is a slot available. For the best choice of appointments and no waiting times, we encourage you to pre-book appointments via our app or website.
+            Yes, walk-in appointments are accepted. You will be seen by a
+            veterinarian as soon as there is a slot available. For the best
+            choice of appointments and no waiting times, we encourage you to
+            pre-book appointments via our app or website.
           </p>
         </Dropdown>
         <Dropdown title="If I have a regular Dr. Paws branch, can I also visit other branches?">
@@ -202,7 +202,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, of course! Our technology ensures your pets medical records are instantly accessible from any clinic so that you have the same Dr. Paws experience wherever in the country you are.
+            Yes, of course! Our technology ensures your pets medical records are
+            instantly accessible from any clinic so that you have the same Dr.
+            Paws experience wherever in the country you are.
           </p>
         </Dropdown>
         <Dropdown title="Does Dr. Paws treat stray animals?">
@@ -210,14 +212,20 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Stray animals need all the love, and we are committed to doing right by them. Any stray animal in need of trauma care can be brought to a Dr. Paws clinic and treated at minimal cost.          </p>
+            Stray animals need all the love, and we are committed to doing right
+            by them. Any stray animal in need of trauma care can be brought to a
+            Dr. Paws clinic and treated at minimal cost.{" "}
+          </p>
         </Dropdown>
         <Dropdown title="How many clinics does Dr. Paws have?">
           <p
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Currently, we have just started with our first clinics in Bengaluru, but plan to expend across other major cities in the very near future.          </p>
+            Currently, we have just started with our first clinics in Bengaluru,
+            but plan to expend across other major cities in the very near
+            future.{" "}
+          </p>
         </Dropdown>
 
         <div className="w-full border-b border-solid border-grey  md:mt-10 px-5 py-4">
@@ -230,7 +238,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, Dr. Paws clinics are equipped to perform trauma care after accidents, and treat critically ill animals. For any case that we cannot treat, we will  refer you to a facility that can.
+            Yes, Dr. Paws clinics are equipped to perform trauma care after
+            accidents, and treat critically ill animals. For any case that we
+            cannot treat, we will refer you to a facility that can.
           </p>
         </Dropdown>
         <Dropdown title="Does Dr. Paws offer grooming?">
@@ -238,7 +248,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left font-custome-inter   text-sm leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, every Dr. Paws clinic has a grooming area, with separate spaces for dogs & cats. We believe grooming is an essential part of keeping your pet healthy and happy.
+            Yes, every Dr. Paws clinic has a grooming area, with separate spaces
+            for dogs & cats. We believe grooming is an essential part of keeping
+            your pet healthy and happy.
           </p>
         </Dropdown>
         <Dropdown title=" Do you have overnight care?">
@@ -246,7 +258,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, we offer overnight care for pets that have been operated on by us, and need close monitoring. At this moment in time, we do not offer emergency out-of-hours OPD veterinary consultations.
+            Yes, we offer overnight care for pets that have been operated on by
+            us, and need close monitoring. At this moment in time, we do not
+            offer emergency out-of-hours OPD veterinary consultations.
           </p>
         </Dropdown>
         <Dropdown title=" Can I buy food, accessories and medicines for my pet at Dr. Paws?">
@@ -254,7 +268,9 @@ const Homepage = () => {
             style={{ fontFamily: "Open Sans, sans-serif" }}
             className="text-slate-700 text-left text-sm font-custome-inter leading-7 tracking-tight self-center  max-md:max-w-full "
           >
-            Yes, every Dr. Paws store has a retail section stocked with doctor approved food, treats, accessories, and medicines.          </p>
+            Yes, every Dr. Paws store has a retail section stocked with doctor
+            approved food, treats, accessories, and medicines.{" "}
+          </p>
         </Dropdown>
       </div>
     </>

@@ -13,85 +13,35 @@ import { useToast } from "@/components/ui/ToastProvider";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
   <>
-    <div
-      className={`${show ? "" : "hidden md:block"} lg:w-[1020px] bg-red-600`}
-    >
+    <div className={`${show ? "" : "hidden md:block"}  `}>
       <ul
-        className={`${applyParentClass} flex flex-col md:flex-row  md:items-center md:justify-center mt-5 lg:mt-0`}
+        className={`${applyParentClass} text-lg flex flex-col md:flex-row  md:items-center mt-5 lg:mt-0`}
       >
-        <li className="my-1 md:mx-3">
+        <li className="my-1 md:mx-3 hover:font-semibold">
           <Link className="" href="/clinics">
-            Locations
+            <span className="">Locations</span>
           </Link>
         </li>
 
-        <li className="my-1 md:mx-3">
+        <li className="my-1 md:mx-3 hover:font-semibold">
           <Link className="" href="/services">
             Our Services
           </Link>
         </li>
 
-        <li className="my-1 md:mx-3">
+        <li className="my-1 md:mx-3 hover:font-semibold">
           <Link className="" href="/team">
             Our Team
           </Link>
         </li>
 
-        <li className="my-1 md:mx-3">
+        <li className="my-1 md:mx-3 hover:font-semibold">
           <Link className="" href="/membership">
             Membership
           </Link>
         </li>
       </ul>
     </div>
-    {/* <div className={` hidden sm:hidden md:hidden lg:flex lg:flex-row  lg:justify-around items-center lg:w-[950px]  border-solid border-red-700 h-14`}>
-      <div className="my-1 md:mx-3 ">
-        <Link className="text-xl" href="/clinics">
-          Locations
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/services">
-          Our Services
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/team">
-          Our Team
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/membership">
-          Membership
-        </Link>
-      </div>
-    </div>
-    <div>
-    {
-      <div className={`${show? "block":"hidden"} w-full`}>
-         <div className="my-1 md:mx-3 ">
-        <Link className="text-xl" href="/clinics">
-          Locations
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/services">
-          Our Services
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/team">
-          Our Team
-        </Link>
-      </div>
-      <div className="my-1 md:mx-3">
-        <Link className="text-xl" href="/membership">
-          Membership
-        </Link>
-      </div>
-      </div>
-    }
-    </div> */}
   </>
 );
 
@@ -164,7 +114,7 @@ const Header = () => {
     <>
       <div className="body-padding-x body-padding-y lg:h-[90px] text-primary bg-primary3">
         <nav className="flex items-center justify-between">
-          <div id="logo" className="h-12  flex justify-center items-center">
+          <div id="logo" className="h-12 flex justify-center items-center">
             <Link href="/">
               <img
                 loading="lazy"
@@ -173,58 +123,64 @@ const Header = () => {
               />
             </Link>
           </div>
-          {!showMenu && <MenuBar show={showMenu} />}
-          {/* <Menus show applyParentClass="hidden lg:flex" /> */}
+          {/* {!showMenu && <MenuBar show={showMenu} />} */}
+          <Menus show applyParentClass="hidden lg:flex" />
           <div className="flex items-center gap-5 ">
             <Button
               label="Book a Visit"
               color="secondary"
-              className="hidden md:block w-[210px] h-12"
+              className="lg-w-[210px] h-12"
               onClick={bookingButtonClicked}
             />
-            <div
-              onClick={userIconClicked}
-              className="flex items-center p-2 border-[color:var(--Secondary-1,#5281A2)] border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
-            >
-              <img
-                className="w-full h-full"
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
-              />
-
-              {showProfileDropdown && (
-                <div className="absolute top-14 w-screen sm:w-auto">
-                  <ProfileDropdown onLogout={closeProfileDropdown} />
-                </div>
-              )}
-            </div>
-            <div className="block lg:hidden">
-              <button
-                onClick={toggleMenu}
-                type="button"
-                className="ml-1 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 inline-flex items-center justify-center w-8 h-8"
+            <div className="flex items-center gap-1">
+              <div
+                onClick={userIconClicked}
+                className="flex items-center p-2 border-secondary border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
               >
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 17 14"
+                <img
+                  className="w-10 h-10"
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
+                />
+
+                {showProfileDropdown && (
+                  <div className="absolute top-14 w-screen sm:w-auto">
+                    <ProfileDropdown onLogout={closeProfileDropdown} />
+                  </div>
+                )}
+              </div>
+
+              <div className="block md:hidden">
+                <button
+                  onClick={toggleMenu}
+                  type="button"
+                  className="ml-1 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 inline-flex items-center justify-center w-8 h-8"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 1h15M1 7h15M1 13h15"
-                  ></path>
-                </svg>
-              </button>
+                  <svg
+                    className="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 17 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 1h15M1 7h15M1 13h15"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </nav>
-        {showMenu && <MenuBar show={showMenu} />}
-        {/* <Menus show={showMenu} applyParentClass="block lg:hidden  lg:justify-around" /> */}
+        {/* {showMenu && <MenuBar show={showMenu} />} */}
+        <Menus
+          show={showMenu}
+          applyParentClass="block lg:hidden lg:justify-around"
+        />
       </div>
 
       <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>

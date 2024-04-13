@@ -5,22 +5,18 @@ const Reviews = () => {
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
-        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-2xl md:text-[26px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
-          Reviews
+        <div className="text-primary text-center text-2xl  leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
+          Tail wags and purrs are our favourite feedback, but here's what
+          pet-parents are saying
         </div>
         <div className="hidden md:block ">
-          {/* <img
-            loading="lazy"
-            srcSet="clinic_quete.png"
-            className="aspect-[2.28] object-contain object-center w-full fill-stone-400 overflow-hidden self-center max-w-[1078px] mt-14 max-md:max-w-full max-md:mt-10"
-          /> */}
           <Image
-           src={"/home/clinic_quete.png"}
-            height={100} 
-            width={964} 
+            src={"/home/clinic_quete.png"}
+            height={100}
+            width={964}
             alt="Reviews"
             className="aspect-[2.28] object-contain object-center w-full fill-stone-400 overflow-hidden self-center max-w-[1078px] mt-14 max-md:max-w-full max-md:mt-10"
-            />
+          />
         </div>
         <div className=" md:hidden flex flex-col items-center">
           <img
@@ -36,7 +32,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-[21px] flex-col rounded-[50%]" />
               <div className="text-slate-700 text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                Rahul Shah, pet-parent to Choco
               </div>
             </span>
           </span>
