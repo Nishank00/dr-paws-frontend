@@ -25,37 +25,37 @@ const Reviews = () => {
             className="aspect-[0.9] object-contain object-center w-[238px] overflow-hidden self-center max-w-full mt-7"
           />
           <span className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-slate-700 text-xs italic leading-4 tracking-normal">
+            <div className="text-primary text-xs italic leading-4 tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-[21px] flex-col rounded-[50%]" />
-              <div className="text-slate-700 text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
+              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
                 Rahul Shah, pet-parent to Choco
               </div>
             </span>
           </span>
           <span className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-slate-700 text-xs italic leading-4 tracking-normal">
+            <div className="text-primary text-xs italic leading-4 tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-[21px] flex-col rounded-[50%]" />
-              <div className="text-slate-700 text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
+              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
                 Rahul Shah
               </div>
             </span>
           </span>
           <span className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-slate-700 text-xs italic leading-4 tracking-normal">
+            <div className="text-primary text-xs italic leading-4 tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-5 flex-col rounded-[50%]" />
-              <div className="text-slate-700 text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
+              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
                 Rahul Shah
               </div>
             </span>

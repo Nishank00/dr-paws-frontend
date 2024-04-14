@@ -63,7 +63,7 @@ const Homepage = () => {
                 "The bond you have with your pets is special, and we’ll treat them like our own"
               }
               imagePosition="right"
-              buttonColor="accent"
+              buttonColor="secondary"
               buttonText="Meet our Doctors"
               buttonUrl="/team"
             />
@@ -88,7 +88,7 @@ const Homepage = () => {
                 "Our clinics offer all the services you’ll need including grooming, behavioural counselling, nutritional consultations &  pet-boarding"
               }
               imagePosition="right"
-              buttonColor="accent"
+              buttonColor="secondary"
               buttonText="View our Services"
               buttonUrl="/services"
             />
@@ -124,7 +124,8 @@ const Homepage = () => {
         style={{ fontFamily: "Roca Bold, sans-serif" }}
         className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[28px] pb-6 text-center"
       >
-        Check out the places , we call home
+        Check out the places
+        <br /> we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
