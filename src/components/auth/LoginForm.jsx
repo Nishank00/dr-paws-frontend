@@ -30,8 +30,10 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     AuthService.sendLoginOTP(payload)
       .then((response) => {
         stopLoading();
-        if (!response.data.status)
+        if (!response.data.status) {
           return showToast(response.data.message, "warning");
+        }
+        setCurrentPage(currentPage + 1);
       })
       .catch((error) => {
         stopLoading();
@@ -40,7 +42,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
   };
 
   const handleNext = () => {
-    setCurrentPage(currentPage + 1);
+    // setCurrentPage(currentPage + 1);
     getOtp();
   };
 

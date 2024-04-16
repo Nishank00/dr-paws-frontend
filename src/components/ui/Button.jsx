@@ -3,7 +3,7 @@
 const Button = ({
   type = "button",
   color = "primary",
-  onClick ,
+  onClick,
   label = "button",
   className = "",
   disabled = false,
@@ -12,9 +12,9 @@ const Button = ({
     <button
       disabled={disabled}
       type={type}
-      className={`flex items-center justify-center gap-1 ${className} ${color}-btn ${
+      className={`flex items-center justify-center gap-1  ${color}-btn ${
         disabled && "cursor-not-allowed"
-      }`}
+      } ${className}`}
       onClick={onClick}
     >
       {label}

@@ -10,8 +10,14 @@ import NewBanner from "@/components/pages/home/NewBanner";
 import ClinicService from "@/services/Clinic.service";
 import { useEffect, useState } from "react";
 import Dropdown from "@/components/ui/Dropdown";
+import { useDispatch } from "react-redux";
+import {
+  setPageTitle,
+  setPageHeader,
+} from "@/store/features/pageHeader/pageHeaderSlice";
 
 const Homepage = () => {
+  const dispatch = useDispatch();
   const [clinics, setClinics] = useState([]);
 
   const getClinics = () => {
@@ -26,6 +32,9 @@ const Homepage = () => {
   };
 
   useEffect(() => {
+    dispatch(
+      setPageHeader({ title: "Home", currentMenu: "HOME", currentPath: "/" })
+    );
     getClinics();
   }, []);
 

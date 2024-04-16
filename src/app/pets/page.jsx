@@ -1,14 +1,12 @@
-import React from 'react'
-import PetProfile from '@/components/pages/petProile/PetProfile'
-
-
+"use client";
+import PetsPage from "@/components/pages/pet/PetsPage";
 
 const page = () => {
-    return (
-        <div className='body-padding-x'>
-            <PetProfile />
-        </div>
-    )
-}
+  return (
+    <div className="body-padding-x body-padding-y">
+      <PetsPage />
+    </div>
+  );
+};
 
-export default page
+export default page;

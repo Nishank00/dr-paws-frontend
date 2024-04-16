@@ -1,7 +1,8 @@
-
 import { Inter, Open_Sans } from 'next/font/google'
 import './globals.css'
 import App from './App'
+import { store } from '../store/store'
+import { Provider } from 'react-redux'
 // import localFont from 'next/font/local'
 // import { initializeFonts } from '@next/font'
 
@@ -12,9 +13,9 @@ import App from './App'
 // })
 
 const inter = Inter({
-   subsets: ['latin'],
-  variable:"--font-inter"
-  });
+  subsets: ['latin'],
+  variable: "--font-inter"
+});
 
 const open = Open_Sans({
   subsets: ["latin"],
@@ -29,7 +30,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${ open.variable}`}>
+      <body className={`${inter.className} ${open.variable}`}>
         <App>{children}</App>
       </body>
     </html>

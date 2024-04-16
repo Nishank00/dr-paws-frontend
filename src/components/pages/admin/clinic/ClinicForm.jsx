@@ -255,13 +255,13 @@ const ClinicForm = () => {
 
   const timeSelected = (time, isStartTime, day_id) => {
     console.log("time, isStartTime, day_id: ", time, isStartTime, day_id);
-
+    const formattedTime = formatTimeForMySQL(time);
     setDays(
       days.map((day) => {
         if (day.id === day_id) {
           return {
             ...day,
-            [isStartTime ? "opening_time" : "closing_time"]: time,
+            [isStartTime ? "opening_time" : "closing_time"]: formattedTime,
           };
         } else {
           return day;
