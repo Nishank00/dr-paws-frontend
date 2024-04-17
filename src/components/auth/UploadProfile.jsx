@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useToast } from "@/components/ui/ToastProvider"
-const UploadProfile = ({ onUpload,image }) => {
+import { useToast } from "@/components/ui/ToastProvider";
+const UploadProfile = ({ onUpload, image }) => {
   const [profileImage, setProfileImage] = useState(null);
-  const[url,setUrl]=useState("")
+  const [url, setUrl] = useState("");
   const fileRef = useRef();
   const showToast = useToast();
 
@@ -35,11 +35,10 @@ const UploadProfile = ({ onUpload,image }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (data.status){ 
-          onUpload(data.data[0])
+        if (data.status) {
+          onUpload(data.data[0]);
           showToast(data.message, "success");
-        }
-        else{
+        } else {
           showToast(data.message, "error");
         }
       })
@@ -48,19 +47,21 @@ const UploadProfile = ({ onUpload,image }) => {
 
   useEffect(() => {
     // if (profileImage) onUpload(onUpload);
-    image && setUrl(image)
+    image && setUrl(image);
   }, [image]);
 
   return (
     <div className="flex items-center justify-center mb-5">
       <div
-        className="w-32 h-32 rounded-full bg-accent relative"
+        className="w-28 sm:w-32 h-28 sm:h-32 rounded-full bg-accent relative"
         style={{
-          backgroundImage: `url(${  url
-            ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
-            "/" +
-            url:profileImage?profileImage
-            : "/dummyDog.svg"})`,
+          backgroundImage: `url(${
+            url
+              ? process.env.NEXT_PUBLIC_API_UPLOAD_URL + "/" + url
+              : profileImage
+              ? profileImage
+              : ""
+          })`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="text-center mb-5">
+      <p className="text-center pb-5">
         &copy; {new Date().getFullYear()}, Dr. Paws Healthcare Private Limited.
         All Rights Reserved.
       </p>

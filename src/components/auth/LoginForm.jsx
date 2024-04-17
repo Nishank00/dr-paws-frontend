@@ -95,13 +95,13 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
       case 1:
         return (
           <>
-            <div className="p-8 text-primary bg-white w-full md:w-[430px] rounded-3xl">
+            <div className="p-8 text-primary bg-white w-full sm:w-[430px] rounded-3xl">
               <div className="text-center">
                 <div className="mb-10">
-                  <h5 className="font-bold text-3xl mb-2">
+                  <h5 className="font-bold font-custom-roca text-2xl sm:text-3xl mb-2">
                     Log in to book a visit
                   </h5>
-                  <p>
+                  <p className="text-sm font-custom-open-sans">
                     Add your phone number. We&apos;ll send you a verification
                     code.
                   </p>
@@ -137,10 +137,10 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                   />
                 </div>
                 <div className="">
-                  <p>
+                  <p className="text-sm font-custom-open-sans">
                     Don&apos;t have an Account?{" "}
                     <span
-                      className="cursor-pointer italic"
+                      className="cursor-pointer font-semibold italic hover:shadow-lg"
                       onClick={signUpClicked}
                     >
                       Sign Up
@@ -155,8 +155,8 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
       case 2:
         return (
           <>
-            <div className="pt-16 px-10 pb-12 max-w-[430px] max-h-[460px] text-center text-primary bg-white rounded-2xl">
-              <h2 className="text-2xl font-semibold mb-2">
+            <div className="pt-6 sm:pt-16 px-4 sm:px-10 pb-12 sm:max-w-[430px] max-h-[460px] text-center text-primary bg-white rounded-2xl">
+              <h2 className="text-2xl font-custom-roca font-semibold mb-2 ">
                 Verify your Phone Number
               </h2>
               <p className="text-sm mb-10">

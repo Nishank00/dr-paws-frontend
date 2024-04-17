@@ -89,16 +89,16 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 1:
         return (
           <div className="text-center">
-            <div className=" mb-10">
-              <h5 className="text-2xl font-bold mb-3">
+            <div className="flex flex-col items-center mb-5 sm:mb-10">
+              <h5 className="text-2xl font-custom-roca font-bold mb-3">
                 Let&apos;s get started by creating your account.
               </h5>
-              <p>
+              <p className="text-xs w-56 sm:w-full">
                 Add your phone number. We&apos;ll send you a verification code.
               </p>
             </div>
 
-            <div className="mb-10">
+            <div className="mb-3 sm:mb-10">
               <UploadProfile onUpload={profileUploaded} />
               <TextInput
                 placeholder={"Name"}
@@ -123,7 +123,10 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
             <div className="">
               <p>
                 Already have an Account?{" "}
-                <span className="cursor-pointer italic" onClick={loginClicked}>
+                <span
+                  className="cursor-pointer font-semibold italic hover:shadow-lg"
+                  onClick={loginClicked}
+                >
                   Log In
                 </span>
               </p>
@@ -197,7 +200,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   return (
     <div
       className={
-        (currentPage === 2 ? "" : "p-8") +
+        (currentPage === 2 ? "" : "p-2 sm:p-8") +
         " text-primary bg-white w-full md:w-[430px] rounded-3xl"
       }
     >

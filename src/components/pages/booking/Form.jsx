@@ -14,9 +14,12 @@ import { useLoader } from "@/components/ui/LoaderContext";
 import Popup from "@/components/ui/Popup";
 import PetForm from "../petProile/PetForm";
 import ConfirmBookingOTP from "./ConfirmBookingOTP";
+import { useDispatch } from "react-redux";
+import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
 
 const Form = () => {
   // Variables
+  const dispatch = useDispatch();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const reason_id = searchParams.get("reason");
@@ -259,6 +262,13 @@ const Form = () => {
   useEffect(() => {
     getClinics();
     setUserID(JSON.parse(localStorage.getItem("user_info"))?.id);
+    dispatch(
+      setPageHeader({
+        title: "Booking",
+        currentMenu: "BOOKING",
+        currentPath: "/booking",
+      })
+    );
   }, []);
 
   useEffect(() => {

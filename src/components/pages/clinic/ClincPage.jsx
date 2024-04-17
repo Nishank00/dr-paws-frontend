@@ -5,8 +5,11 @@ import ClinicCard from "./ClinicCard";
 import ImageTextHeader from "../home/ImageTextHeader";
 import ImageHeader from "@/components/ui/ImageHeader";
 import SuggestionForm from "./SuggestionForm";
+import { useDispatch } from "react-redux";
+import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
 
 const ClinicPage = () => {
+  const dispatch = useDispatch();
   const [clincs, setClincs] = useState([]);
   const imageurl =
     "https://s3-alpha-sig.figma.com/img/37d3/bc60/7a1b00945dc6061c8504404f9e182a95?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mng8f1sG4q673P1KqIVFct8AqD3p1RcYkJRJnA60qG6DRwcxSmye6iFR1wUaXZlRxKf1X12WB1ZzamYyKCnaDFLvqjhEX-gsFCt4tZLXy-OWc5QXlt0~KvrDb6-0pijH9CUkSmGBvaAbvSjZ6Wv5t2ezAmqiH9bEjt~IpEG7fBJsy~1Yr4SZy5SIpb~UbfETwmWZGqfMUwHkfh0jiSwI6vtOrs-NvihpygH-6ZJjxGpmDFb7cUsm3M-VSvA~xpTUmJtpWHbz6zXKsiVM7WDhon0UaHMXVU~Q9AyDlzaEN7VtkrATb653Ka~bZagHLXr~4K8AyBZGLWMtGXzy4SxFVQ__";
@@ -24,6 +27,13 @@ const ClinicPage = () => {
   };
   useEffect(() => {
     getData();
+    dispatch(
+      setPageHeader({
+        title: "Clinics",
+        currentMenu: "CLINICS",
+        currentPath: "/clinics",
+      })
+    );
   }, []);
   return (
     <div className="pb-10">
@@ -47,7 +57,11 @@ const ClinicPage = () => {
       <div className="w-full m-auto mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
         {clincs &&
           clincs.map((item, index) => (
-            <ClinicCard key={index} imageUrl={"/home/clinic_image.png"} clinic={item} />
+            <ClinicCard
+              key={index}
+              imageUrl={"/home/clinic_image.png"}
+              clinic={item}
+            />
           ))}
         <span className="justify-center w-full items-center shadow-sm bg-primary3 flex  flex-col px-2 md:px-9 md:py-12 rounded-lg">
           <img
@@ -61,7 +75,7 @@ const ClinicPage = () => {
         </span>
       </div>
       <div className="mt-5">
-      <SuggestionForm/>
+        <SuggestionForm />
       </div>
     </div>
   );

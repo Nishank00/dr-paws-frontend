@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const BottomNav = () => {
   const pageHeaderData = useSelector((state) => state.pageHeader);
   return (
-    <div className="fixed bottom-0 max-w-screen">
+    <div className="fixed bottom-0 w-full">
       <div className="bg-primary3 text-primary text-xs text-center font-custom-open-sans grid grid-cols-5 gap-2 py-3">
         <Link
           href={"/"}
@@ -43,7 +43,12 @@ const BottomNav = () => {
           </span>
           <p>My Pets</p>
         </Link>
-        <div className="flex flex-col gap-2 hover:font-semibold relative text-[10px] sm:text-xs">
+        <Link
+          href={"/booking"}
+          className={`flex flex-col gap-2 hover:font-semibold relative text-[10px] sm:text-xs ${
+            pageHeaderData.currentMenu === "BOOKING" ? "font-semibold" : ""
+          }`}
+        >
           <span className="absolute w-full -top-12">
             <img
               src="/icons/book_appointment.svg"
@@ -55,19 +60,31 @@ const BottomNav = () => {
           <p className="h-full flex items-center justify-center pt-4">
             Book Appointment
           </p>
-        </div>
+        </Link>
         <div className="flex flex-col items-center gap-2 hover:font-semibold">
           <span>
             <img src="/icons/profile_outlined.svg" alt="home-icon" />
           </span>
           <p>Membership</p>
         </div>
-        <div className="flex flex-col items-center gap-2 hover:font-semibold">
+        <Link
+          href={"/clinics"}
+          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+            pageHeaderData.currentMenu === "CLINICS" ? "font-semibold" : ""
+          }`}
+        >
           <span>
-            <img src="/icons/clinic_outlined.svg" alt="home-icon" />
+            <img
+              src={
+                pageHeaderData.currentMenu === "CLINICS"
+                  ? "/icons/clinic_filled.svg"
+                  : "/icons/clinic_outlined.svg"
+              }
+              alt="home-icon"
+            />
           </span>
           <p>Clinic</p>
-        </div>
+        </Link>
       </div>
     </div>
   );

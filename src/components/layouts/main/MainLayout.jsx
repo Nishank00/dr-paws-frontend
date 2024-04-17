@@ -32,7 +32,7 @@ const MainLayout = ({ children }) => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         dispatch(setDesktop());
-      } else if (window.innerWidth > 426 && window.innerWidth < 768) {
+      } else if (window.innerWidth > 640 && window.innerWidth < 768) {
         dispatch(setTablet());
       } else {
         dispatch(setMobile());
@@ -54,10 +54,8 @@ const MainLayout = ({ children }) => {
           <Header />
         )}
       </div>
-      <div className="grow min-h-96 p-4 sm:p-8 md:p-0 mb-10 md:mb-28">
-        {children}
-      </div>
-      <div className="mb-14">
+      <div className="grow min-h-96 p-4 sm:p-0 mb-10 md:mb-28">{children}</div>
+      <div className="mb-14 sm:mb-0">
         {currentDevice.isMobile ? <BottomNav /> : <Footer />}
       </div>
     </div>
