@@ -121,7 +121,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
               />
             </div>
             <div className="">
-              <p>
+              <p className="text-sm font-custom-open-sans">
                 Already have an Account?{" "}
                 <span
                   className="cursor-pointer font-semibold italic hover:shadow-lg"
@@ -136,11 +136,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 2:
         return (
           <>
-            <div className="pt-16 px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
-              <h2 className="text-2xl font-semibold mb-2">
+            <div className="pt-16 px-4 sm:px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
+              <h2 className="text-2xl font-custom-roca font-semibold mb-2">
                 Verify your Phone Number
               </h2>
-              <p className="text-sm mb-10">
+              <p className="text-xs mb-10">
                 To book the visit please enter the OTP sent to +91 {form.phone}.
               </p>
 
@@ -154,7 +154,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
                 onClick={registerUser}
               />
 
-              <p className="mt-14">
+              <p className="text-sm fobt mt-14">
                 Didn&apos;t receive your code?{" "}
                 <span className="font-semibold">Resend Code</span>
               </p>

@@ -1,7 +1,9 @@
 import LoginForm from "@/components/auth/LoginForm";
 import RegisterForm from "@/components/auth/RegisterForm";
+import Button from "@/components/ui/Button";
 import Popup from "@/components/ui/Popup";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 // import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,6 +15,10 @@ const PageHeader = () => {
   const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
   const [user_id, setUserID] = useState(null);
+  const [showMenu, setMenu] = useState(false);
+
+  const openMenu = () => setMenu(true);
+  const closeMenu = () => setMenu(false);
 
   const openRegisterPopup = () => {
     setRegisterPopup(true);
@@ -61,9 +67,11 @@ const PageHeader = () => {
           <div id="sideMenu">
             {userSessionData.isUserLoggedIn ? (
               <img
-                src="/icons/pet_filled.svg"
+                onClick={openMenu}
+                src="/icons/menu.svg"
                 alt="Hamburger Icon"
                 loading="lazy"
+                className="cursor-pointer hover:scale-110"
               />
             ) : (
               <Link
@@ -86,6 +94,8 @@ const PageHeader = () => {
         </h2>
       )}
 
+      {showMenu && <SideBar closeMenu={closeMenu} />}
+
       <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>
         <RegisterForm
           onSuccess={closeRegisterPopup}
@@ -100,4 +110,84 @@ const PageHeader = () => {
   );
 };
 
+const SideBar = ({ closeMenu = () => {} }) => {
+  const router = useRouter();
+  const navigateFromMenu = (path) => {
+    closeMenu();
+    router.push(path);
+  };
+  return (
+    <>
+      <div className="absolute top-0 right-0 z-50 w-8/12 h-screen px-2 py-4 bg-white font-custom-roca text-lg">
+        <div className="w-full mb-4">
+          <span onClick={closeMenu} className="cursor-pointer">
+            X
+          </span>
+        </div>
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <div
+              onClick={() => navigateFromMenu("/profile")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Profile</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+
+            <div
+              onClick={() => navigateFromMenu("/clinics")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Locations</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+
+            <div
+              onClick={() => navigateFromMenu("/services")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Our Services</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+
+            <div
+              onClick={() => navigateFromMenu("/team")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Our Team</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+
+            <div
+              onClick={() => navigateFromMenu("/membership")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Membership</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+          </div>
+
+          <div className="px-4">
+            <Button
+              label={<span className="text-xs font-bold">Book a Visit</span>}
+              color="secondary"
+              onClick={() => navigateFromMenu("/booking")}
+              className="h-10"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 export default PageHeader;

@@ -9,6 +9,8 @@ import {
   setPageTitle,
   setPageHeader,
 } from "@/store/features/pageHeader/pageHeaderSlice";
+import Popup from "@/components/ui/Popup";
+import PetForm from "../petProile/PetForm";
 
 const PetsPage = () => {
   // Variables
@@ -38,6 +40,7 @@ const PetsPage = () => {
   const router = useRouter();
   const [pets, setPets] = useState([]);
   const [user_id, setUserID] = useState(null);
+  const [showPetForm, setShowPetForm] = useState(false);
 
   // Methods
   const getPets = () => {
@@ -55,6 +58,9 @@ const PetsPage = () => {
         stopLoading();
       });
   };
+
+  const openPetForm = () => setShowPetForm(true);
+  const closePetForm = () => setShowPetForm(false);
 
   useEffect(() => {
     dispatch(
@@ -81,7 +87,10 @@ const PetsPage = () => {
     <>
       <div className="flex items-center justify-between text-secondary font-custom-open-sans mb-4">
         <h3 className="text-lg">Your Pets</h3>
-        <span className="flex text-xs hover:font-semibold">
+        <span
+          className="flex text-xs hover:font-semibold cursor-pointer"
+          onClick={openPetForm}
+        >
           <img src="/pets/plus.svg" alt="+" loading="lazy" />
           <span className="ml-2">Add Pet</span>
         </span>
@@ -92,6 +101,10 @@ const PetsPage = () => {
             <PetCard backgroundColor={colors[i]} key={pet.id} pet={pet} />
           ))}
       </div>
+
+      <Popup isOpen={showPetForm} onClose={closePetForm}>
+        <PetForm onPetAdded={getPets} closePopup={closePetForm} />
+      </Popup>
     </>
   );
 };
