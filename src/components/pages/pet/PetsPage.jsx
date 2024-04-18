@@ -11,6 +11,7 @@ import {
 } from "@/store/features/pageHeader/pageHeaderSlice";
 import Popup from "@/components/ui/Popup";
 import PetForm from "../petProile/PetForm";
+import Button from "@/components/ui/Button";
 
 const PetsPage = () => {
   // Variables
@@ -95,12 +96,24 @@ const PetsPage = () => {
           <span className="ml-2">Add Pet</span>
         </span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-        {pets &&
-          pets.map((pet, i) => (
+      {pets && pets.length > 0 ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          {pets.map((pet, i) => (
             <PetCard backgroundColor={colors[i]} key={pet.id} pet={pet} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <div className="flex flex-col justify-center items-center gap-8 p-10">
+          <p className="text-secondary text-2xl text-center opacity-70 font-custom-roca">
+            You haven&apos;t added any pets yet
+          </p>
+          <Button
+            label="+&nbsp;&nbsp;Add Pet"
+            className="bg-white hover:bg-secondary border-2 border-secondary px-4 py-2 text-secondary hover:text-white w-40"
+            onClick={openPetForm}
+          />
+        </div>
+      )}
 
       <Popup isOpen={showPetForm} onClose={closePetForm}>
         <PetForm onPetAdded={getPets} closePopup={closePetForm} />

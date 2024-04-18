@@ -6,7 +6,7 @@ const PetCard = ({ pet = {}, backgroundColor = "primary3" }) => {
   return (
     <div
       onClick={() => router.push(`/pets/${pet.id}`)}
-      className={`w-full bg-${backgroundColor} p-1 flex flex-col items-center rounded-2xl hover:shadow-2xl`}
+      className={`w-full bg-${backgroundColor} p-1 flex flex-col items-center rounded-2xl hover:shadow-2xl cursor-pointer`}
     >
       <div className="px-10 py-8 bg-primary4 flex flex-col gap-5 items-center w-full rounded-2xl">
         <div
