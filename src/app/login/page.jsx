@@ -6,7 +6,7 @@ import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
 import { setUserLoggedIn } from "@/store/features/userSession/userSessionSlice";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

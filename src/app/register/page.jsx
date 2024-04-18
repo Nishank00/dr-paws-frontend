@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
 
-const page = () => {
+const Page = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -28,4 +28,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
