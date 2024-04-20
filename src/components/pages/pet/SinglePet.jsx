@@ -99,7 +99,7 @@ const SinglePet = () => {
             }}
           />
           <h3 className="text-primary text-lg sm:text-2xl font-custom-roca">
-            Buddy's Medical History
+            Buddy&apos;s Medical History
           </h3>
         </div>
 
