@@ -31,8 +31,8 @@ const AppointmentList = ({ listType = "ALL" }) => {
           ))}
         </div>
       ) : (
-        <div className="w-full flex flex-col items-center justify-center gap-2 my-10">
-          <h2 className="text-3xl text-secondary text-center font-semibold opacity-70 max-w-sm">
+        <div className="w-full h-full flex flex-col items-center justify-center gap-2 my-10">
+          <h2 className="text-2xl text-secondary text-center font-semibold sm:opacity-70 max-w-sm">
             You haven&apos;t booked any visits yet
           </h2>
           <Button

@@ -88,19 +88,21 @@ const SelectDoctorAndDateTimePage = ({
       <div className="mb-24">
         {!doctors || doctors.length == 0 || !selectedClinic ? (
           <>
-            <h2 className="text-primary font-medium text-5xl mb-1">
+            <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
               Clinic not selected!!
             </h2>
-            <p className="text-primary mb-6">
+            <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
               Please Select a Clinic to proceed with the booking
             </p>
           </>
         ) : (
           <>
-            <h2 className="text-primary font-medium text-5xl mb-1">
+            <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
               Select Vet
             </h2>
-            <p className="text-primary mb-6"> Book a spot for your visit</p>
+            <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
+              Book a spot for your visit
+            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
               {doctors.map((doctor, i) => (
@@ -124,10 +126,12 @@ const SelectDoctorAndDateTimePage = ({
               ))}
             </div>
             <div className="">
-              <h2 className="text-primary font-medium text-5xl mt-10 mb-1">
+              <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                 Select Date and Time
               </h2>
-              <p className="text-primary mb-6"> Book a spot for your visit</p>
+              <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
+                Book a spot for your visit
+              </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
                 <div className="col-span-2">

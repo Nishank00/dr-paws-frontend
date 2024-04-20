@@ -2,7 +2,7 @@ import React from "react";
 
 const Service = ({ label, isChecked = false, onChange }) => {
   return (
-    <div className="w-full">
+    <div className="w-full px-3 py-4">
       <label
         onClick={onChange}
         className="flex items-center justify-between cursor-pointer"

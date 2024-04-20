@@ -12,11 +12,11 @@ const Tabs = ({ tabs, active }) => {
   }, [active]);
   return (
     <div>
-      <div className="flex flex-wrap">
+      <div className="flex ">
         {tabs.map((tab) => (
           <div
             key={tab.id}
-            className={`cursor-pointer text-lg text-center ${
+            className={`cursor-pointer text-sm md:text-lg text-center ${
               activeTab === tab.id ? "font-semibold" : "font-normal"
             } px-4 py-2`}
             onClick={() => handleTabClick(tab.id)}

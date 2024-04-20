@@ -40,7 +40,7 @@ const AppointmentsPage = () => {
   }, []);
 
   return (
-    <div className="body-padding-x body-padding-y text-primary">
+    <div className="sm:body-padding-x body-padding-y text-primary">
       <Tabs tabs={tabs} active={activeTab} />
     </div>
   );

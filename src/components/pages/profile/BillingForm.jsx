@@ -48,7 +48,7 @@ const BillingForm = ({ user_id, closePopup }) => {
     }
   }, [user_id]);
   return (
-    <div className="w-full m-auto">
+    <div className="w-full m-auto text-primary">
       <div className="flex justify-between w-[80%] m-auto">
         <div className="w-[45%] flex flex-col">
           <label className="text-sm font-custom-open-sans">First Name</label>

@@ -292,7 +292,7 @@ const Form = () => {
 
   return user_id ? (
     <div className="text-primary">
-      <div className="pt-4">
+      <div className="pt-1 sm:pt-4">
         <button
           disabled={currentPage === 1}
           type="button"
@@ -313,7 +313,9 @@ const Form = () => {
               />
             </svg>
           </span>
-          <span className="text-xl ml-2 font-open-sans">{"Back"}</span>
+          <span className="text-lg sm:text-xl ml-2 font-open-sans">
+            {"Back"}
+          </span>
         </button>
       </div>
       <div className="mt-4 min-h-[60vh]">{renderPage()}</div>
@@ -323,7 +325,7 @@ const Form = () => {
             color="secondary"
             label="Next"
             onClick={handleNext}
-            className="px-4 py-2 rounded-full w-52 h-12 text-lg"
+            className="px-4 py-2 rounded-full sm:w-52 h-12 text-lg"
           />
         )}
       </div>

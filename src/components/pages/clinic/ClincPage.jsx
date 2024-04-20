@@ -37,7 +37,7 @@ const ClinicPage = () => {
   }, []);
   return (
     <div className="pb-10">
-      <div className="pt-24">
+      <div className="pt-4 md:pt-24">
         <ImageHeader
           header={"Come and visit us at our place!"}
           imagePosition={"left"}

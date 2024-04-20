@@ -27,13 +27,13 @@ const SelectServicePage = ({
 
   return (
     <>
-      <div className={"pt-10 " + className}>
+      <div className={"pt-1 sm:pt-10 " + className}>
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-primary font-medium text-5xl mb-1">
+            <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
               Select Services
             </h2>
-            <p className="text-primary mb-6 font-roca-thin-italic">
+            <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
               Choose from the our services
             </p>
           </div>
@@ -49,7 +49,7 @@ const SelectServicePage = ({
 
         <div
           className={
-            "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-start gap-5 mt-10"
+            "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-start gap-5 mt-2 sm:mt-10"
           }
         >
           {services &&

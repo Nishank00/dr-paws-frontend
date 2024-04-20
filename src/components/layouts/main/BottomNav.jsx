@@ -61,12 +61,24 @@ const BottomNav = () => {
             Book Appointment
           </p>
         </Link>
-        <div className="flex flex-col items-center gap-2 hover:font-semibold">
+        <Link
+          href={"/user-memberships"}
+          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+            pageHeaderData.currentMenu === "MEMBERSHIP" ? "font-semibold" : ""
+          }`}
+        >
           <span>
-            <img src="/icons/profile_outlined.svg" alt="home-icon" />
+            <img
+              src={
+                pageHeaderData.currentMenu === "MEMBERSHIP"
+                  ? "/icons/profile_filled.svg"
+                  : "/icons/profile_outlined.svg"
+              }
+              alt="home-icon"
+            />
           </span>
           <p>Membership</p>
-        </div>
+        </Link>
         <Link
           href={"/clinics"}
           className={`flex flex-col items-center gap-2 hover:font-semibold ${

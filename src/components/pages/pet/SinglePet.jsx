@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import React from "react";
+import DocumentCard from "./DocumentCard";
 
 const SinglePet = () => {
   return (
@@ -26,7 +27,7 @@ const SinglePet = () => {
         <div className="flex items-center gap-4 w-full md:w-1/6">
           <div
             id="icon"
-            className="w-10 h-10 md:w-40 md:h-40 rounded-full"
+            className="w-10 h-10 rounded-full"
             style={{
               backgroundImage: `url("/pets/dog.jpeg")`,
               backgroundPosition: "center",
@@ -40,10 +41,11 @@ const SinglePet = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-3 gap-10 w-full md:w-4/6">
+        <div className="grid grid-cols-3 gap-8 w-full md:w-4/6">
           <h3 className="col-span-3 hidden md:block text-2xl text-secondary font-custom-roca">
             Buddy
           </h3>
+
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Type of Pet</p>
             <h4 className="text-lg">Dog</h4>
@@ -77,12 +79,41 @@ const SinglePet = () => {
 
         <div className="w-full md:w-1/6">
           <Button
-            color="primary3"
             label="Edit"
-            className="text-secondary border-secondary"
+            className="bg-primary3 hover:bg-secondary border-2 border-secondary px-4 py-2 text-secondary hover:text-white"
             onClick={() => {}}
           />
         </div>
+      </div>
+
+      <div className="flex flex-col sm:flex-row justify-between gap-4 px-4 py-1 mt-5">
+        <div className="flex items-center gap-4">
+          <div
+            id="icon"
+            className="w-10 h-10 rounded-full"
+            style={{
+              backgroundImage: `url("/pets/dog.jpeg")`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          <h3 className="text-primary text-lg sm:text-2xl font-custom-roca">
+            Buddy's Medical History
+          </h3>
+        </div>
+
+        <Button
+          label="Update Medical History"
+          className="bg-primary4 hover:bg-accent border-2 border-accent px-4 py-2 text-accent hover:text-primary4 h-10 w-full sm:w-auto"
+          onClick={() => {}}
+        />
+      </div>
+
+      <div className="">
+        <h2>Past Diagnostic Reports</h2>
+
+        <DocumentCard />
       </div>
     </>
   );

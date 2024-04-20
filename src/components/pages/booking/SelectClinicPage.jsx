@@ -9,8 +9,12 @@ const SelectClinicPage = ({
 }) => {
   return (
     <div className={"w-full " + className}>
-      <h2 className="text-primary font-medium text-5xl mb-1">Select Clinic</h2>
-      <p className="text-primary mb-6">Book an appointment at our clinic</p>
+      <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
+        Select Clinic
+      </h2>
+      <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
+        Book an appointment at our clinic
+      </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-10">
         {clinics.map((clinic, i) => (

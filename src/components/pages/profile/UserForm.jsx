@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import UploadService from "@/services/Upload.service";
 import UserService from "@/services/User.Service";
-import { useToast } from "@/components/ui/ToastProvider"
+import { useToast } from "@/components/ui/ToastProvider";
 import Image from "next/image";
 
 const UserForm = ({ closePopup, user_id }) => {
@@ -37,7 +37,6 @@ const UserForm = ({ closePopup, user_id }) => {
           if (r.data.status) {
             setUserData({ ...userData, profile_image: r.data.data[0] });
             showToast("uploaded successfully", "success");
-
           } else {
             console.log(r.data.message);
             showToast(r.data.message, "error");
@@ -47,7 +46,6 @@ const UserForm = ({ closePopup, user_id }) => {
           uploading.value = false;
           console.log("err in upload=>", err.message);
         });
-
     } catch (error) {
       console.error("Error uploading file", error);
     }
@@ -107,7 +105,7 @@ const UserForm = ({ closePopup, user_id }) => {
   }, [user_id]);
 
   return (
-    <div className="w-full m-auto h-[530px] overflow-scroll">
+    <div className="w-full m-auto h-[530px] overflow-scroll text-primary">
       <div className="relative w-fit m-auto">
         <label htmlFor="file-input" className="cursor-pointer block">
           <div className="w-48 h-36  flex items-center justify-center">
@@ -129,11 +127,14 @@ const UserForm = ({ closePopup, user_id }) => {
               height={100}
               className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
             /> */}
-             <div
+            <div
               className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
               style={{
-                backgroundImage: `url(${userData.profile_image
-                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}` : "/defaultUserProfileImage.png"})`,
+                backgroundImage: `url(${
+                  userData.profile_image
+                    ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}`
+                    : "/defaultUserProfileImage.png"
+                })`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",

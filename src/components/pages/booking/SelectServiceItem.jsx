@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 
 const SelectLabel = ({ heading = "Heading", subheading = "Sub Heading.." }) => {
   return (
-    <div className="text-primary">
-      <h5 className="font-bold text-lg">{heading}</h5>
-      <p className="text-sm">{subheading}</p>
+    <div className="text-primary font-custom-open-sans">
+      <h5 className="font-semibold text-lg">{heading}</h5>
+      <p className="text-xs">{subheading}</p>
     </div>
   );
 };
