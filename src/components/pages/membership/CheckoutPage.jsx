@@ -50,8 +50,8 @@ const CheckoutPage = () => {
   const saveMembership = () => {
     startLoading();
     const payload = {
-      pet_id: membershipData.pet_id,
-      membership_id: membershipData.id,
+      pet_id: membershipData?.pet_id,
+      membership_id: membershipData?.id,
       membership_expires_at: moment()
         .add(
           membershipData?.membership_plans?.filter(
