@@ -54,7 +54,7 @@ const MainLayout = ({ children }) => {
           <Header />
         )}
       </div>
-      <div className="grow min-h-96 mb-10 md:mb-28">{children}</div>
+      <div className="grow min-h-96">{children}</div>
       <div className="mb-14 sm:mb-0">
         {currentDevice.isMobile ? <BottomNav /> : <Footer />}
       </div>

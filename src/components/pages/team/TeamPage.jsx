@@ -34,7 +34,7 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <div className="body-padding-x text-primary">
+    <div className="body-padding-x text-primary mb-10">
       <div className="mt-14">
         <ImageHeader
           imageUrl={"/image139.png"}
@@ -45,10 +45,11 @@ const TeamPage = () => {
           }
           buttonVisibility={false}
         />
-
       </div>
 
-      <h2 className="text-center text-primary  font-custom-roca text-4xl">Our Team</h2>
+      <h2 className="text-center text-primary  font-custom-roca text-4xl">
+        Our Team
+      </h2>
 
       <div className=" mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {doctors.map((doctor) => (

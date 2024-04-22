@@ -167,7 +167,7 @@ const Homepage = () => {
         <FriendlyDoctor />
       </div>
 
-      <div className="w-full flex  md:mt-20 flex-col items-center justify-center body-padding-x">
+      <div className="w-full flex  md:my-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary hidden md:block  text-center text-2xl md:text-[28px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
