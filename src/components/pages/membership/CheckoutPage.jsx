@@ -13,11 +13,12 @@ import MembershipService from "@/services/Membership.Service";
 import { useLoader } from "@/components/ui/LoaderContext";
 
 const CheckoutPage = () => {
-  const membershipData = useSelector((state) => state.membership);
-  const membershipPlan =
-    membershipData?.selectedMembership?.membership_plans?.filter(
-      (item) => item.selected === true
-    )[0];
+  const membershipData = useSelector(
+    (state) => state.membership.selectedMembership
+  );
+  const membershipPlan = membershipData.membership_plans?.filter(
+    (item) => item.selected === true
+  )[0];
 
   const userSessionData = useSelector((state) => state.userSession);
   const showToast = useToast();
@@ -50,11 +51,11 @@ const CheckoutPage = () => {
   const saveMembership = () => {
     startLoading();
     const payload = {
-      pet_id: membershipData?.pet_id,
-      membership_id: membershipData?.id,
+      pet_id: membershipData.pet_id,
+      membership_id: membershipData.id,
       membership_expires_at: moment()
         .add(
-          membershipData?.membership_plans?.filter(
+          membershipData.membership_plans?.filter(
             (item) => item.selected == true
           )[0].plan_duration_in_year,
           "years"
