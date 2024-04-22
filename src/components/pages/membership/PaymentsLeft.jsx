@@ -3,7 +3,6 @@ import React from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { VisaIcon } from "@/components/ui/Icons";
 import { useRouter } from "next/navigation";
-import { UserService } from "@/services/Storage.service";
 import Button from "@/components/ui/Button";
 import MembershipService from "@/services/Membership.Service";
 import { useToast } from "@/components/ui/ToastProvider";
@@ -16,7 +15,7 @@ const PaymentsLeft = () => {
   );
   const showToast = useToast();
   const router = useRouter();
-  const userInfo = UserService.getUserInfo();
+  const userInfo = JSON.parse(localStorage.getItem("user_info"));
   const saveMembership = () => {
     const payload = {
       pet_id: membershipData.pet_id,

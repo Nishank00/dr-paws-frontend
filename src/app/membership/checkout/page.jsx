@@ -1,12 +1,8 @@
 "use client";
+import CheckoutPage from "@/components/pages/membership/CheckoutPage";
 import React from "react";
-import PaymentPage from "@/components/pages/membership/PaymentPage";
-const page = () => {
-  return (
-    <div className="">
-      <PaymentPage />
-    </div>
-  );
+const Page = () => {
+  return <CheckoutPage />;
 };
 
-export default page;
+export default Page;
