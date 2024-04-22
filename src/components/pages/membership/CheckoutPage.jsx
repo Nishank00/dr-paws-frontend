@@ -15,7 +15,7 @@ import { useLoader } from "@/components/ui/LoaderContext";
 const CheckoutPage = () => {
   const membershipData = useSelector((state) => state.membership);
   const membershipPlan =
-    membershipData.selectedMembership.membership_plans.filter(
+    membershipData?.selectedMembership?.membership_plans?.filter(
       (item) => item.selected === true
     )[0];
 
@@ -54,7 +54,7 @@ const CheckoutPage = () => {
       membership_id: membershipData.id,
       membership_expires_at: moment()
         .add(
-          membershipData.membership_plans.filter(
+          membershipData?.membership_plans?.filter(
             (item) => item.selected == true
           )[0].plan_duration_in_year,
           "years"
