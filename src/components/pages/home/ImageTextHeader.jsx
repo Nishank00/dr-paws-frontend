@@ -1,3 +1,4 @@
+"use client";
 import Button from "../../ui/Button";
 import "../../../../src/app/font.css";
 import { useRouter } from "next/navigation";
@@ -11,6 +12,9 @@ const ImageTextHeader = ({
   buttonColor,
   Imageheight,
   buttonVisibility = true,
+  headingClass = "",
+  paragraphClass = "",
+  buttonClass = "",
 }) => {
   const router = useRouter();
   const handleClick = () => {
@@ -42,18 +46,28 @@ const ImageTextHeader = ({
               <div className="  lg:h-fit lg:w-[80%] flex flex-col justify-start">
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
-                  className="text-primary  font-medium   lg:text-[33px] lg:w-[80%]  text-2xl  mb-2 lg:mb-6"
+                  className={
+                    "text-primary font-medium lg:text-[33px] lg:w-[80%] text-2xl mb-2 lg:mb-6 " +
+                    headingClass
+                  }
                 >
                   {header}
                 </h2>
-                <p className="text-primary font-custom-open-sans text-sm mb-6">
+                <p
+                  className={
+                    "text-primary font-custom-open-sans text-sm mb-6 " +
+                    paragraphClass
+                  }
+                >
                   {text}
                 </p>
               </div>
               <Button
-                className={`${
-                  !buttonVisibility && "hidden"
-                } w-[220px] md:mt-[14px] lg:mt-1 text-lg `}
+                className={
+                  `${
+                    !buttonVisibility && "hidden"
+                  } w-[220px] md:mt-[14px] lg:mt-1 text-lg ` + buttonClass
+                }
                 color={buttonColor}
                 label={buttonText}
                 onClick={handleClick}

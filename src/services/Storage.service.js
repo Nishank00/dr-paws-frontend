@@ -26,7 +26,7 @@ const UserService = {
   },
 
   removeUserInfo() {
-    window.localStorage.rewindowmoveItem(USER_KEY);
+    window.localStorage.removeItem(USER_KEY);
   }
 }
 export {

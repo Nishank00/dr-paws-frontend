@@ -25,4 +25,8 @@ export default {
     return API().get(`doctor`)
   },
 
+  getmemberships() {
+    return API().get(`user/memberships`)
+  }
+
 }

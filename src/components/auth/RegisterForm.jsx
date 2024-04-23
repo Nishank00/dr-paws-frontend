@@ -105,12 +105,14 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
                 name="full_name"
                 value={form.full_name}
                 onChange={formValueChanged}
+                classes="mb-4"
               />
               <TextInput
                 placeholder={"Contact Number"}
                 name="phone"
                 value={form.phone}
                 onChange={formValueChanged}
+                classes="mb-4"
               />
 
               <Button
@@ -124,7 +126,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
               <p className="text-sm font-custom-open-sans">
                 Already have an Account?{" "}
                 <span
-                  className="cursor-pointer font-semibold italic hover:shadow-lg"
+                  className="cursor-pointer font-bold hover:shadow-lg"
                   onClick={loginClicked}
                 >
                   Log In

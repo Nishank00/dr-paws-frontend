@@ -1,14 +1,25 @@
 import Button from "@/components/ui/Button";
 import React from "react";
+import moment from "moment";
 
-const MembershipCard = () => {
+const MembershipCard = ({ membership = {} }) => {
   return (
     <div className="text-primary font-custom-open-sans border border-secondary rounded-2xl">
       {/* Head */}
-      <div className="flex items-center justify-center gap-3 px-2 py-6 bg-[#E8FBFF] rounded-t-2xl">
-        <img src="/user_membership/membership_0.svg" alt=" " loading="lazy" />
+      <div
+        className={
+          `flex items-center justify-center gap-3 px-6 py-2 rounded-t-2xl ` +
+          ` bg-[${membership?.background_color}]`
+        }
+      >
+        <img
+          src={`/membership/${membership?.image}`}
+          alt=" "
+          loading="lazy"
+          className="w-6 h-6"
+        />
         <h3 className="font-custom-roca font-semibold text-lg">
-          Star Care & Grooming
+          {membership.title}
         </h3>
         <img src="/user_membership/plus_filled.svg" alt=" " loading="lazy" />
       </div>
@@ -25,18 +36,28 @@ const MembershipCard = () => {
             />
           </div>
 
-          <h2 className="text-secondary text-xl font-custom-roca">Mona</h2>
+          <h2 className="text-secondary text-xl font-custom-roca">
+            {membership.name}
+          </h2>
         </div>
 
         <div className="mt-2 flex gap-6">
           <div className="flex flex-col">
             <p className="text-secondary text-sm">Expires on:</p>
-            <h4 className="text-lg font-semibold">March 31, 2024</h4>
+            <h4 className="text-lg font-semibold">
+              {membership.membership_expires_at
+                ? moment(membership.membership_expires_at).format("LL")
+                : "NA"}
+            </h4>
           </div>
 
           <div className="flex flex-col">
             <p className="text-secondary text-sm">Next Payment On:</p>
-            <h4 className="text-lg font-semibold">Feb 5, 2024</h4>
+            <h4 className="text-lg font-semibold">
+              {membership.membership_expires_at
+                ? moment(membership.membership_expires_at).format("LL")
+                : "NA"}
+            </h4>
           </div>
         </div>
 
@@ -53,9 +74,13 @@ const MembershipCard = () => {
         <div className="flex gap-4 mt-4">
           <Button
             label="Cancel Renewal"
-            className="border border-secondary text-secondary bg-inherit"
+            className="border border-secondary text-secondary bg-inherit hover:text-white hover:bg-secondary text-sm p-3"
           />
-          <Button label="Renew Plan" color="secondary" />
+          <Button
+            label="Renew Plan"
+            color="secondary"
+            className="text-sm p-3"
+          />
         </div>
       </div>
 
@@ -64,59 +89,21 @@ const MembershipCard = () => {
         <h5 className="text-sm font-bold mb-3">Includes:</h5>
 
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">Unlimited vet consultations</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">12 free spa sessions per year</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">2 free haircuts every year</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">50% off any other grooming service</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">Free annual vaccination boosters</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">Free nutritional consultation</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">Annual deworming</p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">
-              25% discount on diagnostic tests and scans
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">
-              25% discount on planned surgeries and procedures
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <img src="/user_membership/item_check.svg" alt=" " loading="lazy" />
-            <p className="text-sm">15% off retail products & medicines</p>
-          </div>
+          {membership?.membership_items?.map((membership_item, index) => (
+            <div
+              key={membership?.title + index}
+              className="flex items-center gap-2"
+            >
+              <img
+                src={`/membership/${membership.item_icon}`}
+                alt=" "
+                loading="lazy"
+              />
+              <p className="text-sm">
+                {membership_item?.service_count} {membership_item.service_name}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

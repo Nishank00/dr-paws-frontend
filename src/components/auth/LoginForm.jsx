@@ -113,6 +113,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     name="phone"
                     value={form.phone}
                     onChange={formValueChanged}
+                    classes="mb-4"
                   />
                   {/* <TextInput
                     placeholder={"Email"}
@@ -140,7 +141,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                   <p className="text-sm font-custom-open-sans">
                     Don&apos;t have an Account?{" "}
                     <span
-                      className="cursor-pointer font-semibold italic hover:shadow-lg"
+                      className="cursor-pointer font-bold  hover:shadow-lg"
                       onClick={signUpClicked}
                     >
                       Sign Up

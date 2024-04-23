@@ -7,6 +7,7 @@ const TextInput = ({
   value,
   onChange,
   name,
+  classes = "",
 }) => {
   const handleChange = (e) => {
     onChange(e);
@@ -15,7 +16,7 @@ const TextInput = ({
   return (
     <div className="mb-4 sm:mb-0 w-full">
       {label && (
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-primary">
           {label}
         </label>
       )}
@@ -25,7 +26,10 @@ const TextInput = ({
         value={value}
         onChange={handleChange}
         name={name}
-        className="text-primary mt-1 p-4 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300 h-12"
+        className={
+          "text-primary mt-1 p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 " +
+          classes
+        }
       />
     </div>
   );

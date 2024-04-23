@@ -45,7 +45,7 @@ const Popup = ({ isOpen, onClose, hideClose, children }) => {
         {children}
         {hideClose ?? (
           <span
-            className="text-black hover:text-gray-500 text-xl absolute top-1 right-3 cursor-pointer"
+            className="text-black hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
             onClick={onClose}
           >
             X

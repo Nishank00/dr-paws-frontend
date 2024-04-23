@@ -5,6 +5,7 @@ import MembershipService from "@/services/Membership.Service";
 import MembershipCard from "./MembershipCard";
 import { useToast } from "@/components/ui/ToastProvider";
 import MembershipCardNew from "./MembershipCardNew";
+import ImageTextHeader from "../home/ImageTextHeader";
 
 const MembershipPage = () => {
   const showToast = useToast();
@@ -35,18 +36,22 @@ const MembershipPage = () => {
   return (
     <div className="py-20">
       <div>
-        <ImageHeader
+        <ImageTextHeader
           imageUrl={"/image139.png"}
           buttonText={"Explore Plans"}
+          buttonColor={"secondary"}
           header={"Great value care, whatever your pet needs"}
           text={
             "Our memberships are designed to provide the convenience, security, and value pet-parents of today expect. Explore our plans to discover the one that fits your pet’s needs."
           }
           imagePosition={"left"}
+          headingClass="text-5xl"
+          paragraphClass="text-sm"
+          buttonUrl={"/membership#memberships"}
         />
       </div>
 
-      <div className="w-full mt-14">
+      <div className="w-full mt-14" id="memberships">
         <div className="w-full flex items-center justify-center">
           <img src="/membership/become_member_banner.png" alt="" />
         </div>
