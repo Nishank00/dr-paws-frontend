@@ -37,7 +37,7 @@ const ClinicPage = () => {
   }, []);
   return (
     <div className="pb-10">
-      <div className="pt-4 md:pt-24">
+      <div className="pt-4 md:pt-24 hidden md:block">
         <ImageHeader
           header={"Come and visit us at our place!"}
           imagePosition={"left"}
@@ -50,7 +50,7 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <h4 className="text-primary  font-custom-roca font-semibold text-center text-xl md:text-3xl mt-1 md:mt-14">
+      <h4 className="text-primary  font-custom-roca font-semibold text-center text-xl md:text-3xl mt-1 md:mt-14 hidden md:block">
         Our Clinics
       </h4>
 
