@@ -6,6 +6,7 @@ import Popup from "@/components/ui/Popup";
 import UserService from "@/services/User.Service";
 import ProfilePopupUI from "./ProfilePopupUI";
 import ImageHeader from "@/components/ui/ImageHeader";
+import DoctorProfile from "./DoctorProfile";
 
 const TeamPage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -63,7 +64,8 @@ const TeamPage = () => {
       </div>
 
       <Popup isOpen={showPopup} onClose={closePopup}>
-        <ProfilePopupUI selectedDoctor={selectedDoctor} />
+        <DoctorProfile selectedDoctor={selectedDoctor} />
+        {/* <ProfilePopupUI selectedDoctor={selectedDoctor} /> */}
       </Popup>
     </div>
   );
