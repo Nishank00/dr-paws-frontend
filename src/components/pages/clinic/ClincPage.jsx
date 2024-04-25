@@ -50,7 +50,7 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <h4 className="text-primary  font-custom-roca font-semibold text-center text-xl md:text-3xl mt-1 md:mt-14 hidden md:block">
+      <h4 className="text-primary font-custom-roca font-semibold text-center text-xl md:text-5xl mt-1 md:mt-14 mb-10 hidden md:block">
         Our Clinics
       </h4>
 
@@ -74,7 +74,7 @@ const ClinicPage = () => {
           </div>
         </span>
       </div>
-      <div className="mt-5">
+      <div className="mt-5" id="suggestion-form">
         <SuggestionForm />
       </div>
     </div>

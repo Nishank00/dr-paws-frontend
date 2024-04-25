@@ -29,7 +29,7 @@ const ImageHeader = ({
       <div>
         <div className="w-full h-full flex md:justify-end md:items-center">
           <div className=" lg:w-[85%] flex flex-col md:justify-start ">
-            <div className="lg:w-[363px] flex flex-col justify-start">
+            <div className="lg:w-[363px] flex flex-col justify-start gap-5">
               <h2
                 style={{ fontFamily: "Roca Bold, sans-serif" }}
                 className="text-primary leading-10  mt-10 lg:mt-0 sm:text-3xl lg:text-[48px] mb-6"

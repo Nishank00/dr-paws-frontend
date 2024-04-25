@@ -61,31 +61,40 @@ const OverviewTabs = () => {
           Book a Visit
         </span>
       </span>
-     
-      <div className="flex flex-col items-start mt-4">
-      <div className="flex mt-2">
-    {["Overviews", "Photo","Reviews"].map((tab, index) => (
-      <div
-        key={index}
-        className={` w-[100px] cursor-pointer ${index==0?'text-left':index==2?"text-right":"text-center"}   mx-1 rounded-full `}
-        onClick={() => handleTabClick(index + 1)}
-      >
-        {tab}
+
+      <div className="flex flex-col items-start mt-4 text-primary">
+        <div className="flex mt-2">
+          {["Clinic Details", "'Photos'", "Reviews"].map((tab, index) => (
+            <div
+              key={index}
+              className={` w-[100px] cursor-pointer ${
+                index == 0
+                  ? "text-left"
+                  : index == 2
+                  ? "text-right"
+                  : "text-center"
+              }   mx-1 rounded-full `}
+              onClick={() => handleTabClick(index + 1)}
+            >
+              {tab}
+            </div>
+          ))}
+        </div>
+        <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
+          <div
+            className="absolute top-0 left-0 h-full bg-secondary rounded-full"
+            style={{
+              width: `${
+                activeTab - 1 == 0 ? "100" : activeTab - 1 == 1 ? "80" : "100"
+              }px`, // Adjust based on the number of tabs
+              transform: `translateX(${
+                activeTab - 1 == 0 ? "0" : activeTab - 1 == 1 ? "120" : "240"
+              }px)`, // Adjust based on the number of tabs
+              transition: "transform 0.3s ease-in-out",
+            }}
+          />
+        </div>
       </div>
-    ))}
-  </div>
-  <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
-    <div
-      className="absolute top-0 left-0 h-full bg-secondary rounded-full"
-      style={{
-        width: `${(activeTab -1)==0?"100":(activeTab-1)==1?"80":"100"}px`, // Adjust based on the number of tabs
-        transform: `translateX(${(activeTab -1)==0?"0":(activeTab-1)==1?"120":"240"}px)`, // Adjust based on the number of tabs
-        transition: 'transform 0.3s ease-in-out',
-      }}
-    />
-  </div>
-  
-</div>
 
       <div className="w-[100%] m-auto flex-auto justify-center  items-center">
         {/* Content for Tab 1 */}
