@@ -8,10 +8,13 @@ const BannerPetCard = ({
 }) => {
   return (
     <>
-
-      <div className="   border-blue-500   w-[80px] h-[100px] md:w-[110px] md:h-[145px] flex flex-col justify-between text-center bg-white rounded-2xl">
-        <h3 className="text-secondary font-custom-roca mt-2 md:mt-3  text-sm md:text-[16px] h-[90px] font-semibold">{pet_type}</h3>
-        <div className={` border-red-700 bg-white h-10 w-12   md:h-[${width}] md:w-[${height}] m-auto p-2 `}>
+      <div className="   border-blue-500   w-[1000px] h-[150px] md:w-[110px] md:h-[145px] flex flex-col justify-between text-center bg-white rounded-2xl">
+        <h3 className="text-secondary font-custom-roca mt-2 md:mt-3  text-sm md:text-[16px] h-[90px] font-semibold">
+          {pet_type}
+        </h3>
+        <div
+          className={` border-red-700 bg-white h-10 w-12   md:h-[${width}] md:w-[${height}] m-auto p-2 `}
+        >
           <Image
             src={pet_image}
             alt={`${pet_type} Image`}
@@ -20,15 +23,12 @@ const BannerPetCard = ({
             height={62}
             className="w-full h-full "
           />
-
         </div>
         <button className="bg-secondary font-light mt-2 font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2">
           Book a visit
         </button>
       </div>
     </>
-
-
   );
 };
 

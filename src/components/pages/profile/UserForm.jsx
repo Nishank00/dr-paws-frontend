@@ -4,8 +4,11 @@ import UploadService from "@/services/Upload.service";
 import UserService from "@/services/User.Service";
 import { useToast } from "@/components/ui/ToastProvider";
 import Image from "next/image";
+import MultipleSelect from "@/components/ui/MultipleSelect";
+import ClinicService from "@/services/Clinic.service";
 
 const UserForm = ({ closePopup, user_id }) => {
+  const [clinics, setClinics] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const showToast = useToast();
   const [imageUrl, setImageUrl] = useState("");
@@ -17,6 +20,7 @@ const UserForm = ({ closePopup, user_id }) => {
     user_type: "",
     profile_image: "",
     address: "",
+    clinic_id: null,
   });
 
   // const handleFileChange = ( event ) =>
@@ -100,8 +104,21 @@ const UserForm = ({ closePopup, user_id }) => {
       });
   };
 
+  const getClinics = () => {
+    ClinicService.getData()
+      .then((response) => {
+        setClinics(response.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const clinicSelected = (e) => {
+    setUserData({ ...userData, clinic_id: e });
+  };
+
   useEffect(() => {
     getUserDataById(user_id);
+    getClinics();
   }, [user_id]);
 
   return (
@@ -202,6 +219,17 @@ const UserForm = ({ closePopup, user_id }) => {
             setUserData({ ...userData, address: e.target.value })
           }
           value={userData.address}
+        />
+      </div>
+
+      <div className="flex flex-col w-[80%] m-auto mt-3">
+        <label className="text-sm font-custom-open-sans">Home Clinic</label>
+        <MultipleSelect
+          options={clinics}
+          optionLabel={"name"}
+          optionValue={"id"}
+          onSelect={clinicSelected}
+          selectedValue={userData.clinic_id}
         />
       </div>
 

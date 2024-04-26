@@ -112,6 +112,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
         value={formData.name}
         placeholder={"Pet's Name"}
         onChange={updateFormData}
+        classes="md:mb-4"
       />
 
       <Select
@@ -159,6 +160,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           value={formData.age}
           placeholder={"Age"}
           onChange={updateFormData}
+          classes="md:mb-4"
         />
 
         <TextInput
@@ -167,6 +169,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           value={formData.weight}
           placeholder={"Weight"}
           onChange={updateFormData}
+          classes="md:mb-4"
         />
       </div>
 

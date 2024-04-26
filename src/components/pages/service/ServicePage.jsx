@@ -30,20 +30,19 @@ const ServicePage = () => {
           paragraphClass="text-sm"
         />
       </div>
-      <div className="">
+      {/* <div className="">
         <ServiceTabs
           tabs={["Tab 1", "Tab 2", "Tab 3"]}
           defaultTab="Tab 1"
           onSelect={handleTabSelect}
         >
           <div className="p-4">
-            {/* Content for the selected tab */}
             {selectedTab === "Tab 1" && <div>Tab 1 Content</div>}
             {selectedTab === "Tab 2" && <div>Tab 2 Content</div>}
             {selectedTab === "Tab 3" && <div>Tab 3 Content</div>}
           </div>
         </ServiceTabs>
-      </div>
+      </div> */}
       <div className="w-full ">
         <PageTabs />
       </div>

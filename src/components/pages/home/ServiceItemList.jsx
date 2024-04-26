@@ -1,6 +1,8 @@
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 const ServiceItemList = ({ service_list, service_name }) => {
+  const router = useRouter();
   //   const [itemList, setItemList] = useState([]);
 
   //   const getServiceItems = () => {
@@ -35,12 +37,12 @@ const ServiceItemList = ({ service_list, service_name }) => {
               service_list.map((item, index) => (
                 <div
                   key={item.name + index}
-                  className="justify-between flex gap-2.5 items-start"
+                  className="justify-between flex gap-2.5 items-center"
                 >
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/c3529b9fd372e4c5275c660ff2c90ec253d6ca4807166a5b4d14a18e4d258404?apiKey=22a36eade5734692978208fb0d2f5c62&"
-                    className="aspect-square object-contain object-center w-[23px] overflow-hidden shrink-0 max-w-full"
+                    src="/home/DrPawsLogoTagline.png"
+                    className="aspect-square object-contain object-center w-[18px] overflow-hidden shrink-0 max-w-full"
                   />
                   <div className="text-slate-700 md:text-md lg:text-lg capitalize self-stretch grow whitespace-nowrap">
                     {item.name}
@@ -48,7 +50,10 @@ const ServiceItemList = ({ service_list, service_name }) => {
                 </div>
               ))}
           </div>
-          <div className="text-white m-auto text-base font-bold whitespace-nowrap justify-center items-stretch bg-[#9fa983] mt-20 px-12 py-3.5 rounded-[86px] max-md:mt-10 max-md:px-5">
+          <div
+            className="text-white m-auto text-base font-bold whitespace-nowrap justify-center items-stretch bg-[#9fa983] mt-20 px-12 py-3.5 rounded-[86px] max-md:mt-10 max-md:px-5 hover:opacity-60"
+            onClick={() => router.push("/services")}
+          >
             View Services
           </div>
         </span>

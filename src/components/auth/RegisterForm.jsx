@@ -84,6 +84,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       });
   };
 
+  const resendCode = () => {
+    showToast("Code Resent", "success");
+    getOtp();
+  };
+
   const renderPage = (page) => {
     switch (page) {
       case 1:
@@ -158,7 +163,12 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
 
               <p className="text-sm fobt mt-14">
                 Didn&apos;t receive your code?{" "}
-                <span className="font-semibold">Resend Code</span>
+                <span
+                  className="font-semibold cursor-pointer hover:opacity-65"
+                  onClick={resendCode}
+                >
+                  Resend Code
+                </span>
               </p>
             </div>
           </>

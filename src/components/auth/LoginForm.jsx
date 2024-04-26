@@ -33,7 +33,6 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         if (!response.data.status) {
           return showToast(response.data.message, "warning");
         }
-        setCurrentPage(currentPage + 1);
       })
       .catch((error) => {
         stopLoading();
@@ -42,7 +41,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
   };
 
   const handleNext = () => {
-    // setCurrentPage(currentPage + 1);
+    setCurrentPage(currentPage + 1);
     getOtp();
   };
 
@@ -88,6 +87,11 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         stopLoading();
         console.error(error);
       });
+  };
+
+  const resendCode = () => {
+    showToast("Code Resent", "success");
+    getOtp();
   };
 
   const renderPage = (page) => {
@@ -176,7 +180,12 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
 
               <p className="mt-14">
                 Didn&apos;t receive your code?{" "}
-                <span className="font-semibold">Resend Code</span>
+                <span
+                  className="font-semibold cursor-pointer hover:opacity-65"
+                  onClick={resendCode}
+                >
+                  Resend Code
+                </span>
               </p>
             </div>
           </>

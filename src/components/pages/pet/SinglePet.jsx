@@ -63,8 +63,8 @@ const SinglePet = ({ pet_id }) => {
                 petData.pet_image
                   ? petData.pet_image
                   : petData?.pet_type_name == "Dog"
-                  ? "/pets/dog.jpeg"
-                  : "/pets/cat.png"
+                  ? "/home/dog.png"
+                  : "/home/cat.png"
               })`,
               backgroundPosition: "center",
               backgroundSize: "cover",

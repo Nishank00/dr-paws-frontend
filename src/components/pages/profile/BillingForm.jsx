@@ -10,6 +10,7 @@ const BillingForm = ({ user_id, closePopup }) => {
     cvv_code: "",
     name_on_card: "",
     billing_address: "",
+    expiry: "",
   });
 
   const updateBillingData = () => {
@@ -96,6 +97,16 @@ const BillingForm = ({ user_id, closePopup }) => {
             value={account.card_details}
           />
         </div>
+      </div>
+
+      <div className="flex flex-col w-[80%] m-auto mt-5">
+        <label className="text-sm font-custom-open-sans">Expiry(MM/YY)</label>
+        <input
+          className="input font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
+          placeholder=""
+          onChange={(e) => setAccount({ ...account, expiry: e.target.value })}
+          value={account.expiry}
+        />
       </div>
 
       <div className="flex flex-col w-[80%] m-auto mt-5">
