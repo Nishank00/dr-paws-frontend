@@ -64,7 +64,7 @@ const OverviewTabs = () => {
 
       <div className="flex flex-col items-start mt-4 text-primary">
         <div className="flex mt-2">
-          {["Clinic Details", "'Photos'", "Reviews"].map((tab, index) => (
+          {["Clinic Details", "Photos", "Reviews"].map((tab, index) => (
             <div
               key={index}
               className={` w-[100px] cursor-pointer ${
