@@ -21,12 +21,6 @@ const PetProfile = ({ pet_id }) => {
           return;
         }
         setPetData(response.data.data);
-        console.log(
-          process.env.NEXT_PUBLIC_API_UPLOAD_URL,
-          "/",
-          petData.pet_image
-        );
-        console.log("image=>", response.data.data.pet_image);
       })
       .catch((error) => {
         console.log(error);

@@ -9,8 +9,8 @@ const Page = () => {
 
   return (
     <div className="body-padding-x">
-      {/* <SinglePet /> */}
-      <PetProfile pet_id={id} />
+      <SinglePet pet_id={id} />
+      {/* <PetProfile pet_id={id} /> */}
     </div>
   );
 };

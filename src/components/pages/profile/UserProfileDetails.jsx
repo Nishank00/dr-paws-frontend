@@ -21,6 +21,7 @@ const UserProfileDetails = () => {
         if (!response.data.status) {
           return showToast(response.data.message, "warning");
         }
+        closeEditPopup();
         setUserData(response.data.data);
         UserStorageService.setUserInfo(response.data.data);
       })
@@ -35,12 +36,16 @@ const UserProfileDetails = () => {
 
   return (
     <>
-      <div className="text-primary px-4 flex  gap-4">
-        <div className="w-1/6 self-center">
+      <div className="text-primary px-4 flex gap-5">
+        <div className="w-2/12 self-center">
           <div
             className="w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40 rounded-full"
             style={{
-              backgroundImage: "url(/profile/defaultProfile.png)",
+              backgroundImage: `url(${
+                userData.profile_image
+                  ? userData.profile_image
+                  : "/profile/defaultProfile.png"
+              })`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "100% 100%",
               backgroundPosition: "center",
@@ -48,7 +53,7 @@ const UserProfileDetails = () => {
           />
         </div>
 
-        <div className="w-4/5 flex flex-col gap-3">
+        <div className="w-8/12 flex flex-col gap-3">
           <h4 className="text-xl sm:text-3xl text-secondary font-custom-roca">
             {userData.full_name || "Not Available"}
           </h4>
@@ -65,7 +70,7 @@ const UserProfileDetails = () => {
                 Contact No
               </p>
               <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
-                {userData.phone ? "+91 " + userData.phone : "Not Available"}
+                {userData.phone ? userData.phone : "Not Available"}
               </p>
             </div>
 
@@ -101,11 +106,11 @@ const UserProfileDetails = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="w-2/12 flex justify-end">
           <span
             onClick={openEditPopup}
             title="Update Profile"
-            className="w-5 h-5 flex items-center justify-center bg-secondary rounded-full hover:bg-primary cursor-pointer p-1 absolute right-1 top-1 sm:hidden"
+            className="w-5 h-5 flex items-center justify-center bg-secondary rounded-full hover:bg-primary cursor-pointer p-1 sm:hidden"
           >
             <img src="/profile/edit.svg" alt=" " loading="lazy" />
           </span>
@@ -119,13 +124,13 @@ const UserProfileDetails = () => {
             }
             color="secondary"
             onClick={openEditPopup}
-            className="bg-inherit text-secondary border-2 border-secondary"
+            className="bg-inherit text-secondary border-2 border-secondary hidden md:block w-40 h-12"
           />
         </div>
       </div>
 
       <Popup isOpen={isPopupOpen} onClose={closeEditPopup} hideClose>
-        <ProfileForm user_id={userData.id} closePopup={closeEditPopup} />
+        <ProfileForm user_id={userData.id} closePopup={getUserData} />
       </Popup>
     </>
   );

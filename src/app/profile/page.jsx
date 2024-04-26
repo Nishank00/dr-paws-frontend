@@ -4,8 +4,8 @@ import ProfilePage from "@/components/pages/profile/ProfilePage";
 const page = () => {
   return (
     <div className="sm:body-padding-x">
-      <UserPofile />
-      {/* <ProfilePage /> */}
+      {/* <UserPofile /> */}
+      <ProfilePage />
     </div>
   );
 };

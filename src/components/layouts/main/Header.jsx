@@ -15,7 +15,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
   <>
     <div className={`${show ? "" : "hidden md:block"}  `}>
       <ul
-        className={`${applyParentClass} text-lg flex flex-col md:flex-row  md:items-center mt-5 lg:mt-0`}
+        className={`${applyParentClass} text-lg flex flex-col md:flex-row  mt-5 lg:mt-0`}
       >
         <li className="my-1 md:mx-3 hover:font-semibold">
           <Link className="" href="/clinics">
@@ -114,17 +114,19 @@ const Header = () => {
     <>
       <div className="body-padding-x body-padding-y lg:h-[90px] text-primary bg-primary3">
         <nav className="flex items-center justify-between">
-          <div id="logo" className="h-12 flex justify-center items-center">
-            <Link href="/">
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
-                className="aspect-[2.55] object-contain object-center w-[80px] md:w-[120px] lg:w-[130px] lg:h-[49px] justify-center items-center overflow-hidden shrink-0 max-w-full"
-              />
-            </Link>
+          <div className="flex gap-10">
+            <div id="logo" className="h-12 flex justify-center items-center">
+              <Link href="/">
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
+                  className="aspect-[2.55] object-contain object-center w-[80px] md:w-[120px] lg:w-[130px] lg:h-[49px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+                />
+              </Link>
+            </div>
+            {/* {!showMenu && <MenuBar show={showMenu} />} */}
+            <Menus show applyParentClass="hidden lg:flex" />
           </div>
-          {/* {!showMenu && <MenuBar show={showMenu} />} */}
-          <Menus show applyParentClass="hidden lg:flex" />
           <div className="flex items-center gap-5 ">
             <Button
               label="Book a Visit"

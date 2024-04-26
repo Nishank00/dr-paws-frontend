@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
-const Popup = ({ isOpen, onClose, hideClose, children }) => {
+const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   const popupRef = useRef();
 
   useEffect(() => {

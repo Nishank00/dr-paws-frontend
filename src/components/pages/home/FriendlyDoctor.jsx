@@ -4,7 +4,10 @@ const FriendlyDoctor = () => {
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
-        <div style={{ fontFamily: 'Roca Bold, sans-serif' }} className="text-primary  text-center text-2xl md:text-[28px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10">
+        <div
+          style={{ fontFamily: "Roca Bold, sans-serif" }}
+          className="text-primary  text-center text-2xl md:text-4xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+        >
           Our vets bring the magic to Dr. Paws
         </div>
         <div className="self-center w-full max-w-[1045px] mt-14 max-md:max-w-full max-md:mt-10">
@@ -26,10 +29,12 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                    Highly qualified & always up-to-date
+                      Highly qualified & always up-to-date
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                    We only hire from the best veterinary colleges, and ensure our staff are supported to upskill themselves on the latest techniques
+                      We only hire from the best veterinary colleges, and ensure
+                      our staff are supported to upskill themselves on the
+                      latest techniques
                     </div>
                   </span>
                 </div>
@@ -41,10 +46,11 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                    Trained on the best machinery
+                      Trained on the best machinery
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                    Our vets are trained to use the latest cutting-edge machinery on all procedures
+                      Our vets are trained to use the latest cutting-edge
+                      machinery on all procedures
                     </div>
                   </span>
                 </div>
@@ -56,10 +62,12 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                    Animal-first approach. Always
+                      Animal-first approach. Always
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                    Unlike other clinics, we evaluate our vets based on customer satisfaction ahead of revenue. This ensures we never suggest unnecessary treatments
+                      Unlike other clinics, we evaluate our vets based on
+                      customer satisfaction ahead of revenue. This ensures we
+                      never suggest unnecessary treatments
                     </div>
                   </span>
                 </div>
@@ -71,10 +79,12 @@ const FriendlyDoctor = () => {
                   />
                   <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
-                    Animal lovers first. Vets second
+                      Animal lovers first. Vets second
                     </div>
                     <div className="text-slate-700 font-custom-open-sans text-sm mt-2.5">
-                    Our staff are passionate about animals and will ensure your pet is cared for with love and compassion                    </div>
+                      Our staff are passionate about animals and will ensure
+                      your pet is cared for with love and compassion{" "}
+                    </div>
                   </span>
                 </div>
               </div>

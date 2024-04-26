@@ -76,7 +76,9 @@ const ProfilePopupUI = ({ selectedDoctor }) => {
             <ExperienceIcon />
           </div>
           <div className="pl-2">
-            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">Experience</h3>
+            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">
+              Experience
+            </h3>
             <h2 className="text-2xl text-primary font-semibold font-custom-open-sans">
               {selectedDoctor?.experience}
             </h2>
@@ -84,49 +86,59 @@ const ProfilePopupUI = ({ selectedDoctor }) => {
         </div>
         <div className="mt-5 flex">
           <div className="w-[25px">
-            <Image src={"/Teams/SpecializationIcon.svg"} alt="err" width={25} height={25} />
-
+            <Image
+              src={"/Teams/SpecializationIcon.svg"}
+              alt="err"
+              width={25}
+              height={25}
+            />
           </div>
           <div className="pl-2">
-            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">Specialization</h3>
+            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">
+              Specialization
+            </h3>
             <h2 className="text-2xl text-primary font-semibold font-custom-open-sans">
               {selectedDoctor?.specialization}
             </h2>
           </div>
-
         </div>
         <div className="mt-5 flex">
           <div className="w-[25px">
-            <Image src={"/Teams/Location.svg"} alt="err" width={25} height={25} />
-
+            <Image
+              src={"/Teams/Location.svg"}
+              alt="err"
+              width={25}
+              height={25}
+            />
           </div>
           <div className="pl-2">
-            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">Clinics</h3>
+            <h3 className="text-xl text-primary font-normal font-custom-open-sans ">
+              Clinics
+            </h3>
             <h2 className="text-2xl text-primary font-semibold font-custom-open-sans">
-                      Andheri West, Indiranagar
+              Andheri West, Indiranagar
             </h2>
           </div>
-
         </div>
         <div className="mt-5 ">
           <h3 className="text-primary   font-bold font-custom-open-sans text-2xl">
             About The Vet
           </h3>
-          <p className="text-primary text-xl">
-           {selectedDoctor?.about}
-          </p>
+          <p className="text-primary text-xl">{selectedDoctor?.about}</p>
         </div>
       </div>
       <div className="w-full md:w-[40%] px-5">
-      <Image
-            src="/Teams/smiling.png"
-             alt="doctor"
-             width={300}
-             height={466}
-             className="w-[354px] "
-           />
-           <p>{selectedDoctor?.introduction}</p>
-<button  className="w-full h-12 flex justify-center items-center rounded-full text-white bg-secondary font-bold font-custom-open-sans">Book a Visit</button>
+        <Image
+          src="/Teams/smiling.png"
+          alt="doctor"
+          width={300}
+          height={466}
+          className="w-[354px] "
+        />
+        <p>{selectedDoctor?.introduction}</p>
+        <button className="w-full h-12 flex justify-center items-center rounded-full text-white bg-secondary font-bold font-custom-open-sans">
+          Book a Visit
+        </button>
       </div>
     </div>
   );

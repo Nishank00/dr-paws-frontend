@@ -45,7 +45,7 @@ const Homepage = () => {
       <div className="body-padding-x pt-5 bg-[#cbd9e3] lg:bg-white sm:mt-10">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium text-2xl md:text-[26px] mb-5 md:mb-10 text-center"
+          className="text-primary font-medium text-2xl md:text-4xl mb-5 md:mb-10 text-center"
         >
           Veterinary care, redesigned to be better
         </h2>
@@ -131,7 +131,7 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-[28px] pb-6 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-4xl pb-6 text-center"
       >
         Check out the places
         <br /> we call home
@@ -145,7 +145,7 @@ const Homepage = () => {
       <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium  mt-10 text-2xl md:text-[28px] mb-6 text-center"
+          className="text-primary font-medium  mt-10 text-2xl md:text-4xl mb-6 text-center"
         >
           Whatever your pet needs, we&apos;re there
         </h2>
@@ -170,7 +170,7 @@ const Homepage = () => {
       <div className="w-full flex  md:my-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary hidden md:block  text-center text-2xl md:text-[28px] leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-primary hidden md:block  text-center text-2xl md:text-4xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>

@@ -18,7 +18,7 @@ const ProfileDropdown = ({ onLogout }) => {
           </Link>
         </li>
 
-        <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
+        {/* <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
           <Link href="/profile">
             <p>My Pets</p>
           </Link>
@@ -28,7 +28,7 @@ const ProfileDropdown = ({ onLogout }) => {
           <Link href="#">
             <p>Medical History</p>
           </Link>
-        </li>
+        </li> */}
 
         <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
           <Link href="/appointments">
@@ -42,7 +42,7 @@ const ProfileDropdown = ({ onLogout }) => {
           </Link>
         </li>
 
-        <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
+        {/* <li className="py-2 hover:border-y hover:border-accent hover:text-accent">
           <Link href="#">
             <p>Billing Information</p>
           </Link>
@@ -52,7 +52,7 @@ const ProfileDropdown = ({ onLogout }) => {
           <Link href="#">
             <p>Account Settings</p>
           </Link>
-        </li>
+        </li> */}
 
         <li
           onClick={logoutUser}
