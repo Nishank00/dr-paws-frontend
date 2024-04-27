@@ -1,11 +1,22 @@
 import React from "react";
 
-const PetSelect = ({ onSelect = () => this.pet, pet = {} }) => {
+const PetSelect = ({ onSelect = () => pet, pet = {} }) => {
+  const petImageUrl = pet.pet_image
+    ? process.env.NEXT_PUBLIC_API_UPLOAD_URL + "/" + pet.pet_image
+    : pet.pet_type_name == "Dog"
+    ? "/home/dog.png"
+    : "/home/cat_cartoon.png";
   return (
     <div className="flex flex-col items-center gap-1">
       <div
+        style={{
+          backgroundImage: "url(" + petImageUrl + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
         className={`w-12 h-12 rounded-full cursor-pointer text-white flex items-center justify-center ${
-          pet.isSelected ? "bg-secondary" : "bg-primary3"
+          pet.isSelected ? "bg-secondary opacity-50" : "bg-primary3"
         }`}
         onClick={onSelect}
       >

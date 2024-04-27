@@ -23,6 +23,8 @@ const Calendar = ({ onSelect, selected = null }) => {
   };
 
   const handleDateClick = (date) => {
+    if (moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD"))
+      return;
     setSelectedDate(date);
     // Add any other logic you want to perform on date selection
     onSelect(date);
@@ -82,9 +84,18 @@ const Calendar = ({ onSelect, selected = null }) => {
       <div className="grid grid-cols-7 gap-1 mb-10 bg-primary4 text-primary">
         {days.map((date, index) => (
           <div
+            disabled={
+              moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
+            }
             key={index}
-            onClick={() => handleDateClick(date)}
-            className={`p-2 text-sm cursor-pointer text-center ${
+            onClick={() => {
+              handleDateClick(date);
+            }}
+            className={`p-2 text-sm ${
+              moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
+                ? "cursor-not-allowed text-gray-400"
+                : "cursor-pointer"
+            }  text-center ${
               date && date.getMonth() !== currentMonth.getMonth()
                 ? "text-gray-400"
                 : ""

@@ -4,7 +4,7 @@ import Form from "@/components/pages/booking/Form";
 
 const Booking = () => {
   return (
-    <div className="body-padding-x">
+    <div className="body-padding-x body-padding-y">
       <Form />
     </div>
   );

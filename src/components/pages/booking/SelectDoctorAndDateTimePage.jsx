@@ -18,20 +18,12 @@ const SelectDoctorAndDateTimePage = ({
   const dateSelected = (date) => {
     setSelectedDate(date);
     const selectedDay = date.getDay();
-    console.log("selectedDay => ", selectedDay);
 
     const { opening_time, closing_time } =
       selectedClinic.clinic_timings &&
       selectedClinic.clinic_timings.filter(
         (day) => day.day_value == selectedDay
       )[0];
-
-    console.log(
-      "opening_time = ",
-      opening_time,
-      " and closing_time = ",
-      closing_time
-    );
 
     const openingMoment = moment(opening_time, "HH:mm:ss");
     const closingMoment = moment(closing_time, "HH:mm:ss");
@@ -48,24 +40,13 @@ const SelectDoctorAndDateTimePage = ({
         sqlEndTime,
         selected: false,
       });
-      currentTime.add(1, "hour");
+      // currentTime.add(1, "hour");
     }
 
-    console.log("timeArray => ", timeArray);
-
     setAvailableSlots(timeArray);
-
-    console.log(
-      "=> ",
-      selectedClinic.clinic_timings &&
-        selectedClinic.clinic_timings.filter(
-          (day) => day.day_value == selectedDay
-        )[0]
-    );
   };
 
   const slotClicked = (availableSlot) => {
-    console.log("availableSlot => ", availableSlot);
     setAvailableSlots(
       availableSlots.map((slot) => {
         if (slot.formattedTime == availableSlot.formattedTime) {
@@ -84,7 +65,7 @@ const SelectDoctorAndDateTimePage = ({
   }, [selectedClinic]);
 
   return (
-    <div className={className}>
+    <div className={"pt-1 sm:pt-10 " + className}>
       <div className="mb-24">
         {!doctors || doctors.length == 0 || !selectedClinic ? (
           <>
@@ -125,7 +106,7 @@ const SelectDoctorAndDateTimePage = ({
                 />
               ))}
             </div>
-            <div className="">
+            <div className="pt-1 sm:pt-10">
               <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                 Select Date and Time
               </h2>

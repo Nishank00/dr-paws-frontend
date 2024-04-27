@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import AppointmentCard from "./AppointmentCard";
 import BookingService from "@/services/Booking.service";
 import Button from "../../ui/Button";
+import { useRouter } from "next/navigation";
 
 const AppointmentList = ({ listType = "ALL" }) => {
+  const router = useRouter();
   const [appointments, setAppointments] = useState([]);
 
   const getAppointments = () => {
@@ -33,14 +35,18 @@ const AppointmentList = ({ listType = "ALL" }) => {
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-2 my-10">
           <h2 className="text-2xl text-secondary text-center font-semibold sm:opacity-70 max-w-sm">
-            You haven&apos;t booked any visits yet
+            {["ALL", "UPCOMING"].includes(listType)
+              ? "You haven't booked any visits yet"
+              : "No records to show"}
           </h2>
-          <Button
-            color="secondary"
-            label="Book a visit"
-            onClick={() => {}}
-            className="w-auto text-lg px-5 py-2"
-          />
+          {["ALL", "UPCOMING"].includes(listType) && (
+            <Button
+              color="secondary"
+              label="Book a visit"
+              onClick={() => router.push("/booking")}
+              className="w-auto text-lg px-5 py-2"
+            />
+          )}
         </div>
       )}
     </>

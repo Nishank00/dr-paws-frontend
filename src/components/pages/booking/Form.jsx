@@ -44,7 +44,10 @@ const Form = () => {
   const openPopup = () => setPopupOpen(true);
   const closePopup = () => setPopupOpen(false);
 
-  const openOTPPopup = () => setOTPPopupOpen(true);
+  const openOTPPopup = () => {
+    sendBookingOTP();
+    setOTPPopupOpen(true);
+  };
   const closeOTPPopup = () => setOTPPopupOpen(false);
   const getPets = () => {
     PetService.getPetsByUserId(user_id)
@@ -90,8 +93,43 @@ const Form = () => {
       .catch((error) => console.log(error.message));
   };
 
-  const otpConfirmed = () => {
-    onConfirmBooking();
+  const otpConfirmed = (otp) => {
+    verifyBookingOTP(otp);
+  };
+
+  const verifyBookingOTP = (otp) => {
+    startLoading();
+    BookingService.verifyBookingOTP({
+      phone: JSON.parse(localStorage.getItem("user_info")).phone,
+      otp,
+    })
+      .then((response) => {
+        stopLoading();
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        onConfirmBooking();
+      })
+      .catch((error) => {
+        stopLoading();
+        showToast(error.message, "error");
+      });
+  };
+
+  const sendBookingOTP = () => {
+    startLoading();
+    BookingService.sendBookingOTP({
+      phone: JSON.parse(localStorage.getItem("user_info")).phone,
+    })
+      .then((response) => {
+        stopLoading();
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        return showToast(response.data.message, "success");
+      })
+      .catch((error) => {
+        stopLoading();
+        return showToast(error.message, "error");
+      });
   };
   const onConfirmBooking = () => {
     const selectedStartTime = selectedSlot.sqlStartTime;
@@ -325,7 +363,7 @@ const Form = () => {
             color="secondary"
             label="Next"
             onClick={handleNext}
-            className="px-4 py-2 rounded-full sm:w-52 h-12 text-lg"
+            className="px-4 py-2 rounded-full sm:w-52 h-12 text-lg sm:mt-16"
           />
         )}
       </div>
@@ -335,7 +373,10 @@ const Form = () => {
       </Popup>
 
       <Popup isOpen={isOTPPopupOpen} onClose={closeOTPPopup}>
-        <ConfirmBookingOTP onOTPConfirmed={otpConfirmed} />
+        <ConfirmBookingOTP
+          onOTPConfirmed={otpConfirmed}
+          sendBookingOTP={sendBookingOTP}
+        />
       </Popup>
     </div>
   ) : (

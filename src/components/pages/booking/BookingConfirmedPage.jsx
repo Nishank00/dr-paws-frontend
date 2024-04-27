@@ -88,7 +88,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
 
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
-      <h2 className="font-bold text-4xl flex gap-2 mb-8">
+      <h2 className="font-bold font-custom-roca text-4xl flex gap-2 mb-8">
         {appointment && appointment.is_active == 1 && rescheduled
           ? "Booking rescheduled"
           : appointment && appointment.is_active == 1 && !rescheduled
@@ -135,7 +135,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             .join(", ")}
         </p>
 
-        <div className="flex items-center my-12 relative">
+        <div className="flex items-center my-12">
           <div className="">
             <Image
               src={"/Ellipse 6.png"}
@@ -145,7 +145,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
               className="rounded-full"
             />
           </div>
-          <div className=" relative right-3">
+          <div className="-ml-10">
             <Image
               src={"/Ellipse 6 (1).png"}
               width={124}

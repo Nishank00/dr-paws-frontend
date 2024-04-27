@@ -15,5 +15,13 @@ export default {
 
   cancelBooking(payload) {
     return API().post("/booking/cancel", payload)
+  },
+
+  sendBookingOTP(payload) {
+    return API().post("/booking/sendBookingOTP", payload)
+  },
+
+  verifyBookingOTP(payload) {
+    return API().post("/booking/verifyBookingOTP", payload)
   }
 }

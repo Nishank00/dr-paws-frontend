@@ -29,7 +29,7 @@ const SingleAppointment = ({ appointment_id }) => {
 
   return (
     <>
-      <div className="text-primary body-padding-x">
+      <div className="text-primary body-padding-x body-padding-y">
         <div className="pt-4 self-start">
           <button
             type="button"

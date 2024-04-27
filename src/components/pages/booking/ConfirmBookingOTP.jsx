@@ -2,7 +2,7 @@ import Button from "@/components/ui/Button";
 import OTPInput from "@/components/ui/OTPInput";
 import React, { useState } from "react";
 
-const ConfirmBookingOTP = ({ onOTPConfirmed }) => {
+const ConfirmBookingOTP = ({ onOTPConfirmed, sendBookingOTP }) => {
   const [otp, setOTP] = useState("");
   const otpEntered = (enteredOTP) => {
     setOTP(enteredOTP);
@@ -34,7 +34,12 @@ const ConfirmBookingOTP = ({ onOTPConfirmed }) => {
 
       <p className="mt-14">
         Didn&apos;t receive your code?{" "}
-        <span className="font-semibold">Resend Code</span>
+        <span
+          className="font-semibold cursor-pointer hover:opacity-60"
+          onClick={sendBookingOTP}
+        >
+          Resend Code
+        </span>
       </p>
     </div>
   );
