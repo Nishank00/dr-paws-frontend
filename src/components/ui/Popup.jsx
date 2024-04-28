@@ -41,7 +41,10 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-      <div ref={popupRef} className=" rounded-2xl relative">
+      <div
+        ref={popupRef}
+        className=" rounded-2xl relative max-h-[95vh] overflow-scroll"
+      >
         {children}
         {hideClose ?? (
           <span

@@ -20,13 +20,13 @@ const PhoneNumberInput = ({
   };
 
   return (
-    <>
+    <div className="flex flex-col mb-4 sm:mb-0 w-full">
       {label && (
-        <label className="block text-sm font-medium text-primary mr-2">
+        <label className="block text-sm font-medium text-primary">
           {label}
         </label>
       )}
-      <div className="flex items-center justify-between gap-1 mb-4 sm:mb-0 w-full">
+      <div className="flex items-center justify-between gap-1 mt-1 w-full">
         <div className="flex items-center w-20">
           <select
             value={countryCode}
@@ -46,7 +46,7 @@ const PhoneNumberInput = ({
           maxLength={10}
         />
       </div>
-    </>
+    </div>
   );
 };
 

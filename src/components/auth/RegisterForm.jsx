@@ -6,6 +6,7 @@ import UploadProfile from "./UploadProfile";
 import { useToast } from "../ui/ToastProvider";
 import OTPInput from "../ui/OTPInput";
 import { useLoader } from "../ui/LoaderContext";
+import PhoneNumberInput from "../ui/PhoneNumberInput";
 
 const RegisterForm = ({ onSuccess, loginClicked }) => {
   // Variables
@@ -41,6 +42,14 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   const handleNext = () => {
     setCurrentPage(currentPage + 1);
     getOtp();
+  };
+
+  const handleBack = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const phoneNumberEntered = (phoneNumber) => {
+    setForm({ ...form, phone: phoneNumber });
   };
 
   const formValueChanged = (e) => {
@@ -94,31 +103,37 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 1:
         return (
           <div className="text-center">
-            <div className="flex flex-col items-center mb-5 sm:mb-10">
+            <div className="flex flex-col items-center my-5 sm:my-10">
               <h5 className="text-2xl font-custom-roca font-bold mb-3">
                 Let&apos;s get started by creating your account.
               </h5>
               <p className="text-xs w-56 sm:w-full">
-                Add your phone number. We&apos;ll send you a verification code.
+                Enter your phone number to receive a verification code
               </p>
             </div>
 
             <div className="mb-3 sm:mb-10">
-              <UploadProfile onUpload={profileUploaded} />
+              {/* <UploadProfile onUpload={profileUploaded} /> */}
               <TextInput
                 placeholder={"Name"}
                 name="full_name"
                 value={form.full_name}
                 onChange={formValueChanged}
-                classes="mb-4"
               />
-              <TextInput
+
+              <PhoneNumberInput
+                onPhoneNumberChange={phoneNumberEntered}
+                placeholder="Contact Number"
+                name={"phone"}
+              />
+
+              {/* <TextInput
                 placeholder={"Contact Number"}
                 name="phone"
                 value={form.phone}
                 onChange={formValueChanged}
                 classes="mb-4"
-              />
+              /> */}
 
               <Button
                 color="secondary"
@@ -129,7 +144,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
             </div>
             <div className="">
               <p className="text-sm font-custom-open-sans">
-                Already have an Account?{" "}
+                Already have an account?{" "}
                 <span
                   className="cursor-pointer font-bold hover:shadow-lg"
                   onClick={loginClicked}
@@ -143,7 +158,32 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 2:
         return (
           <>
-            <div className="pt-16 px-4 sm:px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
+            <div className="pt-5 sm:pt-16 px-4 sm:px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
+              <div className="pt-1 sm:pt-4 mb-5">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className={"flex items-center"}
+                >
+                  <span className="text-2xl mr-1">
+                    <svg
+                      width="11"
+                      height="18"
+                      viewBox="0 0 11 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.06077 8.99999L10.0608 1.99999L9.00011 0.939331L0.939453 8.99999L9.00011 17.0607L10.0608 16L3.06077 8.99999Z"
+                        fill="#33495F"
+                      />
+                    </svg>
+                  </span>
+                  <span className="text-lg sm:text-xl ml-2 font-open-sans">
+                    {"Back"}
+                  </span>
+                </button>
+              </div>
               <h2 className="text-2xl font-custom-roca font-semibold mb-2">
                 Verify your Phone Number
               </h2>
@@ -173,37 +213,6 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
             </div>
           </>
         );
-      // return (
-      //   <div className="text-center">
-      //     <div className="mb-10">
-      //       <h5 className="text-3xl font-bold mb-3">
-      //         Generate your password
-      //       </h5>
-      //       <p>
-      //         Both fields should match, to successfully create the password
-      //       </p>
-      //     </div>
-
-      //     <div className="">
-      //       <TextInput
-      //         type={"password"}
-      //         placeholder={"Password"}
-      //         name="password"
-      //         value={form.password}
-      //         onChange={formValueChanged}
-      //       />
-      //       <TextInput
-      //         type={"password"}
-      //         placeholder={"Confirm Password"}
-      //         name="confirm_password"
-      //         value={form.confirm_password}
-      //         onChange={formValueChanged}
-      //       />
-
-      //       <Button label="Submit" onClick={registerUser} />
-      //     </div>
-      //   </div>
-      // );
       default:
         return null;
     }

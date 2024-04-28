@@ -82,7 +82,7 @@ const MedicalHistory = ({ pet_id, petData }) => {
               key={"documentType" + i}
               className="flex flex-col gap-5 w-full text-primary font-custom-open-sans"
             >
-              <h2 className="text-[16px] md:text-lg font-bold">
+              <h2 className="text-[16px] md:text-lg font-bold font-custom-roca">
                 {documentType.document_type_name}
               </h2>
 

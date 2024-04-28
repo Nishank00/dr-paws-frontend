@@ -41,11 +41,15 @@ const MultipleSelect = ({
   };
 
   return (
-    <div className="mb-4">
-      {label && <label className="block mb-2">{label}</label>}
+    <div className="mb-4 sm:mb-0 w-full">
+      {label && (
+        <label className="block text-sm font-medium text-primary">
+          {label}
+        </label>
+      )}
       <select
         multiple={isMulti}
-        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
+        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300 h-12"
         onChange={handleSelect}
       >
         {<option value="">{placeholder || "Select an option"}</option>}

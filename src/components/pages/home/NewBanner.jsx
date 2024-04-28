@@ -45,7 +45,7 @@ const NewBanner = () => {
           Care our best <br />
           friends deserve
         </h2>
-        <p className="text-sm font-custom-open-sans  md:text-[22px] font-light font-semibold sm:font-light">
+        <p className="text-sm font-custom-open-sans  md:text-[22px] font-semibold sm:font-light">
           Book a visit now. Who will we be meeting?
         </p>
 

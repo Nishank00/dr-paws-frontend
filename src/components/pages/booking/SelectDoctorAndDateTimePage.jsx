@@ -14,6 +14,7 @@ const SelectDoctorAndDateTimePage = ({
   onConfirmBooking,
   className,
 }) => {
+  const [isDoctorSelected, setIsDoctorSelected] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
   const dateSelected = (date) => {
     setSelectedDate(date);
@@ -63,6 +64,10 @@ const SelectDoctorAndDateTimePage = ({
   useEffect(() => {
     if (selectedDate) dateSelected(selectedDate);
   }, [selectedClinic]);
+
+  useEffect(() => {
+    setIsDoctorSelected(doctors.filter((doctor) => doctor.selected).length > 0);
+  }, [doctors]);
 
   return (
     <div className={"pt-1 sm:pt-10 " + className}>
@@ -116,7 +121,11 @@ const SelectDoctorAndDateTimePage = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
                 <div className="col-span-2">
-                  <Calendar selected={selectedDate} onSelect={dateSelected} />
+                  <Calendar
+                    selected={selectedDate}
+                    onSelect={dateSelected}
+                    disabled={!isDoctorSelected}
+                  />
                 </div>
 
                 <div className="text-primary font-semibold">

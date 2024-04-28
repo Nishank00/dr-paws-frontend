@@ -10,6 +10,7 @@ import LoginForm from "@/components/auth/LoginForm";
 import { useRouter } from "next/navigation";
 import MenuBar from "./MenuBar";
 import { useToast } from "@/components/ui/ToastProvider";
+import { useSelector } from "react-redux";
 
 const Menus = ({ show = false, applyParentClass = "" }) => (
   <>
@@ -46,6 +47,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => (
 );
 
 const Header = () => {
+  const userSession = useSelector((state) => state.userSession);
   const [showMenu, setMenu] = useState(false);
   const [showProfileDropdown, setProfileDropdown] = useState(false);
   const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
@@ -99,7 +101,7 @@ const Header = () => {
   };
 
   const bookingButtonClicked = () => {
-    if (!user_id) {
+    if (!userSession.user_info?.id || !userSession.isUserLoggedIn) {
       showToast("Please login in order to book the appointment", "warning");
       return openLoginPopup();
     }

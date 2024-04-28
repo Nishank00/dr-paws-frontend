@@ -1,18 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import UploadService from "@/services/Upload.service";
 import UserService from "@/services/User.Service";
 import { useToast } from "@/components/ui/ToastProvider";
-import Image from "next/image";
 import MultipleSelect from "@/components/ui/MultipleSelect";
 import ClinicService from "@/services/Clinic.service";
+import UploadProfile from "@/components/auth/UploadProfile";
+import TextInput from "@/components/ui/TextInput";
+import PhoneNumberInput from "@/components/ui/PhoneNumberInput";
+import Button from "@/components/ui/Button";
+import MasterService from "@/services/Master.service";
 
 const UserForm = ({ closePopup, user_id }) => {
-  const [clinics, setClinics] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
   const showToast = useToast();
-  const [imageUrl, setImageUrl] = useState("");
-  const [token, setToken] = useState("");
+  const [clinics, setClinics] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
   const [userData, setUserData] = useState({
     full_name: "",
     email: "",
@@ -21,38 +23,30 @@ const UserForm = ({ closePopup, user_id }) => {
     profile_image: "",
     address: "",
     clinic_id: null,
+    address_line_1: null,
+    address_line_2: null,
+    pin_code: null,
+    city_id: null,
+    state_id: null,
+    country_id: null,
   });
 
-  // const handleFileChange = ( event ) =>
-  // {
-  //     console.log( "token", token )
-  //     console.log( "file changed" )
-  //     setSelectedFile( event.target.files[ 0 ] );
-  //     handleUpload()
-  // };
+  // Methods
+  const profileUploaded = (filename) => {
+    setUserData({ ...userData, profile_image: filename });
+  };
 
-  const handleFileChange = async (e) => {
-    try {
-      console.log("start");
-      const formData = new FormData();
-      formData.append("files", e.target.files[0]);
-      UploadService.uploadFile(formData)
-        .then((r) => {
-          if (r.data.status) {
-            setUserData({ ...userData, profile_image: r.data.data[0] });
-            showToast("uploaded successfully", "success");
-          } else {
-            console.log(r.data.message);
-            showToast(r.data.message, "error");
-          }
-        })
-        .catch((err) => {
-          uploading.value = false;
-          console.log("err in upload=>", err.message);
-        });
-    } catch (error) {
-      console.error("Error uploading file", error);
-    }
+  const formValueChanged = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const phoneNumberEntered = (phoneNumber) => {
+    setUserData({ ...userData, phone: phoneNumber });
+  };
+
+  const clinicSelected = (e) => {
+    setUserData({ ...userData, clinic_id: e });
   };
 
   const handleSubmit = () => {
@@ -61,15 +55,7 @@ const UserForm = ({ closePopup, user_id }) => {
     UserService.updateUser(payload)
       .then((r) => {
         if (r.data.status) {
-          closePopup();
-          setUserData({
-            full_name: "",
-            email: "",
-            phone: "",
-            user_type: "",
-            profile_image: "",
-            address: "",
-          });
+          onCancel();
         } else {
           console.log(r.data.message);
           alert(r.data.message);
@@ -81,7 +67,6 @@ const UserForm = ({ closePopup, user_id }) => {
   };
 
   const onCancel = () => {
-    console.log("work");
     closePopup();
     setUserData({
       full_name: "",
@@ -90,8 +75,15 @@ const UserForm = ({ closePopup, user_id }) => {
       user_type: "",
       profile_image: "",
       address: "",
+      address_line_1: null,
+      address_line_2: null,
+      pin_code: null,
+      city_id: null,
+      state_id: null,
+      country_id: null,
     });
   };
+
   const getUserDataById = (id) => {
     UserService.getUserById(id)
       .then((r) => {
@@ -112,142 +104,152 @@ const UserForm = ({ closePopup, user_id }) => {
       .catch((err) => console.log(err.message));
   };
 
-  const clinicSelected = (e) => {
-    setUserData({ ...userData, clinic_id: e });
+  const getStates = () => {
+    MasterService.getMastersByCode({ code: "STATE" })
+      .then((response) => {
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        setStates(response.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const stateSelected = (e) => {
+    setUserData({ ...userData, state_id: e });
+  };
+
+  const getCities = (state_id) => {
+    MasterService.getMastersByCode({ code: "CITY", state_id })
+      .then((response) => {
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        setCities(response.data.data);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const citySelected = (e) => {
+    setUserData({ ...userData, city_id: e });
   };
 
   useEffect(() => {
     getUserDataById(user_id);
     getClinics();
+    getStates();
+    getCities();
   }, [user_id]);
 
   return (
-    <div className="w-full m-auto h-[530px] overflow-scroll text-primary">
-      <div className="relative w-fit m-auto">
-        <label htmlFor="file-input" className="cursor-pointer block">
-          <div className="w-48 h-36  flex items-center justify-center">
-            {/* <img
-              loading="lazy"
-              srcSet={userData.profile_image || "dummyProfilePic.jpg"}
-              className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
-            /> */}
-            {/* <Image
-              src={
-                userData.profile_image
-                  ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
-                  "/" +
-                  userData.profile_image
-                  : "/defaultUserProfileImage.png"
-              }
-              alt="Profile Image"
-              width={100}
-              height={100}
-              className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
-            /> */}
-            <div
-              className="aspect-square relative object-contain object-center w-full max-w-[125px] rounded-full"
-              style={{
-                backgroundImage: `url(${
-                  userData.profile_image
-                    ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}`
-                    : "/defaultUserProfileImage.png"
-                })`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            ></div>
-            <div className="w-6 h-6 rounded-full bg-secondary absolute right-10 bottom-5"></div>
+    <>
+      <div className="p-10 rounded-2xl  text-primary">
+        <div className="flex flex-col gap-8">
+          <h3 className="text-2xl text-center font-custom-roca">
+            Update Profile
+          </h3>
+
+          <UploadProfile
+            image={userData.profile_image}
+            onUpload={profileUploaded}
+          />
+
+          <TextInput
+            label={"Name"}
+            placeholder={"John Doe"}
+            name={"full_name"}
+            value={userData.full_name}
+            onChange={formValueChanged}
+          />
+
+          <PhoneNumberInput
+            label={"Contact No"}
+            placeholder={"9876543210"}
+            phoneNumber={userData.phone}
+            name={"phone"}
+            onPhoneNumberChange={phoneNumberEntered}
+          />
+
+          <TextInput
+            type="email"
+            label={"Email"}
+            placeholder={"johndoe@gmail.com"}
+            name={"email"}
+            value={userData.email}
+            onChange={formValueChanged}
+          />
+
+          <MultipleSelect
+            label={"Home Clinic"}
+            options={clinics}
+            optionLabel={"name"}
+            optionValue={"id"}
+            onSelect={clinicSelected}
+            selectedValue={userData.clinic_id}
+          />
+
+          <TextInput
+            label={"Address"}
+            placeholder={"Andheri west, Mumbai"}
+            name={"address"}
+            value={userData.address}
+            onChange={formValueChanged}
+          />
+
+          <TextInput
+            placeholder={"Address line 1"}
+            name={"address_line_1"}
+            value={userData.address_line_1}
+            onChange={formValueChanged}
+          />
+
+          <TextInput
+            placeholder={"Address line 2"}
+            name={"address_line_2"}
+            value={userData.address_line_2}
+            onChange={formValueChanged}
+          />
+
+          <TextInput
+            placeholder={"Pin code"}
+            name={"pin_code"}
+            value={userData.pin_code}
+            onChange={formValueChanged}
+          />
+
+          <MultipleSelect
+            label={"State"}
+            options={states}
+            optionLabel="name"
+            optionValue="id"
+            onSelect={stateSelected}
+            selectedValue={userData.state_id}
+          />
+
+          <MultipleSelect
+            label={"City"}
+            options={cities}
+            optionLabel="name"
+            optionValue="id"
+            onSelect={citySelected}
+            selectedValue={userData.city_id}
+          />
+
+          <div className="flex items-center gap-2 justify-between">
+            <Button
+              label="Cancel"
+              color="secondary"
+              className="text-secondary hover:text-white border-2 border-secondary bg-inherit hover:bg-secondary h-12"
+              onClick={onCancel}
+            />
+            <Button
+              label="Save"
+              color="secondary"
+              className="h-12"
+              onClick={handleSubmit}
+            />
           </div>
-        </label>
-        <input
-          type="file"
-          id="file-input"
-          className="hidden"
-          accept="image/*"
-          onChange={(e) => handleFileChange(e)}
-        />
-      </div>
-      <div className="flex flex-col w-[80%] m-auto">
-        <label className="text-sm font-custom-open-sans">Name</label>
-        <input
-          // className="text-slate-700  text-base leading-5 mt-2  whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-          className="input font-custom-open-sansrounded-lg px-4 py-2 border-2  text-md rounded-lg text-primary"
-          placeholder=""
-          value={userData.full_name}
-          onChange={(e) =>
-            setUserData({ ...userData, full_name: e.target.value })
-          }
-        />
-      </div>
-      <div className="flex flex-col w-[80%] m-auto mt-3">
-        <label className="text-sm font-custom-open-sans">Contact No</label>
-        <div className="flex justify-between mt-2 ">
-          <input
-            // className="text-slate-700 w-[15%] text-base leading-5 whitespace-nowrap self-stretch border border-[color:var(--Accent,#74A7B3)] bg-white  justify-center py-1 rounded-md border-solid items-start" type="text"
-            className=" w-[15%]  font-custom-open-sans input rounded-lg px-2 py-2 border-2  text-md text-primary"
-            placeholder=""
-            value="+91"
-            disabled={true}
-          />
-          <input
-            className="input w-[80%] font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
-            placeholder=""
-            onChange={(e) =>
-              setUserData({ ...userData, phone: e.target.value })
-            }
-            value={userData.phone}
-          />
         </div>
       </div>
-      <div className="flex flex-col w-[80%] m-auto mt-3">
-        <label className="text-sm font-custom-open-sans">Email</label>
-        <input
-          className="input font-custom-open-sans rounded-lg px-4 py-2 border-2  text-md text-primary"
-          type="text"
-          placeholder=""
-          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-          value={userData.email}
-        />
-      </div>
-      <div className="flex flex-col w-[80%] m-auto mt-3">
-        <label className="text-sm font-custom-open-sans">Address</label>
-        <input
-          className="input font-custom-open-sans  rounded-lg px-4 py-2 border-2  text-md text-primary"
-          placeholder=""
-          onChange={(e) =>
-            setUserData({ ...userData, address: e.target.value })
-          }
-          value={userData.address}
-        />
-      </div>
-
-      <div className="flex flex-col w-[80%] m-auto mt-3">
-        <label className="text-sm font-custom-open-sans">Home Clinic</label>
-        <MultipleSelect
-          options={clinics}
-          optionLabel={"name"}
-          optionValue={"id"}
-          onSelect={clinicSelected}
-          selectedValue={userData.clinic_id}
-        />
-      </div>
-
-      <div className="flex  justify-between  w-[80%] m-auto mt-3 h-[50px]">
-        <button
-          onClick={onCancel}
-          className=" w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handleSubmit}
-          className=" w-[150px] border-2 border-solid border-[color:var(--Secondary-1,#5281A2)]  rounded-full text-sm font-bold font-custom-open-sans text-primary hover:text-white hover:bg-secondary"
-        >
-          Save
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

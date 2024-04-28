@@ -8,9 +8,16 @@ import UserService from "@/services/User.Service";
 import { UserService as UserStorageService } from "@/services/Storage.service";
 import OTPInput from "../ui/OTPInput";
 import { useLoader } from "@/components/ui/LoaderContext";
+import PhoneNumberInput from "../ui/PhoneNumberInput";
+import { useDispatch } from "react-redux";
+import {
+  setUserSession,
+  setUserLoggedIn,
+} from "@/store/features/userSession/userSessionSlice";
 
 const LoginForm = ({ onSuccess, signUpClicked }) => {
   // Variables
+  const dispatch = useDispatch();
   const showToast = useToast();
   const { startLoading, stopLoading } = useLoader();
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,6 +52,14 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     getOtp();
   };
 
+  const handleBack = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const phoneNumberEntered = (phoneNumber) => {
+    setForm({ ...form, phone: phoneNumber });
+  };
+
   const formValueChanged = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -56,6 +71,12 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         if (!response.data.status)
           return showToast(response.data.message, "warning");
 
+        dispatch(
+          setUserSession({
+            user_info: response.data.data,
+            isUserLoggedIn: true,
+          })
+        );
         UserStorageService.setUserInfo(response.data.data);
       })
       .catch((error) => {
@@ -64,7 +85,6 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
   };
 
   const otpEntered = (otp) => {
-    console.log("otp => ", otp);
     setForm({ ...form, otp });
   };
 
@@ -79,6 +99,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
           return showToast(response.data.message, "warning");
 
         TokenService.saveToken(response.data.data);
+        dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
         getUserData();
         onSuccess();
         return showToast(response.data.message, "success");
@@ -106,18 +127,15 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     Log in to book a visit
                   </h5>
                   <p className="text-sm font-custom-open-sans">
-                    Add your phone number. We&apos;ll send you a verification
-                    code.
+                    Enter your phone number to receive a verification code
                   </p>
                 </div>
 
                 <div className="mb-10">
-                  <TextInput
-                    placeholder="Mobile Number"
-                    name="phone"
-                    value={form.phone}
-                    onChange={formValueChanged}
-                    classes="mb-4"
+                  <PhoneNumberInput
+                    onPhoneNumberChange={phoneNumberEntered}
+                    placeholder="Contact Number"
+                    name={"phone"}
                   />
                   {/* <TextInput
                     placeholder={"Email"}
@@ -143,7 +161,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                 </div>
                 <div className="">
                   <p className="text-sm font-custom-open-sans">
-                    Don&apos;t have an Account?{" "}
+                    Don&apos;t have an account?{" "}
                     <span
                       className="cursor-pointer font-bold  hover:shadow-lg"
                       onClick={signUpClicked}
@@ -161,6 +179,31 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         return (
           <>
             <div className="pt-6 sm:pt-16 px-4 sm:px-10 pb-12 sm:max-w-[430px] max-h-[460px] text-center text-primary bg-white rounded-2xl">
+              <div className="pt-1 sm:pt-4 mb-5">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className={"flex items-center"}
+                >
+                  <span className="text-2xl mr-1">
+                    <svg
+                      width="11"
+                      height="18"
+                      viewBox="0 0 11 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.06077 8.99999L10.0608 1.99999L9.00011 0.939331L0.939453 8.99999L9.00011 17.0607L10.0608 16L3.06077 8.99999Z"
+                        fill="#33495F"
+                      />
+                    </svg>
+                  </span>
+                  <span className="text-lg sm:text-xl ml-2 font-open-sans">
+                    {"Back"}
+                  </span>
+                </button>
+              </div>
               <h2 className="text-2xl font-custom-roca font-semibold mb-2 ">
                 Verify your Phone Number
               </h2>

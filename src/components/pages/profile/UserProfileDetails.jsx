@@ -43,7 +43,9 @@ const UserProfileDetails = () => {
             style={{
               backgroundImage: `url(${
                 userData.profile_image
-                  ? userData.profile_image
+                  ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+                    "/" +
+                    userData.profile_image
                   : "/profile/defaultProfile.png"
               })`,
               backgroundRepeat: "no-repeat",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 
-const Calendar = ({ onSelect, selected = null }) => {
+const Calendar = ({ onSelect, selected = null, disabled = false }) => {
   const [currentTime, setCurrentTime] = useState(moment().format("hh:mm A"));
   const [selectedDate, setSelectedDate] = useState(selected);
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -94,6 +94,11 @@ const Calendar = ({ onSelect, selected = null }) => {
             className={`p-2 text-sm ${
               moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
                 ? "cursor-not-allowed text-gray-400"
+                : moment(date).format("YYYY-MM-DD") ==
+                    moment().format("YYYY-MM-DD") &&
+                  moment(selectedDate).format("YYYY-MM-DD") !=
+                    moment().format("YYYY-MM-DD")
+                ? "cursor-pointer bg-primary3 rounded-full"
                 : "cursor-pointer"
             }  text-center ${
               date && date.getMonth() !== currentMonth.getMonth()
