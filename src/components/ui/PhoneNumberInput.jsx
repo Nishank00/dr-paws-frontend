@@ -8,6 +8,7 @@ const PhoneNumberInput = ({
   onCountryCodeChange = () => {},
   onPhoneNumberChange = () => {},
   name,
+  classes = "",
 }) => {
   const handleCountryCodeChange = (e) => {
     const countryCode = e.target.value;
@@ -26,7 +27,11 @@ const PhoneNumberInput = ({
           {label}
         </label>
       )}
-      <div className="flex items-center justify-between gap-1 mt-1 w-full">
+      <div
+        className={
+          "flex items-center justify-between gap-1 mt-1 w-full " + classes
+        }
+      >
         <div className="flex items-center w-20">
           <select
             value={countryCode}

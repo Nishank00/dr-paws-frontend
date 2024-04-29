@@ -8,7 +8,7 @@ const Page = () => {
   const { id } = useParams();
 
   return (
-    <div className="body-padding-x">
+    <div className="body-padding-x body-padding-y">
       <SinglePet pet_id={id} />
       {/* <PetProfile pet_id={id} /> */}
     </div>

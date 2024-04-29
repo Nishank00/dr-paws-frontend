@@ -119,12 +119,14 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
                 name="full_name"
                 value={form.full_name}
                 onChange={formValueChanged}
+                classes="sm:mb-4"
               />
 
               <PhoneNumberInput
                 onPhoneNumberChange={phoneNumberEntered}
                 placeholder="Contact Number"
                 name={"phone"}
+                classes="sm:mb-4"
               />
 
               {/* <TextInput

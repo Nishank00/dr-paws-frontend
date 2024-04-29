@@ -33,7 +33,7 @@ const MedicalHistory = ({ pet_id, petData }) => {
       }
     });
 
-    setDocumentUploaded(tst.doc_types === tst.empty_docs);
+    setDocumentUploaded(tst.doc_types !== tst.empty_docs);
   }, [medicalDocuments]);
   return (
     <>
@@ -46,10 +46,12 @@ const MedicalHistory = ({ pet_id, petData }) => {
               style={{
                 backgroundImage: `url(${
                   petData.pet_image
-                    ? petData.pet_image
+                    ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+                      "/" +
+                      petData.pet_image
                     : petData?.pet_type_name == "Dog"
                     ? "/home/dog.png"
-                    : "/home/cat.png"
+                    : "/home/cat_cartoon.png"
                 })`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
@@ -69,8 +71,8 @@ const MedicalHistory = ({ pet_id, petData }) => {
         </div>
 
         {!documentUploaded && (
-          <p className="text-2xl text-secondary text-center font-custom-roca">
-            You haven’t added medical history
+          <p className="text-2xl text-secondary text-center font-custom-roca my-20">
+            You haven&apos;t added medical history
           </p>
         )}
 
@@ -100,6 +102,7 @@ const MedicalHistory = ({ pet_id, petData }) => {
                   <p className="text-lg text-center">No documents available</p>
                 )}
               </div>
+              <hr className="mt-5" />
             </div>
           ))}
       </div>

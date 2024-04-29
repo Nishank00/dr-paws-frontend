@@ -136,6 +136,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     onPhoneNumberChange={phoneNumberEntered}
                     placeholder="Contact Number"
                     name={"phone"}
+                    classes="sm:mb-4"
                   />
                   {/* <TextInput
                     placeholder={"Email"}

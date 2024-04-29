@@ -35,23 +35,38 @@ const SinglePet = ({ pet_id }) => {
 
   return (
     <div className="body-padding-y">
-      {/* <div className="bg-secondary px-4 py-1 rounded-t-xl">
-        <div className="flex items-center gap-1 mb-4 ">
-          <div id="icon" className="w-8 h-8 bg-white"></div>
-          <div>
-            <h4 className="text-lg font-custom-roca">Care Senior Membership</h4>
-            <p className="text-xs font-custom-open-sans italic">
-              Expires on: 31st March 2024
-            </p>
-          </div>
-        </div>
+      {petData.pet_membership &&
+        Object.keys(petData.pet_membership).length > 0 && (
+          <div className="flex items-center gap-8 bg-secondary p-5 rounded-t-xl ">
+            <img
+              src={`/membership/${petData.pet_membership?.image}`}
+              alt=""
+              className="w-40"
+            />
 
-        <Button
-          color="secondary"
-          label="Manage Plan"
-          className="border-2 border-primary2"
-        />
-      </div> */}
+            <div className="flex items-center justify-between w-full">
+              <div>
+                <h4 className="text-lg font-custom-roca">
+                  {petData.pet_membership?.title || "NA"}
+                </h4>
+                <p className="text-xs font-custom-open-sans italic">
+                  Expires on:{" "}
+                  {petData.pet_membership?.membership_expires_at
+                    ? moment(
+                        petData.pet_membership?.membership_expires_at
+                      ).format("LL")
+                    : "NA"}
+                </p>
+              </div>
+
+              <Button
+                color="secondary"
+                label="Manage Plan"
+                className="border-2 border-primary2 w-36 h-10 hover:bg-primary3 hover:text-secondary"
+              />
+            </div>
+          </div>
+        )}
 
       <div className="flex flex-col md:flex-row gap-6 bg-primary3 p-4 sm:p-6 md:p-8 text-primary font-custom-open-sans rounded-xl">
         <div className="flex md:justify-end gap-4 w-full md:w-[20%]">
@@ -61,10 +76,12 @@ const SinglePet = ({ pet_id }) => {
             style={{
               backgroundImage: `url(${
                 petData.pet_image
-                  ? petData.pet_image
+                  ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+                    "/" +
+                    petData.pet_image
                   : petData?.pet_type_name == "Dog"
                   ? "/home/dog.png"
-                  : "/home/cat.png"
+                  : "/home/cat_cartoon.png"
               })`,
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -89,7 +106,7 @@ const SinglePet = ({ pet_id }) => {
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Breed</p>
-            <h4 className="text-lg">{petData.breed_name}</h4>
+            <h4 className="text-lg">{petData.breed_name || "NA"}</h4>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -107,7 +124,9 @@ const SinglePet = ({ pet_id }) => {
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Age</p>
-            <h4 className="text-lg">{petData.age} years</h4>
+            <h4 className="text-lg">
+              {petData.age ? petData.age + " Years" : "NA"}
+            </h4>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -121,7 +140,9 @@ const SinglePet = ({ pet_id }) => {
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Weight</p>
-            <h4 className="text-lg">{petData.weight}kg</h4>
+            <h4 className="text-lg">
+              {petData.weight ? petData.weight + "Kg" : "NA"}
+            </h4>
           </div>
         </div>
 
