@@ -63,7 +63,6 @@ export default function VerticalTabs() {
     }
   }, [serviceList]);
   useEffect(() => {
-    console.log("servicve is run");
     getServices();
   }, []);
 
@@ -89,8 +88,8 @@ export default function VerticalTabs() {
         {/* Tab content */}
         <div className="flex flex-col items-stretch w-[71%] max-md:w-full max-md:ml-0">
           <TabWindow
-            title={activeService.service_name || "Planned Check-Ups"}
-            service_id={activeService.service_id || 9}
+            title={activeService.service_name}
+            service_id={activeService.service_id || 100}
           />
         </div>
       </div>
