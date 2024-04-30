@@ -160,7 +160,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 2:
         return (
           <>
-            <div className="pt-5 sm:pt-16 px-4 sm:px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
+            <div className="pt-5 sm:pt-16 px-4 sm:px-10 pb-12 max-w-[430px] text-center bg-white rounded-2xl">
               <div className="pt-1 sm:pt-4 mb-5">
                 <button
                   type="button"
