@@ -101,7 +101,8 @@ const Header = () => {
   };
 
   const bookingButtonClicked = () => {
-    if (!userSession.user_info?.id || !userSession.isUserLoggedIn) {
+    const token = TokenService.getToken();
+    if (!token) {
       showToast("Please login in order to book the appointment", "warning");
       return openLoginPopup();
     }

@@ -164,28 +164,6 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
             />
           </svg>
         )}
-        <svg
-          width="36"
-          height="36"
-          viewBox="0 0 36 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            x="0.5"
-            y="0.75"
-            width="35"
-            height="35"
-            rx="17.5"
-            fill="#5281A2"
-          />
-          <path
-            d="M9.5 19.625L15.25 25.25L26.75 14"
-            stroke="white"
-            strokeWidth="3.75"
-            strokeLinecap="round"
-          />
-        </svg>
       </h2>
 
       <div
