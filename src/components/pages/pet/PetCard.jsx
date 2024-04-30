@@ -17,7 +17,7 @@ const PetCard = ({ pet = {}, backgroundColor = "primary3" }) => {
                 ? pet?.pet_image
                 : pet.pet_type_name == "Dog"
                 ? "/home/dog.png"
-                : "/home/cat.png"
+                : "home/cat_cartoon.png"
             })`,
             backgroundPosition: "center",
             backgroundSize: "cover",
