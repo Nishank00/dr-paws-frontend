@@ -11,6 +11,7 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import MembershipService from "@/services/Membership.Service";
 import { useLoader } from "@/components/ui/LoaderContext";
+import Link from "next/link";
 
 const CheckoutPage = () => {
   const membershipData = useSelector(
@@ -85,11 +86,7 @@ const CheckoutPage = () => {
       <div className="w-full sm:w-7/12 p-5 sm:py-10  sm:pr-[95px] md:pr-[120px] ">
         <div className="flex flex-col gap-9">
           <div className="pt-1 sm:pt-4">
-            <button
-              type="button"
-              onClick={() => {}}
-              className={"flex items-center"}
-            >
+            <Link href="/membership" className={"flex items-center"}>
               <span className="text-2xl mr-1">
                 <svg
                   width="11"
@@ -107,7 +104,7 @@ const CheckoutPage = () => {
               <span className="text-lg sm:text-xl ml-2 font-open-sans">
                 {"Back"}
               </span>
-            </button>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-8">

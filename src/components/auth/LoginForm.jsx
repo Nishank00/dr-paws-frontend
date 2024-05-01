@@ -37,7 +37,9 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     AuthService.sendLoginOTP(payload)
       .then((response) => {
         stopLoading();
+        console.log(response);
         if (!response.data.status) {
+          setCurrentPage(1);
           return showToast(response.data.message, "warning");
         }
       })
@@ -47,9 +49,9 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
       });
   };
 
-  const handleNext = () => {
-    setCurrentPage(currentPage + 1);
+  const handleNext = async () => {
     getOtp();
+    setCurrentPage(currentPage + 1);
   };
 
   const handleBack = () => {

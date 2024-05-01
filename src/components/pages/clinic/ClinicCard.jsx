@@ -27,7 +27,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
         }}
       >
         <p className="text-primary w-16 h-7 text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
-          24/7
+          24H
         </p>
       </div>
       <div className="pl-6 pr-2 py-4 text-primary grow">

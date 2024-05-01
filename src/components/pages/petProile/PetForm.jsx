@@ -26,6 +26,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     { value: "FEMALE", label: "Female" },
   ]);
 
+  const requiredFields = ["name", "pet_type", "breed", "gender", "weight"];
+
   // Methods
   const profileUploaded = (filename) => {
     setFormData({ ...formData, pet_image: filename });
@@ -34,6 +36,13 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   const updateFormData = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    if (name == "date_of_birth") {
+      const today = new Date();
+      const birthDate = new Date(value);
+      const age = today.getFullYear() - birthDate.getFullYear();
+      setFormData({ ...formData, age });
+    }
   };
 
   const getPetsType = () => {
@@ -71,24 +80,33 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   const selectGender = (selectedValue) => {
     setFormData({ ...formData, gender: selectedValue });
   };
-
   const submitForm = () => {
-    const payload = {
-      ...formData,
-      user_id: JSON.parse(localStorage.getItem("user_info")).id,
-    };
+    const allFieldsPresent = requiredFields.every((field) => formData[field]);
 
-    console.log("payload => ", payload);
-    PetService.savePet(payload)
-      .then((response) => {
-        if (response.data.status) {
-          showToast("Pet Added Successfully", "success");
-          console.log(response.data.data);
-          onPetAdded();
-          closePopup();
-        }
-      })
-      .catch((error) => console.log(error.message));
+    if (allFieldsPresent) {
+      const payload = {
+        ...formData,
+        user_id: JSON.parse(localStorage.getItem("user_info")).id,
+      };
+
+      console.log("payload => ", payload);
+      PetService.savePet(payload)
+        .then((response) => {
+          if (response.data.status) {
+            showToast("Pet Added Successfully", "success");
+            console.log(response.data.data);
+            onPetAdded();
+            closePopup();
+          }
+        })
+        .catch((error) => console.log(error.message));
+    } else {
+      // Handle case where not all fields are present
+      showToast(
+        "Please fill in all fields before submitting the form.",
+        "warning"
+      );
+    }
   };
 
   // Lifecycle Hooks
