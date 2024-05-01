@@ -69,24 +69,24 @@ const OverviewTabs = () => {
                     : activeTab - 1 == 4
                     ? "70"
                     : activeTab - 1 == 5
-                    ? "100"
+                    ? "80"
                     : activeTab - 1 == 6
-                    ? "110"
-                    : "100"
+                    ? "80"
+                    : "170"
                 }px`, // Adjust based on the number of tabs
                 transform: `translateX(${
                   activeTab - 1 == 0
                     ? "0"
                     : activeTab - 1 == 1
-                    ? "224"
+                    ? "270"
                     : activeTab - 1 == 2
-                    ? "470"
+                    ? "570"
                     : activeTab - 1 == 3
-                    ? "630"
+                    ? "850"
                     : activeTab - 1 == 4
-                    ? "835"
+                    ? "1110"
                     : activeTab - 1 == 5
-                    ? "940"
+                    ? "1280"
                     : activeTab - 1 == 6
                     ? "930"
                     : ""

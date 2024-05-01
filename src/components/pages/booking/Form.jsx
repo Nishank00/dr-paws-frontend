@@ -70,7 +70,36 @@ const Form = () => {
   };
 
   const handleNext = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    let canProceed = true;
+
+    switch (currentPage) {
+      case 1:
+        if (services.length === 0) {
+          showToast("Please select at least one service", "warning");
+          canProceed = false;
+        } else {
+          setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+        }
+        break;
+      case 2:
+        if (doctors.length === 0) {
+          showToast("Please select at least one doctor", "warning");
+          canProceed = false;
+        } else {
+          setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+        }
+        break;
+      case 3:
+        if (!selectedDate || !selectedSlot) {
+          showToast("Please select date and time", "warning");
+          canProceed = false;
+        } else {
+          setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+        }
+        break;
+      default:
+        break;
+    }
   };
 
   const handleBack = () => {
