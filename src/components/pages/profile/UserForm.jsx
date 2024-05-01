@@ -9,6 +9,9 @@ import TextInput from "@/components/ui/TextInput";
 import PhoneNumberInput from "@/components/ui/PhoneNumberInput";
 import Button from "@/components/ui/Button";
 import MasterService from "@/services/Master.service";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import ReactPhoneInput from "@/components/ui/ReactPhoneInput";
 
 const UserForm = ({ closePopup, user_id }) => {
   const showToast = useToast();
@@ -132,6 +135,10 @@ const UserForm = ({ closePopup, user_id }) => {
     setUserData({ ...userData, city_id: e });
   };
 
+  const phoneChanged = (a, b, c) => {
+    console.log("a", a, "b", b, "c", c);
+  };
+
   useEffect(() => {
     getUserDataById(user_id);
     getClinics();
@@ -160,13 +167,33 @@ const UserForm = ({ closePopup, user_id }) => {
             onChange={formValueChanged}
           />
 
-          <PhoneNumberInput
+          <ReactPhoneInput
+            label={"Contact No"}
+            placeholder={"9876543210"}
+            value={userData.phone}
+            onChange={(num) => {
+              setUserData({ ...userData, phone: num });
+            }}
+          />
+
+          {/* <PhoneInput
+            value={userData.phone}
+            onChange={(num) => setUserData({ ...userData, phone: num })}
+            defaultCountry="IN"
+            className="text-primary mt-1 p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 bg-white"
+          /> */}
+          {/* <PhoneInput
+            defaultCountry="IN"
+            className="text-primary mt-1 p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 bg-white"
+          /> */}
+
+          {/* <PhoneNumberInput
             label={"Contact No"}
             placeholder={"9876543210"}
             phoneNumber={userData.phone}
             name={"phone"}
             onPhoneNumberChange={phoneNumberEntered}
-          />
+          /> */}
 
           <TextInput
             type="email"

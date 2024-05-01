@@ -95,7 +95,11 @@ const MedicalHistory = ({ pet_id, petData }) => {
                       key={documentType.document_type_name + "document" + i}
                       className="shrink-0 w-44"
                     >
-                      <DocumentCard document={document} className="shrink-0" />
+                      <DocumentCard
+                        document={document}
+                        onRefresh={getMedicalDocuments}
+                        className="shrink-0"
+                      />
                     </div>
                   ))
                 ) : (

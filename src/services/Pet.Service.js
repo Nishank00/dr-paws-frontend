@@ -41,6 +41,10 @@ export default {
 
     getPetAllDocuments(pet_id) {
         return API().get(`pet/getDocuments/${pet_id}`)
+    },
+
+    deleteDocument(document_id) {
+        return API().delete(`pet/deleteDocument/${document_id}`)
     }
 
 }
