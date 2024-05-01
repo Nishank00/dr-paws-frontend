@@ -86,14 +86,14 @@ export default function VerticalTabs() {
         </div>
 
         {/* Tab content */}
-        <div className="flex flex-col items-stretch w-[71%] max-md:w-full max-md:ml-0">
+        <div className="flex flex-col items-stretch w-[71%] h-[515px] max-md:w-full max-md:ml-0">
           <TabWindow
             title={activeService.service_name}
             service_id={activeService.service_id || 100}
           />
         </div>
       </div>
-      <div className=" w-full flex flex-col lg:hidden">
+      <div className=" w-full flex h-[516px] flex-col lg:hidden">
         {serviceList &&
           serviceList.map((service, index) => (
             <TabModule

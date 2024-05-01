@@ -30,6 +30,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     AuthService.sendRegisterOTP(payload)
       .then((response) => {
         stopLoading();
+        console.log(response);
         if (!response.data.status)
           return showToast(response.data.message, "warning");
       })
