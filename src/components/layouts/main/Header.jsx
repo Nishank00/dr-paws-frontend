@@ -133,7 +133,7 @@ const Header = () => {
   return (
     <>
       <div className="body-padding-x body-padding-y lg:h-[90px] text-primary bg-primary3 relative z-50">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center w-full justify-between">
           <div className="flex gap-10 items-center">
             <div id="logo" className="h-12 flex justify-center items-center">
               <Link href="/">
