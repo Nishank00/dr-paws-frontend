@@ -4,6 +4,7 @@ import Popup from "@/components/ui/Popup";
 import { useToast } from "@/components/ui/ToastProvider";
 import UserService from "@/services/User.Service";
 import { useEffect, useState } from "react";
+import { UserService as UserStorageService } from "@/services/Storage.service";
 import ProfileForm from "./ProfileForm";
 import Button from "@/components/ui/Button";
 
@@ -102,7 +103,8 @@ const UserProfileDetails = () => {
                 Address
               </p>
               <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
-                {userData.address || "Not Available"}
+                {`${userData.address}, ${userData?.address_line_1} ${userData?.address_line_2}` ||
+                  "Not Available"}
               </p>
             </div>
           </div>

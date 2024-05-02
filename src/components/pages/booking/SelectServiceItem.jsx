@@ -41,9 +41,10 @@ const SelectServiceItem = ({
   useEffect(() => {
     let str = (service.childs || [])
       .map((service_item) => service_item.name)
-      .join();
+      .join(", ");
 
-    setSubHeading(str.slice(0, 20) + " ...");
+    // setSubHeading(str.slice(0, 20) + " ...");
+    setSubHeading(str);
   }, []);
 
   return (

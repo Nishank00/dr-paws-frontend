@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useToast } from "@/components/ui/ToastProvider";
 
 import { IoChevronBackOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const AddMedicalHistory = () => {
   const [docTypes, setDocTypes] = useState([]);
@@ -23,6 +24,8 @@ const AddMedicalHistory = () => {
   const { id } = useParams();
   const fileInputRef = React.useRef(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const { selectedPetInfo } = useSelector((state) => state.userSession);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -137,7 +140,7 @@ const AddMedicalHistory = () => {
 
   useEffect(() => {
     getDoccumnetTypes();
-    console.log("pet_id=>", id);
+    console.log("pet_id=>", id, selectedPetInfo);
   }, []);
   return (
     <div className="w-full">
@@ -150,7 +153,7 @@ const AddMedicalHistory = () => {
       <div className="w-full p-10">
         <div className="w-full flex justify-center m-auto">
           <h1 className="font-custom-roca text-secondary text-4xl">
-            Buddy’s Medical History
+            {`${selectedPetInfo?.name}'s` || "Buddy’s"} Medical History
           </h1>
         </div>
         <div className="w-full mt-4">

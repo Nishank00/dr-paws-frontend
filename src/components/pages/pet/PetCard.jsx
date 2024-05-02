@@ -1,11 +1,27 @@
+import { setSelectedPetInfo } from "@/store/features/userSession/userSessionSlice";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const PetCard = ({ pet = {}, backgroundColor = "primary3" }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const goToPetPage = () => {
+    dispatch(
+      setSelectedPetInfo({
+        currentSelectedPetInfo: { pet_image: pet?.pet_image, name: pet?.name },
+      })
+    );
+    console.log({
+      currentSelectedPetInfo: { pet_image: pet?.pet_image, name: pet?.name },
+    });
+    router.push(`/pets/${pet?.id}`);
+  };
+
   return (
     <div
-      onClick={() => router.push(`/pets/${pet.id}`)}
+      onClick={goToPetPage}
       className={`w-full bg-${backgroundColor} p-1 flex flex-col items-center rounded-2xl hover:shadow-2xl cursor-pointer`}
     >
       <div className="px-10 py-8 bg-primary4 flex flex-col gap-5 items-center w-full rounded-2xl">

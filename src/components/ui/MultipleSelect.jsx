@@ -53,7 +53,7 @@ const MultipleSelect = ({
         onChange={handleSelect}
       >
         {<option value="">{placeholder || "Select an option"}</option>}
-        {options.map((option) => (
+        {options?.map((option) => (
           <option
             key={option[optionValue]}
             value={option[optionValue]}
