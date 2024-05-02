@@ -73,7 +73,7 @@ body {
 
 @layer components {
   .body-padding-x {
-    @apply px-3 sm:px-16 lg:px-40;
+    @apply px-3 sm:px-16 lg:px-48;
   }
   .body-padding-y {
     @apply py-2 sm:py-3 lg:py-5;

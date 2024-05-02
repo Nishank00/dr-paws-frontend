@@ -405,6 +405,7 @@ const Form = () => {
         <ConfirmBookingOTP
           onOTPConfirmed={otpConfirmed}
           sendBookingOTP={sendBookingOTP}
+          phoneNumber={JSON.parse(localStorage.getItem("user_info")).phone}
         />
       </Popup>
     </div>
