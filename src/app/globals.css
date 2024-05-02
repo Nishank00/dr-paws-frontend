@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+@font-face {
+  font-family: "Roca Bold";
+  src: url("/font/Roca Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f7f1de;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #33495f;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5281a2;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.ribbin_shap {
+  clip-path: polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 6% 52%);
+}
+.box-shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.phone > input {
+  outline: unset !important;
+}
+
+@layer components {
+  .body-padding-x {
+    @apply px-3 sm:px-16 lg:px-40;
+  }
+  .body-padding-y {
+    @apply py-2 sm:py-3 lg:py-5;
+  }
+
+  .primary-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary hover:bg-primary text-white font-bold w-full;
+  }
+
+  .primary2-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary2 hover:bg-primary3 text-primary font-bold w-full;
+  }
+
+  .primary3-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary3 hover:bg-primary2 text-primary font-bold w-full ring ring-primary outline-none;
+  }
+
+  .primary4-btn {
+    @apply px-4 py-3 rounded-[80px] bg-primary3 hover:bg-primary3 text-primary font-bold w-full border border-r-2 border-primary outline-none;
+  }
+
+  .secondary-btn {
+    @apply px-4 py-3 rounded-[80px] bg-secondary hover:bg-primary text-white font-bold w-full;
+  }
+  .accent-btn {
+    @apply px-4 py-3 rounded-[80px] bg-accent hover:bg-primary text-white font-bold w-full;
+  }
+
+  .secondary2-btn {
+    @apply px-4 py-3 rounded-[80px] bg-secondary2 hover:bg-primary2 text-white font-bold w-full  outline-none;
+  }
+}
