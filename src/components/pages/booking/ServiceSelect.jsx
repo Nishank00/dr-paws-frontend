@@ -9,7 +9,7 @@ const Service = ({ label, isChecked = false, onChange }) => {
       >
         {label}
         <div
-          className={`flex items-center justify-center ml-2 h-8 shrink-0 w-8 rounded border-0 ${
+          className={`flex items-center justify-center ml-2 h-8 w-8 rounded border-0 ${
             isChecked ? "bg-secondary" : "bg-white"
           }`}
         >
