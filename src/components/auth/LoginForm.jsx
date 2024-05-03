@@ -20,6 +20,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
   const dispatch = useDispatch();
   const showToast = useToast();
   const { startLoading, stopLoading } = useLoader();
+  const [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState({
     full_name: "",
@@ -154,7 +155,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     value={form.password}
                     onChange={formValueChanged}
                   /> */}
-
+                  <span></span>
                   <Button
                     disabled={!form.phone}
                     color="secondary"

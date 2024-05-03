@@ -8,7 +8,7 @@ const Dropdown = ({ title, children }) => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="w-full  mx-auto border-b border-gray-300  px-10 rounded-lg  ">
+    <div className="w-full mx-auto border-gray-300 px-10 rounded-lg border my-1 bg-primary4">
       <div className="">
         <div
           className="flex justify-between items-center py-4 cursor-pointer"
