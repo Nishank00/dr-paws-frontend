@@ -1,5 +1,7 @@
 "use client";
 
+import BookingButton from "./BookingButton";
+
 const Button = ({
   type = "button",
   color = "primary",
@@ -9,16 +11,28 @@ const Button = ({
   disabled = false,
 }) => {
   return (
-    <button
-      disabled={disabled}
-      type={type}
-      className={`flex items-center justify-center gap-1  ${color}-btn ${
-        disabled && "cursor-not-allowed"
-      } ${className}`}
-      onClick={onClick}
-    >
-      {label}
-    </button>
+    <>
+      {label !== "Book a visit" ? (
+        <button
+          disabled={disabled}
+          type={type}
+          className={`flex items-center justify-center gap-1  ${color}-btn ${
+            disabled && "cursor-not-allowed"
+          } ${className}`}
+          onClick={onClick}
+        >
+          {label}
+        </button>
+      ) : (
+        <BookingButton
+          className={`flex items-center justify-center gap-1  ${color}-btn ${
+            disabled && "cursor-not-allowed"
+          } ${className}`}
+        >
+          {label}
+        </BookingButton>
+      )}
+    </>
   );
 };
 

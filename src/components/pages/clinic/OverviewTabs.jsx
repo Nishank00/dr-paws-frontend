@@ -7,6 +7,7 @@ import GallaryBox from "./GallaryBox";
 import Slider from "./Slider";
 import { useParams } from "next/navigation";
 import ClinicService from "@/services/Clinic.service";
+import BookingButton from "@/components/ui/BookingButton";
 
 const OverviewTabs = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -22,7 +23,6 @@ const OverviewTabs = () => {
       .then((r) => {
         if (r.data.status) {
           setClinic(r.data.data[0]);
-          console.log("data=>", r.data.data[0]);
         } else {
           alert(r.data.message);
         }
@@ -57,9 +57,7 @@ const OverviewTabs = () => {
             <div className="flex flex-col items-stretch w-[19%] ml-5 max-md:w-full max-md:ml-0"></div>
           </div>
         </div>
-        <span className="text-white text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5">
-          Book a Visit
-        </span>
+        <BookingButton className="text-white text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5" />
       </span>
 
       <div className="flex flex-col items-start mt-4 text-primary">

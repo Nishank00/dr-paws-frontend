@@ -16,7 +16,6 @@ const UploadProfile = ({ onUpload, image }) => {
           setProfileImage(fileReader.result);
       };
     }
-    console.log(files[0]);
 
     let myHeaders = new Headers();
     myHeaders.append("authorization", localStorage.getItem("access_token"));

@@ -8,7 +8,6 @@ const PlanPopUp = ({ onClose }) => {
 
 
   const handleNavigate=()=>{
-    console.log("work")
     router.push("/membership/payment")
   }
   return (

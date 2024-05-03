@@ -87,7 +87,6 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
             `Pet ${pet_id ? "Updated" : "Added"} Successfully`,
             "success"
           );
-          console.log(response.data.data);
           onPetAdded();
           closePopup();
         }

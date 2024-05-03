@@ -1,4 +1,5 @@
 "use client";
+import BookingButton from "@/components/ui/BookingButton";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -26,8 +27,8 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <p className="text-primary w-16 h-7 text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
-          24H
+        <p className="text-primary px-2 h-7 text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
+          24 Hours
         </p>
       </div>
       <div className="pl-6 pr-2 py-4 text-primary grow">
@@ -38,15 +39,11 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           {serviceString || "OPD | Surgery"}
         </p>
       </div>
-      <div
+      <BookingButton
         className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
-        onClick={(e) => {
-          e.stopPropagation();
-          router.push("/booking?clinic=" + id);
-        }}
-      >
-        Book a Visit
-      </div>
+       
+      />
+        
     </div>
   );
 };

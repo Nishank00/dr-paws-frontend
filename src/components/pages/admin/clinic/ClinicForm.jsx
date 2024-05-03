@@ -127,7 +127,6 @@ const ClinicForm = () => {
     });
     setServices(serviceCopy);
     // selectedItem.selected = !selectedItem.selected;
-    console.log("selectedItem: ", selectedItem);
   };
 
   const getDoctors = () => {
@@ -254,7 +253,6 @@ const ClinicForm = () => {
   };
 
   const timeSelected = (time, isStartTime, day_id) => {
-    console.log("time, isStartTime, day_id: ", time, isStartTime, day_id);
     const formattedTime = formatTimeForMySQL(time);
     setDays(
       days.map((day) => {

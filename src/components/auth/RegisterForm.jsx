@@ -63,7 +63,6 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   };
 
   const otpEntered = (otp) => {
-    console.log("otp => ", otp);
     setForm({ ...form, otp });
   };
 

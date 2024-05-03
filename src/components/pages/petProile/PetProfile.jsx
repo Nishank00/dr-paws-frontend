@@ -13,7 +13,6 @@ const PetProfile = ({ pet_id }) => {
   const [documentlist, setDocumenetList] = useState([]);
 
   const getPetData = () => {
-    console.log("getUserData running");
     PetService.getPetById(pet_id)
       .then((response) => {
         if (!response.data.status) {

@@ -53,7 +53,6 @@ const AddMedicalHistory = () => {
   };
 
   const handleUploadFiles = ({ e, doc_id, doc_name }) => {
-    console.log("work");
     const files = e.target.files;
     const formData = new FormData();
     // files.forEach(file => {
@@ -62,7 +61,6 @@ const AddMedicalHistory = () => {
     for (let i = 0; i < files.length; i++) {
       formData.append("files", files[i]); // Append each selected file to the FormData object
     }
-    console.log("upload service start");
     UploadService.uploadFile(formData)
       .then((r) => {
         if (r.data.status) {
@@ -100,23 +98,18 @@ const AddMedicalHistory = () => {
             let tempData = [...uploadedFiles, newDoc];
             setUploadedFiles(tempData);
           }
-          console.log("uploadedfiles=>", uploadedFiles);
-        } else {
-          console.log(r.data.message);
         }
       })
       .catch((err) => {
         uploading.value = false;
         console.log("err in upload=>", err);
       });
-    console.log("srvcie stop");
   };
 
   const selectDocType = (e) => {
     setDoc({ ...doc, doc_type: e.target.value });
   };
   const handleSubmit = () => {
-    console.log(uploadedFiles);
     let payload = [];
     uploadedFiles.forEach((ele) => {
       payload = [...payload, ...ele.doc_list];
@@ -161,7 +154,6 @@ const AddMedicalHistory = () => {
   };
   useEffect(() => {
     getDoccumnetTypes();
-    console.log("pet_id=>", id, selectedPetInfo);
   }, []);
   return (
     <div className="w-full">

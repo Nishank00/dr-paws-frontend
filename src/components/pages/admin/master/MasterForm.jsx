@@ -32,7 +32,6 @@ const MasterForm = ({ masterType, closeFormPopup }) => {
 
   const parentSelected = (selectedValue) => {
     setForm({ ...form, parent_id: selectedValue });
-    console.log("selectedValue => ", selectedValue);
   };
 
   const submitForm = (e) => {

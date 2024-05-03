@@ -40,6 +40,7 @@ const BookingButton = ({ className }) => {
 
   const bookingButtonClicked = () => {
     const token = TokenService.getToken();
+
     if (!token) {
       showToast("Please login in order to book the appointment", "warning");
       return openLoginPopup();

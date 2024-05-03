@@ -89,7 +89,6 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
         user_id: JSON.parse(localStorage.getItem("user_info")).id,
       };
 
-      console.log("payload => ", payload);
       PetService.savePet(payload)
         .then((response) => {
           if (response.data.status) {

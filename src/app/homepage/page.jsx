@@ -1,4 +1,5 @@
 import VerticalTabs from "@/components/pages/home/VerticalTabs";
+import BookingButton from "@/components/ui/BookingButton";
 import Link from "next/link";
 
 export default function Homepage() {
@@ -263,9 +264,7 @@ export default function Homepage() {
                   OPD | Surgery
                 </div>
               </span>
-              <span className="text-white text-base font-bold leading-5 tracking-normal whitespace-nowrap justify-center items-center bg-slate-500 px-16 py-4 max-md:px-5">
-                Book a Visit
-              </span>
+              <BookingButton className="text-white text-base font-bold leading-5 tracking-normal whitespace-nowrap justify-center items-center bg-slate-500 px-16 py-4 max-md:px-5" />
             </div>
           </div>
           <div className="flex flex-col items-stretch  max-md:w-full max-md:ml-0">

@@ -6,7 +6,6 @@ const ConfirmBookingOTP = ({ onOTPConfirmed, sendBookingOTP, phoneNumber }) => {
   const [otp, setOTP] = useState("");
   const otpEntered = (enteredOTP) => {
     setOTP(enteredOTP);
-    console.log(enteredOTP);
   };
 
   const verifyBooking = () => {

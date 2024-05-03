@@ -28,7 +28,6 @@ const Homepage = () => {
     ClinicService.getData()
       .then((response) => {
         setClinics([]);
-        console.log("hello", response);
         if (response.data.status) {
           setClinics(response.data.data);
         }

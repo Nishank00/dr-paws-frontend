@@ -26,11 +26,9 @@ const UserPofile = () => {
   };
 
   const getUserData = () => {
-    console.log("getUserData running");
     UserService.getProfile()
       .then((response) => {
         if (!response.data.status) {
-          console.log("error");
           return;
         }
         setUserData(response.data.data);

@@ -8,7 +8,6 @@ const TimePicker = ({ label, value, day, isStartTime = false, onChange }) => {
   // Parse the value to set initial state
   useEffect(() => {
     if (value) {
-      console.log("value: ", value);
       const time = value.split(":");
       const parsedHour = parseInt(time[0]);
       const parsedMinute = parseInt(time[1]);

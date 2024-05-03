@@ -71,9 +71,7 @@ const PetForm = ({ user_id, getPets, petData, getPetData }) => {
       .then((r) => {
         if (r.data.status) {
           handleCancel();
-          console.log("getpets start");
           getPets();
-          console.log("getpets end");
         } else {
           alert(r.data.message);
         }
@@ -84,7 +82,6 @@ const PetForm = ({ user_id, getPets, petData, getPetData }) => {
   };
   const handlePetTypeChange = (e) => {
     setPet({ ...pet, pet_type: e.target.value });
-    console.log("pet_type_id=>", e.target.value);
     getPetBreedData({ parent_id: e.target.value });
   };
   const handleCancel = () => {
@@ -106,7 +103,6 @@ const PetForm = ({ user_id, getPets, petData, getPetData }) => {
   };
   useEffect(() => {
     if (petData) {
-      console.log("petdatain petForm=>", petData);
       getPetsType();
       getPetBreedData({ parent_id: petData.pet_type });
       setPet(petData);

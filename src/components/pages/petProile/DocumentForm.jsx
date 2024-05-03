@@ -65,7 +65,6 @@ const DocumentForm = ( { pet_id } ) =>
         }
         else
         {
-          console.log( r.data.message )
         }
       } )
       .catch( ( err ) =>

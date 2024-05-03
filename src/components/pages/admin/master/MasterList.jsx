@@ -10,7 +10,6 @@ const MasterList = ({
   const [masters, setMasters] = useState([]);
 
   const getMasters = () => {
-    console.log("Master fetched");
     MasterService.getMastersByCode({ code: masterType.code })
       .then((response) => {
         if (response.data.status) {

@@ -234,7 +234,6 @@ const Form = () => {
         if (!response.data.status)
           return showToast(response.data.message, "warning");
 
-        console.log("response.data.data => ", response.data.data[0]);
         setAppointment(response.data.data[0]);
       })
       .catch((error) => {
@@ -243,7 +242,6 @@ const Form = () => {
   };
 
   const prepareForm = () => {
-    console.log("runnig prepare form");
     if (!appointment) return showToast("Appointment not found", "warning");
     if (!services || services.length == 0)
       return showToast("Services not found", "warning");
@@ -347,7 +345,6 @@ const Form = () => {
   }, [pets]);
 
   useEffect(() => {
-    console.log("services =>", services);
     if (id && !appointment && services && services.length > 0) getAppointment();
   }, [services]);
 

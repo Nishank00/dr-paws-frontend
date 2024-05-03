@@ -60,7 +60,6 @@ const UserForm = ({ closePopup, user_id }) => {
         if (r.data.status) {
           onCancel();
         } else {
-          console.log(r.data.message);
           alert(r.data.message);
         }
       })
@@ -133,10 +132,6 @@ const UserForm = ({ closePopup, user_id }) => {
 
   const citySelected = (e) => {
     setUserData({ ...userData, city_id: e });
-  };
-
-  const phoneChanged = (a, b, c) => {
-    console.log("a", a, "b", b, "c", c);
   };
 
   useEffect(() => {

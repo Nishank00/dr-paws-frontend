@@ -21,7 +21,6 @@ export default function VerticalTabs() {
     setActiveTab(tabId);
     getServiceItems(service_id);
     setActiveService({ service_name, service_id });
-    console.log(activeTab);
   };
   const getServices = () => {
     ClinicServiceService.getData()
