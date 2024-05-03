@@ -1,3 +1,4 @@
+"use client";
 import { TokenService } from "@/services/Storage.service";
 import React, { useState } from "react";
 import Popup from "./Popup";
@@ -27,7 +28,7 @@ const BookingButton = ({ className }) => {
   const loginClicked = () => {
     closeRegisterPopup();
     openLoginPopup();
-  }; 
+  };
 
   const signUpClicked = () => {
     closeLoginPopup();
