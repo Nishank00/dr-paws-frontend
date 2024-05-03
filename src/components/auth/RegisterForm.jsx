@@ -31,8 +31,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       .then((response) => {
         stopLoading();
         console.log(response);
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
+        if (!response.data.status) setMessage(response.data.message);
       })
       .catch((error) => {
         stopLoading();
@@ -81,8 +80,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     AuthService.register(payload)
       .then((response) => {
         stopLoading();
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
+        if (!response.data.status) setMessage(response.data.message);
 
         onSuccess();
         return showToast(response.data.message, "success");

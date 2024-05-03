@@ -38,10 +38,11 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     AuthService.sendLoginOTP(payload)
       .then((response) => {
         stopLoading();
-        console.log(response);
+        setMessage("");
         if (!response.data.status) {
           setCurrentPage(1);
-          return showToast(response.data.message, "warning");
+          setMessage(response.data.message);
+          // return showToast(response.data.message, "warning");
         }
       })
       .catch((error) => {
@@ -71,8 +72,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
   const getUserData = () => {
     UserService.getProfile()
       .then((response) => {
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
+        if (!response.data.status) setMessage(response.data.message);
 
         dispatch(
           setUserSession({
@@ -98,8 +98,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
     AuthService.login(payload)
       .then((response) => {
         stopLoading();
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
+        if (!response.data.status) setMessage(response.data.message);
 
         TokenService.saveToken(response.data.data);
         dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
@@ -155,7 +154,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     value={form.password}
                     onChange={formValueChanged}
                   /> */}
-                  <span></span>
+                  <span className="text-red-500 mt-5">{message}</span>
                   <Button
                     disabled={!form.phone}
                     color="secondary"
@@ -216,7 +215,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
               </p>
 
               <OTPInput onOTPEntered={otpEntered} />
-
+              <span className="text-red-500 mt-5">{message}</span>
               <Button
                 disabled={form.otp?.length < 4}
                 color="secondary"

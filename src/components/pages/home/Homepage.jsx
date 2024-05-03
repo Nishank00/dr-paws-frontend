@@ -137,7 +137,7 @@ const Homepage = () => {
           </Dropdown>
         ))}
 
-        <div className="w-full border-b border-solid border-grey  md:mt-10 px-5 py-4">
+        <div className="w-full md:mt-10 px-5 py-4">
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
             At a Dr. Paws Clinic
           </p>
