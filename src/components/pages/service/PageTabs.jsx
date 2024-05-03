@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ClinicServiceService from "@/services/ClinicService.service";
 import Tab from "./Tab";
 import TabModule from "@/components/ui/TabModule";
@@ -10,6 +10,25 @@ const OverviewTabs = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(1);
   const [services, setServices] = useState([]);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
+  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
+
+  const tabsRef = useRef([]);
+
+  useEffect(() => {
+    function setTabPosition() {
+      const currentTab = tabsRef.current[activeTabIndex];
+      console.log(currentTab?.offsetLeft, currentTab?.clientWidth);
+      setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
+      setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
+    }
+
+    setTabPosition();
+    window.addEventListener("resize", setTabPosition);
+
+    return () => window.removeEventListener("resize", setTabPosition);
+  }, [activeTabIndex]);
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(Number(tabNumber) + 1);
@@ -37,62 +56,28 @@ const OverviewTabs = () => {
     <>
       <div className="w-full mx-auto hidden lg:block  ">
         <div className="flex flex-col items-start mt-4">
-          <div className="w-full flex  justify-between mt-2">
-            {services &&
-              services.map((tab, index) => (
-                <div
-                  key={index}
-                  className={`text-primary font-bold  font-custom-open-sans w-auto text-md  cursor-pointer ${
-                    index == 0
-                      ? "text-left"
-                      : index == 6
-                      ? "text-right"
-                      : "text-center"
-                  }   mx-1 rounded-full `}
-                  onClick={() => handleTabClick(index)}
-                >
-                  {tab.name}
-                </div>
-              ))}
-          </div>
-          <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
-            <div
-              className="absolute top-0 left-0 h-full bg-secondary2 rounded-full"
-              style={{
-                width: `${
-                  activeTab - 1 == 0
-                    ? "160"
-                    : activeTab - 1 == 1
-                    ? "190"
-                    : activeTab - 1 == 3
-                    ? "150"
-                    : activeTab - 1 == 4
-                    ? "70"
-                    : activeTab - 1 == 5
-                    ? "80"
-                    : activeTab - 1 == 6
-                    ? "80"
-                    : "170"
-                }px`, // Adjust based on the number of tabs
-                transform: `translateX(${
-                  activeTab - 1 == 0
-                    ? "0"
-                    : activeTab - 1 == 1
-                    ? "270"
-                    : activeTab - 1 == 2
-                    ? "570"
-                    : activeTab - 1 == 3
-                    ? "850"
-                    : activeTab - 1 == 4
-                    ? "1110"
-                    : activeTab - 1 == 5
-                    ? "1280"
-                    : activeTab - 1 == 6
-                    ? "930"
-                    : ""
-                }px)`, // Adjust based on the number of tabs
-                transition: "transform 0.3s ease-in-out",
-              }}
+          <div className="relative w-full">
+            <div className="flex w-full space-x-3 pb-4 border-b">
+              {services &&
+                services.map((tab, index) => {
+                  return (
+                    <button
+                      key={index}
+                      ref={(el) => (tabsRef.current[index] = el)}
+                      className={`text-primary font-bold  font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full `}
+                      onClick={() => {
+                        setActiveTabIndex(index);
+                        handleTabClick(index);
+                      }}
+                    >
+                      {tab}
+                    </button>
+                  );
+                })}
+            </div>
+            <span
+              className="absolute bottom-0 block h-1 bg-primary transition-all duration-300"
+              style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
             />
           </div>
         </div>
