@@ -12,7 +12,7 @@ const Button = ({
 }) => {
   return (
     <>
-      {label.toLowerCase() != "book a visit" ? (
+      {typeof label === "string" && label.toLowerCase() != "book a visit" ? (
         <button
           disabled={disabled}
           type={type}
