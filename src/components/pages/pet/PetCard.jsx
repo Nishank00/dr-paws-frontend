@@ -10,11 +10,19 @@ const PetCard = ({ pet = {}, backgroundColor = "primary3" }) => {
   const goToPetPage = () => {
     dispatch(
       setSelectedPetInfo({
-        currentSelectedPetInfo: { pet_image: pet?.pet_image, name: pet?.name },
+        currentSelectedPetInfo: {
+          pet_id: pet?.id,
+          pet_image: pet?.pet_image,
+          name: pet?.name,
+        },
       })
     );
     console.log({
-      currentSelectedPetInfo: { pet_image: pet?.pet_image, name: pet?.name },
+      currentSelectedPetInfo: {
+        pet,
+        pet_image: pet?.pet_image,
+        name: pet?.name,
+      },
     });
     router.push(`/pets/${pet?.id}`);
   };

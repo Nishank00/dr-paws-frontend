@@ -1,6 +1,7 @@
 import { useToast } from "@/components/ui/ToastProvider";
 import PetService from "@/services/Pet.Service";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Popover = ({ showPopover = false, onDelete, onShare }) => {
   return (
@@ -33,8 +34,18 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
     setShowPopover(!showPopover);
   };
 
+  const { selectedPetInfo } = useSelector((state) => state.userSession);
+
   const handleDelete = () => {
-    PetService.deleteDocument(document.id).then((response) => {
+    console.log({
+      pet_id: selectedPetInfo?.pet_id,
+      document_id: document?.id,
+    });
+    return;
+    PetService.deleteDocument({
+      pet_id: selectedPetInfo?.pet_id,
+      document_id: document?.id,
+    }).then((response) => {
       if (!response.data.status)
         return showToast(response.data.message, "warning");
       showToast(response.data.message, "success");
