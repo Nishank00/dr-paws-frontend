@@ -27,7 +27,7 @@ const BookingButton = ({ className }) => {
   const loginClicked = () => {
     closeRegisterPopup();
     openLoginPopup();
-  };
+  }; 
 
   const signUpClicked = () => {
     closeLoginPopup();
