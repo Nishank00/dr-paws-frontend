@@ -40,22 +40,24 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
 
   const { selectedPetInfo } = useSelector((state) => state.userSession);
 
-  const handleDelete = () => {
-    console.log({
-      pet_id: selectedPetInfo?.pet_id,
-      document_id: document?.id,
-    });
-    return;
-    PetService.deleteDocument({
-      pet_id: selectedPetInfo?.pet_id,
-      document_id: document?.id,
-    }).then((response) => {
-      if (!response.data.status)
-        return showToast(response.data.message, "warning");
-      showToast(response.data.message, "success");
+  const handleDelete = async (type) => {
+    if (!type) {
       togglePopover();
-      onRefresh();
+      setDeletePop(false);
+      return;
+    }
+
+    const response = await PetService.deleteDocument({
+      pet_id: selectedPetInfo?.pet_id,
+      document_id: document?.id,
     });
+
+    if (!response.data.status)
+      return showToast(response.data.message, "warning");
+
+    showToast(response.data.message, "success");
+    togglePopover();
+    onRefresh();
   };
 
   const handleShare = async () => {
@@ -100,7 +102,7 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
       />
 
       <SharePopup isOpen={share} onClose={() => setShare(false)} />
-      <DeletePopup isOpen={deletePop} onClose={setDeletePop} />
+      <DeletePopup isOpen={deletePop} onClose={handleDelete} />
     </div>
   );
 };

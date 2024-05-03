@@ -5,6 +5,9 @@ import { Cross } from "./SharePopup";
 import Button from "./Button";
 
 const DeletePopup = ({ isOpen, onClose }) => {
+  const handleDeletePopUp = (type = false) => {
+    onClose(type);
+  };
   return (
     <>
       <Popup hideClose isOpen={isOpen}>
@@ -16,7 +19,7 @@ const DeletePopup = ({ isOpen, onClose }) => {
             >
               Delete
             </h3>
-            <div onClick={onClose}>
+            <div onClick={() => handleDeletePopUp(false)}>
               <Cross />
             </div>
           </div>
@@ -26,10 +29,12 @@ const DeletePopup = ({ isOpen, onClose }) => {
               <Button
                 className="bg-primary3 hover:border hover:border-primary3 hover:text-primary3 text-primary"
                 label="No"
+                onClick={() => handleDeletePopUp(false)}
               />
               <Button
                 className="bg-primary3 hover:border hover:border-primary3 hover:text-primary3 text-primary"
                 label="Yes"
+                onClick={() => handleDeletePopUp(true)}
               />
             </div>
           </div>
