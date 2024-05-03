@@ -121,7 +121,7 @@ const Homepage = () => {
           If your question is still not answered, please get in touch and
           <br /> we’d be happy to help
         </div>
-        <div className="w-full border-b border-solid border-grey px-5 py-4">
+        <div className="w-full border-solid border-grey px-5 py-4">
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
             About Dr. Paws
           </p>

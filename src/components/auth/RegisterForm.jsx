@@ -103,7 +103,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       case 1:
         return (
           <div className="text-center">
-            <div className="flex flex-col items-center my-5 sm:my-10">
+            <div className="flex flex-col items-center mb-3 sm:my-10">
               <h5 className="text-2xl font-custom-roca font-bold mb-3">
                 Let&apos;s get started by creating your account.
               </h5>
@@ -143,6 +143,13 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
                 label="Sign Up"
                 onClick={handleNext}
               />
+
+              <div className="flex gap-2 mt-6">
+                <input type="checkbox" />
+                <span className="text-sm text-start">
+                  Send me details about my pet’s health on WhatsApp
+                </span>
+              </div>
             </div>
             <div className="">
               <p className="text-sm font-custom-open-sans">
