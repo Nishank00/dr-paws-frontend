@@ -39,7 +39,7 @@ const NewBanner = () => {
       <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-12">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className=" text-3xl md:text-[64px] leading-none custom-open-sans font-bold md:mt-36"
+          className=" text-3xl md:text-[64px] leading-none custom-open-sans font-bold"
         >
           The Veterinary <br />
           Care our best <br />
