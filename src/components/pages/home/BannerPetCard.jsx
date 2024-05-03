@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import BookingButton from "@/components/ui/BookingButton";
 const BannerPetCard = ({
   pet_type = "Dog",
   pet_image = "https://s3-alpha-sig.figma.com/img/2c64/6ef4/2093dda8b37bea1a29fec7e91d55285f?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DibwxwQIj7k~SDn~f~IoRoG7IOONKdh87T1e7f1nHRIVb6dvDa-iIMTrVkVyLclzKtK~WyDn~kggcBNthsYAPX0LtcKFaHUMNBB3NZs4Nzfo7ESSgzLECZBrZ-aPRG4HvNWdAuz4Urk6to07rKLR5JJzxRrPcFoyQflO62WiGro7AWtD5bH-o8vAHN~y5GoSee5mOlYJHDEQYRAiOKXuyCB-X5~nuHrIey6LveWSeissIWfnDARMCNMWwclXI0GovYPFEnzAXIbR4V5xQhe~caAXhbwjrcs93XXoBmqdE9Skm19fAGoJZBKOiBE59ZwBRTfwH1tDLhD8IXFdudEedQ__",
@@ -22,12 +23,13 @@ const BannerPetCard = ({
             className="w-full h-full"
           />
         </div>
-        <button
+        {/* <button
           onClick={() => router.push("/booking")}
           className="bg-secondary hover:opacity-50 font-light font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2"
         >
           Book a visit
-        </button>
+        </button> */}
+        <BookingButton className="bg-secondary hover:opacity-50 font-light font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2" />
       </div>
     </>
   );

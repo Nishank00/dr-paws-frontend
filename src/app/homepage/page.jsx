@@ -1,4 +1,5 @@
 import VerticalTabs from "@/components/pages/home/VerticalTabs";
+import Link from "next/link";
 
 export default function Homepage() {
   return (
@@ -15,8 +16,8 @@ export default function Homepage() {
             <span className="text-orange-100">by pet lovers </span>
           </div>
           <div className="text-white  text-sm md:text-2xl mt-10 max-md:max-w-5/6">
-            Book a visit to one of our clinics right<br/> now. Which friend will we
-            meet?
+            Book a visit to one of our clinics right
+            <br /> now. Which friend will we meet?
           </div>
           <div className="flex gap-5 items-stretch  flex-row max-md:w-full ">
             <div className="flex flex-col items-stretch w-[30%] max-md:w-full max-md:ml-0">
@@ -112,9 +113,12 @@ export default function Homepage() {
                   emergency, our memberships cover you.
                 </div>
 
-                <button className="text-white text-xs w-[210px] h-[50px] font-bold justify-center items-stretch bg-slate-500 mt-6 px-12 py-3.5 rounded-[86px] max-md:max-w-full max-md:px-5">
+                <Link
+                  href="/memebership"
+                  className="text-white text-xs w-[210px] h-[50px] font-bold justify-center items-stretch bg-slate-500 mt-6 px-12 py-3.5 rounded-[86px] max-md:max-w-full max-md:px-5"
+                >
                   Become a Member
-                </button>
+                </Link>
               </span>
             </div>
             <div className="flex flex-col items-stretch w-[53%] ml-5 max-md:w-full max-md:ml-0">
@@ -165,9 +169,12 @@ export default function Homepage() {
                   informed on your pet’s health with our app
                 </div>
 
-                <button className="text-white text-xs w-[210px] h-[50px] font-bold justify-center items-stretch bg-slate-500 mt-6 px-12 py-3.5 rounded-[86px] max-md:max-w-full max-md:px-5">
+                <Link
+                  href="/memebership"
+                  className="text-white text-xs w-[210px] h-[50px] font-bold justify-center items-stretch bg-slate-500 mt-6 px-12 py-3.5 rounded-[86px] max-md:max-w-full max-md:px-5"
+                >
                   Become a Member
-                </button>
+                </Link>
               </span>
             </div>
             <div className="flex flex-col items-stretch w-[53%] ml-5 max-md:w-full max-md:ml-0">
