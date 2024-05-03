@@ -165,7 +165,7 @@ const AddMedicalHistory = () => {
               >
                 <div className="w-full  text-primary font-custom-roca text-md">
                   <div className="text-primary font-custom-roca text-md">
-                    Past {doc.name}
+                    {doc.name}
                   </div>
                 </div>
                 <div style={{ display: "inline-block", position: "relative" }}>
@@ -188,6 +188,7 @@ const AddMedicalHistory = () => {
                       })
                     }
                     style={{
+                      zIndex: 0,
                       position: "absolute",
                       top: 0,
                       left: 0,
@@ -232,13 +233,13 @@ const AddMedicalHistory = () => {
               </div>
             ))}
         </div>
-        <div className="w-full md:w-[40%] flex justify-between items-center m-auto mt-10">
-          <div
+        <div className="w-full flex justify-center items-center m-auto mt-10">
+          {/* <div
             onClick={() => router.push(`/pets/${id}`)}
             className=" cursor-pointer text-sm font-custom-open-sans text-primary font-bold"
           >
             i will do it latter
-          </div>
+          </div> */}
           <div>
             <button
               onClick={handleSubmit}

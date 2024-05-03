@@ -213,26 +213,35 @@ const UserForm = ({ closePopup, user_id }) => {
             selectedValue={userData.clinic_id}
           />
 
-          <TextInput
+          {/* <TextInput
             label={"Address"}
             placeholder={"Andheri west, Mumbai"}
             name={"address"}
             value={userData.address}
             onChange={formValueChanged}
-          />
+          /> */}
 
           <TextInput
-            placeholder={"Address line 1"}
+            placeholder={"Apartment / Building Name etc."}
             name={"address_line_1"}
             value={userData.address_line_1}
             onChange={formValueChanged}
           />
 
           <TextInput
-            placeholder={"Address line 2"}
+            placeholder={"Street, Area etc"}
             name={"address_line_2"}
             value={userData.address_line_2}
             onChange={formValueChanged}
+          />
+
+          <MultipleSelect
+            label={"City"}
+            options={cities}
+            optionLabel="name"
+            optionValue="id"
+            onSelect={citySelected}
+            selectedValue={userData.city_id}
           />
 
           <TextInput
@@ -249,15 +258,6 @@ const UserForm = ({ closePopup, user_id }) => {
             optionValue="id"
             onSelect={stateSelected}
             selectedValue={userData.state_id}
-          />
-
-          <MultipleSelect
-            label={"City"}
-            options={cities}
-            optionLabel="name"
-            optionValue="id"
-            onSelect={citySelected}
-            selectedValue={userData.city_id}
           />
 
           <div className="flex items-center gap-2 justify-between">

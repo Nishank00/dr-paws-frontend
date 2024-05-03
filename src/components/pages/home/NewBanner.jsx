@@ -25,7 +25,7 @@ const NewBanner = () => {
   }, []);
   return (
     <div
-      className="  h-auto md:h-[85vh] text-white px-3 sm:px-16 md:px-44 py-20 lg:px-48 "
+      className="flex items-center  h-auto md:h-[85vh] text-white px-3 sm:px-16 md:px-44 py-20 lg:px-48 "
       style={{
         backgroundImage: `url(${
           isMobile ? "/home/small_screen_background.jpg" : "/home/banner.jpg"
@@ -36,7 +36,7 @@ const NewBanner = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-5">
+      <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-12">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className=" text-3xl md:text-[64px] leading-none custom-open-sans font-bold md:mt-36"
