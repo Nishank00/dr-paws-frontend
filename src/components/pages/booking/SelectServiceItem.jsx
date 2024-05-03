@@ -56,7 +56,12 @@ const SelectServiceItem = ({
         <ServiceSelect
           isChecked={service.is_checked}
           onChange={() => onChange(service)}
-          label={<SelectLabel heading={service.name} subheading={subHeading} />}
+          label={
+            <SelectLabel
+              heading={service.name}
+              subheading={service.parent_sub_heading}
+            />
+          }
         />
       </div>
 
