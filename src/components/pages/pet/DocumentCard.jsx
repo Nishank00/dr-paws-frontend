@@ -1,3 +1,5 @@
+import DeletePopup from "@/components/ui/DeletePopup";
+import SharePopup from "@/components/ui/SharePopup";
 import { useToast } from "@/components/ui/ToastProvider";
 import PetService from "@/services/Pet.Service";
 import React, { useState } from "react";
@@ -28,6 +30,8 @@ const Popover = ({ showPopover = false, onDelete, onShare }) => {
 const DocumentCard = ({ document, onRefresh = () => {} }) => {
   const showToast = useToast();
   const [showPopover, setShowPopover] = useState(false);
+  const [share, setShare] = useState(false);
+  const [deletePop, setDeletePop] = useState(false);
 
   const togglePopover = () => {
     setShowPopover(!showPopover);
@@ -78,9 +82,14 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
       </div>
       <Popover
         showPopover={showPopover}
-        onDelete={handleDelete}
-        onShare={handleShare}
+        // onDelete={handleDelete}
+        // onShare={handleShare}
+        onDelete={() => setDeletePop(true)}
+        onShare={() => setShare(true)}
       />
+
+      <SharePopup isOpen={share} onClose={() => setShare(false)} />
+      <DeletePopup isOpen={deletePop} onClose={setDeletePop} />
     </div>
   );
 };
