@@ -4,10 +4,12 @@ import Popup from "./Popup";
 import LoginForm from "../auth/LoginForm";
 import RegisterForm from "../auth/RegisterForm";
 import { useRouter } from "next/navigation";
+import { useToast } from "./ToastProvider";
 
 const BookingButton = ({ className }) => {
   const [isLoginPopupOpen, setLoginPopup] = useState(false);
   const [isRegisterPopupOpen, setRegisterPopup] = useState(false);
+  const showToast = useToast();
 
   const router = useRouter();
   const openLoginPopup = () => {

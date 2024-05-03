@@ -2,6 +2,7 @@
 import Button from "../../ui/Button";
 import "../../../../src/app/font.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const ImageTextHeader = ({
   imageUrl,
   header,
@@ -62,16 +63,23 @@ const ImageTextHeader = ({
                   {text}
                 </p>
               </div>
-              <Button
-                className={
-                  `${
-                    !buttonVisibility && "hidden"
-                  } w-[220px] md:mt-[14px] lg:mt-1 text-lg ` + buttonClass
-                }
-                color={buttonColor}
-                label={buttonText}
-                onClick={handleClick}
-              />
+              {buttonText !== "Download App" ? (
+                <Button
+                  className={
+                    `${
+                      !buttonVisibility && "hidden"
+                    } w-[220px] md:mt-[14px] lg:mt-1 text-lg ` + buttonClass
+                  }
+                  color={buttonColor}
+                  label={buttonText}
+                  onClick={handleClick}
+                />
+              ) : (
+                <div className="flex items-center gap-6">
+                  <Image src="/appStore.svg" height={50} width={50} alt="" />
+                  <Image src="/playStore.svg" className="mt-2" height={50} width={50} alt="" />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -13,9 +13,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
 const AddMedicalHistory = () => {
-  const [docTypes, setDocTypes] = useState([]);
   const [selectedFiles, setSelectedFiles] = useState(null);
-  const [urlList, setUrlList] = useState([]);
   const showToast = useToast();
   const [documentlist, setDocumenetList] = useState([]);
   // const router = useRouter();
@@ -138,6 +136,29 @@ const AddMedicalHistory = () => {
       });
   };
 
+  const handleRemoveFile = (docIndex, fileIndex) => {
+    setUploadedFiles((prevUploadedFiles) => {
+      const updatedUploadedFiles = prevUploadedFiles.map((doc) => ({
+        ...doc,
+        doc_list: [...doc.doc_list],
+      }));
+
+      if (docIndex >= 0 && docIndex < updatedUploadedFiles.length) {
+        if (
+          fileIndex >= 0 &&
+          fileIndex < updatedUploadedFiles[docIndex].doc_list.length
+        ) {
+          updatedUploadedFiles[docIndex].doc_list.splice(fileIndex, 1);
+        } else {
+          console.error("Invalid fileIndex:", fileIndex);
+        }
+      } else {
+        console.error("Invalid docIndex:", docIndex);
+      }
+
+      return updatedUploadedFiles;
+    });
+  };
   useEffect(() => {
     getDoccumnetTypes();
     console.log("pet_id=>", id, selectedPetInfo);
@@ -159,87 +180,87 @@ const AddMedicalHistory = () => {
         <div className="w-full mt-4">
           {documentlist &&
             documentlist.map((doc, index) => (
-              <div
-                key={index}
-                className="w-full flex justify-between items-center border-b-2 py-5"
-              >
-                <div className="w-full  text-primary font-custom-roca text-md">
-                  <div className="text-primary font-custom-roca text-md">
-                    {doc.name}
+              <div className="flex flex-col border-b-2 py-5" key={index}>
+                <div className="w-full flex justify-between items-center py-2">
+                  <div className="w-full  text-primary font-custom-roca text-md">
+                    <div className="text-primary font-custom-roca text-md">
+                      {doc.name}
+                    </div>
                   </div>
-                </div>
-                <div style={{ display: "inline-block", position: "relative" }}>
-                  <button
-                    className="justify-center items-center text-secondary font-bold text-md 
+                  <div
+                    style={{ display: "inline-block", position: "relative" }}
+                  >
+                    <button
+                      className="justify-center items-center text-secondary font-bold text-md 
                                 w-[166px] h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex 
                                 rounded-[40px] border-2 border-solid"
-                    onClick={handleButtonClick}
-                  >
-                    Upload
-                  </button>
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={(e) =>
-                      handleUploadFiles({
-                        e,
-                        doc_id: doc.id,
-                        doc_name: doc.name,
-                      })
-                    }
-                    style={{
-                      zIndex: 0,
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      opacity: 0,
-                      width: "100%",
-                      height: "100%",
-                      cursor: "pointer",
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-        </div>
-        <div className=" mt-4 grid  grid-cols-4  gap-5  w-full  justify-between text-wrap">
-          {uploadedFiles &&
-            uploadedFiles.map((doc, docIndex) => (
-              <div
-                key={docIndex}
-                className="text-wrap bg-primary3 rounded-md p-4"
-              >
-                <h3 className="break-words flex font-bold">
-                  <span className="mr-2">
-                    <Image
-                      src={"/home/vaccine_icon.svg"}
-                      width={23}
-                      height={23}
-                      alt="err"
+                      onClick={handleButtonClick}
+                    >
+                      Upload
+                    </button>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      onChange={(e) =>
+                        handleUploadFiles({
+                          e,
+                          doc_id: doc.id,
+                          doc_name: doc.name,
+                        })
+                      }
+                      style={{
+                        zIndex: 0,
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        opacity: 0,
+                        width: "100%",
+                        height: "100%",
+                        cursor: "pointer",
+                      }}
                     />
-                  </span>
-                  {doc.doc_name}
-                </h3>
-                {
-                  <ul>
-                    {doc.doc_list &&
-                      doc.doc_list.map((file, fileIndex) => (
-                        <li key={fileIndex} className="truncate mt-1 ">
-                          {file.url}
-                        </li>
+                  </div>
+                </div>
+                <div className="flex w-full p-8">
+                  {uploadedFiles &&
+                    uploadedFiles
+                      .filter(
+                        (uploadedDoc) => uploadedDoc.doc_name === doc.name
+                      )
+                      .map((doc, docIndex) => (
+                        <div
+                          key={docIndex}
+                          className="flex mx-auto flex-wrap justify-start w-full gap-2"
+                        >
+                          {doc.doc_list &&
+                            doc.doc_list.map((file, fileIndex) => (
+                              // <div key={fileIndex} className="truncate mt-1 text-primary w-1/4">
+                              //   {file.url}
+                              // </div>
+                              <div
+                                key={fileIndex}
+                                className="flex gap-0 w-1/5 flex-col"
+                              >
+                                <div
+                                  className="bg-primary3 p-4 h-[86px] flex justify-end text-[#5281A2]"
+                                  onClick={() =>
+                                    handleRemoveFile(docIndex, fileIndex)
+                                  }
+                                >
+                                  X
+                                </div>
+                                <div className="bg-primary3/30 p-4 truncate text-[#5281A2]">
+                                  {file.url}
+                                </div>
+                              </div>
+                            ))}
+                        </div>
                       ))}
-                  </ul>
-                }
+                </div>
               </div>
             ))}
         </div>
         <div className="w-full flex justify-center items-center m-auto mt-10">
-          {/* <div
-            onClick={() => router.push(`/pets/${id}`)}
-            className=" cursor-pointer text-sm font-custom-open-sans text-primary font-bold"
-          >
-            i will do it latter
-          </div> */}
           <div>
             <button
               onClick={handleSubmit}
