@@ -26,7 +26,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     { value: "FEMALE", label: "Female" },
   ]);
 
-  const requiredFields = ["name", "pet_type", "breed", "gender", "weight"];
+  const requiredFields = ["name", "pet_type"];
 
   // Methods
   const profileUploaded = (filename) => {

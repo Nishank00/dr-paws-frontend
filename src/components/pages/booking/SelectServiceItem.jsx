@@ -48,7 +48,7 @@ const SelectServiceItem = ({
 
   return (
     <div
-      className={`bg-primary3 rounded-lg flex flex-col h-full
+      className={`bg-primary3 rounded-lg flex flex-col
           ${service.is_checked == true ? " border-2 border-secondary" : ""}`}
     >
       <div className="p-2">
