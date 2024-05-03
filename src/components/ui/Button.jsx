@@ -12,7 +12,7 @@ const Button = ({
 }) => {
   return (
     <>
-      {label !== "Book a visit" ? (
+      {label.toLowerCase() != "book a visit" ? (
         <button
           disabled={disabled}
           type={type}
@@ -24,13 +24,13 @@ const Button = ({
           {label}
         </button>
       ) : (
-        <BookingButton
-          className={`flex items-center justify-center gap-1  ${color}-btn ${
-            disabled && "cursor-not-allowed"
-          } ${className}`}
-        >
-          {label}
-        </BookingButton>
+        <>
+          <BookingButton
+            className={`flex items-center justify-center gap-1  ${color}-btn ${
+              disabled && "cursor-not-allowed"
+            } ${className}`}
+          />
+        </>
       )}
     </>
   );

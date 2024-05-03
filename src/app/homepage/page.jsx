@@ -206,10 +206,6 @@ export default function Homepage() {
                   over-testing, prescribing unnecessary medicines, or pushing
                   procedures that are not needed
                 </div>
-
-                <button className="text-white text-xs w-[210px] h-[50px] font-bold justify-center items-stretch bg-slate-500 mt-6 px-12 py-3.5 rounded-[86px] max-md:max-w-full max-md:px-5">
-                  Book a Visit
-                </button>
               </span>
             </div>
           </div>
