@@ -133,13 +133,17 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                   </p>
                 </div>
 
-                <div className="mb-10">
+                <div className="mb-10 flex flex-col items-start">
                   <PhoneNumberInput
                     onPhoneNumberChange={phoneNumberEntered}
                     placeholder="Contact Number"
                     name={"phone"}
-                    classes="sm:mb-4"
+                    classes=""
                   />
+                  <span className="text-red-500 pb-4 text-start">
+                    {message}
+                  </span>
+
                   {/* <TextInput
                     placeholder={"Email"}
                     type="email"
@@ -154,12 +158,12 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
                     value={form.password}
                     onChange={formValueChanged}
                   /> */}
-                  <span className="text-red-500 mt-5">{message}</span>
                   <Button
                     disabled={!form.phone}
                     color="secondary"
                     label="Login"
                     onClick={handleNext}
+                    className="mt-4"
                   />
                 </div>
                 <div className="">

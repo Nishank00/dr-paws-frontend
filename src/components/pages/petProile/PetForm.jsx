@@ -108,6 +108,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     }
   };
 
+  console.log("petTypes", petTypes);
+
   // Lifecycle Hooks
   useEffect(() => {
     getPetsType();

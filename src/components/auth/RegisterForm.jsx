@@ -7,6 +7,7 @@ import { useToast } from "../ui/ToastProvider";
 import OTPInput from "../ui/OTPInput";
 import { useLoader } from "../ui/LoaderContext";
 import PhoneNumberInput from "../ui/PhoneNumberInput";
+import UserService from "@/services/User.Service";
 
 const RegisterForm = ({ onSuccess, loginClicked }) => {
   // Variables
@@ -65,30 +66,50 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     setForm({ ...form, otp });
   };
 
-  const registerUser = () => {
-    startLoading();
-    const payload = {
-      profile_image: form.profile_image,
-      full_name: form.full_name,
-      email: form.email,
-      phone: form.phone,
-      password: form.password,
-      user_type: "CUSTOMER",
-      otp: form.otp,
-    };
+  const registerUser = async () => {
+    try {
+      startLoading();
+      const payload = {
+        profile_image: form.profile_image,
+        full_name: form.full_name,
+        email: form.email,
+        phone: form.phone,
+        password: form.password,
+        user_type: "CUSTOMER",
+        otp: form.otp,
+      };
 
-    AuthService.register(payload)
-      .then((response) => {
-        stopLoading();
-        if (!response.data.status) setMessage(response.data.message);
+      const response = await AuthService.register(payload);
+      stopLoading();
+      if (!response.data.status) {
+        setMessage(response.data.message);
+      }
+      console.log("response", response.data.data.accessToken);
+      await TokenService.saveToken(response.data.data.accessToken);
+      await getUserData();
+      onSuccess();
+    } catch (error) {
+      stopLoading();
+      console.error(error);
+    }
+  };
 
-        onSuccess();
-        return showToast(response.data.message, "success");
-      })
-      .catch((error) => {
-        stopLoading();
-        console.error(error);
-      });
+  const getUserData = async () => {
+    try {
+      const response = await UserService.getProfile();
+      if (!response.data.status) {
+        setMessage(response.data.message);
+      }
+      dispatch(
+        setUserSession({
+          user_info: response.data.data,
+          isUserLoggedIn: true,
+        })
+      );
+      UserStorageService.setUserInfo(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const resendCode = () => {

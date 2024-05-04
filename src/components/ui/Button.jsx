@@ -26,7 +26,7 @@ const Button = ({
       ) : (
         <>
           <BookingButton
-            className={`flex items-center justify-center gap-1  ${color}-btn ${
+            className={`flex items-center justify-center gap-1 ${color}-btn ${
               disabled && "cursor-not-allowed"
             } ${className}`}
           />

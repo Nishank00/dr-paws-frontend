@@ -121,12 +121,7 @@ const UserProfileDetails = () => {
           </span>
 
           <Button
-            label={
-              <p className="text-sm text-secondary font-custom-open-sans flex items-center gap-2">
-                <img src="/profile/edit.svg" alt=" " loading="lazy" />
-                <span>Edit Profile</span>
-              </p>
-            }
+            label="Edit Profile"
             color="secondary"
             onClick={openEditPopup}
             className="bg-inherit text-secondary border-2 border-secondary hidden md:block w-40 h-12"

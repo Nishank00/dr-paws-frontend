@@ -45,8 +45,12 @@ const Form = () => {
   const closePopup = () => setPopupOpen(false);
 
   const openOTPPopup = () => {
-    sendBookingOTP();
-    setOTPPopupOpen(true);
+    if (doctors.some((doctor) => doctor.selected === true)) {
+      sendBookingOTP();
+      setOTPPopupOpen(true);
+    } else {
+      setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    }
   };
   const closeOTPPopup = () => setOTPPopupOpen(false);
   const getPets = () => {
@@ -71,18 +75,24 @@ const Form = () => {
 
   const handleNext = () => {
     let canProceed = true;
-
     switch (currentPage) {
       case 1:
-        if (services.length === 0) {
-          showToast("Please select at least one service", "warning");
+        if (
+          services.length === 0 ||
+          !services.some(
+            (service) =>
+              Array.isArray(service.pets) &&
+              service.pets.some((pet) => pet.isSelected === true)
+          )
+        ) {
+          showToast("Please select at least one service with a pet", "warning");
           canProceed = false;
         } else {
           setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
         }
         break;
       case 2:
-        if (doctors.length === 0) {
+        if (clinics.length === 0) {
           showToast("Please select at least one doctor", "warning");
           canProceed = false;
         } else {
@@ -103,7 +113,12 @@ const Form = () => {
   };
 
   const handleBack = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    if (currentPage === 1) {
+      router.push("/");
+    }
+    {
+      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    }
   };
 
   const getServices = () => {
@@ -283,6 +298,8 @@ const Form = () => {
     );
   };
 
+  console.log("doctors", doctors);
+
   const renderPage = () => {
     return (
       <>
@@ -336,6 +353,8 @@ const Form = () => {
     );
   }, []);
 
+  console.log("services", services);
+
   useEffect(() => {
     getPets();
   }, [user_id]);
@@ -358,7 +377,6 @@ const Form = () => {
     <div className="text-primary">
       <div className="pt-1 sm:pt-4">
         <button
-          disabled={currentPage === 1}
           type="button"
           onClick={handleBack}
           className={"flex items-center"}
@@ -377,9 +395,7 @@ const Form = () => {
               />
             </svg>
           </span>
-          <span className="text-lg sm:text-xl ml-2 font-open-sans">
-            {"Back"}
-          </span>
+          <span className="text-lg sm:text-xl ml-2 font-open-sans">Back</span>
         </button>
       </div>
       <div className="mt-4 min-h-[60vh]">{renderPage()}</div>

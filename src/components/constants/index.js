@@ -50,6 +50,7 @@ export const ImageTextHeaderData = [
     imagePosition: "right",
     buttonColor: "secondary",
     buttonText: "Become a Member",
+    buttonUrl: "/membership",
   },
 ];
 

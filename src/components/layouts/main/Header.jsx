@@ -151,7 +151,7 @@ const Header = () => {
             <Button
               label="Book a Visit"
               color="secondary"
-              className="lg-w-[210px] h-12"
+              className="lg-w-[210px] h-12 cursor-pointer"
               onClick={bookingButtonClicked}
             />
             <div className="flex items-center gap-1">

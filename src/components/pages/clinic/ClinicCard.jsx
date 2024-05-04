@@ -14,11 +14,9 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
     );
   }, [services]);
   return (
-    <div
-      className="bg-primary4 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadoe-lg"
-      onClick={() => router.push(`/clinics/overview/${id}`)}
-    >
+    <div className="bg-primary4 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadoe-lg">
       <div
+        onClick={() => router.push(`/clinics/overview/${id}`)}
         className="rounded-t-md w-full h-[92px] md:h-[240px] flex justify-end"
         style={{
           backgroundImage: "url(" + imageUrl + ")",
@@ -31,7 +29,10 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           24 Hours
         </p>
       </div>
-      <div className="pl-6 pr-2 py-4 text-primary grow">
+      <div
+        onClick={() => router.push(`/clinics/overview/${id}`)}
+        className="pl-6 pr-2 py-4 text-primary grow"
+      >
         <h4 className="font-semibold font-custom-open-sans text-xs md:text-[18px] line-clamp-1">
           Dr. Paw | {name}
         </h4>
@@ -39,11 +40,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           {serviceString || "OPD | Surgery"}
         </p>
       </div>
-      <BookingButton
-        className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md"
-       
-      />
-        
+      <BookingButton className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md" />
     </div>
   );
 };

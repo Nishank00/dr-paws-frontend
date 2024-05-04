@@ -43,7 +43,6 @@ const SelectServiceItem = ({
       .map((service_item) => service_item.name)
       .join(", ");
 
-    // setSubHeading(str.slice(0, 20) + " ...");
     setSubHeading(str);
   }, []);
 
