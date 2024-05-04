@@ -10,8 +10,8 @@ const OverviewTabs = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(1);
   const [services, setServices] = useState([]);
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(1);
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(150);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
 
   const tabsRef = useRef([]);
@@ -19,9 +19,9 @@ const OverviewTabs = () => {
   useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTabIndex];
-      console.log(currentTab?.offsetLeft, currentTab?.clientWidth);
-      setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
-      setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
+      console.log(currentTab?.offsetLeft, currentTab?.clientWidth, currentTab);
+      setTabUnderlineLeft(currentTab?.offsetLeft);
+      setTabUnderlineWidth(currentTab?.clientWidth);
     }
 
     setTabPosition();
@@ -57,20 +57,20 @@ const OverviewTabs = () => {
       <div className="w-full mx-auto hidden lg:block  ">
         <div className="flex flex-col items-start mt-4">
           <div className="relative w-full">
-            <div className="flex w-full space-x-3 pb-4 border-b">
+            <div className="flex w-full space-x-8 pb-4 border-b">
               {services &&
                 services.map((tab, index) => {
                   return (
                     <button
                       key={index}
                       ref={(el) => (tabsRef.current[index] = el)}
-                      className={`text-primary font-bold  font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full `}
+                      className={`text-primary font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full mt-12`}
                       onClick={() => {
                         setActiveTabIndex(index);
                         handleTabClick(index);
                       }}
                     >
-                      {tab}
+                      {tab.name}
                     </button>
                   );
                 })}
