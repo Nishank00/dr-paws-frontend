@@ -1,34 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Tabs = ({ tabs, active }) => {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTabIndex, setActiveTabIndex] = useState(1);
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(150);
+  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
 
-  const handleTabClick = (id) => {
-    setActiveTab(id);
-  };
+  const tabsRef = useRef([]);
 
   useEffect(() => {
-    if (active) setActiveTab(active);
-  }, [active]);
+    function setTabPosition() {
+      const currentTab = tabsRef.current[activeTabIndex];
+      console.log(currentTab?.offsetLeft, currentTab?.clientWidth, currentTab);
+      setTabUnderlineLeft(currentTab?.offsetLeft);
+      setTabUnderlineWidth(currentTab?.clientWidth);
+    }
+
+    setTabPosition();
+    window.addEventListener("resize", setTabPosition);
+
+    return () => window.removeEventListener("resize", setTabPosition);
+  }, [activeTabIndex]);
+
   return (
     <div>
-      <div className="flex ">
-        {tabs.map((tab) => (
-          <div
-            key={tab.id}
-            className={`cursor-pointer text-sm md:text-lg text-center ${
-              activeTab === tab.id ? "font-semibold" : "font-normal"
-            } px-4 py-2`}
-            onClick={() => handleTabClick(tab.id)}
-          >
-            {tab.label}
-          </div>
-        ))}
+      <div className="relative mb-6 w-full">
+        <div className="flex w-full space-x-8 border-b-2 pb-4">
+          {tabs.map((tab, index) => {
+            return (
+              <button
+                key={index}
+                ref={(el) => (tabsRef.current[index] = el)}
+                className={`text-primary font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full mt-12`}
+                onClick={() => {
+                  setActiveTabIndex(index);
+                }}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+        <span
+          className="absolute bottom-0 block h-2 bg-primary transition-all duration-300"
+          style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
+        />
       </div>
-      <div className="h-2 bg-primary3 rounded-xl"></div>
       <div>
         {tabs.map((tab) =>
-          tab.id === activeTab ? (
+          tab.id === activeTabIndex + 1 ? (
             <div key={tab.id} className="py-2">
               {tab.content}
             </div>
