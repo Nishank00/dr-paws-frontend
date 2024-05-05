@@ -12,7 +12,7 @@ const ProfileForm = ({ closePopup, user_id }) => {
   useEffect(() => {}, []);
   return (
     <>
-      <div className="bg-primary3 w-[430px]  rounded-md">
+      <div className="bg-primary3 w-[430px] max-h-[700px] overflow-y-auto rounded-md">
         {/* <div className="w-full h-12 flex items-end border-2 border-solid  rounded-md">
           <button
             onClick={() => handleTabClick(1)}

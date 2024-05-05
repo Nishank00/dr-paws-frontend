@@ -17,23 +17,23 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
     };
   }, [isOpen, onClose]);
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (popupRef.current && !popupRef.current.contains(event.target)) {
-  //       onClose();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
 
-  //   if (isOpen) {
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     document.body.style.overflow = "hidden";
-  //   }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden";
+    }
 
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [isOpen, onClose]);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) {
     return null;
