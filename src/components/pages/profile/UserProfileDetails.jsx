@@ -31,6 +31,8 @@ const UserProfileDetails = () => {
       });
   };
 
+  console.log('userData', userData);
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -105,7 +107,9 @@ const UserProfileDetails = () => {
               <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
                 {`${userData?.address || ""} ${
                   userData?.address_line_1 || ""
-                } ${userData?.address_line_2 || ""}` || "Not Available"}
+                } ${userData?.address_line_2 || ""}, ${userData?.city || ""}, ${
+                  userData?.state || ""
+                }` || "Not Available"}
               </p>
             </div>
           </div>

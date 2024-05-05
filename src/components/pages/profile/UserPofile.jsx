@@ -47,7 +47,7 @@ const UserPofile = () => {
   return (
     <>
       <div className=" mt-10 lg:mt-14">
-        <div className="text-secondary  flex flex-col lg:flex-row items-center gap-2 lg:gap-1">
+        <div className="text-secondary flex flex-col lg:flex-row items-center gap-2 lg:gap-1">
           <div id="profile-image w-full lg:w-1/5">
             {/* <Image
               src={

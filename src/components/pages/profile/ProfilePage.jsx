@@ -5,7 +5,7 @@ import UserProfileDetails from "./UserProfileDetails";
 
 const ProfilePage = () => {
   return (
-    <div className="md:pb-52 md:pt-40">
+    <div className="md:pb-52 md:p-24">
       <div className="my-4">
         <UserProfileDetails />
       </div>

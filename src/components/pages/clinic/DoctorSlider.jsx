@@ -60,13 +60,13 @@ const DoctorSlider = () => {
       </div>
 
       <button
-        className="prev absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white px-4 py-2 ml-2 rounded-full focus:outline-none"
+        className="prev absolute top-1/2 left-0 transform -translate-y-1/2 text-[#5281A2] px-4 py-2 text-6xl font-light ml-2 rounded-full focus:outline-none"
         onClick={prevSlide}
       >
         ❮
       </button>
       <button
-        className="next absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white px-4 py-2 mr-2 rounded-full focus:outline-none"
+        className="next absolute top-1/2 right-0 transform -translate-y-1/2 text-[#5281A2] px-4 py-2 text-6xl font-light mr-2 rounded-full focus:outline-none"
         onClick={nextSlide}
       >
         ❯

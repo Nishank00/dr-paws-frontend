@@ -100,8 +100,8 @@ const TabOne = ({ contact_numbers, address }) => {
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAzoFCCquY3H4r7a9cT83EOBS5CMCiCRMM
-    &q=Space+Needle,Seattle+WA"
+              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}
+    &q=Space+Needle,Seattle+WA`}
             ></iframe>
 
             <Link
