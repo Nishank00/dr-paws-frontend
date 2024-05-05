@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import BookingButton from "@/components/ui/BookingButton";
 const BannerPetCard = ({
   width,
   height,
@@ -24,9 +25,7 @@ const BannerPetCard = ({
             className="w-full h-full "
           />
         </div>
-        <button className="bg-secondary font-light mt-2 font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2">
-          Book a visit
-        </button>
+        <BookingButton className="bg-secondary font-light mt-2 font-custom-open-sans rounded-b-2xl text-[10px] md:text-[14px] py-2" />
       </div>
     </>
   );

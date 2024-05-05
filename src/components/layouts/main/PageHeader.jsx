@@ -179,10 +179,9 @@ const SideBar = ({ closeMenu = () => {} }) => {
 
           <div className="px-4">
             <Button
-              label={<span className="text-xs font-bold">Book a Visit</span>}
+              label="Book a visit"
               color="secondary"
-              onClick={() => navigateFromMenu("/booking")}
-              className="h-10"
+              className="h-10 text-xs font-bold"
             />
           </div>
         </div>

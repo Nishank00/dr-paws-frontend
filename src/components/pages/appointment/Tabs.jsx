@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const Tabs = ({ tabs, active }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(1);
-  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(150);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
-
   const tabsRef = useRef([]);
 
   useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTabIndex];
-      console.log(currentTab?.offsetLeft, currentTab?.clientWidth, currentTab);
-      setTabUnderlineLeft(currentTab?.offsetLeft);
-      setTabUnderlineWidth(currentTab?.clientWidth);
+      if (currentTab) {
+        setTabUnderlineLeft(currentTab.offsetLeft);
+        setTabUnderlineWidth(currentTab.clientWidth);
+      }
     }
 
     setTabPosition();

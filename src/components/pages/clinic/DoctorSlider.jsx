@@ -46,7 +46,7 @@ const DoctorSlider = () => {
   return (
     <div className="slideshow-container flex justify-between relative max-w-4xl mx-auto overflow-hidden">
       <div
-        className="slide-wrapper flex"
+        className="slide-wrapper flex ml-20"
         style={{
           transform: `translateX(-${currentPosition * (100 / doctors.length)}%)`,
           transition: "transform 0.5s ease-in-out",

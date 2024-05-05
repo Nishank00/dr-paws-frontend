@@ -10,18 +10,18 @@ const OverviewTabs = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(1);
   const [services, setServices] = useState([]);
-  const [activeTabIndex, setActiveTabIndex] = useState(1);
-  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(150);
-  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
-
+  const [activeTabIndex, setActiveTabIndex] = useState(0); // Initialize activeTabIndex to 0
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0); // Initialize width to 0
+  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0); // Initialize left position to 0
   const tabsRef = useRef([]);
 
   useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTabIndex];
-      console.log(currentTab?.offsetLeft, currentTab?.clientWidth, currentTab);
-      setTabUnderlineLeft(currentTab?.offsetLeft);
-      setTabUnderlineWidth(currentTab?.clientWidth);
+      if (currentTab) {
+        setTabUnderlineLeft(currentTab.offsetLeft);
+        setTabUnderlineWidth(currentTab.clientWidth);
+      }
     }
 
     setTabPosition();
@@ -29,9 +29,10 @@ const OverviewTabs = () => {
 
     return () => window.removeEventListener("resize", setTabPosition);
   }, [activeTabIndex]);
-
+  
   const handleTabClick = (tabNumber) => {
     setActiveTab(Number(tabNumber) + 1);
+    setActiveTabIndex(tabNumber);
   };
 
   const getServiceData = () => {
@@ -59,21 +60,18 @@ const OverviewTabs = () => {
           <div className="relative w-full">
             <div className="flex w-full space-x-8 pb-4 border-b">
               {services &&
-                services.map((tab, index) => {
-                  return (
-                    <button
-                      key={index}
-                      ref={(el) => (tabsRef.current[index] = el)}
-                      className={`text-primary font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full mt-12`}
-                      onClick={() => {
-                        setActiveTabIndex(index);
-                        handleTabClick(index);
-                      }}
-                    >
-                      {tab.name}
-                    </button>
-                  );
-                })}
+                services.map((tab, index) => (
+                  <button
+                    key={index}
+                    ref={(el) => (tabsRef.current[index] = el)}
+                    className={`text-primary font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full mt-12 ${
+                      activeTabIndex === index ? "font-bold" : "" // Apply bold font style for active tab
+                    }`}
+                    onClick={() => handleTabClick(index)}
+                  >
+                    {tab.name}
+                  </button>
+                ))}
             </div>
             <span
               className="absolute bottom-0 block h-1 bg-primary transition-all duration-300"

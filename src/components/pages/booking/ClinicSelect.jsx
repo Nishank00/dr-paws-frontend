@@ -1,3 +1,4 @@
+import BookingButton from "@/components/ui/BookingButton";
 import React from "react";
 
 const ClinicSelect = ({
@@ -31,9 +32,7 @@ const ClinicSelect = ({
         <p className="text-sm">OPD | Surgery</p>
       </div>
       {!hideVisitButton && (
-        <div className="text-center font-semibold bg-secondary hover:bg-primary py-2">
-          Book a Visit
-        </div>
+        <BookingButton className="text-center font-semibold bg-secondary hover:bg-primary py-2" />
       )}
     </div>
   );

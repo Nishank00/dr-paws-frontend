@@ -92,7 +92,6 @@ const DoctorProfile = ({ selectedDoctor }) => {
         </figcaption>
 
         <Button
-          onClick={() => router.push("/booking")}
           label="Book a Visit"
           color="secondary"
         />
