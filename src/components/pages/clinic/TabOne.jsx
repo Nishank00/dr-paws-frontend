@@ -1,5 +1,6 @@
 import React from "react";
 import DoctorSlider from "./DoctorSlider";
+import Link from "next/link";
 const TabOne = ({ contact_numbers, address }) => {
   return (
     <div className="py-4">
@@ -103,9 +104,12 @@ const TabOne = ({ contact_numbers, address }) => {
     &q=Space+Needle,Seattle+WA"
             ></iframe>
 
-            <button className="text-white font-custom-open-sans  text-[16px] w-[175px] h-[40px] text-center font-bold justify-center  bg-secondary mt-5  rounded-full">
+            <Link
+              href="https://www.google.com/maps/place/Space+Needle/@47.620506,-122.349277,16z/data=!4m6!3m5!1s0x5490151f4ed5b7f9:0xdb2ba8689ed0920d!8m2!3d47.6205063!4d-122.3492774!16zL20vMDFrN3Y3?hl=en-GB&entry=ttu"
+              className="text-white font-custom-open-sans  text-[16px] w-fit px-4 py-2 text-center font-bold justify-center  bg-secondary mt-5  rounded-full"
+            >
               Get Directions
-            </button>
+            </Link>
           </div>
         </div>
       </div>
