@@ -90,11 +90,18 @@ const TabOne = ({ contact_numbers, address }) => {
             <div className="text-primary text-2xl font-custom-roca font-semibold leading-4 tracking-tight w-full">
               Location
             </div>
-            <img
+            <iframe
+              width="330"
+              height="450"
+              style={{
+                margin: "0",
+              }}
               loading="lazy"
-              srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/00a57684c3bae2c303be8ca367a857e1e7ea342520372204dbd805d46dd95e9a?apiKey=22a36eade5734692978208fb0d2f5c62&"
-              className="aspect-[1.54] border-2 object-contain object-center w-full overflow-hidden self-center max-w-[333px] mt-5"
-            />
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAzoFCCquY3H4r7a9cT83EOBS5CMCiCRMM
+    &q=Space+Needle,Seattle+WA"
+            ></iframe>
 
             <button className="text-white font-custom-open-sans  text-[16px] w-[175px] h-[40px] text-center font-bold justify-center  bg-secondary mt-5  rounded-full">
               Get Directions
