@@ -13,84 +13,42 @@ const DoctorProfileCard = ({
     openPopup();
   };
   return (
-    <div className="bg-primary3 text-primary flex flex-col items-center shadow">
-      {/* <div
-        className="rounded-full"
-        style={{
-          backgroundImage: "url('/image139.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          height: "158px",
-          width: "158px",
-        }}
-      />
-
-      <div className="px-8 flex flex-col items-center text-center">
-        <h4 className="font-bold text-xl mt-3">{profileData.full_name}</h4>
-
-        <p className="mt-3 text-xs">{profileData.introduction}</p>
-        <p className="text-xs">{profileData.experience}</p>
-
-        <p className="mt-3 text-sm ">A - Andheri West, Indiranagar</p>
-
-        <Button
-          className="mt-3 w-40 px-8 py-2"
-          color="secondary"
-          label="View Profile"
-          onClick={viewProfile}
+    <>
+      <div className="bg-[#FCF9F2] p-6 max-w-[320px] w-full rounded-lg flex flex-col gap-6">
+        <Image
+          src="/image139.png"
+          className="w-full rounded-lg"
+          alt=""
+          width={280}
+          height={280}
         />
-      </div> */}
-      <div
-        className="w-[100%] h-[280px]"
-        style={{
-          backgroundImage: "url('/image139.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <div className="w-full p-5">
-        <div>
-          <h4 className="font-bold font-custom-inter text-xl mt-3">
+        <div className="flex flex-col gap-1">
+          <span className="text-[#101828] font-bold text-xl">
             {profileData.full_name}
-          </h4>
-          <p className=" text-primary line-clamp-2 font-custom-inter text-md">
+          </span>
+          <span className="text-[#33495F] text-lg">
             {profileData.introduction}
-          </p>
+          </span>
+          <span className="text-[#33495F] text-lg">
+            {profileData.experience} of Experience
+          </span>
         </div>
-        <p className="text-primary text-sm flex gap-2 font-custom-inter mt-3">
-          <Image
-            src={"/profile/briefcase.svg"}
-            alt="err"
-            width={20}
-            height={20}
-          />
-          {profileData.experience}
-        </p>
-        <p className="mt-3 text-sm flex gap-2 font-custom-inter text-primary ">
-          <Image src={"/Teams/Location.svg"} alt="err" width={20} height={20} />
-          A - Andheri West, Indiranagar
-        </p>
-
-        <p className="mt-3 text-sm flex gap-2 font-custom-inter text-primary ">
-          <Image
-            src={"/profile/teacher.svg"}
-            alt="err"
-            width={20}
-            height={20}
-          />
-          {profileData.education || NA}
-        </p>
-
+        <div className="w-full flex overflow-x-auto">
+          <div className="flex gap-2 border bg-white rounded border-[#D0D5DD] p-1 w-fit">
+            <img src="/Teams/location_small.svg" alt="" loading="lazy" />
+            <p className="text-sm font-custom-inter">
+              Andheri West, Indiranagar
+            </p>
+          </div>
+        </div>
         <Button
-          className="mt-3 w-40 h-15 px-8 py-2"
+          className="mt-3 w-dull h-15 px-8 py-2"
           color="secondary"
           label="View Profile"
           onClick={viewProfile}
         />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -35,16 +35,27 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
 
   const updateFormData = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let updatedFormData = { ...formData };
 
-    if (name == "date_of_birth") {
+    if (name === "weight" || name === "age") {
+      // Validate that the value is not negative
+      if (parseFloat(value) >= 0) {
+        updatedFormData[name] = parseFloat(value);
+      } else {
+        // If value is negative, set it to 0
+        updatedFormData[name] = 0;
+      }
+    } else {
+      updatedFormData[name] = value;
+    }
+
+    if (name === "date_of_birth") {
       const today = new Date();
       const birthDate = new Date(value);
       const age = today.getFullYear() - birthDate.getFullYear();
-      setFormData({ ...formData, age });
+      setFormData(updatedFormData);
     }
   };
-
   const getPetsType = () => {
     PetService.getPetTypes()
       .then((response) => {

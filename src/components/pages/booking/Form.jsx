@@ -34,11 +34,11 @@ const Form = () => {
   const [pets, setPets] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState({});
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedSlot, setSelectedSlot] = useState(null);
-  const [appointment, setAppointment] = useState(null);
-  const [isPopupOpen, setPopupOpen] = useState(false);
-  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);   
+  const [selectedSlot, setSelectedSlot] = useState(null);   
+  const [appointment, setAppointment] = useState(null);     
+  const [isPopupOpen, setPopupOpen] = useState(false);      
+  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false); 
 
   // Methods
   const openPopup = () => setPopupOpen(true);
