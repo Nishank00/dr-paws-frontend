@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 
-const Calendar = ({ onSelect, selected = null, disabled = false }) => {
+const Calendar = ({
+  onSelect,
+  selected = null,
+  disabled = false,
+  availableDays = [],
+}) => {
   const [currentTime, setCurrentTime] = useState(moment().format("hh:mm A"));
   const [selectedDate, setSelectedDate] = useState(selected);
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -85,13 +90,19 @@ const Calendar = ({ onSelect, selected = null, disabled = false }) => {
         {days.map((date, index) => (
           <div
             disabled={
-              moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
+              availableDays.length
+                ? !availableDays.includes(moment(date).format("dddd")) ||
+                  moment(date).format("YYYY-MM-DD") <
+                    moment().format("YYYY-MM-DD")
+                : moment(date).format("YYYY-MM-DD") <
+                  moment().format("YYYY-MM-DD")
             }
             key={index}
             onClick={() => {
               handleDateClick(date);
             }}
             className={`p-2 text-sm ${
+              !availableDays.includes(moment(date).format("dddd")) ||
               moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
                 ? "cursor-not-allowed text-gray-400"
                 : moment(date).format("YYYY-MM-DD") ==

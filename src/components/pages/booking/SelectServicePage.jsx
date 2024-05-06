@@ -3,28 +3,32 @@ import Button from "@/components/ui/Button";
 
 const SelectServicePage = ({
   services = [],
+  updateSelectedService,
   setServices,
   className = "",
   openPopup,
   closePopup,
 }) => {
   // Methods
-  const toggleService = (service) =>
+  const toggleService = (service) => {
     setServices(
       services.map((s) => {
         if (s.id === service.id) {
           s.is_checked = !s.is_checked;
           if (!s.is_checked) {
+            updateSelectedService(service.id, "remove");
             s.pets.map((pet) => {
               pet.isSelected = false;
               return pet;
             });
+          } else {
+            updateSelectedService(service.id, "add");
           }
         }
         return s;
       })
     );
-
+  };
   return (
     <>
       <div className={"pt-1 sm:pt-10 " + className}>

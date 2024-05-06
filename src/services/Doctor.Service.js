@@ -1,7 +1,16 @@
-import API from "./API"
+import API from "./API";
 
-export default {
+const DoctorService = {
   getAllDotors() {
-    return API().get(`/doctor`)
+    return API().get(`/doctor`);
   },
-}
+  getDoctorClinicTimings(payload) {
+    let apiStr = `/doctor/getDoctorClinicTimings/${payload?.doctor_id}/${payload?.clinic_id}`;
+    if (payload?.date) {
+      apiStr += `?date=${payload.date}`;
+    }
+    return API().get(apiStr);
+  },
+};
+
+export default DoctorService;

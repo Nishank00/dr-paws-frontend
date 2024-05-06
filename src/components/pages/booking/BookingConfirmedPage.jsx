@@ -174,7 +174,9 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
         <h3 className="text-2xl font-extrabold ">
           {pets?.map((pet) => pet?.pet_name).join(" & ")}&nbsp;
           {pets?.length > 0 && pets?.length === 1 ? "is" : "are"}&nbsp;scheduled
-          with Dr. {doctor.doctor_name}
+          with{" "}
+          {appointment?.doctor_name?.toLowerCase() == "groomer" ? "" : "Dr."}{" "}
+          {doctor.doctor_name}
         </h3>
         <p className="text-lg">
           for{" "}

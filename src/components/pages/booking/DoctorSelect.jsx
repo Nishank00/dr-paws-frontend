@@ -1,11 +1,14 @@
 import React from "react";
 
 const DoctorSelect = ({ doctor = {}, selected = false, onClick }) => {
+  const handleClick = () => {
+    onClick(doctor.index, doctor.id);
+  };
   return (
     <div
-      onClick={onClick}
+      onClick={handleClick}
       className={`p-3 flex flex-col items-center bg-primary4 rounded-lg ${
-        selected ? "ring-4 ring-secondary" : ""
+        doctor.selected ? "ring-4 ring-secondary" : ""
       }`}
     >
       <div
