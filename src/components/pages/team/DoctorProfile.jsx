@@ -5,8 +5,8 @@ import React from "react";
 const DoctorProfile = ({ selectedDoctor }) => {
   const router = useRouter();
   return (
-    <div className="bg-white text-primary p-5 md:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-5 w-full lg:w-[1040px] lg:h-[600px] overflow-scroll">
-      <div className="w-full h-full md:w-3/5 flex flex-col gap-12">
+    <div className="bg-primary3 text-primary p-5 md:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-center gap-5 w-full lg:w-[1040px] lg:h-[600px] overflow-scroll">
+      <div className="w-full p-12 md:w-3/5 flex mt-8 flex-col gap-4">
         <h2 className="text-3xl md:text-4xl font-custom-roca">
           {selectedDoctor?.full_name || "NA"}
         </h2>
@@ -94,6 +94,7 @@ const DoctorProfile = ({ selectedDoctor }) => {
         <Button
           label="Book a Visit"
           color="secondary"
+          className="mt-6"
         />
       </div>
     </div>

@@ -63,7 +63,7 @@ const NewBanner = () => {
             pet_image="/home/cat.svg"
           />
           <BannerPetCard
-            pet_type="Small Pets"
+            pet_type="Small Pet"
             width={"100px"}
             height={"150px"}
             pet_image="/home/rabbit.png"

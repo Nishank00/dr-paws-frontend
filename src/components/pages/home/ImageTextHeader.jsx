@@ -76,8 +76,8 @@ const ImageTextHeader = ({
                 />
               ) : (
                 <div className="flex items-center gap-6">
-                  <Image src="/appStore.svg" height={50} width={50} alt="" />
-                  <Image src="/playStore.svg" className="mt-2" height={50} width={50} alt="" />
+                  <Image src="/appStore.png" height={150} width={150} alt="" />
+                  <Image src="/playStore.png" height={160} width={165} alt="" />
                 </div>
               )}
             </div>

@@ -75,10 +75,9 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10  text-2xl md:text-4xl pb-6 text-center"
+        className="text-primary  font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
       >
-        Check out the places
-        <br /> we call home
+        Check out the places we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
@@ -97,7 +96,7 @@ const Homepage = () => {
           className="text-primary text-center font-custom-open-sans  text-[16] mb-6"
         >
           Discover our most commonly requested services. For anything not
-          listed,please <br /> get in touch with your local clinic
+          listed, please <br /> get in touch with your local clinic
         </p>
         <VerticalTabs />
       </div>
@@ -121,7 +120,10 @@ const Homepage = () => {
           If your question is still not answered, please get in touch and
           <br /> we’d be happy to help
         </div>
-        <div className="w-full border-solid border-grey px-5 py-4">
+        <div
+          style={{ fontFamily: "Roca Bold, sans-serif" }}
+          className="w-full border-solid border-grey pr-5 py-4"
+        >
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
             About Dr. Paws
           </p>
@@ -137,7 +139,10 @@ const Homepage = () => {
           </Dropdown>
         ))}
 
-        <div className="w-full md:mt-10 px-5 py-4">
+        <div
+          style={{ fontFamily: "Roca Bold, sans-serif" }}
+          className="w-full md:mt-10 pr-5 py-4"
+        >
           <p className="text-left font-custome-inter font-bold text-sm text-primary">
             At a Dr. Paws Clinic
           </p>

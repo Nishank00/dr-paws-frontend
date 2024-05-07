@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -23,7 +24,12 @@ const Footer = () => {
         </div>
 
         <div className=" flex flex-col mt-6  items-center md:items-start">
-          <p className="text-2xl font-semibold mb-4">Company</p>
+          <p
+            style={{ fontFamily: "Roca Bold, sans-serif" }}
+            className="text-2xl font-semibold mb-4"
+          >
+            Company
+          </p>
 
           <Link href="/team" className="text-xl hover:text-secondary">
             Team
@@ -33,7 +39,12 @@ const Footer = () => {
           </Link>
         </div>
         <div className="flex flex-col mt-6  items-center md:items-start">
-          <p className="text-2xl font-semibold mb-4 ">Get Care</p>
+          <p
+            style={{ fontFamily: "Roca Bold, sans-serif" }}
+            className="text-2xl font-semibold mb-4 "
+          >
+            Get Care
+          </p>
 
           <Link href="/services" className="text-xl  hover:text-secondary">
             Services
@@ -52,17 +63,29 @@ const Footer = () => {
           </Link>
         </div>
         <div className="flex flex-col mt-6  items-center md:items-start">
-          <p className="text-2xl font-semibold mb-4 ">Social</p>
-
-          <Link href="#" className="text-xl  hover:text-secondary">
-            Instagram
-          </Link>
-          <Link href="#" className="text-xl mt-3 hover:text-secondary">
-            Linkedin
-          </Link>
-          <Link href="#" className="text-xl mt-3 hover:text-secondary">
-            Twitter
-          </Link>
+          <p
+            style={{ fontFamily: "Roca Bold, sans-serif" }}
+            className="text-2xl font-semibold mb-4 "
+          >
+            Social
+          </p>
+          <div className="flex items-center gap-4">
+            <Link href="#" className="text-xl flex gap-4 items-center justify-center hover:text-secondary">
+              <Image src="/instagram.svg" alt="social" height={30} width={30} />
+            </Link>
+            <Link
+              href="#"
+              className="text-xl flex gap-4 items-center justify-center hover:text-secondary"
+            >
+              <Image src="/linkedin.svg" alt="social" height={30} width={30} />
+            </Link>
+            <Link
+              href="#"
+              className="text-xl flex gap-4 items-center justify-center hover:text-secondary"
+            >
+              <Image src="/twitter.svg" alt="social" height={30} width={30} />
+            </Link>
+          </div>
         </div>
       </div>
 

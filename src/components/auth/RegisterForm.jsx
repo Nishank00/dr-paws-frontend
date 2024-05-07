@@ -14,6 +14,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   const showToast = useToast();
   const { startLoading, stopLoading } = useLoader();
   const [currentPage, setCurrentPage] = useState(1);
+  const [message, setMessage] = useState("");
   const [form, setForm] = useState({
     profile_image: null,
     full_name: null,
@@ -31,7 +32,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     AuthService.sendRegisterOTP(payload)
       .then((response) => {
         stopLoading();
-        console.log(response);
+        console.log("response", response);
         if (!response.data.status) setMessage(response.data.message);
       })
       .catch((error) => {
@@ -220,7 +221,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
               </p>
 
               <OTPInput onOTPEntered={otpEntered} />
-
+              <span className="text-red-500 ">{message}</span>
               <Button
                 disabled={form.otp?.length < 4}
                 color="secondary"

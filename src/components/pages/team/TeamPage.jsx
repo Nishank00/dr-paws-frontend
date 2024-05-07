@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import ImageTextHeader from "../home/ImageTextHeader";
-import DoctorProfileCard from "./DoctorProfileCard";
+import DoctorProfileCard from "../clinic/DoctorProfileCard";
 import Popup from "@/components/ui/Popup";
 import UserService from "@/services/User.Service";
 import ProfilePopupUI from "./ProfilePopupUI";
 import ImageHeader from "@/components/ui/ImageHeader";
 import DoctorProfile from "./DoctorProfile";
+import DoctorService from "@/services/Doctor.Service";
 
 const TeamPage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -20,18 +20,22 @@ const TeamPage = () => {
     setShowPopup(false);
   };
 
-  const getDoctors = () => {
-    UserService.getDoctors()
+  const getAllDoctors = () => {
+    DoctorService.getAllDotors()
       .then((response) => {
         if (response.data.status) {
           setDoctors(response.data.data);
+        } else {
+          alert(response.data.message);
         }
       })
-      .catch((error) => console.error("Error:", error.message));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
-    getDoctors();
+    getAllDoctors();
   }, []);
 
   return (
@@ -40,7 +44,11 @@ const TeamPage = () => {
         <ImageHeader
           imageUrl={"/image139.png"}
           imagePosition={"left"}
-          header={"Meet our very own Superheroes"}
+          header={
+            <p className="leading-none text-[44px]">
+              Meet our very own Superheroes
+            </p>
+          }
           text={
             "Our clinical team is comprised of experienced vets, with a broad range of specialisations, with additional special training to create a new kind of veterinary experience. We love animals and find joy everyday helping our four legged friends stay happy & healthy."
           }
@@ -53,13 +61,8 @@ const TeamPage = () => {
       </h2>
 
       <div className=" mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {doctors.map((doctor) => (
-          <DoctorProfileCard
-            key={doctor.id}
-            profileData={doctor}
-            openPopup={openPopup}
-            setSelectedDoctor={setSelectedDoctor}
-          />
+        {doctors.map((doctor, i) => (
+          <DoctorProfileCard key={i} {...doctor} />
         ))}
       </div>
 

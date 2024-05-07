@@ -25,7 +25,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <p className="text-primary px-2 h-7 text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
+        <p className="text-primary px-2 h-7 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
           24 Hours
         </p>
       </div>

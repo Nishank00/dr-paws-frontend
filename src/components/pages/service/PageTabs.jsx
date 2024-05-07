@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ClinicServiceService from "@/services/ClinicService.service";
 import Tab from "./Tab";
-import TabModule from "@/components/ui/TabModule";
 import Module from "./Module";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
@@ -11,7 +10,7 @@ const OverviewTabs = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [services, setServices] = useState([]);
   const [activeTabIndex, setActiveTabIndex] = useState(0); // Initialize activeTabIndex to 0
-  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0); // Initialize width to 0
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(165); // Initialize width to 0
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0); // Initialize left position to 0
   const tabsRef = useRef([]);
 

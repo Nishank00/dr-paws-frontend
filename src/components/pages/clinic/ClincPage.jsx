@@ -39,7 +39,7 @@ const ClinicPage = () => {
     <div className="pb-10">
       <div className="pt-4 md:pt-24 hidden md:block">
         <ImageHeader
-          header={"Come and visit us at our place!"}
+          header={<p className="leading-none">Come and visit us at our place!</p>}
           imagePosition={"left"}
           imageUrl={"/clinics/clinicheader.svg"}
           text={

@@ -21,7 +21,11 @@ const ServicePage = () => {
           buttonText={"Book a Visit"}
           buttonColor={"secondary"}
           buttonUrl={"/booking"}
-          header={"We're here, whatever your friend needs"}
+          header={
+            <p className="leading-none">
+              We{`'`}re here, whatever your friend needs
+            </p>
+          }
           text={
             "Our modern friendly clinics offer all the services you’ll need to keep your animal happy and healthy."
           }

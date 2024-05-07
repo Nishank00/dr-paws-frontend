@@ -65,13 +65,7 @@ const OverviewTabs = () => {
           {["Clinic Details", "Photos", "Reviews"].map((tab, index) => (
             <div
               key={index}
-              className={` w-[100px] cursor-pointer ${
-                index == 0
-                  ? "text-left"
-                  : index == 2
-                  ? "text-right"
-                  : "text-center"
-              }   mx-1 rounded-full `}
+              className={` w-[100px] cursor-pointer text-center   mx-1 rounded-full `}
               onClick={() => handleTabClick(index + 1)}
             >
               {tab}
@@ -86,7 +80,7 @@ const OverviewTabs = () => {
                 activeTab - 1 == 0 ? "100" : activeTab - 1 == 1 ? "80" : "100"
               }px`, // Adjust based on the number of tabs
               transform: `translateX(${
-                activeTab - 1 == 0 ? "0" : activeTab - 1 == 1 ? "120" : "240"
+                activeTab - 1 == 0 ? "0" : activeTab - 1 == 1 ? "120" : "220"
               }px)`, // Adjust based on the number of tabs
               transition: "transform 0.3s ease-in-out",
             }}

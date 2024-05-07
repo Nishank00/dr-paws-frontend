@@ -5,18 +5,54 @@ const Reviews = () => {
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
-        <div className="text-primary text-center text-2xl md:text-4xl leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
+        <div className="text-primary mb-12 text-center text-2xl md:text-4xl leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
           Tail wags and purrs are our favourite feedback, but here&apos;s what
           pet-parents are saying
         </div>
-        <div className="hidden md:block ">
+        <div className="hidden relative max-w-[1024px] dlex justify-center w-full md:block">
+          <div className="items-stretch shadow-sm bg-orange-100 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
+            <div className="text-primary text-lg italic tracking-normal">
+              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+              welcoming atmosphere. Highly recommend for pet owners!
+            </div>
+            <span className="justify-between items-stretch flex gap-3 mt-2.5">
+              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" />
+              <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
+                Rahul Shah
+              </div>
+            </span>
+          </div>
           <Image
-            src={"/home/clinic_quete.png"}
-            height={100}
-            width={964}
+            src={"/d.png"}
+            height={400}
+            className="mx-auto"
+            width={400}
             alt="Reviews"
-            className="aspect-[2.28] object-contain object-center w-full fill-stone-400 overflow-hidden self-center max-w-[1078px] mt-14 max-md:max-w-full max-md:mt-10"
           />
+          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none right-[-1rem] bottom-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
+            <div className="text-primary text-lg italic tracking-normal">
+              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+              welcoming atmosphere. Highly recommend for pet owners!
+            </div>
+            <span className="justify-between items-stretch flex gap-3 mt-2.5">
+              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
+              <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
+                Rahul Shah
+              </div>
+            </span>
+          </div>
+          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none right-[-5rem] top-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
+            <div className="text-primary text-lg italic tracking-normal">
+              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+              welcoming atmosphere. Highly recommend for pet owners!
+            </div>
+            <span className="justify-between items-stretch flex gap-3 mt-2.5">
+              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
+              <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
+                Rahul Shah
+              </div>
+            </span>
+          </div>
         </div>
         <div className=" md:hidden flex flex-col items-center">
           <img
