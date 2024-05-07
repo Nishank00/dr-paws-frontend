@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
+import clinicService from "@/services/Clinic.service";
+import { useToast } from "@/components/ui/ToastProvider";
 
-const TabThree = () => {
+const TabThree = ({ id = null }) => {
   const gridData = [0, 1, 2];
+  const showToast = useToast();
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    async function getReviews() {
+      try {
+        const response = await clinicService.getClinicMetaData({
+          clinic_id: id,
+          type: "reviews",
+        });
+
+        const { data } = response;
+        if (!data.status) return showToast(data?.message);
+
+        setReviews(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getReviews();
+  }, []);
 
   return (
     <div className="w-[70%] mx-auto flex justify-between items-center gap-5">
-      {gridData.map((item, index) => (
-        <ReviewCard key={"gridDataTab3" + index} index={index} />
-      ))}
+      {reviews.length
+        ? reviews.map((item, index) => (
+            <ReviewCard
+              key={"gridDataTab3" + index}
+              index={index}
+              reviewData={item}
+            />
+          ))
+        : "No Reviews found"}
     </div>
   );
 };

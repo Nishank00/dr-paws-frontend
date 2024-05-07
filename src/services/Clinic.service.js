@@ -1,6 +1,6 @@
 import API from "./API";
 
-export default {
+const clinicService = {
   getData(params) {
     return API().get(`clinic/getData`, { params });
   },
@@ -22,4 +22,14 @@ export default {
     }
     return API().put(`clinic/${id}`, payload);
   },
+  getClinicMetaData(payload) {
+    if (!payload?.clinic_id && !payload?.type) {
+      return new Error("Required parameter missing");
+    }
+    return API().get(
+      `clinic/get-clinic-meta-data/${payload.clinic_id}/${payload.type}`
+    );
+  },
 };
+
+export default clinicService;
