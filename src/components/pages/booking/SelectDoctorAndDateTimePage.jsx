@@ -3,9 +3,12 @@ import DoctorSelect from "./DoctorSelect";
 import Calendar from "./Calender";
 import moment from "moment";
 import { useRouter } from "next/navigation";
+import DoctorService from "@/services/Doctor.Service";
+import { useToast } from "@/components/ui/ToastProvider";
 
 const SelectDoctorAndDateTimePage = ({
   doctors = [],
+  currentPage,
   selectedClinic = {},
   setDoctors,
   selectedDate,
@@ -13,11 +16,16 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
+  selectedServicesData = [],
 }) => {
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
-  const dateSelected = (date) => {
-    setSelectedDate(date);
+  const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [availableDays, setAvailableDays] = useState([]);
+  const [doctorClinicTimings, setDoctorClinicTimings] = useState([]);
+  const showToast = useToast();
+  const dateSelected1 = async (date) => {
+    await getSelectedDoctorClinicData(date);
     const selectedDay = date.getDay();
 
     const { opening_time, closing_time } =
@@ -35,16 +43,129 @@ const SelectDoctorAndDateTimePage = ({
       const formattedTime = currentTime.format("hh:mma");
       const sqlStartTime = currentTime.format("HH:mm:ss");
       const sqlEndTime = currentTime.add(1, "hour").format("HH:mm:ss");
-      timeArray.push({
-        formattedTime,
-        sqlStartTime,
-        sqlEndTime,
-        selected: false,
-      });
+
+      if (!doctorClinicTimings.doctorClinicData.length)
+        return showToast("No timings of doctor found");
+
+      const [filteredDoctorData] = doctorClinicTimings.doctorClinicData.filter(
+        (doctorObj) => {
+          return doctorObj.day_number == selectedDay;
+        }
+      );
+      // console.log({ filteredDoctorData, selectedDay });
+      if (!filteredDoctorData)
+        return showToast("Doctor timings not found for this day");
+
+      let doctorAvailableTimes = filteredDoctorData.doctor_timing.split(",");
+
+      if (!doctorAvailableTimes.length)
+        return showToast("Doctor timings not found");
+      // console.log({ doctorAvailableTimes });
+
+      // used for loop to break from timings array if the doctor is available in shifts.i.e.10-11,15-18
+      for (let drIndex = 0; drIndex < doctorAvailableTimes.length; drIndex++) {
+        const drObj = doctorAvailableTimes[drIndex];
+        let drStartTime = moment(drObj.split("-")?.[0], "HH:mm");
+        let drEndTime = moment(drObj.split("-")?.[1], "HH:mm");
+        let isTimeValid = moment(formattedTime, "hh:mma").isBetween(
+          drStartTime,
+          drEndTime,
+          null,
+          "[)"
+        );
+        // console.log(
+        //   isTimeValid,
+        //   formattedTime,
+        //   drStartTime,
+        //   drEndTime,
+        //   date,
+        //   "isDate",
+        //   moment(formattedTime, "hh:mma").isAfter(moment(date))
+        // );
+        // checks if date is between the selected range and checks if formatted time is after the current time and less than the formatted time
+
+        // for (
+        //   let existingSlotIndex = 0;
+        //   existingSlotIndex < doctorClinicTimings?.existingAppointments.length;
+        //   existingSlotIndex++
+        // ) {
+        //   const bookedSlot =
+        //     doctorClinicTimings?.existingAppointments[existingSlotIndex][
+        //       "booked_slot"
+        //     ];
+        //   let bookedSlotStartTime = moment(bookedSlot.split("-")?.[0], "HH:mm");
+        //   let bookedSlotEndTime = moment(bookedSlot.split("-")?.[1], "HH:mm");
+        //   isTimeValid = moment(formattedTime, "hh:mma").isBetween(
+        //     bookedSlotStartTime,
+        //     bookedSlotEndTime,
+        //     null,
+        //     "[)"
+        //   );
+        //   if (isTimeValid) {
+        //     isTimeValid = false;
+        //     break;
+        //   }
+        // }
+        if (
+          isTimeValid &&
+          (moment(formattedTime, "hh:mma").isAfter(moment()) ||
+            !moment(formattedTime, "hh:mma").isAfter(moment(date)))
+        ) {
+          if (isTimeValid) {
+            timeArray.push({
+              formattedTime,
+              sqlStartTime,
+              sqlEndTime,
+              selected: false,
+            });
+            break;
+          }
+        }
+      }
+      setSelectedDate(date);
+
       // currentTime.add(1, "hour");
     }
 
-    setAvailableSlots(timeArray);
+    let bookingFreeSlots = [];
+    if (doctorClinicTimings?.existingAppointments?.length) {
+      timeArray.forEach((availableSlotObj) => {
+        for (
+          let bookedSlotsIndex = 0;
+          bookedSlotsIndex < doctorClinicTimings?.existingAppointments.length;
+          bookedSlotsIndex++
+        ) {
+          const bookedSlotObj =
+            doctorClinicTimings?.existingAppointments[bookedSlotsIndex];
+          let bookedStartTime = moment(
+            bookedSlotObj?.booked_slot.split("-")?.[0],
+            "HH:mm"
+          );
+          let bookedEndTime = moment(
+            bookedSlotObj?.booked_slot.split("-")?.[1],
+            "HH:mm"
+          );
+          let isTimeValid = moment(
+            availableSlotObj.formattedTime,
+            "hh:mma"
+          ).isBetween(bookedStartTime, bookedEndTime, null, "[)");
+
+          if (!isTimeValid) {
+            bookingFreeSlots.push(availableSlotObj);
+            break;
+          }
+        }
+      });
+    } else {
+      bookingFreeSlots = [...timeArray];
+    }
+
+    setAvailableSlots(bookingFreeSlots);
+  };
+
+  const dateSelected = async (date) => {
+    setSelectedDate(date);
+    await getSelectedDoctorClinicData(date);
   };
 
   const slotClicked = (availableSlot) => {
@@ -60,6 +181,60 @@ const SelectDoctorAndDateTimePage = ({
       })
     );
   };
+
+  const handleDoctorClick = (doctorIndex, doctorId) => {
+    // console.log(doctorIndex, doctorId, selectedClinic);
+    let copyDoctorData = doctors.map((doctor) => {
+      if (doctor.id == doctorId) {
+        doctor["selected"] = !doctor["selected"];
+      } else {
+        doctor["selected"] = false;
+      }
+      return { ...doctor };
+    });
+
+    setSelectedDoctorId(doctorId);
+    setDoctors(copyDoctorData);
+  };
+
+  async function getSelectedDoctorClinicData(date = null) {
+    try {
+      if (!selectedDoctorId && currentPage == 3) {
+        return showToast("Select Doctor", "error");
+      }
+      if (!selectedClinic.id && currentPage == 3) {
+        return showToast("Select Clinic", "error");
+      }
+      let payload = {
+        doctor_id: selectedDoctorId,
+        clinic_id: selectedClinic.id,
+      };
+
+      if (date) {
+        payload["date"] = moment(date).format("YYYY-MM-DD");
+      }
+      const response = await DoctorService.getDoctorClinicTimings(payload);
+
+      const { data = { status: false, message: "Something is missing" } } =
+        response;
+      if (!data.status) return showToast(data.message);
+
+      setDoctorClinicTimings(data.data);
+      setAvailableSlots(data.data?.timesArray);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    setAvailableSlots([]);
+    getSelectedDoctorClinicData();
+  }, [selectedDoctorId]);
+
+  useEffect(() => {
+    // console.log({ doctorClinicTimings });
+    let { availableDays = [] } = doctorClinicTimings;
+    setAvailableDays(availableDays);
+  }, [doctorClinicTimings]);
 
   useEffect(() => {
     if (selectedDate) dateSelected(selectedDate);
@@ -94,20 +269,9 @@ const SelectDoctorAndDateTimePage = ({
               {doctors.map((doctor, i) => (
                 <DoctorSelect
                   key={"doctor" + i}
-                  doctor={doctor}
+                  doctor={{ ...doctor, index: i }}
                   selected={doctor?.selected}
-                  onClick={() => {
-                    setDoctors(
-                      doctors.map((d, index) => {
-                        if (index === i) {
-                          d.selected = !d.selected;
-                        } else {
-                          d.selected = false;
-                        }
-                        return d;
-                      })
-                    );
-                  }}
+                  onClick={handleDoctorClick}
                 />
               ))}
             </div>
@@ -125,6 +289,7 @@ const SelectDoctorAndDateTimePage = ({
                     selected={selectedDate}
                     onSelect={dateSelected}
                     disabled={!isDoctorSelected}
+                    availableDays={availableDays}
                   />
                 </div>
 

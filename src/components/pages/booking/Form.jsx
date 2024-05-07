@@ -31,6 +31,7 @@ const Form = () => {
   const [doctors, setDoctors] = useState([]);
   const [user_id, setUserID] = useState(null);
   const [services, setServices] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
   const [pets, setPets] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState({});
@@ -175,6 +176,16 @@ const Form = () => {
         return showToast(error.message, "error");
       });
   };
+
+  const addServicesData = (serviceId, action) => {
+    if (action == "remove") {
+      setSelectedServices((prevValues) =>
+        prevValues.filter((values) => values != serviceId)
+      );
+    } else {
+      setSelectedServices([...selectedServices, serviceId]);
+    }
+  };
   const onConfirmBooking = () => {
     const selectedStartTime = selectedSlot.sqlStartTime;
     const endTime = selectedSlot.sqlEndTime;
@@ -308,34 +319,46 @@ const Form = () => {
           setServices={setServices}
           openPopup={openPopup}
           closePopup={closePopup}
+          updateSelectedService={addServicesData}
           className={
             "w-full transition-all ease-out delay-1000 " +
             (currentPage == 1 ? "block" : "hidden")
           }
         />
-        <SelectClinicPage
-          clinics={clinics}
-          setClinics={setClinics}
-          setSelectedClinic={setSelectedClinic}
-          setDoctors={setDoctors}
-          className={
-            "w-full transition-all ease-out delay-1000 " +
-            (currentPage == 2 ? "block" : "hidden")
-          }
-        />
-        <SelectDoctorAndDateTimePage
-          className={
-            "w-full transition-all ease-out delay-1000 " +
-            (currentPage == 3 ? "block" : "hidden")
-          }
-          doctors={doctors}
-          setDoctors={setDoctors}
-          selectedClinic={selectedClinic}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          setSelectedSlot={setSelectedSlot}
-          onConfirmBooking={openOTPPopup}
-        />
+        {currentPage == 2 && (
+          <SelectClinicPage
+            selectedServicesData={selectedServices}
+            clinics={clinics}
+            setClinics={setClinics}
+            setSelectedClinic={setSelectedClinic}
+            setDoctors={setDoctors}
+            className={
+              "w-full transition-all ease-out delay-1000 " +
+              (currentPage == 2 ? "block" : "hidden")
+            }
+          />
+        )}
+        {currentPage == 3 && (
+          <SelectDoctorAndDateTimePage
+            selectedServicesData={selectedServices}
+            currentPage={currentPage}
+            className={
+              "w-full transition-all ease-out delay-1000 " +
+              (currentPage == 3 ? "block" : "hidden")
+            }
+            doctors={
+              selectedServices.includes(105 || "105")
+                ? doctors.filter((doctorData) => doctorData.doctor_id == 12)
+                : doctors.filter((doctorData) => doctorData.doctor_id != 12)
+            }
+            setDoctors={setDoctors}
+            selectedClinic={selectedClinic}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            setSelectedSlot={setSelectedSlot}
+            onConfirmBooking={openOTPPopup}
+          />
+        )}
       </>
     );
   };
