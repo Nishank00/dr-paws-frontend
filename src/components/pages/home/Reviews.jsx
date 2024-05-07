@@ -10,7 +10,7 @@ const Reviews = () => {
           pet-parents are saying
         </div>
         <div className="hidden relative max-w-[1024px] dlex justify-center w-full md:block">
-          <div className="items-stretch shadow-sm bg-orange-100 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
+          <div className="items-stretch shadow-sm bg-orange-100 xl:left-0 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
@@ -29,7 +29,7 @@ const Reviews = () => {
             width={400}
             alt="Reviews"
           />
-          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none right-[-1rem] bottom-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
+          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none xl:right-[3rem] right-[-1rem] bottom-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
@@ -41,7 +41,7 @@ const Reviews = () => {
               </div>
             </span>
           </div>
-          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none right-[-5rem] top-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
+          <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none xl:right-[-3rem] right-[-5rem] top-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a
               welcoming atmosphere. Highly recommend for pet owners!
