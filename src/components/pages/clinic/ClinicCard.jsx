@@ -37,7 +37,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           Dr. Paw | {name}
         </h4>
         <p className=" text-[10px] md:text-[12px] font-custom-open-sans mt-2 text-primary line-clamp-1">
-          {serviceString || "OPD | Surgery"}
+          Check-Ups | Surgery | Diagnostics | Grooming | Retail
         </p>
       </div>
       <BookingButton className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md" />
