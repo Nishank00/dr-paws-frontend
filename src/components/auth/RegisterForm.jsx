@@ -8,6 +8,8 @@ import OTPInput from "../ui/OTPInput";
 import { useLoader } from "../ui/LoaderContext";
 import PhoneNumberInput from "../ui/PhoneNumberInput";
 import UserService from "@/services/User.Service";
+import { TokenService } from "@/services/Storage.service";
+import { useDispatch } from "react-redux";
 
 const RegisterForm = ({ onSuccess, loginClicked }) => {
   // Variables
@@ -82,11 +84,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
 
       const response = await AuthService.register(payload);
       stopLoading();
+      console.log("response", response, response.data.data.accessToken);
       if (!response.data.status) {
         setMessage(response.data.message);
       }
-      console.log("response", response.data.data.accessToken);
-      await TokenService.saveToken(response.data.data.accessToken);
+      TokenService.saveToken(response.data.data.accessToken);
       await getUserData();
       onSuccess();
     } catch (error) {
@@ -94,6 +96,8 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       console.error(error);
     }
   };
+
+  const dispatch = useDispatch();
 
   const getUserData = async () => {
     try {

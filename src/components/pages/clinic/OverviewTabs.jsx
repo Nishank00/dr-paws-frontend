@@ -77,7 +77,7 @@ const OverviewTabs = () => {
             className="absolute top-0 left-0 h-full bg-secondary rounded-full"
             style={{
               width: `${
-                activeTab - 1 == 0 ? "100" : activeTab - 1 == 1 ? "80" : "100"
+                activeTab - 1 == 0 ? "110" : activeTab - 1 == 1 ? "80" : "100"
               }px`, // Adjust based on the number of tabs
               transform: `translateX(${
                 activeTab - 1 == 0 ? "0" : activeTab - 1 == 1 ? "120" : "220"
