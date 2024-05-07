@@ -1,21 +1,60 @@
-import React from "react";
+import { useToast } from "@/components/ui/ToastProvider";
+import clinicService from "@/services/Clinic.service";
+import React, { useEffect, useState } from "react";
 
-const TabTwo = ({ photoArray = [] }) => {
-  const gridData = [0, 1, 2, 3, 4, 5, 6, 7];
+const TabTwo = ({ photoArray = [], id = null }) => {
+  const gridData = [0, 1, 2, 3];
+  const showToast = useToast();
+  const [clinicImages, setClinicImages] = useState([]);
+
+  useEffect(() => {
+    async function getImages() {
+      try {
+        const response = await clinicService.getClinicMetaData({
+          clinic_id: id,
+          type: "images",
+        });
+
+        const { data } = response;
+        if (!data.status) return showToast(data?.message);
+
+        setClinicImages(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getImages();
+  }, []);
   return (
     <div className="w-[70%] mx-auto m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
-      {gridData.map((item, index) => (
-        <div
-          key={"gridDataTab2" + index}
-          className="flex flex-col items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden"
-        >
-          <img
-            loading="lazy"
-            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
-            className="aspect-square object-contain object-center w-[245px] overflow-hidden shrink-0 max-w-full max-md:mt-5 transform transition-transform group-hover:scale-110 "
-          />
-        </div>
-      ))}
+      {clinicImages.length
+        ? clinicImages.map((clinicObj, clinicIndex) => {
+            return (
+              <div
+                key={"gridDataTab2" + clinicIndex}
+                className="flex flex-col items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden"
+              >
+                <img
+                  loading="lazy"
+                  srcSet={`${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${clinicObj?.image}`}
+                  className="aspect-square object-contain object-center w-[245px] overflow-hidden shrink-0 max-w-full max-md:mt-5 transform transition-transform group-hover:scale-110 "
+                />
+              </div>
+            );
+          })
+        : gridData.map((item, index) => (
+            <div
+              key={"gridDataTab2" + index}
+              className="flex flex-col items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden"
+            >
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
+                className="aspect-square object-contain object-center w-[245px] overflow-hidden shrink-0 max-w-full max-md:mt-5 transform transition-transform group-hover:scale-110 "
+              />
+            </div>
+          ))}
     </div>
   );
 };
