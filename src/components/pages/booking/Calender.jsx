@@ -28,10 +28,15 @@ const Calendar = ({
   };
 
   const handleDateClick = (date) => {
-    if (moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD"))
+    const formattedDate = moment(date).format("YYYY-MM-DD");
+    if (
+      availableDays.length &&
+      (!availableDays.includes(moment(date).format("dddd")) ||
+        formattedDate < moment().format("YYYY-MM-DD"))
+    ) {
       return;
+    }
     setSelectedDate(date);
-    // Add any other logic you want to perform on date selection
     onSelect(date);
   };
 
@@ -99,7 +104,9 @@ const Calendar = ({
             }
             key={index}
             onClick={() => {
-              handleDateClick(date);
+              if (availableDays) {
+                handleDateClick(date);
+              }
             }}
             className={`p-2 text-sm ${
               !availableDays.includes(moment(date).format("dddd")) ||

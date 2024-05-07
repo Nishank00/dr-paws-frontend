@@ -3,8 +3,8 @@ import DoctorSlider from "./DoctorSlider";
 import Link from "next/link";
 const TabOne = ({ contact_numbers, address }) => {
   return (
-    <div className="py-4">
-      <div className="w-full flex flex-col md:flex-row justify-between items-start">
+    <div className="py-4 w-full">
+      <div className="w-[70%] mx-auto flex flex-col md:flex-row justify-between items-start">
         <div className="w-full  h-full md:w-[48%] ">
           <div className="items-stretch flex max-w-[326px] flex-col my-4">
             <div className="text-primary font-custom-roca text-2xl leading-6 capitalize w-full">
@@ -100,7 +100,7 @@ const TabOne = ({ contact_numbers, address }) => {
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAzoFCCquY3H4r7a9cT83EOBS5CMCiCRMM
     &q=Space+Needle,Seattle+WA`}
             ></iframe>
 

@@ -3,7 +3,7 @@ import React from "react";
 const TabTwo = ({ photoArray = [] }) => {
   const gridData = [0, 1, 2, 3, 4, 5, 6, 7];
   return (
-    <div className="w-[100%] m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+    <div className="w-[70%] mx-auto m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
       {gridData.map((item, index) => (
         <div
           key={"gridDataTab2" + index}

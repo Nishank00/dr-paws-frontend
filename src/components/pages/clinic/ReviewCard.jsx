@@ -18,7 +18,7 @@ const ReviewCard = ({ index }) => {
           alt="err"
           className="aspect-[1.32] object-contain object-center w-full overflow-hidden self-stretch"
         />
-        <div className="  justify-center items-center flex w-[268px] max-w-full gap-3 mt-8">
+        <div className="justify-start items-start flex w-full py-2 px-6 gap-3 mt-8">
           <div
             className={`flex w-10 h-10 ${
               index == 0
@@ -28,16 +28,15 @@ const ReviewCard = ({ index }) => {
                 : "bg-secondary2"
             } shrink-0  flex-col rounded-full`}
           ></div>
-
           <div className="text-slate-700 text-lg italic font-semibold grow shrink basis-auto">
             Rahul Shah
           </div>
         </div>
-        <div className="text-primary text-[14px] italic  py-2 px-3 tracking-normal w-full mt-3.5">
+        <div className="text-primary text-[14px] italic  py-2 px-6 tracking-normal w-full">
           The veterinarians were knowledgeable and showed genuine love for
           animals.
         </div>
-        <div className="text-primary text-[14px] italic leading-7  px-3 tracking-normal w-full mt-1">
+        <div className="text-primary text-[14px] italic leading-7  px-6 tracking-normal w-full mt-1">
           Highly recommended!
         </div>
       </div>

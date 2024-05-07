@@ -38,21 +38,22 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     let updatedFormData = { ...formData };
 
     if (name === "weight" || name === "age") {
-      // Validate that the value is not negative
       if (parseFloat(value) >= 0) {
         updatedFormData[name] = parseFloat(value);
       } else {
-        // If value is negative, set it to 0
         updatedFormData[name] = 0;
       }
+      setFormData(updatedFormData);
     } else {
       updatedFormData[name] = value;
+      setFormData(updatedFormData);
     }
 
     if (name === "date_of_birth") {
       const today = new Date();
       const birthDate = new Date(value);
       const age = today.getFullYear() - birthDate.getFullYear();
+      updatedFormData["age"] = age;
       setFormData(updatedFormData);
     }
   };
@@ -94,6 +95,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   const submitForm = () => {
     const allFieldsPresent = requiredFields.every((field) => formData[field]);
 
+    console.log("allFieldsPresent", allFieldsPresent);
+
     if (allFieldsPresent) {
       const payload = {
         ...formData,
@@ -111,14 +114,17 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
         })
         .catch((error) => console.log(error.message));
     } else {
-      // Handle case where not all fields are present
+      const missingFields = requiredFields.filter((field) => !formData[field]);
+      const missingFieldsMessage = `Missing fields: ${missingFields.join(
+        ", "
+      )}`;
+      console.log(missingFieldsMessage);
       showToast(
-        "Please fill in all fields before submitting the form.",
+        `Please fill in all fields before submitting the form. ${missingFieldsMessage}`,
         "warning"
       );
     }
   };
-
   console.log("petTypes", petTypes);
 
   // Lifecycle Hooks

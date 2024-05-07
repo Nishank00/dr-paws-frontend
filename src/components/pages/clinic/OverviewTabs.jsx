@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TabOne from "./TabOne";
 import TabTwo from "./TabTwo";
 import TabThree from "./TabThree";
@@ -13,9 +13,29 @@ const OverviewTabs = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [clinic, setClinic] = useState({});
   const { id } = useParams();
+  const [activeTabIndex, setActiveTabIndex] = useState(0); // Initialize activeTabIndex to 0
+  const [tabUnderlineWidth, setTabUnderlineWidth] = useState(165); // Initialize width to 0
+  const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0); // Initialize left position to 0
+  const tabsRef = useRef([]);
+
+  useEffect(() => {
+    function setTabPosition() {
+      const currentTab = tabsRef.current[activeTabIndex];
+      if (currentTab) {
+        setTabUnderlineLeft(currentTab.offsetLeft);
+        setTabUnderlineWidth(currentTab.clientWidth);
+      }
+    }
+
+    setTabPosition();
+    window.addEventListener("resize", setTabPosition);
+
+    return () => window.removeEventListener("resize", setTabPosition);
+  }, [activeTabIndex]);
 
   const handleTabClick = (tabNumber) => {
-    setActiveTab(tabNumber);
+    setActiveTabIndex(tabNumber);
+    setActiveTab(tabNumber + 1);
   };
 
   const getDataById = () => {
@@ -31,6 +51,7 @@ const OverviewTabs = () => {
         console.log(err);
       });
   };
+  
   useEffect(() => {
     if (id) {
       getDataById();
@@ -39,9 +60,9 @@ const OverviewTabs = () => {
 
   return (
     <div className="w-[100%] m-auto flex-auto justify-center  items-center">
-      <div className="w-full py-10">{<GallaryBox />}</div>
+      <div className="w-[70%] mx-auto py-10">{<GallaryBox />}</div>
 
-      <span className=" self-center flex w-full max-w-[1042px]  items-center justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
+      <span className="w-[70%] mx-auto self-center flex max-w-[1042px]  items-center justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
         <div className="   max-md:max-w-full">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-[81%] max-md:w-full max-md:ml-0">
@@ -60,30 +81,25 @@ const OverviewTabs = () => {
         <BookingButton className="text-white text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5" />
       </span>
 
-      <div className="flex flex-col items-start mt-4 text-primary">
-        <div className="flex mt-2">
-          {["Clinic Details", "Photos", "Reviews"].map((tab, index) => (
-            <div
-              key={index}
-              className={` w-[100px] cursor-pointer text-center   mx-1 rounded-full `}
-              onClick={() => handleTabClick(index + 1)}
-            >
-              {tab}
-            </div>
-          ))}
-        </div>
-        <div className="relative w-full h-[5px] bg-primary3 rounded-full mt-2">
-          <div
-            className="absolute top-0 left-0 h-full bg-secondary rounded-full"
-            style={{
-              width: `${
-                activeTab - 1 == 0 ? "110" : activeTab - 1 == 1 ? "80" : "100"
-              }px`, // Adjust based on the number of tabs
-              transform: `translateX(${
-                activeTab - 1 == 0 ? "0" : activeTab - 1 == 1 ? "120" : "220"
-              }px)`, // Adjust based on the number of tabs
-              transition: "transform 0.3s ease-in-out",
-            }}
+      <div className="flex w-[70%] mx-auto flex-col items-start mt-4 text-primary">
+        <div className="relative w-full">
+          <div className="flex w-full space-x-8 pb-4 border-b-2 border-b-primary3">
+            {["Clinic Details", "Photos", "Reviews"].map((tab, index) => (
+              <button
+                key={index}
+                ref={(el) => (tabsRef.current[index] = el)}
+                className={`text-primary font-custom-open-sans w-auto text-md cursor-pointer mx-1 rounded-full mt-12 ${
+                  activeTabIndex === index ? "font-bold" : ""
+                }`}
+                onClick={() => handleTabClick(index)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <span
+            className="absolute bottom-0 block h-1 bg-primary transition-all duration-300"
+            style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
           />
         </div>
       </div>
