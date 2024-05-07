@@ -41,7 +41,11 @@ const AddMedicalHistory = () => {
     PetService.getDocumentType()
       .then((r) => {
         if (r.data.status) {
-          setDocumenetList(r.data.data);
+          setDocumenetList(
+            r.data.data?.sort((a, b) => {
+              return a.sort_order - b.sort_order;
+            })
+          );
           showToast(r.data.message, "success");
         } else {
           showToast(r.data.message, "error");
