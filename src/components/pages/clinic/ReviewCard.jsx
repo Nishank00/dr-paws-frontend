@@ -18,7 +18,7 @@ const ReviewCard = ({ index, reviewData }) => {
           alt="err"
           className="aspect-[1.32] object-contain object-center w-full overflow-hidden self-stretch"
         />
-        <div className="justify-start items-start flex w-full py-2 px-6 gap-3 mt-8">
+        <div className="justify-start items-center flex w-full py-2 px-6 gap-3 mt-4">
           <div
             className={`flex w-10 h-10 ${
               index == 0

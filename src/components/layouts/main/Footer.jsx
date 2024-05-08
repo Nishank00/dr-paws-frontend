@@ -83,7 +83,7 @@ const Footer = () => {
               href="#"
               className="text-xl flex gap-4 items-center justify-center hover:text-secondary"
             >
-              <Image src="/twitter.svg" alt="social" height={30} width={30} />
+              <Image src="/x.png" alt="social" height={25} width={25} />
             </Link>
           </div>
         </div>
