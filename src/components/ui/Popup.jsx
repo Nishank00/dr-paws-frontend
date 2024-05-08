@@ -1,7 +1,14 @@
-import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+
 const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   const popupRef = useRef();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   useEffect(() => {
     const handleEscapeKeyPress = (event) => {
@@ -35,28 +42,28 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) {
-    return null;
-  }
-
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-      <div
-        ref={popupRef}
-        className=" rounded-2xl relative xl:max-h-[95vh]  mt-8  lg:max-h-[70vh] overflow-scroll"
-      >
-        {children}
-        {hideClose ?? (
-          <span
-            className="text-black hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
-            onClick={onClose}
-          >
-            X
-          </span>
-        )}
-      </div>
-    </div>
-  );
+  return isMounted
+    ? isOpen &&
+        ReactDOM.createPortal(
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
+            <div
+              ref={popupRef}
+              className=" rounded-2xl relative xl:max-h-[95vh]  mt-8  lg:max-h-[70vh] overflow-scroll"
+            >
+              {children}
+              {!hideClose && (
+                <span
+                  className="text-black hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
+                  onClick={onClose}
+                >
+                  X
+                </span>
+              )}
+            </div>
+          </div>,
+          document.body
+        )
+    : null;
 };
 
 export default Popup;
