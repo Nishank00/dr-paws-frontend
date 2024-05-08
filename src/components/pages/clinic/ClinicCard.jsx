@@ -14,7 +14,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
     );
   }, [services]);
   return (
-    <div className="bg-primary4 rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadoe-lg">
+    <div className="bg-primary4 relative rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadoe-lg">
       <div
         onClick={() => router.push(`/clinics/overview/${id}`)}
         className="rounded-t-md w-full h-[92px] md:h-[240px] flex justify-end"
@@ -25,7 +25,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <p className="text-primary px-2 h-7 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
+        <p className="text-primary px-2 h-7 absolute top-0 right-0 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
           {clinic?.is_24_hr == "Y" ? "24 Hours" : ""}
         </p>
       </div>

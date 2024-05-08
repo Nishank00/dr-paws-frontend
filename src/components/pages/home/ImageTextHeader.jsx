@@ -25,7 +25,7 @@ const ImageTextHeader = ({
   };
   return (
     <>
-      <div className=" w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 px-5 overflow-hidden bg-white">
+      <div className=" w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{

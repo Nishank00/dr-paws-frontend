@@ -70,7 +70,10 @@ const Footer = () => {
             Social
           </p>
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-xl flex gap-4 items-center justify-center hover:text-secondary">
+            <Link
+              href="#"
+              className="text-xl flex gap-4 items-center justify-center hover:text-secondary"
+            >
               <Image src="/instagram.svg" alt="social" height={30} width={30} />
             </Link>
             <Link
