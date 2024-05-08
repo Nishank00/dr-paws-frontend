@@ -7,6 +7,7 @@ import ProfilePopupUI from "./ProfilePopupUI";
 import ImageHeader from "@/components/ui/ImageHeader";
 import DoctorProfile from "./DoctorProfile";
 import DoctorService from "@/services/Doctor.Service";
+import DoctorProfileModal from "./DoctorProfileModal";
 
 const TeamPage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -17,6 +18,7 @@ const TeamPage = () => {
     setShowPopup(true);
   };
   const closePopup = () => {
+    console.log("first");
     setShowPopup(false);
   };
 
@@ -65,11 +67,6 @@ const TeamPage = () => {
           <DoctorProfileCard key={i} {...doctor} />
         ))}
       </div>
-
-      <Popup isOpen={showPopup} onClose={closePopup}>
-        <DoctorProfile selectedDoctor={selectedDoctor} />
-        {/* <ProfilePopupUI selectedDoctor={selectedDoctor} /> */}
-      </Popup>
     </div>
   );
 };

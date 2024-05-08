@@ -1,6 +1,7 @@
 import Popup from "@/components/ui/Popup";
 import React, { useState } from "react";
 import DoctorProfile from "../team/DoctorProfile";
+import DoctorProfileModal from "../team/DoctorProfileModal";
 
 const DoctorProfileCard = ({
   full_name,
@@ -63,8 +64,17 @@ const DoctorProfileCard = ({
           View Profile
         </div>
       </div>
-      <Popup isOpen={showPopup}>
-        <DoctorProfile
+      <Popup isOpen={showPopup} onClose={() => setShowPopup(false)}>
+        {/* <DoctorProfile
+          selectedDoctor={{
+            full_name,
+            experience,
+            specialization,
+            education,
+            ...rest,
+          }}
+        /> */}
+        <DoctorProfileModal
           selectedDoctor={{
             full_name,
             experience,

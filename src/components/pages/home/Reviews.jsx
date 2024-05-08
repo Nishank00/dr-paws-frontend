@@ -9,7 +9,7 @@ const Reviews = () => {
           Tail wags and purrs are our favourite feedback, but here&apos;s what
           pet-parents are saying
         </div>
-        <div className="hidden relative max-w-[1024px] dlex justify-center w-full md:block">
+        <div className="hidden relative max-w-[1024px] dlex justify-center w-full mt-20 md:block">
           <div className="items-stretch shadow-sm bg-orange-100 xl:left-0 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
               Dr. Paws is fantastic! Exceptional care, friendly staff, and a

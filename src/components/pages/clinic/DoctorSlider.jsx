@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import DoctorProfileCard from "./DoctorProfileCard";
 import DoctorService from "@/services/Doctor.Service";
@@ -27,21 +26,13 @@ const DoctorSlider = () => {
 
   const nextSlide = () => {
     setCurrentPosition((prevPosition) => {
-      if (prevPosition + 1 < doctors.length) {
-        return prevPosition + 1;
-      } else {
-        return 0;
-      }
+      return prevPosition + 1 >= doctors.length ? 0 : prevPosition + 1;
     });
   };
 
   const prevSlide = () => {
     setCurrentPosition((prevPosition) => {
-      if (prevPosition === 0) {
-        return doctors.length - 1;
-      } else {
-        return prevPosition - 1;
-      }
+      return prevPosition === 0 ? doctors.length - 1 : prevPosition - 1;
     });
   };
 
