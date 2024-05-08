@@ -12,6 +12,7 @@ import MasterService from "@/services/Master.service";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import ReactPhoneInput from "@/components/ui/ReactPhoneInput";
+import PlaceService from "@/services/PlaceServices";
 
 const UserForm = ({ closePopup, user_id }) => {
   const showToast = useToast();
@@ -106,28 +107,51 @@ const UserForm = ({ closePopup, user_id }) => {
       .catch((err) => console.log(err.message));
   };
 
-  const getStates = () => {
-    MasterService.getMastersByCode({ code: "STATE" })
-      .then((response) => {
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
-        setStates(response.data.data);
-      })
-      .catch((err) => console.log(err.message));
+  const getStates = async () => {
+    // MasterService.getMastersByCode({ code: "STATE" })
+    //   .then((response) => {
+    //     if (!response.data.status)
+    //       return showToast(response.data.message, "warning");
+    //     setStates(response.data.data);
+    //   })
+    //   .catch((err) => console.log(err.message));
+    try {
+      const response = await PlaceService.getAllStates();
+      const { data } = response;
+
+      if (!data?.status) return showToast(data.message, "warning");
+      setStates(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const stateSelected = (e) => {
     setUserData({ ...userData, state_id: e });
   };
 
-  const getCities = (state_id) => {
-    MasterService.getMastersByCode({ code: "CITY", state_id })
-      .then((response) => {
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
-        setCities(response.data.data);
-      })
-      .catch((err) => console.log(err.message));
+  const getCities = async (state_id) => {
+    // MasterService.getMastersByCode({ code: "CITY", state_id })
+    //   .then((response) => {
+    //     if (!response.data.status)
+    //       return showToast(response.data.message, "warning");
+    //     setCities(response.data.data);
+    //   })
+    //   .catch((err) => console.log(err.message));
+    try {
+      let stateCodeIndex = states.findIndex(
+        (stateObj) => stateObj.state_id == state_id
+      );
+      const response = await PlaceService.getAllCities(
+        stateCodeIndex >= 0 ? states[stateCodeIndex]["isoCode"] : ""
+      );
+      const { data } = response;
+
+      if (!data?.status) return showToast(data.message, "warning");
+      setCities(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const citySelected = (e) => {
@@ -138,8 +162,11 @@ const UserForm = ({ closePopup, user_id }) => {
     getUserDataById(user_id);
     getClinics();
     getStates();
-    getCities();
   }, [user_id]);
+
+  useEffect(() => {
+    getCities(userData.state_id);
+  }, [userData.state_id]);
 
   return (
     <>
@@ -234,7 +261,7 @@ const UserForm = ({ closePopup, user_id }) => {
             label={"City"}
             options={cities}
             optionLabel="name"
-            optionValue="id"
+            optionValue="city_id"
             onSelect={citySelected}
             selectedValue={userData.city_id}
           />
@@ -250,7 +277,7 @@ const UserForm = ({ closePopup, user_id }) => {
             label={"State"}
             options={states}
             optionLabel="name"
-            optionValue="id"
+            optionValue="state_id"
             onSelect={stateSelected}
             selectedValue={userData.state_id}
           />
