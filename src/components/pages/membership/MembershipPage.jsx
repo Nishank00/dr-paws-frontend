@@ -45,7 +45,7 @@ const MembershipPage = () => {
             "Our memberships are designed to provide the convenience, security, and value pet-parents of today expect. Explore our plans to discover the one that fits your pet’s needs."
           }
           imagePosition={"left"}
-          headingClass="text-5xl"
+          headingClass="!text-[48px] leading-none"
           paragraphClass="text-sm"
           buttonUrl={"/membership#memberships"}
         />

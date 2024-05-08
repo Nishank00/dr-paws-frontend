@@ -5,6 +5,7 @@ import Tab from "./Tab";
 import Module from "./Module";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
+import Popup from "@/components/ui/Popup";
 const OverviewTabs = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(1);
@@ -13,6 +14,11 @@ const OverviewTabs = () => {
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(165); // Initialize width to 0
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0); // Initialize left position to 0
   const tabsRef = useRef([]);
+  const [isOpened, setIsOpened] = useState(false);
+
+  const handleClose = () => {
+    setIsOpened(false);
+  };
 
   useEffect(() => {
     function setTabPosition() {
@@ -28,7 +34,7 @@ const OverviewTabs = () => {
 
     return () => window.removeEventListener("resize", setTabPosition);
   }, [activeTabIndex]);
-  
+
   const handleTabClick = (tabNumber) => {
     setActiveTab(Number(tabNumber) + 1);
     setActiveTabIndex(tabNumber);
@@ -95,10 +101,10 @@ const OverviewTabs = () => {
             can
           </p>
           <Button
-            onClick={() => router.push("/clinics#suggestion-form")}
             label="Get in Touch"
+            onClick={() => setIsOpened(true)}
             className="bg-secondary2 w-[210px] h-[50px] text-[18px] font-custom-open-sans  text-white rounded-full  font-bold block mx-auto mt-4  transition duration-300 ease-in-out hover:bg-olive-500 hover:bg-opacity-80"
-          ></Button>
+          />
         </div>
       </div>
       <div className="w-full lg:hidden">
@@ -128,6 +134,29 @@ const OverviewTabs = () => {
             </Module>
           ))}
       </div>
+      <Popup isOpen={isOpened} onClose={handleClose}>
+        <div className="m-auto flex flex-col gap-4 text-primary bg-primary3 p-12 max-w-[1024px] w-[500px]">
+          <h1
+            style={{
+              fontFamily: "Roca",
+            }}
+            className="text-3xl text-center"
+          >
+            Contact Us
+          </h1>
+          <div className="mt-6 flex flex-col justify-center items-center">
+            <a
+              href="mailto:hello@bearhug.co"
+              className="text-xl hover:text-secondary mb-2"
+            >
+              hello@drpaws.care
+            </a>
+            <a href="tel:+123 456 789" className="text-xl hover:text-secondary">
+              +91 96069 94629
+            </a>
+          </div>
+        </div>
+      </Popup>
     </>
   );
 };

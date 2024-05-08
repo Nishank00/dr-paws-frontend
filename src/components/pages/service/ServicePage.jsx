@@ -30,23 +30,10 @@ const ServicePage = () => {
             "Our modern friendly clinics offer all the services you’ll need to keep your animal happy and healthy."
           }
           imagePosition={"left"}
-          headingClass="text-5xl"
+          headingClass="!text-[48px]"
           paragraphClass="text-sm"
         />
       </div>
-      {/* <div className="">
-        <ServiceTabs
-          tabs={["Tab 1", "Tab 2", "Tab 3"]}
-          defaultTab="Tab 1"
-          onSelect={handleTabSelect}
-        >
-          <div className="p-4">
-            {selectedTab === "Tab 1" && <div>Tab 1 Content</div>}
-            {selectedTab === "Tab 2" && <div>Tab 2 Content</div>}
-            {selectedTab === "Tab 3" && <div>Tab 3 Content</div>}
-          </div>
-        </ServiceTabs>
-      </div> */}
       <div className="w-full ">
         <PageTabs />
       </div>

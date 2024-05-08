@@ -43,12 +43,12 @@ const ImageTextHeader = ({
         </div>
         <div>
           <div className="w-full  h-[240px] lg:h-full flex md:justify-end md:items-center">
-            <div className="  h-full lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-5 lg:justify-start ">
-              <div className="  lg:h-fit lg:w-[80%] flex flex-col justify-start">
+            <div className="h-full lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-5 lg:justify-start ">
+              <div className="lg:h-fit flex flex-col justify-start">
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium lg:text-[33px] lg:w-[80%] text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-full lg:text-[33px] lg:w-[80%] text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >
