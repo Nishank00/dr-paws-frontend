@@ -36,7 +36,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
         <h4 className="font-semibold font-custom-open-sans text-xs md:text-[18px] line-clamp-1">
           Dr. Paw | {name}
         </h4>
-        <p className=" text-[10px] md:text-[12px] font-custom-open-sans mt-2 text-primary line-clamp-1">
+        <p className=" text-[10px] md:text-[12px] font-custom-open-sans mt-2 text-primary text-wrap">
           Check-Ups | Surgery | Diagnostics | Grooming | Retail
         </p>
       </div>
