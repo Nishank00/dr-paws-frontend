@@ -45,7 +45,7 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   return isMounted
     ? isOpen &&
         ReactDOM.createPortal(
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
+          <div className="fixed text-primary inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
             <div
               ref={popupRef}
               className=" rounded-2xl relative xl:max-h-[75vh]  mt-8  lg:max-h-[70vh] overflow-scroll"
