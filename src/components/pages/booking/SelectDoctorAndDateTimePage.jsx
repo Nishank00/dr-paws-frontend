@@ -292,7 +292,6 @@ const SelectDoctorAndDateTimePage = ({
                     availableDays={availableDays}
                   />
                 </div>
-
                 <div className="text-primary font-semibold">
                   {selectedDate && (
                     <>
