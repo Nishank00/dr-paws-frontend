@@ -199,12 +199,12 @@ const SelectDoctorAndDateTimePage = ({
 
   async function getSelectedDoctorClinicData(date = null) {
     try {
-      if (!selectedDoctorId && currentPage == 3) {
-        return showToast("Select Doctor", "error");
-      }
-      if (!selectedClinic.id && currentPage == 3) {
-        return showToast("Select Clinic", "error");
-      }
+      // if (!selectedDoctorId && currentPage == 3) {
+      //   return showToast("Select Doctor", "error");
+      // }
+      // if (!selectedClinic.id && currentPage == 3) {
+      //   return showToast("Select Clinic", "error");
+      // }
       let payload = {
         doctor_id: selectedDoctorId,
         clinic_id: selectedClinic.id,
@@ -282,7 +282,9 @@ const SelectDoctorAndDateTimePage = ({
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Book a spot for your visit
               </p>
-
+              {!selectedDoctorId && currentPage == 3 && (
+                <p className="text-red-500 mb-6">Select Doctor</p>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
                 <div className="col-span-2">
                   <Calendar
