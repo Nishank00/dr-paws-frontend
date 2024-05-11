@@ -125,6 +125,7 @@ const Form = () => {
   const getServices = () => {
     MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
       .then((response) => {
+        console.log("service response", response);
         if (response.data.status) {
           setServices(
             response.data.data.map((item) => ({
@@ -309,8 +310,6 @@ const Form = () => {
     );
   };
 
-  console.log("doctors", doctors);
-
   const renderPage = () => {
     return (
       <>
@@ -376,14 +375,12 @@ const Form = () => {
     );
   }, []);
 
-  console.log("services", services);
-
   useEffect(() => {
     getPets();
   }, [user_id]);
 
   useEffect(() => {
-    if (pets.length > 0) getServices();
+    getServices();
   }, [pets]);
 
   useEffect(() => {
@@ -396,7 +393,7 @@ const Form = () => {
     }
   }, [appointment]);
 
-  return (
+  return user_id ? (
     <div className="text-primary">
       <div className="pt-1 sm:pt-4">
         <button
@@ -444,6 +441,12 @@ const Form = () => {
           phoneNumber={JSON.parse(localStorage.getItem("user_info")).phone}
         />
       </Popup>
+    </div>
+  ) : (
+    <div className="flex items-center justify-center text-primary mt-10">
+      <h2 className="text-3xl font-bold">
+        Please login to book the appointment
+      </h2>
     </div>
   );
 };

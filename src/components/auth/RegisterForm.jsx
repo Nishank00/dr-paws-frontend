@@ -14,10 +14,12 @@ import {
   setUserSession,
   setUserLoggedIn,
 } from "@/store/features/userSession/userSessionSlice";
+import { useRouter } from "next/navigation";
 
-const RegisterForm = ({ onSuccess, loginClicked }) => {
+const RegisterForm = ({ onSuccess, loginClicked, route }) => {
   // Variables
   const showToast = useToast();
+  const router = useRouter();
   const { startLoading, stopLoading } = useLoader();
   const [currentPage, setCurrentPage] = useState(1);
   const [message, setMessage] = useState("");
@@ -88,14 +90,6 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
 
       const response = await AuthService.register(payload);
       stopLoading();
-      console.log(
-        "response",
-        response,
-        "accessToken",
-        response.data.data.accessToken,
-        "response data",
-        response.data
-      );
       if (!response.data.status) {
         setMessage(response.data.message);
       }
@@ -103,6 +97,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
       await getUserData();
       onSuccess();
+      if (route) router.push(route);
     } catch (error) {
       stopLoading();
       console.error(error);
