@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import AuthService from "@/services/Auth.service";
-import UploadProfile from "./UploadProfile";
+import { UserService as UserStorageService } from "@/services/Storage.service";
 import { useToast } from "../ui/ToastProvider";
 import OTPInput from "../ui/OTPInput";
 import { useLoader } from "../ui/LoaderContext";
@@ -10,6 +10,10 @@ import PhoneNumberInput from "../ui/PhoneNumberInput";
 import UserService from "@/services/User.Service";
 import { TokenService } from "@/services/Storage.service";
 import { useDispatch } from "react-redux";
+import {
+  setUserSession,
+  setUserLoggedIn,
+} from "@/store/features/userSession/userSessionSlice";
 
 const RegisterForm = ({ onSuccess, loginClicked }) => {
   // Variables
@@ -84,11 +88,19 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
 
       const response = await AuthService.register(payload);
       stopLoading();
-      console.log("response", response, response.data.data.accessToken);
+      console.log(
+        "response",
+        response,
+        "accessToken",
+        response.data.data.accessToken,
+        "response data",
+        response.data
+      );
       if (!response.data.status) {
         setMessage(response.data.message);
       }
       TokenService.saveToken(response.data.data.accessToken);
+      dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
       await getUserData();
       onSuccess();
     } catch (error) {

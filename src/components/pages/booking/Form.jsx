@@ -35,11 +35,11 @@ const Form = () => {
   const [pets, setPets] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState({});
-  const [selectedDate, setSelectedDate] = useState(null);   
-  const [selectedSlot, setSelectedSlot] = useState(null);   
-  const [appointment, setAppointment] = useState(null);     
-  const [isPopupOpen, setPopupOpen] = useState(false);      
-  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false); 
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [appointment, setAppointment] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
 
   // Methods
   const openPopup = () => setPopupOpen(true);
@@ -396,7 +396,7 @@ const Form = () => {
     }
   }, [appointment]);
 
-  return user_id ? (
+  return (
     <div className="text-primary">
       <div className="pt-1 sm:pt-4">
         <button
@@ -444,12 +444,6 @@ const Form = () => {
           phoneNumber={JSON.parse(localStorage.getItem("user_info")).phone}
         />
       </Popup>
-    </div>
-  ) : (
-    <div className="flex items-center justify-center text-primary mt-10">
-      <h2 className="text-3xl font-bold">
-        Please login to book the appointment
-      </h2>
     </div>
   );
 };
