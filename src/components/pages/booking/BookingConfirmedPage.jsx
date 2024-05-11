@@ -15,7 +15,6 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
   const [doctor, setDoctor] = useState({});
   const [timeString, setTimeString] = useState("");
   const [formerTimeString, setFormerTimeString] = useState("");
-
   // Methods
   const getAppointmentDetails = () => {
     BookingService.getAppointment(appointment_id)
@@ -57,10 +56,6 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
         appointment && appointment.start_time
           ? moment(appointment?.start_time, "hh:mm:ss").format("hh:mm A")
           : "Start Time"
-      } - ${
-        appointment && appointment.end_time
-          ? moment(appointment?.end_time, "hh:mm:ss").format("hh:mm A")
-          : "End Time"
       }`
     );
     if (rescheduled && appointment.appointment_logs) {
@@ -165,25 +160,53 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           </svg>
         )}
       </h2>
-
       <div
         className={`${
           appointment?.is_active == 1 ? "bg-primary4" : "bg-gray-100"
         }  px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg`}
       >
-        <h3 className="text-2xl font-extrabold ">
-          {pets?.map((pet) => pet?.pet_name).join(" & ")}&nbsp;
-          {pets?.length > 0 && pets?.length === 1 ? "is" : "are"}&nbsp;scheduled
-          with{" "}
-          {appointment?.doctor_name?.toLowerCase() == "groomer" ? "" : "Dr."}{" "}
-          {doctor.doctor_name}
-        </h3>
-        <p className="text-lg">
-          for{" "}
-          {appointment?.appointment_items
-            ?.map((appointment_item) => appointment_item?.service_name)
-            .join(", ")}
-        </p>
+        {appointment?.doctor_name?.toLowerCase() === "groomer" ? (
+          <h3 className="text-2xl font-extrabold ">
+            {pets?.map((pet) => pet?.pet_name).join(", ")}&nbsp;
+            {pets?.length > 1 ? "are" : "is"} booked for a Grooming session
+          </h3>
+        ) : (
+          <h3 className="text-2xl font-extrabold">
+            {pets?.length === 1
+              ? pets[0]?.pet_name
+              : pets?.length === 2
+              ? pets
+                  .map((pet, index) =>
+                    index === 0 ? pet?.pet_name : ` & ${pet?.pet_name}`
+                  )
+                  .join("")
+              : pets
+                  ?.slice(0, -1)
+                  .map((pet) => pet?.pet_name)
+                  .join(", ") +
+                " & " +
+                pets?.[pets.length - 1]?.pet_name}
+            &nbsp;{pets?.length > 1 ? "are" : "is"} booked for a Grooming
+            session
+          </h3>
+        )}
+        {appointment?.doctor_name?.toLowerCase() !== "groomer" && (
+          <p className="text-lg">
+            for&nbsp;
+            {appointment?.appointment_items &&
+            appointment.appointment_items.length > 0 &&
+            appointment?.appointment_items.every(
+              (item) =>
+                item?.service_name ===
+                appointment?.appointment_items[0]?.service_name
+            )
+              ? appointment?.appointment_items[0]?.service_name
+              : appointment?.appointment_items
+                  ?.map((appointment_item) => appointment_item?.service_name)
+                  .join(", ")}
+            &nbsp;appointment
+          </p>
+        )}
 
         <div className="flex items-center my-12">
           <div className="">

@@ -225,6 +225,17 @@ const SelectDoctorAndDateTimePage = ({
       console.log(error);
     }
   }
+
+  const sortedDoctors = [...doctors].sort((a, b) => {
+    if (a.doctor_name.toLowerCase() === "best available vet") return -1;
+    if (b.doctor_name.toLowerCase() === "best available vet") return 1;
+    return 0;
+  });
+
+  const isDateAvailable = (selectedDate) => {
+    return availableDays.includes(moment(selectedDate).format("YYYY-MM-DD"));
+  };
+
   useEffect(() => {
     setAvailableSlots([]);
     getSelectedDoctorClinicData();
@@ -262,11 +273,11 @@ const SelectDoctorAndDateTimePage = ({
               Select Vet
             </h2>
             <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
-              Book a spot for your visit
+              Please select the vet {`you'd`} like to meet
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-              {doctors.map((doctor, i) => (
+              {sortedDoctors.map((doctor, i) => (
                 <DoctorSelect
                   key={"doctor" + i}
                   doctor={{ ...doctor, index: i }}
@@ -280,7 +291,7 @@ const SelectDoctorAndDateTimePage = ({
                 Select Date and Time
               </h2>
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
-                Book a spot for your visit
+                Please select your appoinment slot
               </p>
               {!selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
@@ -297,12 +308,20 @@ const SelectDoctorAndDateTimePage = ({
                 <div className="text-primary font-semibold">
                   {selectedDate && (
                     <>
-                      <h5 className="text-black  mb-5">
-                        Available timeslots for{" "}
-                        <span className="text-primary">
-                          {moment(selectedDate).format("dddd, MMM D")}
-                        </span>
-                      </h5>
+                      {isDateAvailable(selectedDate) ? (
+                        <h5 className="text-black mb-5">
+                          Available timeslots for{" "}
+                          <span className="text-primary">
+                            {moment(selectedDate).format("dddd, MMM D")}
+                          </span>
+                        </h5>
+                      ) : (
+                        <p className="text-danger">
+                          Sorry, no available timeslots for this day. We do
+                          welcome walk-ins but {`can't`}guarantee an
+                          appointment time.
+                        </p>
+                      )}
 
                       <div className="">
                         {availableSlots &&
