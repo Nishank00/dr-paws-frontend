@@ -1,12 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoChevronBackOutline } from "react-icons/io5";
 import PlanPopUp from "./PlanPopUp";
 import { UserService as UserStorageService } from "@/services/Storage.service";
 import Image from "next/image";
+import MembershipService from "@/services/Membership.Service";
+import { useParams } from "next/navigation";
+import { useToast } from "@/components/ui/ToastProvider";
 
 const OrderSuccess = () => {
   const userValues = UserStorageService?.getUserInfo();
+  const [membershipDetails, setMembershipDetails] = useState({});
+  const { id = null, order_id = null } = useParams();
+  const showToast = useToast();
+  useEffect(() => {
+    async function getMemebrshipPaymentDetails() {
+      try {
+        const response = await MembershipService.getMembershipOrderDetails({
+          booking_id: id,
+          order_id,
+          // user_id: userValues.id,
+        });
+        const { data } = response;
+        if (!data?.status)
+          return showToast(
+            data?.message || "Something went wrong while getting details"
+          );
+        setMembershipDetails(data?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getMemebrshipPaymentDetails();
+    // console.log(params);
+  }, []);
   return (
     <div className="w-full flex justify-center pb-20 items-center flex-col bg-[#fcfaf3]">
       <div className="w-full flex mt-10">
@@ -42,15 +70,19 @@ const OrderSuccess = () => {
           <div className="mt-2">
             <tr className="flex justify-between text-primary text-md">
               <td>Order number</td>
-              <td className="font-bold">00-00-00-181</td>
+              <td className="font-bold">00-00-00-{id}</td>
             </tr>
             <tr className="flex justify-between text-primary text-md">
               <td>Order date</td>
-              <td className="font-bold">8/04/2024</td>
+              <td className="font-bold">
+                {membershipDetails?.membershipDetails?.created_at}
+              </td>
             </tr>
             <tr className="flex justify-between text-primary text-md">
               <td>Total</td>
-              <td className="font-bold">6999/-</td>
+              <td className="font-bold">
+                {membershipDetails?.membershipDetails?.price}/-
+              </td>
             </tr>
           </div>
         </div>
