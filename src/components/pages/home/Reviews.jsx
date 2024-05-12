@@ -1,7 +1,30 @@
+import { useToast } from "@/components/ui/ToastProvider";
+import clinicService from "@/services/Clinic.service";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Reviews = () => {
+  const showToast = useToast();
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    async function getReviews() {
+      try {
+        const response = await clinicService.getClinicMetaData({
+          clinic_id: null,
+          type: "all_reviews",
+        });
+
+        const { data } = response;
+        if (!data.status) return showToast(data?.message);
+
+        setReviews(data.data.length ? data.data.slice(0, 3) : []);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getReviews();
+  }, []);
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
@@ -12,13 +35,13 @@ const Reviews = () => {
         <div className="hidden relative max-w-[1024px] dlex justify-center w-full mt-20 md:block">
           <div className="items-stretch shadow-sm bg-orange-100 xl:left-0 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
+              {reviews?.[0]?.clinic_review ||
+                "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                {reviews?.[0]?.reviewer_name || "Rahul Shah"}
               </div>
             </span>
           </div>
@@ -31,25 +54,25 @@ const Reviews = () => {
           />
           <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none xl:right-[3rem] right-[-1rem] bottom-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
+              {reviews?.[1]?.clinic_review ||
+                "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                {reviews?.[1]?.reviewer_name || "Rahul Shah"}
               </div>
             </span>
           </div>
           <div className="items-stretch shadow-sm bg-orange-100 self-stretch flex w-[400px] leading-none xl:right-[-3rem] right-[-5rem] top-[-10%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
+              {reviews?.[2]?.clinic_review ||
+                "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                {reviews?.[2]?.reviewer_name || "Rahul Shah"}
               </div>
             </span>
           </div>

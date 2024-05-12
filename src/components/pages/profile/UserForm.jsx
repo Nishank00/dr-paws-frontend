@@ -19,6 +19,7 @@ const UserForm = ({ closePopup, user_id }) => {
   const [clinics, setClinics] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+  const [countries, setCountries] = useState([]);
   const [userData, setUserData] = useState({
     full_name: "",
     email: "",
@@ -51,6 +52,10 @@ const UserForm = ({ closePopup, user_id }) => {
 
   const clinicSelected = (e) => {
     setUserData({ ...userData, clinic_id: e });
+  };
+
+  const countrySelected = (e) => {
+    setUserData({ ...userData, country_id: e });
   };
 
   const handleSubmit = () => {
@@ -126,6 +131,25 @@ const UserForm = ({ closePopup, user_id }) => {
     }
   };
 
+  const getCountries = async () => {
+    // MasterService.getMastersByCode({ code: "STATE" })
+    //   .then((response) => {
+    //     if (!response.data.status)
+    //       return showToast(response.data.message, "warning");
+    //     setStates(response.data.data);
+    //   })
+    //   .catch((err) => console.log(err.message));
+    try {
+      const response = await PlaceService.getAllCountries();
+      const { data } = response;
+
+      if (!data?.status) return showToast(data.message, "warning");
+      setCountries(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const stateSelected = (e) => {
     setUserData({ ...userData, state_id: e });
   };
@@ -161,12 +185,16 @@ const UserForm = ({ closePopup, user_id }) => {
   useEffect(() => {
     getUserDataById(user_id);
     getClinics();
-    getStates();
+    getCountries();
   }, [user_id]);
 
   useEffect(() => {
     getCities(userData.state_id);
   }, [userData.state_id]);
+
+  useEffect(() => {
+    getStates(userData);
+  }, [userData.country_id]);
 
   return (
     <>
@@ -189,14 +217,32 @@ const UserForm = ({ closePopup, user_id }) => {
             onChange={formValueChanged}
           />
 
-          <ReactPhoneInput
+          {/* <ReactPhoneInput
             label={"Contact No"}
             placeholder={"9876543210"}
             value={userData.phone}
             onChange={(num) => {
               setUserData({ ...userData, phone: num });
             }}
-          />
+          /> */}
+          <div className="flex">
+            <MultipleSelect
+              label={"Country"}
+              options={countries}
+              optionLabel="countryLabel"
+              optionValue="id"
+              onSelect={countrySelected}
+              selectedValue={userData.country_id}
+            />
+
+            <TextInput
+              label={"Phone number"}
+              placeholder={"987582789"}
+              name={"phone"}
+              value={userData.phone}
+              onChange={formValueChanged}
+            />
+          </div>
 
           {/* <PhoneInput
             value={userData.phone}

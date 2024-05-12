@@ -39,12 +39,19 @@ const AppointmentCard = ({ appointment = {} }) => {
       ),
     ]);
 
-    setPets(
-      appointment?.appointment_items?.map((appointment_item) => ({
-        pet_id: appointment_item?.pet_id,
-        pet_name: appointment_item?.pet_name,
-      }))
-    );
+    let distinctPets = [];
+    appointment?.appointment_items?.map((appointment_item) => {
+      let petIndex = distinctPets.findIndex((petObj) => {
+        return petObj.pet_id == appointment_item.pet_id;
+      });
+      if (petIndex < 0) {
+        distinctPets.push({
+          pet_id: appointment_item?.pet_id,
+          pet_name: appointment_item?.pet_name,
+        });
+      }
+    });
+    setPets(distinctPets);
 
     setDoctor({
       doctor_id: appointment?.doctor_id,

@@ -1,32 +1,31 @@
-import API from "./API"
+import API from "./API";
 
 export default {
   getProfile() {
-    return API().get(`user/getProfile`)
+    return API().get(`user/getProfile`);
   },
 
   getUserById(id) {
-    return API().get(`user/getUser/${id}`)
+    return API().get(`user/getUser/${id}`);
   },
 
   updateUser(payload) {
-    return API().post(`user/updateProfile`, payload)
+    return API().post(`user/updateProfile`, payload);
   },
 
   saveBillingDetails(payload) {
-    return API().post("user/updateBillingDetails", payload)
+    return API().post("user/updateBillingDetails", payload);
   },
 
   getBillingDetails(params) {
-    return API().get("user/getBillingDetails", { params })
+    return API().get("user/getBillingDetails", { params });
   },
 
   getDoctors() {
-    return API().get(`doctor`)
+    return API().get(`doctor`);
   },
 
   getmemberships() {
-    return API().get(`user/memberships`)
-  }
-
-}
+    return API().get(`user/memberships`);
+  },
+};

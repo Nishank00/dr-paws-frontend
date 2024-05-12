@@ -15,6 +15,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
   const [doctor, setDoctor] = useState({});
   const [timeString, setTimeString] = useState("");
   const [formerTimeString, setFormerTimeString] = useState("");
+  const [services, setServices] = useState([]);
 
   // Methods
   const getAppointmentDetails = () => {
@@ -40,12 +41,35 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
   }, []);
 
   useEffect(() => {
-    setPets(
-      appointment?.appointment_items?.map((appointment_item) => ({
-        pet_id: appointment_item?.pet_id,
-        pet_name: appointment_item?.pet_name,
-      }))
-    );
+    let distinctPets = [];
+    appointment?.appointment_items?.map((appointment_item) => {
+      let petIndex = distinctPets.findIndex((petObj) => {
+        return petObj.pet_id == appointment_item.pet_id;
+      });
+
+      if (petIndex < 0) {
+        distinctPets.push({
+          pet_id: appointment_item?.pet_id,
+          pet_name: appointment_item?.pet_name,
+        });
+      }
+    });
+    setPets(distinctPets);
+
+    let distinctServices = [];
+    appointment?.appointment_items?.map((appointment_item) => {
+      let serviceIndex = distinctServices.findIndex((serviceObj) => {
+        return serviceObj.service_id == appointment_item.service_id;
+      });
+
+      if (serviceIndex < 0) {
+        distinctServices.push({
+          service_id: appointment_item?.service_id,
+          service_name: appointment_item?.service_name,
+        });
+      }
+    });
+    setServices(distinctServices);
 
     setDoctor({
       doctor_id: appointment?.doctor_id,
@@ -180,7 +204,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
         </h3>
         <p className="text-lg">
           for{" "}
-          {appointment?.appointment_items
+          {services
             ?.map((appointment_item) => appointment_item?.service_name)
             .join(", ")}
         </p>

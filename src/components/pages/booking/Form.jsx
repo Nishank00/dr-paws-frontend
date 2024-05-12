@@ -35,11 +35,11 @@ const Form = () => {
   const [pets, setPets] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState({});
-  const [selectedDate, setSelectedDate] = useState(null);   
-  const [selectedSlot, setSelectedSlot] = useState(null);   
-  const [appointment, setAppointment] = useState(null);     
-  const [isPopupOpen, setPopupOpen] = useState(false);      
-  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false); 
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [appointment, setAppointment] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
 
   // Methods
   const openPopup = () => setPopupOpen(true);
@@ -347,8 +347,12 @@ const Form = () => {
               (currentPage == 3 ? "block" : "hidden")
             }
             doctors={
+              selectedServices.length == 1 &&
               selectedServices.includes(105 || "105")
                 ? doctors.filter((doctorData) => doctorData.doctor_id == 12)
+                : selectedServices.length >= 1 &&
+                  selectedServices.includes(105 || "105")
+                ? doctors
                 : doctors.filter((doctorData) => doctorData.doctor_id != 12)
             }
             setDoctors={setDoctors}

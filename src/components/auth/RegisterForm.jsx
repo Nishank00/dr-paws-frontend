@@ -25,6 +25,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
     password: null,
     confirm_password: null,
     otp: null,
+    is_whatsapp_updates: "N",
   });
 
   // Methods
@@ -43,7 +44,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
       });
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    const response = await AuthService.checkUserExist(form?.phone);
+    const { data } = response;
+    if (!data?.status || (!data?.status && data?.data?.isUserExist))
+      return showToast(data?.message);
     setCurrentPage(currentPage + 1);
     getOtp();
   };
@@ -80,6 +85,7 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
         password: form.password,
         user_type: "CUSTOMER",
         otp: form.otp,
+        is_whatsapp_updates: form.is_whatsapp_updates,
       };
 
       const response = await AuthService.register(payload);
@@ -120,6 +126,10 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
   const resendCode = () => {
     showToast("Code Resent", "success");
     getOtp();
+  };
+
+  const handleFormCheckbox = (e) => {
+    setForm({ ...form, is_whatsapp_updates: e.target.checked ? "Y" : "N" });
   };
 
   const renderPage = (page) => {
@@ -169,7 +179,11 @@ const RegisterForm = ({ onSuccess, loginClicked }) => {
               />
 
               <div className="flex gap-2 mt-6">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value={form.is_whatsapp_updates}
+                  onClick={(e) => handleFormCheckbox(e)}
+                />
                 <span className="text-sm text-start">
                   Send me details about my pet’s health on WhatsApp
                 </span>

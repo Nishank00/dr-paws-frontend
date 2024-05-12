@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import MembershipService from "@/services/Membership.Service";
 import { useLoader } from "@/components/ui/LoaderContext";
 import Link from "next/link";
+import paymentService from "@/services/PaymentService";
 
 const CheckoutPage = () => {
   const membershipData = useSelector(
@@ -49,36 +50,112 @@ const CheckoutPage = () => {
   const toggleSubscribed = (value) =>
     setPaymentDetails({ ...paymentDetails, subscribed: value });
 
-  const saveMembership = () => {
-    startLoading();
-    const payload = {
-      pet_id: membershipData.pet_id,
-      membership_id: membershipData.id,
-      membership_expires_at: moment()
-        .add(
-          membershipData.membership_plans?.filter(
-            (item) => item.selected == true
-          )[0].plan_duration_in_year,
-          "years"
-        )
-        .format("YYYY-MM-DD"),
+  const initializeRazorpay = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // console.log(process.env.RAZORPAY_API);
+
+      // if (!process.env.RAZORPAY_API) return reject("No Razorpay api found");
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const hitCallbackUrl = async (payload) => {
+    try {
+      startLoading();
+      const response = await paymentService.generateCallBackurl({
+        paymentInfo: payload,
+      });
+      const { data } = response;
+      stopLoading();
+
+      if (!data?.status) showToast(data?.message);
+
+      return router.push("/membership/order_success");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOrderGeneration = async (orderObj) => {
+    let razorpayInit = await initializeRazorpay();
+    // console.log(razorpayInit, process.env.RAZORPAY_API);
+    if (!razorpayInit) return razorpayInit;
+    const paymentOptions = {
+      key: "rzp_test_23WtYxOtJBfjHB",
+      amount: Math.round(orderObj?.amount * 100),
+      currency: "INR",
+      order_id: orderObj?.id,
+      handler: async function (response) {
+        // console.log(response);
+        await hitCallbackUrl(response);
+      },
     };
 
-    MembershipService.saveMembership(payload)
-      .then((response) => {
-        stopLoading();
-        showToast(
-          response.data.message,
-          response.data.status ? "success" : "warning"
-        );
-
-        if (response.data.status)
-          return router.push("/membership/order_success");
-      })
-      .catch((error) => {
-        stopLoading();
-        return showToast(error.message, "error");
+    const rzp = new window.Razorpay(paymentOptions);
+    rzp.open();
+  };
+  const saveMembership = async () => {
+    startLoading();
+    // console.log(membershipData);
+    try {
+      const response = await paymentService.createOrder({
+        membership_id: membershipData.id,
+        pet_id: membershipData.pet_id,
+        plan_duration: membershipData.membership_plans?.filter(
+          (memeberShipObj) => {
+            return memeberShipObj.selected;
+          }
+        )?.[0]["plan_duration_in_year"],
       });
+      const { data } = response;
+
+      if (!data?.status) return showToast(data?.message);
+
+      stopLoading();
+      handleOrderGeneration(data?.data);
+      // console.log(data);
+    } catch (error) {
+      stopLoading();
+      console.log(error);
+    }
+    // const payload = {
+    //   pet_id: membershipData.pet_id,
+    //   membership_id: membershipData.id,
+    //   membership_expires_at: moment()
+    //     .add(
+    //       membershipData.membership_plans?.filter(
+    //         (item) => item.selected == true
+    //       )[0].plan_duration_in_year,
+    //       "years"
+    //     )
+    //     .format("YYYY-MM-DD"),
+    // };
+
+    // MembershipService.saveMembership(payload)
+    //   .then((response) => {
+    //     stopLoading();
+    //     showToast(
+    //       response.data.message,
+    //       response.data.status ? "success" : "warning"
+    //     );
+
+    //     if (response.data.status)
+    //       return router.push("/membership/order_success");
+    //   })
+    //   .catch((error) => {
+    //     stopLoading();
+    //     return showToast(error.message, "error");
+    //   });
   };
 
   return (

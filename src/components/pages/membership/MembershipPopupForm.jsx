@@ -8,6 +8,8 @@ import { useLoader } from "@/components/ui/LoaderContext";
 import { useToast } from "@/components/ui/ToastProvider";
 import Dropdown from "@/components/ui/Dropdown";
 import MultipleSelect from "@/components/ui/MultipleSelect";
+import paymentService from "@/services/PaymentService";
+import { TokenService } from "@/services/Storage.service";
 
 const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
   const dispatch = useDispatch();
@@ -65,6 +67,120 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
       total += Number(plan.service_amount);
     });
     setServicesTotal(total);
+  };
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      // console.log(process.env.RAZORPAY_API);
+
+      // if (!process.env.RAZORPAY_API) return reject("No Razorpay api found");
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  const hitCallbackUrl = async (payload) => {
+    try {
+      startLoading();
+      const response = await paymentService.generateCallBackurl({
+        paymentInfo: payload,
+      });
+      const { data } = response;
+      stopLoading();
+
+      if (!data?.status) showToast(data?.message);
+      return router.push(
+        `/membership/order_success/${data?.data?.membership_id}/${data?.data?.order_id}`
+      );
+      // console.log("Booking done");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOrderGeneration = async (orderObj) => {
+    let razorpayInit = await initializeRazorpay();
+    // console.log(razorpayInit, process.env.RAZORPAY_API);
+    if (!razorpayInit) return razorpayInit;
+    const paymentOptions = {
+      key: "rzp_test_23WtYxOtJBfjHB",
+      amount: Math.round(orderObj?.amount * 100),
+      currency: "INR",
+      order_id: orderObj?.id,
+      handler: async function (response) {
+        // console.log(response);
+        await hitCallbackUrl(response);
+      },
+    };
+
+    const rzp = new window.Razorpay(paymentOptions);
+    rzp.open();
+  };
+  const saveMembership = async () => {
+    startLoading();
+    // console.log(membership);
+    try {
+      let plansData = membership.membership_plans?.filter((memeberShipObj) => {
+        return memeberShipObj.selected;
+      })?.[0];
+      const response = await paymentService.createOrder({
+        membership_id: membership.id,
+        pet_id: selectedPet,
+        plan_duration: plansData?.plan_duration_in_year,
+        membership_plan_id: plansData.id,
+        token: TokenService.getToken(),
+      });
+      const { data } = response;
+
+      if (!data?.status) {
+        stopLoading();
+        return showToast(data?.message);
+      }
+
+      stopLoading();
+      handleOrderGeneration(data?.data);
+      // console.log(data);
+    } catch (error) {
+      stopLoading();
+      console.log(error);
+    }
+    // const payload = {
+    //   pet_id: membershipData.pet_id,
+    //   membership_id: membershipData.id,
+    //   membership_expires_at: moment()
+    //     .add(
+    //       membershipData.membership_plans?.filter(
+    //         (item) => item.selected == true
+    //       )[0].plan_duration_in_year,
+    //       "years"
+    //     )
+    //     .format("YYYY-MM-DD"),
+    // };
+
+    // MembershipService.saveMembership(payload)
+    //   .then((response) => {
+    //     stopLoading();
+    //     showToast(
+    //       response.data.message,
+    //       response.data.status ? "success" : "warning"
+    //     );
+
+    //     if (response.data.status)
+    //       return router.push("/membership/order_success");
+    //   })
+    //   .catch((error) => {
+    //     stopLoading();
+    //     return showToast(error.message, "error");
+    //   });
   };
 
   useEffect(() => {
@@ -155,7 +271,7 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             label="Continue"
             color="accent"
             className="w-40 h-10"
-            onClick={handleContinue}
+            onClick={saveMembership}
           />
         </div>
       </div>

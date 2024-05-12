@@ -31,7 +31,7 @@ const UserProfileDetails = () => {
       });
   };
 
-  console.log('userData', userData);
+  console.log("userData", userData);
 
   useEffect(() => {
     getUserData();
@@ -109,7 +109,7 @@ const UserProfileDetails = () => {
                   userData?.address_line_1 || ""
                 } ${userData?.address_line_2 || ""}, ${userData?.city || ""}, ${
                   userData?.state || ""
-                }` || "Not Available"}
+                } ${userData?.pin_code || ""}` || "Not Available"}
               </p>
             </div>
           </div>

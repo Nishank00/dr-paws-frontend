@@ -41,7 +41,11 @@ const MultipleSelect = ({
   };
 
   return (
-    <div className="mb-4 sm:mb-0 w-full">
+    <div
+      className={
+        label == "Country" ? "mx-1 mb-4 sm:mb-0 w-full" : "mb-4 sm:mb-0 w-full"
+      }
+    >
       {label && (
         <label className="block text-sm font-medium text-primary">
           {label}

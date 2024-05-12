@@ -3,7 +3,20 @@ import Image from "next/image";
 import React from "react";
 import Popup from "./Popup";
 
-const SharePopup = ({ isOpen, onClose }) => {
+const SharePopup = ({ isOpen, onClose, url }) => {
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          url: process.env.NEXT_PUBLIC_API_UPLOAD_URL + "/" + url,
+        });
+      } else {
+        showToast("Web Share API not supported", "warning");
+      }
+    } catch (error) {
+      console.error("Error sharing document:", error);
+    }
+  };
   return (
     <>
       <Popup hideClose isOpen={isOpen}>
@@ -24,6 +37,7 @@ const SharePopup = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                onClick={handleShare}
               >
                 <WhatsApp />
                 <span>Whatsapp</span>
@@ -31,6 +45,7 @@ const SharePopup = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                onClick={handleShare}
               >
                 <Telegram />
                 <span>Telegram</span>
@@ -38,6 +53,7 @@ const SharePopup = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                onClick={handleShare}
               >
                 <Image src="/mail.svg" alt="" height={44} width={44} />
                 <span>Gmail</span>
@@ -45,6 +61,7 @@ const SharePopup = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                onClick={handleShare}
               >
                 <More />
                 <span>More</span>

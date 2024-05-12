@@ -33,7 +33,7 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
   const [showPopover, setShowPopover] = useState(false);
   const [share, setShare] = useState(false);
   const [deletePop, setDeletePop] = useState(false);
-
+  console.log({ document });
   const togglePopover = () => {
     setShowPopover(!showPopover);
   };
@@ -101,7 +101,11 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
         onShare={() => setShare(true)}
       />
 
-      <SharePopup isOpen={share} onClose={() => setShare(false)} />
+      <SharePopup
+        isOpen={share}
+        onClose={() => setShare(false)}
+        url={document?.url}
+      />
       <DeletePopup isOpen={deletePop} onClose={handleDelete} />
     </div>
   );
