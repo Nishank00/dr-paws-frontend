@@ -125,6 +125,7 @@ const Form = () => {
   const getServices = () => {
     MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
       .then((response) => {
+        console.log("service response", response);
         if (response.data.status) {
           setServices(
             response.data.data.map((item) => ({
@@ -309,8 +310,6 @@ const Form = () => {
     );
   };
 
-  console.log("doctors", doctors);
-
   const renderPage = () => {
     return (
       <>
@@ -380,14 +379,12 @@ const Form = () => {
     );
   }, []);
 
-  console.log("services", services);
-
   useEffect(() => {
     getPets();
   }, [user_id]);
 
   useEffect(() => {
-    if (pets.length > 0) getServices();
+    getServices();
   }, [pets]);
 
   useEffect(() => {

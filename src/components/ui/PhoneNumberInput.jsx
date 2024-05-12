@@ -17,6 +17,7 @@ const PhoneNumberInput = ({
 
   const handlePhoneNumberChange = (e) => {
     const phoneNumber = e.target.value;
+    if (phoneNumber.length > 10) return;
     onPhoneNumberChange(phoneNumber);
   };
 

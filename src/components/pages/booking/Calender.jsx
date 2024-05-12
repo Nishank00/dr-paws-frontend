@@ -89,6 +89,7 @@ const Calendar = ({
 
   const renderCalendar = () => {
     const days = daysInMonth(currentMonth);
+    const today = new Date(); // Get today's date
 
     return (
       <div className="grid grid-cols-7 gap-1 mb-10 bg-primary4 text-primary">
@@ -127,6 +128,11 @@ const Calendar = ({
               date &&
               date.toDateString() === selectedDate.toDateString()
                 ? "bg-primary text-white rounded-full"
+                : ""
+            } ${
+              // Highlight today's date
+              date && date.toDateString() === today.toDateString()
+                ? "bg-primary text-white rounded-full" // Add your highlight style here
                 : ""
             }`}
           >

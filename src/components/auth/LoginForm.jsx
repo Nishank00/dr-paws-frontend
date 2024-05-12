@@ -14,11 +14,13 @@ import {
   setUserSession,
   setUserLoggedIn,
 } from "@/store/features/userSession/userSessionSlice";
+import { useRouter } from "next/navigation";
 
-const LoginForm = ({ onSuccess, signUpClicked }) => {
+const LoginForm = ({ onSuccess, signUpClicked, route }) => {
   // Variables
   const dispatch = useDispatch();
   const showToast = useToast();
+  const router = useRouter();
   const { startLoading, stopLoading } = useLoader();
   const [message, setMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -104,6 +106,7 @@ const LoginForm = ({ onSuccess, signUpClicked }) => {
         dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
         getUserData();
         onSuccess();
+        if (route) router.push(route);
         return showToast(response.data.message, "success");
       })
       .catch((error) => {

@@ -55,10 +55,18 @@ const BookingButton = ({ className }) => {
       </div>
 
       <Popup isOpen={isLoginPopupOpen} onClose={closeLoginPopup}>
-        <LoginForm onSuccess={closeLoginPopup} signUpClicked={signUpClicked} />
+        <LoginForm
+          onSuccess={closeLoginPopup}
+          route={"/booking"}
+          signUpClicked={signUpClicked}
+        />
       </Popup>
 
-      <Popup isOpen={isRegisterPopupOpen} onClose={closeRegisterPopup}>
+      <Popup
+        isOpen={isRegisterPopupOpen}
+        route={"/booking"}
+        onClose={closeRegisterPopup}
+      >
         <RegisterForm
           onSuccess={closeRegisterPopup}
           loginClicked={loginClicked}
