@@ -34,14 +34,15 @@ const MembershipCardNew = ({
           />
 
           <h3 className="text-xl font-custom-roca">{membership?.title}</h3>
-          <p className="text-sm">{membership?.description}</p>
+          <p className="text-sm sm:max-h-10 md:max-h-10  ">{membership?.description}</p>
         </div>
+        <div className="md:pt-20 sm:pt-10">
         <p className="text-sm font-bold">Includes:</p>
-
-        <div className="flex flex-col gap-4 h-full">
+        </div>
+        <div className="flex flex-col   gap-4 h-full">
           {membership?.membership_items?.map((membership_item, index) => (
             <div
-              className="flex underline items-center gap-2"
+              className="flex border-b-2  border-x-primary2 py-4 items-center gap-2"
               key={membership?.title + index}
             >
               <img src={`/membership/${membership.item_icon}`} alt="" />
