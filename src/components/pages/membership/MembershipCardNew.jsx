@@ -22,10 +22,10 @@ const MembershipCardNew = ({
   return (
     <>
       <div
-        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col gap-5 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg  `}
+        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col gap-5 bg-primary3 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg  `}
       >
         {/* Header */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col  gap-2">
           <img
             src={`/membership/${membership?.image}`}
             alt=""
