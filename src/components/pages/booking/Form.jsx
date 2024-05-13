@@ -54,12 +54,71 @@ const Form = () => {
     }
   };
   const closeOTPPopup = () => setOTPPopupOpen(false);
+
   const getPets = () => {
     PetService.getPetsByUserId(user_id)
       .then((response) => {
-        if (response.data.status) setPets(response.data.data);
+        if (!response.data.status)
+          return showToast(response.data.message, "warning");
+        console.log(response);
+        setPets(response.data.data);
+        setServices(
+          services.map((item) => ({
+            ...item,
+            pets: response.data.data.map((pet) => ({
+              ...pet,
+              isSelected: false,
+            })),
+          }))
+        );
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        return showToast(error.message, "error");
+      });
+  };
+
+  console.log("getted pets", pets);
+
+  const fetchData = async () => {
+    try {
+      // Fetch pets
+      const petResponse = await PetService.getPetsByUserId(user_id);
+      if (!petResponse.data.status) {
+        showToast(petResponse.data.message, "warning");
+      } else {
+        // Check if pet data is empty, if so, refetch
+        if (petResponse.data.data.length === 0) {
+          await refetchPets();
+        } else {
+          console.log(petResponse.data.data);
+          setPets(petResponse.data.data);
+        }
+      }
+
+      // Fetch services
+      const serviceResponse = await MasterService.getMastersWithChildsByCode({
+        code: "SERVICE",
+      });
+      console.log("service response", serviceResponse);
+      if (serviceResponse.data.status) {
+        setServices(
+          serviceResponse.data.data.map((item) => ({
+            ...item,
+            is_checked: false,
+            pets: petResponse.data.data.map((pet) => ({
+              ...pet,
+              isSelected: false,
+            })),
+          }))
+        );
+      }
+    } catch (error) {
+      showToast(error.message, "error");
+    }
+  };
+
+  const refetchPets = async () => {
+    await fetchData();
   };
 
   const getClinics = () => {
@@ -122,22 +181,22 @@ const Form = () => {
     }
   };
 
-  const getServices = () => {
-    MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
-      .then((response) => {
-        console.log("service response", response);
-        if (response.data.status) {
-          setServices(
-            response.data.data.map((item) => ({
-              ...item,
-              is_checked: false,
-              pets: pets.map((pet) => ({ ...pet, isSelected: false })),
-            }))
-          );
-        }
-      })
-      .catch((error) => console.log(error.message));
-  };
+  // const getServices = () => {
+  //   MasterService.getMastersWithChildsByCode({ code: "SERVICE" })
+  //     .then((response) => {
+  //       console.log("service response", response);
+  //       if (response.data.status) {
+  //         setServices(
+  //           response.data.data.map((item) => ({
+  //             ...item,
+  //             is_checked: false,
+  //             pets: pets.map((pet) => ({ ...pet, isSelected: false })),
+  //           }))
+  //         );
+  //       }
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // };
 
   const otpConfirmed = (otp) => {
     verifyBookingOTP(otp);
@@ -380,12 +439,8 @@ const Form = () => {
   }, []);
 
   useEffect(() => {
-    getPets();
+    fetchData();
   }, [user_id]);
-
-  useEffect(() => {
-    getServices();
-  }, [pets]);
 
   useEffect(() => {
     if (id && !appointment && services && services.length > 0) getAppointment();
