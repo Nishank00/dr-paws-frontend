@@ -59,7 +59,7 @@ const DoctorProfileCard = ({
         </div>
         <div
           onClick={() => setShowPopup(true)}
-          className="text-white text-base font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 self-center mt-8 px-8 py-2.5 rounded-3xl"
+          className="text-white text-base  font-bold whitespace-nowrap justify-center items-stretch bg-slate-500 self-center mt-8 mb-4 px-8 py-2.5 rounded-3xl"
         >
           View Profile
         </div>
