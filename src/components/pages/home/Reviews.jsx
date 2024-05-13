@@ -41,7 +41,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[0]?.reviewer_name || "Rahul Shah"}
+                {reviews?.[0]?.reviewer_name || "Rahul Shah , pet-parent to Choco"}
               </div>
             </span>
           </div>
@@ -60,7 +60,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[1]?.reviewer_name || "Rahul Shah"}
+                {reviews?.[1]?.reviewer_name || "Rahul Shah , pet-parent to choco"}
               </div>
             </span>
           </div>
@@ -72,7 +72,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[2]?.reviewer_name || "Rahul Shah"}
+                {reviews?.[2]?.reviewer_name || "Rahul Shah , pet-parent to choco"}
               </div>
             </span>
           </div>
@@ -103,7 +103,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-[21px] flex-col rounded-[50%]" />
               <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                Rahul Shah , pet-parent to Choco
               </div>
             </span>
           </span>
@@ -115,7 +115,7 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[21px] shrink-0 h-5 flex-col rounded-[50%]" />
               <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah
+                Rahul Shah , pet-perent to Choco
               </div>
             </span>
           </span>
