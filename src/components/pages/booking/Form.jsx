@@ -88,7 +88,7 @@ const Form = () => {
       } else {
         // Check if pet data is empty, if so, refetch
         if (petResponse.data.data.length === 0) {
-          await refetchPets();
+          console.log(petResponse);
         } else {
           console.log(petResponse.data.data);
           setPets(petResponse.data.data);
