@@ -41,7 +41,7 @@ const MembershipCardNew = ({
         <div className="flex flex-col gap-4 h-full">
           {membership?.membership_items?.map((membership_item, index) => (
             <div
-              className="flex items-center gap-2"
+              className="flex underline items-center gap-2"
               key={membership?.title + index}
             >
               <img src={`/membership/${membership.item_icon}`} alt="" />
