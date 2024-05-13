@@ -48,7 +48,7 @@ const ImageTextHeader = ({
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium w-full lg:text-[33px] lg:w-[80%] text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-full lg:text-[33px] text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >
