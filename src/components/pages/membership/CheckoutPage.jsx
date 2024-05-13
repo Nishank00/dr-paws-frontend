@@ -189,10 +189,10 @@ const CheckoutPage = () => {
               <h2 className="text-3xl sm:text-4xl font-custom-roca">
                 Enter payment details
               </h2>
-              <div className="flexflex-col gap-1">
+              {/* <div className="flexflex-col gap-1">
                 <p className="text-sm">Sign in as</p>
                 <p className="text-sm">unicorn2023@gmail.com</p>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-col gap-6">
