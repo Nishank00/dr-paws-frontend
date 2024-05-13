@@ -44,13 +44,14 @@ const UserProfileDetails = () => {
           <div
             className="w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40 rounded-full"
             style={{
-              backgroundImage: `url(${
-                userData.profile_image
-                  ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
-                    "/" +
-                    userData.profile_image
-                  : "/profile/defaultProfile.png"
-              })`,
+              // backgroundImage: `url(${
+              //   userData.profile_image
+              //     ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
+              //       "/" +
+              //       userData.profile_image
+              //     : "/profile/defaultProfile.png"
+              // })`,
+              backgroundImage: `url(/profile/defaultProfile.png)`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "100% 100%",
               backgroundPosition: "center",

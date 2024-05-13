@@ -303,17 +303,24 @@ const UserForm = ({ closePopup, user_id }) => {
             onChange={formValueChanged}
           />
 
-          <MultipleSelect
+          {/* <MultipleSelect
             label={"City"}
             options={cities}
             optionLabel="name"
             optionValue="city_id"
             onSelect={citySelected}
             selectedValue={userData.city_id}
+          /> */}
+
+          <TextInput
+            placeholder={"City / Town / Village"}
+            name={"city"}
+            value={userData.city_id}
+            onChange={formValueChanged}
           />
 
           <TextInput
-            placeholder={"Pin code"}
+            placeholder={"Pin Code"}
             name={"pin_code"}
             value={userData.pin_code}
             onChange={formValueChanged}

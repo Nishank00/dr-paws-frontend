@@ -88,13 +88,11 @@ const PetsPage = () => {
     <>
       <div className="flex items-center justify-between text-secondary font-custom-open-sans mb-4">
         <h3 className="text-lg">Your Pets</h3>
-        <span
-          className="flex text-xs hover:font-semibold cursor-pointer"
+        <Button
+          label="+&nbsp;&nbsp;Add Pet"
+           className="w-fit"
           onClick={openPetForm}
-        >
-          <img src="/pets/plus.svg" alt="+" loading="lazy" />
-          <span className="ml-2">Add Pet</span>
-        </span>
+        />
       </div>
       {pets && pets.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
