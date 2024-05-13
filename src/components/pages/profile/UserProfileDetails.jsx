@@ -40,9 +40,9 @@ const UserProfileDetails = () => {
   return (
     <>
       <div className="text-primary px-4 flex gap-5">
-        <div className="w-2/12 self-center">
+        <div className="w-2/12   -ml-10 mr-11 self-center">
           <div
-            className="w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40 rounded-full"
+            className="w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40 border-primary2  border-4 rounded-full"
             style={{
               // backgroundImage: `url(${
               //   userData.profile_image
@@ -60,7 +60,7 @@ const UserProfileDetails = () => {
         </div>
 
         <div className="w-8/12 flex flex-col gap-3">
-          <h4 className="text-xl sm:text-3xl text-secondary font-custom-roca">
+          <h4 className="text-xl sm:text-3xl text-secondary capitalize  font-custom-roca" style={{}}>
             {userData.full_name || "Not Available"}
           </h4>
 
@@ -72,10 +72,10 @@ const UserProfileDetails = () => {
                 loading="lazy"
                 className="sm:hidden"
               />
-              <p className="hidden sm:block text-secondary text-sm font-custom-open-sans">
+              <p className="hidden sm:block pt-6 text-secondary text-sm font-custom-open-sans">
                 Contact No
               </p>
-              <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs pt-5 sm:text-lg font-semibold font-custom-open-sans">
                 {userData.phone ? userData.phone : "Not Available"}
               </p>
             </div>
@@ -85,12 +85,12 @@ const UserProfileDetails = () => {
                 src="/profile/sms.svg"
                 alt=" "
                 loading="lazy"
-                className="sm:hidden"
+                className="sm:hidden "
               />
-              <p className="hidden sm:block text-secondary text-sm font-custom-open-sans">
+              <p className="hidden sm:block text-secondary pt-6 text-sm font-custom-open-sans">
                 Email
               </p>
-              <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs sm:text-lg pt-5 font-semibold font-custom-open-sans">
                 {userData.email || "Not Available"}
               </p>
             </div>
@@ -102,10 +102,10 @@ const UserProfileDetails = () => {
                 loading="lazy"
                 className="sm:hidden"
               />
-              <p className="hidden sm:block text-secondary text-sm font-custom-open-sans">
+              <p className="hidden sm:block text-secondary text-sm pt-6 font-custom-open-sans">
                 Address
               </p>
-              <p className="text-primary text-xs sm:text-lg font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs sm:text-lg w-60 pt-5 font-semibold font-custom-open-sans">
                 {`${userData?.address || ""} ${
                   userData?.address_line_1 || ""
                 } ${userData?.address_line_2 || ""}, ${userData?.city || ""}, ${
