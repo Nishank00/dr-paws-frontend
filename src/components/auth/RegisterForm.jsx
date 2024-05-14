@@ -41,7 +41,7 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
     AuthService.sendRegisterOTP(payload)
       .then((response) => {
         stopLoading();
-        console.log("response", response);
+        console.log("register otp", response.data.data.otp);
         if (!response.data.status) setMessage(response.data.message);
       })
       .catch((error) => {
