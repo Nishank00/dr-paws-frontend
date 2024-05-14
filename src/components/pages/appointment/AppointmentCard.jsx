@@ -142,9 +142,9 @@ const AppointmentCard = ({ appointment = {} }) => {
 
       <div className="flex items-center justify-end mt-3">
         <Button
-          color="primary4"
+          // color="primary4"
           label="View Details"
-          className="w-auto bg-inherit text-xs text-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
+          className="w-auto bg-inherit text-xs text-white bg-secondary border-2 border-secondary hover:text-white hover:bg-secondary px-6 py-2"
           onClick={() => router.push(`/appointments/${appointment.id}`)}
         />
       </div>

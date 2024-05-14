@@ -22,10 +22,10 @@ const MembershipCardNew = ({
   return (
     <>
       <div
-        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col gap-5 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg  `}
+        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col gap-5 bg-primary3 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg  `}
       >
         {/* Header */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col  gap-2">
           <img
             src={`/membership/${membership?.image}`}
             alt=""
@@ -34,14 +34,15 @@ const MembershipCardNew = ({
           />
 
           <h3 className="text-xl font-custom-roca">{membership?.title}</h3>
-          <p className="text-sm">{membership?.description}</p>
+          <p className="text-sm sm:max-h-10 md:max-h-10  ">{membership?.description}</p>
         </div>
+        <div className="md:pt-20 sm:pt-10">
         <p className="text-sm font-bold">Includes:</p>
-
-        <div className="flex flex-col gap-4 h-full">
+        </div>
+        <div className="flex flex-col   gap-4 h-full">
           {membership?.membership_items?.map((membership_item, index) => (
             <div
-              className="flex items-center gap-2"
+              className="flex border-b-2  border-x-primary2 py-4 items-center gap-2"
               key={membership?.title + index}
             >
               <img src={`/membership/${membership.item_icon}`} alt="" />

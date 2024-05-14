@@ -22,7 +22,7 @@ const ServicePage = () => {
           buttonColor={"secondary"}
           buttonUrl={"/booking"}
           header={
-            <p className="leading-none">
+            <p className="leading-normal !w-full">
               We{`'`}re here, whatever your friend needs
             </p>
           }

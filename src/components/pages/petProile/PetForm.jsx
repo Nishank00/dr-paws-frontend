@@ -52,8 +52,19 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     if (name === "date_of_birth") {
       const today = new Date();
       const birthDate = new Date(value);
-      const age = today.getFullYear() - birthDate.getFullYear();
-      updatedFormData["age"] = age;
+      if (
+        birthDate.getMonth() > today.getMonth() ||
+        (birthDate.getMonth() === today.getMonth() &&
+          birthDate.getDate() > today.getDate())
+      ) {
+        // If the birthday hasn't happened yet this year, subtract 1 from the age.
+        const age = today.getFullYear() - birthDate.getFullYear();
+        updatedFormData["age"] = age;
+      } else {
+        // If the birthday has happened this year or has already passed, use the current age.
+        const age = today.getFullYear() - birthDate.getFullYear() -1;
+        updatedFormData["age"] = age;
+      }
       setFormData(updatedFormData);
     }
   };

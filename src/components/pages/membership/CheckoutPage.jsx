@@ -189,10 +189,10 @@ const CheckoutPage = () => {
               <h2 className="text-3xl sm:text-4xl font-custom-roca">
                 Enter payment details
               </h2>
-              <div className="flexflex-col gap-1">
+              {/* <div className="flexflex-col gap-1">
                 <p className="text-sm">Sign in as</p>
                 <p className="text-sm">unicorn2023@gmail.com</p>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-col gap-6">
@@ -261,7 +261,7 @@ const CheckoutPage = () => {
 
               <Checkbox
                 label={
-                  "By clicking on ‘Subscribe’ you accept Dr. Paws's Terms & Conditions. We will process your personal data in accordance with Design anything’s Privacy Notice."
+                  "By clicking on ‘Subscribe’ you accept Dr. Paws's Terms & Conditions. You also agree to receive communications by WhatsApp related to your membership."
                 }
                 value={paymentDetails.subscribed}
                 onChange={toggleSubscribed}
@@ -313,7 +313,7 @@ const CheckoutPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <h6 className="text-xl">Renewal Terms</h6>
 
             <div className="flex flex-col gap-3">
@@ -337,7 +337,7 @@ const CheckoutPage = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
