@@ -14,7 +14,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
     );
   }, [services]);
   return (
-    <div className="bg-primary4 relative rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadoe-lg">
+    <div className="bg-primary4 relative rounded-md cursor-pointer shadow-md flex flex-col transition ease-in-out delay-500 hover:shadow-lg">
       <div
         onClick={() => router.push(`/clinics/overview/${id}`)}
         className="rounded-t-md w-full h-[92px] md:h-[240px] flex justify-end"
@@ -44,7 +44,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
           Check-Ups | Surgery | Diagnostics | Grooming | Retail
         </p>
       </div>
-      <BookingButton className="text-center text-white text-xs md:text-sm h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md" />
+      <BookingButton className="text-center text-white text-xs md:text-sm transition h-[30px] md:h-[50px] font-bold font-custom-open-sans bg-secondary hover:bg-primary flex justify-center items-center rounded-b-md" />
     </div>
   );
 };
