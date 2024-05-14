@@ -74,7 +74,7 @@ export default function VerticalTabs() {
             serviceList.map((service, index) => (
               <button
                 key={service.name + index}
-                className={`font-custom-roca tab-button ${
+                className={`font-custom-roca tab-button  ${
                   activeTab === index && "active-tab"
                 } ${activeTab === index ? activeButonStyle : buttonStyle}`}
                 onClick={() => handleTabClick(index, service.id, service.name)}

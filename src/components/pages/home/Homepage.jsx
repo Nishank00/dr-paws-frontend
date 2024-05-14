@@ -129,11 +129,17 @@ const Homepage = () => {
             About Dr. Paws
           </p>
         </div>
+
+
+        
         {DropdownData1.map((item, index) => (
+          
+          
           <Dropdown key={index} title={item.title}>
+            
             <p
               style={{ fontFamily: "Open Sans, sans-serif" }}
-              className="text-slate-700 text-left font-custome-inter text-sm leading-7 tracking-tight self-center max-md:max-w-full"
+              className="text-slate-700 text-left font-custome-inter text-sm leading-7 tracking-tight self-center  max-md:max-w-full"
             >
               {item.content}
             </p>
