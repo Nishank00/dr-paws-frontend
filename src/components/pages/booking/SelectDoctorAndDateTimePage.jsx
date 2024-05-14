@@ -30,6 +30,8 @@ const SelectDoctorAndDateTimePage = ({
     await getSelectedDoctorClinicData(date);
   };
 
+  console.log("availableDays", availableDays);
+
   const slotClicked = (availableSlot) => {
     setAvailableSlots(
       availableSlots.map((slot) => {
@@ -94,8 +96,10 @@ const SelectDoctorAndDateTimePage = ({
     return 0;
   });
 
-  const isDateAvailable = (selectedDate) => {
-    return availableDays.includes(moment(selectedDate).format("YYYY-MM-DD"));
+  const isDayAvailable = (selectedDate) => {
+    const selectedDay = moment(selectedDate).format("dddd");
+    console.log("selectedDay", selectedDay);
+    return availableDays.includes(selectedDay);
   };
 
   useEffect(() => {
@@ -106,6 +110,7 @@ const SelectDoctorAndDateTimePage = ({
   useEffect(() => {
     // console.log({ doctorClinicTimings });
     let { availableDays = [] } = doctorClinicTimings;
+    console.log("doctorClinicTimings", doctorClinicTimings);
     setAvailableDays(availableDays);
   }, [doctorClinicTimings]);
 
@@ -192,7 +197,7 @@ const SelectDoctorAndDateTimePage = ({
                 <div className="text-primary font-semibold">
                   {selectedDate && (
                     <>
-                      {isDateAvailable(selectedDate) ? (
+                      {isDayAvailable(selectedDate) ? (
                         <h5 className="text-black mb-5">
                           Available timeslots for{" "}
                           <span className="text-primary">
