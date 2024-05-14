@@ -113,6 +113,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           }
         })
         .catch((error) => console.log(error.message));
+      localStorage.removeItem("isNew");
     } else {
       const missingFields = requiredFields.filter((field) => !formData[field]);
       const missingFieldsMessage = `Missing fields: ${missingFields.join(
