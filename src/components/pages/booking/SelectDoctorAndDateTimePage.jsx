@@ -207,7 +207,7 @@ const SelectDoctorAndDateTimePage = ({
                       ) : (
                         <p className="text-danger">
                           Sorry, no available timeslots for this day. We do
-                          welcome walk-ins but {`can't`}guarantee an appointment
+                          welcome walk-ins but {`can't `}guarantee an appointment
                           time.
                         </p>
                       )}
