@@ -9,7 +9,7 @@ const BannerPetCard = ({
   const router = useRouter();
   return (
     <>
-      <div className="   border-blue-500   w-[100px] h-[130px] md:w-[200px] md:h-[250px] flex flex-col justify-between text-center bg-white rounded-2xl">
+      <div className="   border-blue-500 hover:shadow-lg transition   w-[100px] h-[130px] md:w-[200px] md:h-[250px] flex flex-col justify-between text-center bg-white rounded-2xl">
         <h3 className="text-secondary font-custom-roca mt-2  text-sm md:text-lg font-semibold">
           {pet_type}
         </h3>
