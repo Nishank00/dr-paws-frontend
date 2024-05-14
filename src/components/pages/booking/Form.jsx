@@ -54,6 +54,7 @@ const Form = () => {
     }
   };
   const closeOTPPopup = () => setOTPPopupOpen(false);
+  const isNew = localStorage.getItem("isNew");
 
   const getPets = () => {
     PetService.getPetsByUserId(user_id)
@@ -79,6 +80,8 @@ const Form = () => {
 
   console.log("getted pets", pets);
 
+  console.log(Boolean(!isNew));
+
   const fetchData = async () => {
     try {
       // Fetch pets
@@ -86,14 +89,17 @@ const Form = () => {
       if (!petResponse.data.status) {
         showToast(petResponse.data.message, "warning");
       } else {
-        // Check if pet data is empty, if so, refetch
-        if (petResponse.data.data.length === 0) {
-          console.log(petResponse);
-        } else {
-          console.log(petResponse.data.data);
-          setPets(petResponse.data.data);
+        if (Boolean(!isNew)) {
+          if (petResponse.data.data.length === 0) {
+            await refetchPets();
+          } else {
+            console.log(petResponse.data.data);
+            setPets(petResponse.data.data);
+          }
         }
       }
+
+      console.log("petResponse", petResponse);
 
       // Fetch services
       const serviceResponse = await MasterService.getMastersWithChildsByCode({
@@ -111,11 +117,14 @@ const Form = () => {
             })),
           }))
         );
+        console.log("first");
       }
     } catch (error) {
       showToast(error.message, "error");
     }
   };
+
+  console.log(services);
 
   const refetchPets = async () => {
     await fetchData();

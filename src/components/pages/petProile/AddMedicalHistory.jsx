@@ -105,7 +105,7 @@ const AddMedicalHistory = () => {
         }
       })
       .catch((err) => {
-        uploading.value = false;
+        // uploading.value = false;
         console.log("err in upload=>", err);
       });
   };

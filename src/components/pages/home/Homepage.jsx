@@ -82,6 +82,7 @@ const Homepage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
           <ClinicCard key={"clinic" + i} clinic={clinic} />
+          
         ))}
       </div>
       <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">

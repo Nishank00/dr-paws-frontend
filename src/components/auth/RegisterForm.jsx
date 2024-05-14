@@ -41,7 +41,7 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
     AuthService.sendRegisterOTP(payload)
       .then((response) => {
         stopLoading();
-        console.log("response", response);
+        console.log("register otp", response.data.data.otp);
         if (!response.data.status) setMessage(response.data.message);
       })
       .catch((error) => {
@@ -99,6 +99,7 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
       if (!response.data.status) {
         setMessage(response.data.message);
       }
+      localStorage.setItem("isNew", "true");
       TokenService.saveToken(response.data.data.accessToken);
       dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
       await getUserData();
@@ -185,14 +186,15 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
                 onClick={handleNext}
               />
 
-              <div className="flex gap-2 mt-6">
+              <div className="flex gap-2 justify-center mt-6 ">
                 <input
                   type="checkbox"
                   value={form.is_whatsapp_updates}
                   onClick={(e) => handleFormCheckbox(e)}
+                  className=""
                 />
-                <span className="text-sm text-start">
-                  Send me details about my pet’s health on WhatsApp
+                <span className="text-xs  ">
+                  Notify me about my pet’s health on WhatsApp
                 </span>
               </div>
             </div>

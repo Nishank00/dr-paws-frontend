@@ -8,6 +8,8 @@ const TextInput = ({
   onChange,
   name,
   classes = "",
+  readonly = false,
+  max,
 }) => {
   const handleChange = (e) => {
     onChange(e);
@@ -26,11 +28,13 @@ const TextInput = ({
         value={value}
         onChange={handleChange}
         name={name}
+        readOnly={readonly}
         className={
           "text-primary mt-1 p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 " +
           classes
         }
         min={0}
+        max={max}
       />
     </div>
   );

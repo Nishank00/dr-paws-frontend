@@ -41,6 +41,7 @@ const LoginForm = ({ onSuccess, signUpClicked, route }) => {
       .then((response) => {
         stopLoading();
         setMessage("");
+        console.log("login otp",response.data.data.otp)
         if (!response.data.status) {
           setCurrentPage(1);
           setMessage(response.data.message);

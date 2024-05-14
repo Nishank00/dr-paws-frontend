@@ -49,7 +49,7 @@ const NewBanner = () => {
           Book a visit now. Who will we be meeting?
         </p>
 
-        <div className="flex gap-4 w-full h-[220px]">
+        <div className="flex gap-4 w-full cursor-pointer mb-9 h-[220px]">
           <BannerPetCard
             pet_type="Dog"
             width={"100px"}

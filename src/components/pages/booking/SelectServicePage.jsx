@@ -38,7 +38,7 @@ const SelectServicePage = ({
               Select Services
             </h2>
             <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
-              Choose from the our services
+              Choose from our services
             </p>
           </div>
           {(!services || services.length == 0) && (

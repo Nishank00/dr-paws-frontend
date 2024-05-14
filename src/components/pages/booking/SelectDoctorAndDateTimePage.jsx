@@ -24,144 +24,6 @@ const SelectDoctorAndDateTimePage = ({
   const [availableDays, setAvailableDays] = useState([]);
   const [doctorClinicTimings, setDoctorClinicTimings] = useState([]);
   const showToast = useToast();
-  const dateSelected1 = async (date) => {
-    await getSelectedDoctorClinicData(date);
-    const selectedDay = date.getDay();
-
-    const { opening_time, closing_time } =
-      selectedClinic.clinic_timings &&
-      selectedClinic.clinic_timings.filter(
-        (day) => day.day_value == selectedDay
-      )[0];
-
-    const openingMoment = moment(opening_time, "HH:mm:ss");
-    const closingMoment = moment(closing_time, "HH:mm:ss");
-    const timeArray = [];
-
-    let currentTime = moment(openingMoment);
-    while (currentTime <= closingMoment) {
-      const formattedTime = currentTime.format("hh:mma");
-      const sqlStartTime = currentTime.format("HH:mm:ss");
-      const sqlEndTime = currentTime.add(1, "hour").format("HH:mm:ss");
-
-      if (!doctorClinicTimings.doctorClinicData.length)
-        return showToast("No timings of doctor found");
-
-      const [filteredDoctorData] = doctorClinicTimings.doctorClinicData.filter(
-        (doctorObj) => {
-          return doctorObj.day_number == selectedDay;
-        }
-      );
-      // console.log({ filteredDoctorData, selectedDay });
-      if (!filteredDoctorData)
-        return showToast("Doctor timings not found for this day");
-
-      let doctorAvailableTimes = filteredDoctorData.doctor_timing.split(",");
-
-      if (!doctorAvailableTimes.length)
-        return showToast("Doctor timings not found");
-      // console.log({ doctorAvailableTimes });
-
-      // used for loop to break from timings array if the doctor is available in shifts.i.e.10-11,15-18
-      for (let drIndex = 0; drIndex < doctorAvailableTimes.length; drIndex++) {
-        const drObj = doctorAvailableTimes[drIndex];
-        let drStartTime = moment(drObj.split("-")?.[0], "HH:mm");
-        let drEndTime = moment(drObj.split("-")?.[1], "HH:mm");
-        let isTimeValid = moment(formattedTime, "hh:mma").isBetween(
-          drStartTime,
-          drEndTime,
-          null,
-          "[)"
-        );
-        // console.log(
-        //   isTimeValid,
-        //   formattedTime,
-        //   drStartTime,
-        //   drEndTime,
-        //   date,
-        //   "isDate",
-        //   moment(formattedTime, "hh:mma").isAfter(moment(date))
-        // );
-        // checks if date is between the selected range and checks if formatted time is after the current time and less than the formatted time
-
-        // for (
-        //   let existingSlotIndex = 0;
-        //   existingSlotIndex < doctorClinicTimings?.existingAppointments.length;
-        //   existingSlotIndex++
-        // ) {
-        //   const bookedSlot =
-        //     doctorClinicTimings?.existingAppointments[existingSlotIndex][
-        //       "booked_slot"
-        //     ];
-        //   let bookedSlotStartTime = moment(bookedSlot.split("-")?.[0], "HH:mm");
-        //   let bookedSlotEndTime = moment(bookedSlot.split("-")?.[1], "HH:mm");
-        //   isTimeValid = moment(formattedTime, "hh:mma").isBetween(
-        //     bookedSlotStartTime,
-        //     bookedSlotEndTime,
-        //     null,
-        //     "[)"
-        //   );
-        //   if (isTimeValid) {
-        //     isTimeValid = false;
-        //     break;
-        //   }
-        // }
-        if (
-          isTimeValid &&
-          (moment(formattedTime, "hh:mma").isAfter(moment()) ||
-            !moment(formattedTime, "hh:mma").isAfter(moment(date)))
-        ) {
-          if (isTimeValid) {
-            timeArray.push({
-              formattedTime,
-              sqlStartTime,
-              sqlEndTime,
-              selected: false,
-            });
-            break;
-          }
-        }
-      }
-      setSelectedDate(date);
-
-      // currentTime.add(1, "hour");
-    }
-
-    let bookingFreeSlots = [];
-    if (doctorClinicTimings?.existingAppointments?.length) {
-      timeArray.forEach((availableSlotObj) => {
-        for (
-          let bookedSlotsIndex = 0;
-          bookedSlotsIndex < doctorClinicTimings?.existingAppointments.length;
-          bookedSlotsIndex++
-        ) {
-          const bookedSlotObj =
-            doctorClinicTimings?.existingAppointments[bookedSlotsIndex];
-          let bookedStartTime = moment(
-            bookedSlotObj?.booked_slot.split("-")?.[0],
-            "HH:mm"
-          );
-          let bookedEndTime = moment(
-            bookedSlotObj?.booked_slot.split("-")?.[1],
-            "HH:mm"
-          );
-          let isTimeValid = moment(
-            availableSlotObj.formattedTime,
-            "hh:mma"
-          ).isBetween(bookedStartTime, bookedEndTime, null, "[)");
-
-          if (!isTimeValid) {
-            bookingFreeSlots.push(availableSlotObj);
-            break;
-          }
-        }
-      });
-    } else {
-      bookingFreeSlots = [...timeArray];
-    }
-
-    setAvailableSlots(bookingFreeSlots);
-  };
 
   const dateSelected = async (date) => {
     setSelectedDate(date);
@@ -277,6 +139,28 @@ const SelectDoctorAndDateTimePage = ({
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+              {/* <div
+                onClick={handleClick}
+                className={`p-3 flex flex-col items-center bg-primary4 rounded-lg ${
+                  doctor.selected ? "ring-4 ring-secondary" : ""
+                }`}
+              >
+                <div
+                  className="rounded-full h-32 w-32"
+                  style={{
+                    backgroundImage:
+                      "url(" +
+                      "https://cdn.builder.io/api/v1/image/assets/TEMP/bc03f712edd079ab8fb0ab420cf52601f4bd93043f273e2eb179548e7deb4138?apiKey=22a36eade5734692978208fb0d2f5c62&" +
+                      ")",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                />
+                <div className="p-4 text-primary">
+                  <h4 className="font-bold">{doctor.doctor_name}</h4>
+                </div>
+              </div> */}
               {sortedDoctors.map((doctor, i) => (
                 <DoctorSelect
                   key={"doctor" + i}
