@@ -1,3 +1,5 @@
+import { Transition } from "@headlessui/react";
+
 export const ImageTextHeaderData = [
   {
     imageUrl: "/home/grid_pic_one.png",
@@ -41,7 +43,8 @@ export const ImageTextHeaderData = [
     text: "We’re pet-lovers first and business-people second. No over-testing, prescribing unnecessary medicines, or pushing procedures that are not needed",
     imagePosition: "left",
     buttonColor: "secondary",
-    buttonText: "Book a Visit",
+    buttonText: "Book a visit",
+    
   },
   {
     imageUrl: "/home/grid_pic_six.png",
@@ -59,6 +62,7 @@ export const DropdownData1 = [
     title: "Which animals does Dr. Paws treat?",
     content:
       "We treat all small animals that can be considered as household pets. These include dogs, cats, small mammals (e.g. rabbits, guinea pigs), birds, and reptiles.",
+
   },
   {
     title: "Do you take walk-in appointments?",

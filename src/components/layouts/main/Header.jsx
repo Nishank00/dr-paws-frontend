@@ -54,7 +54,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => {
           {menuItems.map((menuItem, index) => (
             <div key={index} className="">
               <Link className="" href={menuItem.href}>
-                <span className="font-bold hover:text-gray-400 transition">{menuItem.text}</span>
+                <span className=" hover:text-gray-400 transition">{menuItem.text}</span>
               </Link>
             </div>
           ))}
