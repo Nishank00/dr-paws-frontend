@@ -55,7 +55,7 @@ const OrderSuccess = () => {
           <div className="  m-auto w-full  flex justify-center flex-col">
             <div className="">
               <h1 className="text-center text-primary font-custom-roca    text-2xl sm:text-4xl">
-                Thank You,{userValues?.full_name}!
+                Thank You, {userValues?.full_name}!
               </h1>
             </div>
             <p className="text-primary font-custom-open-sans text-xl m-auto">
