@@ -99,6 +99,7 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
       if (!response.data.status) {
         setMessage(response.data.message);
       }
+      localStorage.setItem("isNew", "true");
       TokenService.saveToken(response.data.data.accessToken);
       dispatch(setUserLoggedIn({ isUserLoggedIn: true }));
       await getUserData();
