@@ -26,7 +26,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
         }}
       >
         {clinic?.is_24_hr == "Y" ? (
-          <p className="text-primary px-2 h-7 absolute top-0 right-0 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
+          <p className="text-primary px-2 h-7 absolute -top-1 right-0 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
             24 Hours
           </p>
         ) : (
