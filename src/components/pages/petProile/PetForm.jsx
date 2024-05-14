@@ -5,10 +5,12 @@ import Select from "@/components/ui/Select";
 import PetService from "@/services/Pet.Service";
 import UploadProfile from "@/components/auth/UploadProfile";
 import { useToast } from "@/components/ui/ToastProvider";
+import moment from "moment";
 
 const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   // Variables
   const showToast = useToast();
+  const today = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = useState({
     pet_image: null,
     name: null,
@@ -50,21 +52,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
     }
 
     if (name === "date_of_birth") {
-      const today = new Date();
-      const birthDate = new Date(value);
-      if (
-        birthDate.getMonth() > today.getMonth() ||
-        (birthDate.getMonth() === today.getMonth() &&
-          birthDate.getDate() > today.getDate())
-      ) {
-        // If the birthday hasn't happened yet this year, subtract 1 from the age.
-        const age = today.getFullYear() - birthDate.getFullYear();
-        updatedFormData["age"] = age;
-      } else {
-        // If the birthday has happened this year or has already passed, use the current age.
-        const age = today.getFullYear() - birthDate.getFullYear() -1;
-        updatedFormData["age"] = age;
-      }
+      const dateOfBirth = moment(value);
+      updatedFormData["age"] = moment().diff(dateOfBirth, "years");
       setFormData(updatedFormData);
     }
   };
@@ -172,15 +161,17 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
         onSelect={selectPetType}
       />
 
-      <Select
-        name="breed"
-        value={formData.breed}
-        options={breeds}
-        optionLabel={"name"}
-        optionValue={"id"}
-        placeholder={"Breed"}
-        onSelect={selectBreed}
-      />
+      {breeds.length > 0 && (
+        <Select
+          name="breed"
+          value={formData.breed}
+          options={breeds}
+          optionLabel={"name"}
+          optionValue={"id"}
+          placeholder={"Breed"}
+          onSelect={selectBreed}
+        />
+      )}
 
       <div className="grid grid-cols-2 gap-x-2">
         <Select
@@ -199,25 +190,31 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           value={formData.date_of_birth}
           placeholder={"Date of Birth"}
           onChange={updateFormData}
+          max={today}
         />
 
         <TextInput
           type="number"
           name="age"
           value={formData.age}
+          readonly
           placeholder={"Age"}
-          onChange={updateFormData}
           classes="md:mb-4"
         />
 
-        <TextInput
-          type="number"
-          name="weight"
-          value={formData.weight}
-          placeholder={"Weight"}
-          onChange={updateFormData}
-          classes="md:mb-4"
-        />
+        <div className="relative md:mb-4 ">
+          <input
+            type="number"
+            name="weight"
+            value={formData.weight}
+            placeholder="Weight"
+            onChange={updateFormData}
+            className="text-primary p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 pr-10"
+          />
+          <span className="absolute top-1/2 bottom-1/2 right-0 flex items-center pr-3 pointer-events-none text-gray-500 text-sm">
+            kg
+          </span>
+        </div>
       </div>
 
       <div className="flex items-center justify-between gap-5">

@@ -24,6 +24,7 @@ const SelectDoctorAndDateTimePage = ({
   const [availableDays, setAvailableDays] = useState([]);
   const [doctorClinicTimings, setDoctorClinicTimings] = useState([]);
   const showToast = useToast();
+  
   const dateSelected1 = async (date) => {
     await getSelectedDoctorClinicData(date);
     const selectedDay = date.getDay();

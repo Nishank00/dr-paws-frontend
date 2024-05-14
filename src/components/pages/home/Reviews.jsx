@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 const Reviews = () => {
   const showToast = useToast();
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     async function getReviews() {
       try {
@@ -25,6 +26,7 @@ const Reviews = () => {
 
     getReviews();
   }, []);
+  
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
@@ -41,7 +43,9 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[0]?.reviewer_name || "Rahul Shah , pet-parent to Choco"}
+                {/* {reviews?.[0]?.reviewer_name ||
+                  "Rahul Shah , pet-parent to Choco"} */}
+                Rahul Shah , pet-parent to choco
               </div>
             </span>
           </div>
@@ -60,7 +64,8 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[1]?.reviewer_name || "Rahul Shah , pet-parent to choco"}
+                {/* {reviews?.[1]?.reviewer_name || "Rahul Shah , pet-parent to choco"} */}
+                Rahul Shah , pet-parent to choco
               </div>
             </span>
           </div>
@@ -72,7 +77,9 @@ const Reviews = () => {
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
-                {reviews?.[2]?.reviewer_name || "Rahul Shah , pet-parent to choco"}
+                {/* {reviews?.[2]?.reviewer_name ||
+                  "Rahul Shah , pet-parent to choco"} */}
+                Rahul Shah , pet-parent to choco
               </div>
             </span>
           </div>

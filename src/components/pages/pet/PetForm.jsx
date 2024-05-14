@@ -165,16 +165,17 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
         placeholder={"Type of Pet"}
         onSelect={selectPetType}
       />
-
-      <Select
-        name="breed"
-        selectedValue={formData.breed}
-        options={breeds}
-        optionLabel={"name"}
-        optionValue={"id"}
-        placeholder={"Breed"}
-        onSelect={selectBreed}
-      />
+      {breeds.lenght > 0 && (
+        <Select
+          name="breed"
+          selectedValue={formData.breed}
+          options={breeds}
+          optionLabel={"name"}
+          optionValue={"id"}
+          placeholder={"Breed"}
+          onSelect={selectBreed}
+        />
+      )}
 
       <div className="grid grid-cols-2 gap-x-2">
         <Select
