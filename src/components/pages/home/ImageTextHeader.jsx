@@ -35,7 +35,7 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "w-full h-[280px] lg:min-h-[300px] lg:max-w-[600px] lg:h-full rounded-md" +
+              "w-full h-[280px] lg:min-h-[300px]  lg:max-w-[600px] lg:h-full rounded-md" +
               (imagePosition == " left" ? "" : " lg:order-2 ") +
               " "
             }
@@ -48,7 +48,7 @@ const ImageTextHeader = ({
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium w-full lg:text-[33px] text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-[80%] lg:text-[33px] text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >
@@ -56,7 +56,7 @@ const ImageTextHeader = ({
                 </h2>
                 <p
                   className={
-                    "text-primary font-custom-open-sans text-sm mb-6 " +
+                    "text-primary w-[80%] font-custom-open-sans text-sm mb-6 " +
                     paragraphClass
                   }
                 >
