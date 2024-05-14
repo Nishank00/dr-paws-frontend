@@ -26,7 +26,7 @@ const Reviews = () => {
 
     getReviews();
   }, []);
-  
+
   return (
     <>
       <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
@@ -45,7 +45,7 @@ const Reviews = () => {
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[0]?.reviewer_name ||
                   "Rahul Shah , pet-parent to Choco"} */}
-                Rahul Shah , pet-parent to choco
+                Riya Patel , pet-parent to Simba
               </div>
             </span>
           </div>
@@ -65,7 +65,7 @@ const Reviews = () => {
               <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[1]?.reviewer_name || "Rahul Shah , pet-parent to choco"} */}
-                Rahul Shah , pet-parent to choco
+                Arjun Sharma, pet-parent to Luna
               </div>
             </span>
           </div>
@@ -79,7 +79,7 @@ const Reviews = () => {
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[2]?.reviewer_name ||
                   "Rahul Shah , pet-parent to choco"} */}
-                Rahul Shah , pet-parent to choco
+                Priya Gupta , pet-parent to Coco
               </div>
             </span>
           </div>
