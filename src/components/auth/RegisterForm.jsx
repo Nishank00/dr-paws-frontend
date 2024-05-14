@@ -185,14 +185,15 @@ const RegisterForm = ({ onSuccess, loginClicked, route }) => {
                 onClick={handleNext}
               />
 
-              <div className="flex gap-2 mt-6">
+              <div className="flex gap-2 justify-center mt-6 ">
                 <input
                   type="checkbox"
                   value={form.is_whatsapp_updates}
                   onClick={(e) => handleFormCheckbox(e)}
+                  className=""
                 />
-                <span className="text-sm text-start">
-                  Send me details about my pet’s health on WhatsApp
+                <span className="text-xs  ">
+                  Notify me about my pet’s health on WhatsApp
                 </span>
               </div>
             </div>
