@@ -5,7 +5,7 @@ import React from "react";
 const DoctorProfile = ({ selectedDoctor }) => {
   const router = useRouter();
   return (
-    <div className="bg-primary3 py-4 px-4 text-primary rounded-2xl flex flex-col md:flex-row items-center justify-center gap-5 w-full lg:w-[1040px] lg:h-[600px] overflow-scroll">
+    <div className="bg-primary3 py-4 px-4 text-primary  rounded-2xl flex flex-col md:flex-row items-center justify-center gap-5 w-full lg:w-[1040px] lg:h-[600px] overflow-scroll">
       <div className="flex">
         <div className="w-full md:w-3/5 flex flex-col gap-4">
           <h2 className="text-3xl md:text-4xl font-custom-roca">

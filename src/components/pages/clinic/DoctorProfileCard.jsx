@@ -14,7 +14,7 @@ const DoctorProfileCard = ({
 
   return (
     <>
-      <div className="justify-center bg-primary3 py-2 rounded-md items-stretch self-stretch flex max-w-[292px] flex-col px-10">
+      <div className="justify-center bg-primary3 py-2  rounded-md items-stretch self-stretch flex max-w-[292px] flex-col px-10">
         <img
           loading="lazy"
           srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/09d549f00f04a2e96834bdcb531b5cde36ef68afad46cc3a86dcc772c7d406ea?apiKey=22a36eade5734692978208fb0d2f5c62&"

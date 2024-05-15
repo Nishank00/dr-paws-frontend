@@ -66,7 +66,7 @@ const ProfilePopupUI = ({ selectedDoctor }) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="flex flex-col md:flex-row m-auto p-2 w-[80%] h-[400px] md:h-auto overflow-y-scroll pv-8 md:w-[950px] bg-white">
+    <div className="flex flex-col md:flex-row m-auto  w-[80%] h-[400px] md:h-auto  overflow-y-scroll pv-8 md:w-[950px] bg-white">
       <div className="w-full md:w-[55%] h-auto">
         <h1 className=" text-primary font-custom-roca font-bold text-4xl w-full">
           {selectedDoctor?.full_name}
