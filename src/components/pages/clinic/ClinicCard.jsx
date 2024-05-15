@@ -26,9 +26,9 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
         }}
       >
         {clinic?.is_24_hr == "Y" ? (
-          <p className="text-primary px-2 h-7 absolute top-1 right-1 rounded-t-md text-sm md:text-lg text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
-            24 Hours
-          </p>
+          <div className="text-primary px-2 h-7 absolute top-1 right-1 rounded-t-md text-sm md:text-base text-center font-bold font-custom-open-sans bg-primary4 rounded-lg flex items-center justify-center">
+            <Clock /> &nbsp; 24 Hours
+          </div>
         ) : (
           ""
         )}
@@ -50,3 +50,23 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
 };
 
 export default ClinicCard;
+
+const Clock = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-clock text-primary"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+};

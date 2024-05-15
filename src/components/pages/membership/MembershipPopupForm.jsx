@@ -262,7 +262,9 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             ))}
           </div>
 
-          <p className="text-sm font-bold">Total benefits worth ₹15,000</p>
+          <p className="text-sm font-bold">
+            Total benefits worth ₹{membership.id * 500}
+          </p>
         </div>
 
         <div className="flex items-center justify-end mt-10">

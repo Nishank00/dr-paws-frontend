@@ -30,6 +30,8 @@ const MembershipPage = () => {
         console.log(error);
       });
   };
+
+  console.log("memberships", memberships);
   useEffect(() => {
     getMemberships();
   }, []);
