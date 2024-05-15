@@ -1,6 +1,9 @@
 import SelectServiceItem from "@/components/pages/booking/SelectServiceItem";
 import Button from "@/components/ui/Button";
-import { LoaderProvider } from "@/components/ui/LoaderContext";
+import { Loader } from "lucide-react";
+
+
+
 
 const SelectServicePage = ({
   services = [],
@@ -42,14 +45,22 @@ const SelectServicePage = ({
               Choose from our services
             </p>
           </div>
-          {/* {(!services || services.length == 0) && (
-            <Button
-              label="Add Pet"
-              color="secondary"
-              onClick={openPopup}
-              className="px-4 py-2 rounded-full w-32 h-12 text-lg"
+          {(!services || services.length == 0) && (
+            // <Button
+            //   label="Add Pet"
+            //   color="secondary"
+            //   onClick={openPopup}
+            //   className="px-4 py-2 rounded-full w-32 h-12 text-lg"
+            // />
+
+            <div className="h-full w-full absolute top-[3rem] right-[0rem] touch-none flex items-center justify-center">
+
+            <Loader
+            className="h-6 w-6 text-muted-foreground animate-spin"
             />
-          )} */}
+            </div>
+          )}
+          
           
         </div>
 
