@@ -233,10 +233,10 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           </p>
         )} */}
 
-        <p className="text-lg">
+        {/* <p className="text-lg">
           for&nbsp;{" "}
           {services?.map((serviceObj) => serviceObj.service_name)?.join(", ")}
-        </p>
+        </p> */}
 
         <div className="flex items-center my-12">
           <div className="">

@@ -16,7 +16,7 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
-  isGroomingOnly = false,
+  
   selectedServicesData = [],
 }) => {
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
@@ -98,9 +98,9 @@ const SelectDoctorAndDateTimePage = ({
   });
 
   const isDayAvailable = (selectedDate) => {
-    if (isGroomingOnly) {
-      return true;
-    }
+  // if (isGroomingOnly) {
+    //   return true;
+    // }
     const selectedDay = moment(selectedDate).format("dddd");
     console.log("selectedDay", selectedDay);
     return availableDays.includes(selectedDay);
@@ -140,7 +140,7 @@ const SelectDoctorAndDateTimePage = ({
           </>
         ) : (
           <>
-           {!isGroomingOnly && (
+           {true && (
               <>
                 <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                   Select Vet
@@ -164,8 +164,7 @@ const SelectDoctorAndDateTimePage = ({
             <div className="pt-1 sm:pt-10">
               <h2 onClick={
                 () => {
-                  console.log("selectedDoctorId", selectedDoctorId);
-                  console.log("isGrooming", isGroomingOnly);
+              
                 }
               } className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                 Select Date and Time
@@ -173,7 +172,7 @@ const SelectDoctorAndDateTimePage = ({
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Please select your appoinment slot
               </p>
-              {!isGroomingOnly && !selectedDoctorId && currentPage == 3 && (
+              { !selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
