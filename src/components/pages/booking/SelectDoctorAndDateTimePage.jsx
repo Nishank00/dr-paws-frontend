@@ -47,10 +47,9 @@ const SelectDoctorAndDateTimePage = ({
     );
   };
 
-  const handleDoctorClick = (doctorIndex, doctorId) => {
-    // console.log(doctorIndex, doctorId, selectedClinic);
+  async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
     let copyDoctorData = doctors.map((doctor) => {
-      if (doctor.id == doctorId) {
+      if (doctor.id === doctorId) {
         doctor["selected"] = !doctor["selected"];
       } else {
         doctor["selected"] = false;
@@ -58,18 +57,29 @@ const SelectDoctorAndDateTimePage = ({
       return { ...doctor };
     });
 
+    console.log(doctors)
+
     setSelectedDoctorId(doctorId);
     setDoctors(copyDoctorData);
-  };
+
+    // If the clicked doctor is the "best available doctor"
+    if (doctorName === "best available doctor") {
+      const allDoctorSlots = doctors.flatMap((doctor) => doctor.availableSlots); // Collect all available slots from other doctors
+
+      // Remove duplicates and sort the slots
+      const bestAvailableSlots = Array.from(new Set(allDoctorSlots)).sort(
+        (a, b) => a.localeCompare(b, undefined, { numeric: true })
+      );
+
+      setAvailableSlots(bestAvailableSlots);
+    } else {
+      // Fetch the selected doctor's clinic data
+      await getSelectedDoctorClinicData();
+    }
+  }
 
   async function getSelectedDoctorClinicData(date = null) {
     try {
-      // if (!selectedDoctorId && currentPage == 3) {
-      //   return showToast("Select Doctor", "error");
-      // }
-      // if (!selectedClinic.id && currentPage == 3) {
-      //   return showToast("Select Clinic", "error");
-      // }
       let payload = {
         doctor_id: selectedDoctorId,
         clinic_id: selectedClinic.id,

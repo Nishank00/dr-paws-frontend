@@ -57,25 +57,27 @@ const Form = () => {
   const isNew = localStorage.getItem("isNew");
 
   const getPets = () => {
-    PetService.getPetsByUserId(user_id)
-      .then((response) => {
-        if (!response.data.status)
-          return showToast(response.data.message, "warning");
-        console.log(response);
-        setPets(response.data.data);
-        setServices(
-          services.map((item) => ({
-            ...item,
-            pets: response.data.data.map((pet) => ({
-              ...pet,
-              isSelected: false,
-            })),
-          }))
-        );
-      })
-      .catch((error) => {
-        return showToast(error.message, "error");
-      });
+    if (user_id) {
+      PetService.getPetsByUserId(user_id)
+        .then((response) => {
+          if (!response.data.status)
+            return showToast(response.data.message, "warning");
+          console.log(response);
+          setPets(response.data.data);
+          setServices(
+            services.map((item) => ({
+              ...item,
+              pets: response.data.data.map((pet) => ({
+                ...pet,
+                isSelected: false,
+              })),
+            }))
+          );
+        })
+        .catch((error) => {
+          return showToast(error.message, "error");
+        });
+    }
   };
 
   console.log("getted pets", pets);
@@ -83,44 +85,46 @@ const Form = () => {
   console.log(Boolean(!isNew));
 
   const fetchData = async () => {
-    try {
-      // Fetch pets
-      const petResponse = await PetService.getPetsByUserId(user_id);
-      if (!petResponse.data.status) {
-        showToast(petResponse.data.message, "warning");
-      } else {
-        if (Boolean(!isNew)) {
-          if (petResponse.data.data.length === 0) {
-            await refetchPets();
-          } else {
-            console.log(petResponse.data.data);
-            setPets(petResponse.data.data);
+    if (user_id) {
+      try {
+        // Fetch pets
+        const petResponse = await PetService.getPetsByUserId(user_id);
+        if (!petResponse.data.status) {
+          showToast(petResponse.data.message, "warning");
+        } else {
+          if (Boolean(!isNew)) {
+            if (petResponse.data.data.length === 0) {
+              await refetchPets();
+            } else {
+              console.log(petResponse.data.data);
+              setPets(petResponse.data.data);
+            }
           }
         }
-      }
 
-      console.log("petResponse", petResponse);
+        console.log("petResponse", petResponse);
 
-      // Fetch services
-      const serviceResponse = await MasterService.getMastersWithChildsByCode({
-        code: "SERVICE",
-      });
-      console.log("service response", serviceResponse);
-      if (serviceResponse.data.status) {
-        setServices(
-          serviceResponse.data.data.map((item) => ({
-            ...item,
-            is_checked: false,
-            pets: petResponse.data.data.map((pet) => ({
-              ...pet,
-              isSelected: false,
-            })),
-          }))
-        );
-        console.log("first");
+        // Fetch services
+        const serviceResponse = await MasterService.getMastersWithChildsByCode({
+          code: "SERVICE",
+        });
+        console.log("service response", serviceResponse);
+        if (serviceResponse.data.status) {
+          setServices(
+            serviceResponse.data.data.map((item) => ({
+              ...item,
+              is_checked: false,
+              pets: petResponse.data.data.map((pet) => ({
+                ...pet,
+                isSelected: false,
+              })),
+            }))
+          );
+          console.log("first");
+        }
+      } catch (error) {
+        showToast(error.message, "error");
       }
-    } catch (error) {
-      showToast(error.message, "error");
     }
   };
 
@@ -371,12 +375,14 @@ const Form = () => {
               clinic_doctor.selected = true;
             }
           });
-          setDoctors(clinic.clinic_doctors);
+          setDoctors([{ name: "harsh" }, ...clinic.clinic_doctors]);
         }
         return clinic;
       })
     );
   };
+
+  console.log("doctors", doctors);
 
   const renderPage = () => {
     return (
