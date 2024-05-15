@@ -6,13 +6,17 @@ const Dropdown = ({ title, children }) => {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+   
+
   };
+  
   return (
-    <div className="w-full mx-auto border-gray-300 px-10 rounded-lg border my-1 bg-primary4">
+    <div className="w-full mx-auto border-gray-300 px-10 rounded-lg border bg-primary3 my-1 ">
       <div className="">
         <div
           className="flex justify-between items-center py-4 cursor-pointer"
           onClick={toggleDropdown}
+          
         >
           <h2 className=" font-custome-inter  text-sm font-bold text-primary">{title}</h2>
           {/* <svg

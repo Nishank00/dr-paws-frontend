@@ -68,14 +68,14 @@ const ImageTextHeader = ({
                   className={
                     `${
                       !buttonVisibility && "hidden"
-                    } w-[220px] md:mt-[14px] lg:mt-1 text-lg ` + buttonClass
+                    } w-[220px] md:mt-[14px] transition lg:mt-1 text-lg ` + buttonClass
                   }
                   color={buttonColor}
                   label={buttonText}
                   onClick={handleClick}
                 />
               ) : (
-                <div className="flex items-center gap-6">
+                <div className="flex items-center  gap-6">
                   <Image src="/appStore.png" height={150} width={150} alt="" />
                   <Image src="/playStore.png" height={160} width={165} alt="" />
                 </div>

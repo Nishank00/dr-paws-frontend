@@ -18,6 +18,7 @@ const Menus = ({ show = false, applyParentClass = "" }) => {
     { text: "Our Services", href: "/services" },
     { text: "Our Team", href: "/team" },
     { text: "Membership", href: "/membership" },
+
   ];
   return (
     <>
@@ -51,9 +52,9 @@ const Menus = ({ show = false, applyParentClass = "" }) => {
         </ul> */}
         <div className={`flex gap-6 items-center  ${applyParentClass}`}>
           {menuItems.map((menuItem, index) => (
-            <div key={index} className="hover:font-semibold">
+            <div key={index} className="">
               <Link className="" href={menuItem.href}>
-                <span>{menuItem.text}</span>
+                <span className=" hover:text-gray-400 transition">{menuItem.text}</span>
               </Link>
             </div>
           ))}

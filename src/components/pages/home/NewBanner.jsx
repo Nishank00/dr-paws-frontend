@@ -39,7 +39,7 @@ const NewBanner = () => {
       <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-12">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className=" text-3xl md:text-[64px] leading-none custom-open-sans font-bold"
+          className=" text-3xl md:text-[64px] leading-none custom-open-sans pt-11 font-bold"
         >
           The Veterinary <br />
           Care our best <br />
@@ -49,12 +49,13 @@ const NewBanner = () => {
           Book a visit now. Who will we be meeting?
         </p>
 
-        <div className="flex gap-4 w-full cursor-pointer mb-9 h-[220px]">
+        <div className="flex gap-4 w-full relative bottom-8 cursor-pointer h-[220px]">
           <BannerPetCard
             pet_type="Dog"
             width={"100px"}
             height={"150px"}
             pet_image="/home/dog.svg"
+
           />
           <BannerPetCard
             pet_type="Cat"
