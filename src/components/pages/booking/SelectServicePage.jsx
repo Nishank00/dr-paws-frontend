@@ -1,5 +1,6 @@
 import SelectServiceItem from "@/components/pages/booking/SelectServiceItem";
 import Button from "@/components/ui/Button";
+import { LoaderProvider } from "@/components/ui/LoaderContext";
 
 const SelectServicePage = ({
   services = [],
@@ -41,14 +42,15 @@ const SelectServicePage = ({
               Choose from our services
             </p>
           </div>
-          {(!services || services.length == 0) && (
+          {/* {(!services || services.length == 0) && (
             <Button
               label="Add Pet"
               color="secondary"
               onClick={openPopup}
               className="px-4 py-2 rounded-full w-32 h-12 text-lg"
             />
-          )}
+          )} */}
+          
         </div>
 
         <div
