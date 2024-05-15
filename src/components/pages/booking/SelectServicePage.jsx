@@ -15,15 +15,22 @@ const SelectServicePage = ({
       services.map((s) => {
         if (s.id === service.id) {
           s.is_checked = !s.is_checked;
-          if (!s.is_checked) {
+          if (s.is_checked) {
+            updateSelectedService(service.id, "add");
+          } else {
             updateSelectedService(service.id, "remove");
             s.pets.map((pet) => {
               pet.isSelected = false;
               return pet;
             });
-          } else {
-            updateSelectedService(service.id, "add");
           }
+        } else {
+          s.is_checked = false;
+          updateSelectedService(s.id, "remove");
+          s.pets.map((pet) => {
+            pet.isSelected = false;
+            return pet;
+          });
         }
         return s;
       })

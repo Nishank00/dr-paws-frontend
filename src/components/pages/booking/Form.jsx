@@ -407,6 +407,7 @@ const Form = () => {
         )}
         {currentPage == 3 && (
           <SelectDoctorAndDateTimePage
+          isGroomingOnly={selectedServices.includes(105 || "105")}
             selectedServicesData={selectedServices}
             currentPage={currentPage}
             className={
