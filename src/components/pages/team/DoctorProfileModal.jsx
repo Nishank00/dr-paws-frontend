@@ -4,7 +4,7 @@ import React from "react";
 
 const DoctorProfileModal = ({ selectedDoctor }) => {
   return (
-    <div className="p-[50px] text-primary bg-white max-w-[1040px] w-full">
+    <div className="p-[50px] text-primary  bg-white max-w-[1040px] w-full">
       <div className="flex overflow-y-auto 2xl:max-h-[680px] xl:max-h-[500px] gap-4 w-fit">
         <div className="flex w-3/5 flex-col gap-6">
           <div
