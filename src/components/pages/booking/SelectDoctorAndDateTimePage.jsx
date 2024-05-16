@@ -177,7 +177,7 @@ const SelectDoctorAndDateTimePage = ({
   //   if (b.doctor_name.toLowerCase() === "best available vet") return 1;
   //   return 0;
   // });
-  const sortedDoctors = isGroomingOnly ? doctors : [
+  const sortedDoctors = false ? doctors : [
     { id: "best-available-vet", doctor_name: "Best Available Vet", selected: false },
     ...doctors.filter((doctor) => doctor.doctor_name.toLowerCase() !== "best available vet"),
   ].sort((a, b) => {
@@ -244,7 +244,7 @@ const SelectDoctorAndDateTimePage = ({
           </>
         ) : (
           <>
-           {isGroomingOnly && (
+           {true && (
               <>
                 <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                   Select Vet
@@ -276,7 +276,7 @@ const SelectDoctorAndDateTimePage = ({
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Please select your appoinment slot
               </p>
-              {isGroomingOnly ? <> </>: !selectedDoctorId && currentPage == 3 && (
+              {false ? <> </>: !selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
