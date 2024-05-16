@@ -164,7 +164,7 @@ const SelectDoctorAndDateTimePage = ({
       const { data = { status: false, message: "Something is missing" } } =
         response;
       if (!data.status) return showToast(data.message);
-
+      // console.log("Doctor Clinic Timings", data.data);
       setDoctorClinicTimings(data.data);
       setAvailableSlots(data.data?.timesArray);
     } catch (error) {
