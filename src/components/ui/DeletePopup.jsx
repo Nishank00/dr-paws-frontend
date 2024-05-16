@@ -23,7 +23,7 @@ const DeletePopup = ({ isOpen, onClose }) => {
               <Cross />
             </div>
           </div>
-          <div className="my-8">
+          <div className="my-8 text-primary3 font-custom-roca">
             <span>Are you sure you want to delete?</span>
             <div className="flex gap-4 my-6">
               <Button
