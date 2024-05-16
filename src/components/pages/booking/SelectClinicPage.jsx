@@ -1,4 +1,6 @@
+import UserService from "@/services/User.Service";
 import ClinicSelect from "./ClinicSelect";
+
 
 const SelectClinicPage = ({
   className = "",
@@ -7,6 +9,10 @@ const SelectClinicPage = ({
   setSelectedClinic,
   setDoctors,
 }) => {
+
+
+
+
   return (
     <div className={"w-full pt-1 sm:pt-10 " + className}>
       <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">

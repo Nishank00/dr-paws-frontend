@@ -16,6 +16,7 @@ import PetForm from "../petProile/PetForm";
 import ConfirmBookingOTP from "./ConfirmBookingOTP";
 import { useDispatch } from "react-redux";
 import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
+import UserService from "@/services/User.Service";
 
 const Form = () => {
   // Variables
@@ -40,6 +41,7 @@ const Form = () => {
   const [appointment, setAppointment] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
+  const [userHomeClinic, setUserHomeClinic] = useState(null);
 
   // Methods
   const openPopup = () => setPopupOpen(true);
@@ -413,7 +415,7 @@ const Form = () => {
         )}
         {currentPage == 3 && (
           <SelectDoctorAndDateTimePage
-          isGroomingOnly={selectedServices.includes(105 || "105")}
+            isGroomingOnly={selectedServices.includes(105 || "105")}
             selectedServicesData={selectedServices}
             currentPage={currentPage}
             className={
@@ -444,7 +446,9 @@ const Form = () => {
   // Lifecycle hooks
   useEffect(() => {
     getClinics();
+
     setUserID(JSON.parse(localStorage.getItem("user_info"))?.id);
+
     dispatch(
       setPageHeader({
         title: "Booking",
@@ -456,6 +460,8 @@ const Form = () => {
 
   useEffect(() => {
     fetchData();
+    getUserData();
+    
   }, [user_id]);
 
   useEffect(() => {
@@ -467,6 +473,45 @@ const Form = () => {
       prepareForm();
     }
   }, [appointment]);
+
+  const getUserData = async () => {
+    if (user_id) {
+      const userdata = await UserService.getUserById(user_id).then(
+        (response) => {
+          console.log(
+            "GET USER DATA FROM CLINIC: ",
+            response.data.data.clinic_name
+          );
+          if (response.data.data.clinic_name != null) {
+            setUserHomeClinic(response.data.data.clinic_name);
+          }
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+     const sortClinicsByHomeClinicName = () => {
+    console.log("SORTING CLINICS BY HOME CLINIC NAME");
+    console.log("USER HOME CLINIC: ", userHomeClinic);
+    console.log("CLINICS: ", clinics);
+
+    if(clinics.length > 0 && userHomeClinic != null){
+      const homeClinicIndex = clinics.findIndex(
+        (clinic) => clinic.name === userHomeClinic
+      );
+      if (homeClinicIndex > -1) {
+        const homeClinic = clinics[homeClinicIndex];
+        clinics.splice(homeClinicIndex, 1);
+        clinics.unshift(homeClinic);
+      }
+      setClinics(clinics);
+    }
+  };
+
+  sortClinicsByHomeClinicName();
+  },[userHomeClinic, clinics]);
+ 
 
   return user_id ? (
     <div className="text-primary">

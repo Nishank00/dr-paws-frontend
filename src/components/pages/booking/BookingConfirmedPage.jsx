@@ -158,6 +158,9 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
     }
   }
 
+
+  
+
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
       <h2 className="font-bold font-custom-roca text-4xl flex gap-2 mb-8">
