@@ -16,7 +16,7 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
-  isGroomingOnly = false,
+  
   selectedServicesData = [],
 }) => {
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
@@ -47,168 +47,98 @@ const SelectDoctorAndDateTimePage = ({
     );
   };
 
-  // async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
-  //   let copyDoctorData = doctors.map((doctor) => {
-  //     if (doctor.id === doctorId) {
-  //       doctor["selected"] = !doctor["selected"];
-  //     } else {
-  //       doctor["selected"] = false;
-  //     }
-  //     return { ...doctor };
-  //   });
-
-  //   console.log(doctors)
-
-  //   setSelectedDoctorId(doctorId);
-  //   setDoctors(copyDoctorData);
-
-  //   // If the clicked doctor is the "best available doctor"
-  //   if (doctorName === "best available doctor") {
-  //     const allDoctorSlots = doctors.flatMap((doctor) => doctor.availableSlots); // Collect all available slots from other doctors
-
-  //     // Remove duplicates and sort the slots
-  //     const bestAvailableSlots = Array.from(new Set(allDoctorSlots)).sort(
-  //       (a, b) => a.localeCompare(b, undefined, { numeric: true })
-  //     );
-
-  //     setAvailableSlots(bestAvailableSlots);
-  //   } else {
-  //     // Fetch the selected doctor's clinic data
-  //     await getSelectedDoctorClinicData();
-  //   }
-  // }
-
   async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
-  console.log("Doctor Clicked", doctorId, doctorName);
-  
-  let copyDoctorData = doctors.map((doctor) => {
-    if (doctor.id === doctorId) {
-      doctor["selected"] = !doctor["selected"];
-    } else {
-      doctor["selected"] = false;
-    }
-    return { ...doctor };
-  });
+    let copyDoctorData = doctors.map((doctor) => {
+      if (doctor.id === doctorId) {
+        doctor["selected"] = !doctor["selected"];
+      } else {
+        doctor["selected"] = false;
+      }
+      return { ...doctor };
+    });
 
-  console.log(doctors);
-  setSelectedDoctorId(doctorId);
-  setDoctors(copyDoctorData);
+    console.log(doctors)
 
-  // If the clicked doctor is the "Best Available Vet"
-  if (doctorId === "best-available-vet") {
-    console.log("BEST AVAILABLE VET CLICKED");
-    
-    const availableDoctors = doctors.filter(
-      (doctor) => doctor.id !== "best-available-vet"
-    );
+    setSelectedDoctorId(doctorId);
+    setDoctors(copyDoctorData);
 
-    const allDoctorSlots = await Promise.all(
-      availableDoctors.map(async (doctor) => {
-        const payload = {
-          doctor_id: doctor.id,
-          clinic_id: selectedClinic.id,
-        };
-        const response = await DoctorService.getDoctorClinicTimings(payload);
-        console.log(`Response for doctor ${doctor.id}:`, response);
-        return response.data.data?.availableDays || [];
-      })
-    );
-
-    console.log("All Doctor Slots", allDoctorSlots);
-
-    // Check if all elements in allDoctorSlots are empty arrays
-    const hasAvailableSlots = allDoctorSlots.some((slots) => slots.length > 0);
-
-    if (hasAvailableSlots) {
-      // Flatten the array of arrays into a single array
-      const collectiveSlots = allDoctorSlots.flat();
-      console.log("Collective Slots", collectiveSlots);
-      
-      // Remove duplicates and sort the slots
-     
-      setAvailableDays(collectiveSlots);
-
-      
-
-      // Flatten the array of arrays into a single array
-      const flattenedTimeSlots = collectiveTimeSlots.flat();
-
-      // Set the availableSlots state with the flattened time slots
-      setAvailableSlots(flattenedTimeSlots);
-      
    
-    } else {
-      setAvailableSlots([]);
-    }
-  } else {
-    // Fetch the selected doctor's clinic data
-    await getSelectedDoctorClinicData();
+      // Fetch the selected doctor's clinic data
+      await getSelectedDoctorClinicData();
+   
   }
-}
-  
-  
 
   async function getSelectedDoctorClinicData(date = null) {
-    try {
-      let payload = {
-        doctor_id: selectedDoctorId,
-        clinic_id: selectedClinic.id,
-      };
+    if (selectedDoctorId === "best-available-vet") {
+      try {
+        const availableDoctors = doctors.filter(
+          (doctor) => doctor.id !== "best-available-vet"
+        );
+  
+        const allDoctorTimings = await Promise.all(
+          availableDoctors.map(async (doctor) => {
+            const payload = {
+              doctor_id: doctor.id,
+              clinic_id: selectedClinic.id,
+              date: date ? moment(date).format("YYYY-MM-DD") : null,
+            };
+            const response = await DoctorService.getDoctorClinicTimings(payload);
+            return response.data.data;
+          })
+        );
+  
+        console.log("All Doctor Timings", allDoctorTimings);
+        
+        if(date) {
+          const availableSlots = allDoctorTimings.map((doctorTimings) => doctorTimings.timesArray).flat();
+          setAvailableSlots(availableSlots);
+        } else {
+          const availableDays = allDoctorTimings.map((doctorTimings) => doctorTimings.availableDays).flat();
+          setAvailableDays(availableDays);
+        }
+       
 
-      if (date) {
-        payload["date"] = moment(date).format("YYYY-MM-DD");
+       
+      } catch (error) {
+        console.log(error);
       }
-      const response = await DoctorService.getDoctorClinicTimings(payload);
-      console.log("Doctor Clinic Timings NORMAL", response);
-
-      const { data = { status: false, message: "Something is missing" } } =
-        response;
-      if (!data.status) return showToast(data.message);
-      // console.log("Doctor Clinic Timings", data.data);
-      setDoctorClinicTimings(data.data);
-      setAvailableSlots(data.data?.timesArray);
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        let payload = {
+          doctor_id: selectedDoctorId,
+          clinic_id: selectedClinic.id,
+        };
+  
+        if (date) {
+          payload["date"] = moment(date).format("YYYY-MM-DD");
+        }
+  
+        const response = await DoctorService.getDoctorClinicTimings(payload);
+        const { data = { status: false, message: "Something is missing" } } = response;
+        if (!data.status) return showToast(data.message);
+  
+        setDoctorClinicTimings(data.data);
+        setAvailableSlots(data.data?.timesArray);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
-  // const sortedDoctors = [...doctors].sort((a, b) => {
-  //   if (a.doctor_name.toLowerCase() === "best available vet") return -1;
-  //   if (b.doctor_name.toLowerCase() === "best available vet") return 1;
-  //   return 0;
-  // });
-  const sortedDoctors = false ? doctors : [
-    { id: "best-available-vet", doctor_name: "Best Available Vet", selected: false },
-    ...doctors.filter((doctor) => doctor.doctor_name.toLowerCase() !== "best available vet"),
-  ].sort((a, b) => {
+  const sortedDoctors = [...doctors].sort((a, b) => {
     if (a.doctor_name.toLowerCase() === "best available vet") return -1;
     if (b.doctor_name.toLowerCase() === "best available vet") return 1;
     return 0;
   });
 
-  // const isDayAvailable = (selectedDate) => {
-  // // if (isGroomingOnly) {
-  //   //   return true;
-  //   // }
-  //   const selectedDay = moment(selectedDate).format("dddd");
-  //   console.log("selectedDay", selectedDay);
-  //   return availableDays.includes(selectedDay);
-  // };
   const isDayAvailable = (selectedDate) => {
-    if (selectedDoctorId === "best-available-vet") {
-      return true;
-    }
+  // if (isGroomingOnly) {
+    //   return true;
+    // }
     const selectedDay = moment(selectedDate).format("dddd");
     console.log("selectedDay", selectedDay);
     return availableDays.includes(selectedDay);
   };
-
-  // useEffect(() => {
-  //   if (isGroomingOnly && doctors.length > 0) {
-  //     const firstDoctorId = doctors[0].id;
-  //     handleDoctorClick(0, firstDoctorId, doctors[0].doctor_name);
-  //   }
-  // }, [isGroomingOnly, doctors]);
 
   useEffect(() => {
     setAvailableSlots([]);
@@ -276,7 +206,7 @@ const SelectDoctorAndDateTimePage = ({
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Please select your appoinment slot
               </p>
-              {false ? <> </>: !selectedDoctorId && currentPage == 3 && (
+              { !selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">

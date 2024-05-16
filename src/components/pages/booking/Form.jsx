@@ -283,10 +283,18 @@ const Form = () => {
     });
 
     doctors.map((doctor) => {
-      if (doctor.selected) {
+      if (doctor.selected && doctor.id != "best-available-vet") {
         appointment.doctor_id = doctor.id;
+      } else if(doctor.id == "best-available-vet" && doctor.selected){
+        //SELECT RANDOM DOCTOR FROM THE LIST
+        const randomDoctor = doctors.filter((doctor) => doctor.id != "best-available-vet");
+        const randomDoctorIndex = Math.floor(Math.random() * randomDoctor.length);
+        appointment.doctor_id = randomDoctor[randomDoctorIndex].id;
       }
     });
+
+    
+
 
     if (!appointment.clinic_id || !appointment.doctor_id) {
       return showToast("Please select Clinic and Doctor", "warning");
@@ -377,12 +385,34 @@ const Form = () => {
               clinic_doctor.selected = true;
             }
           });
-          setDoctors([...clinic.clinic_doctors]);
+
+          const bestAvailableDoctor = {
+            doctor_name: "Best Available Vet",
+            id: "best-available-vet",
+            selected: false,
+          };
+          setDoctors([bestAvailableDoctor, ...clinic.clinic_doctors]);
         }
         return clinic;
       })
     );
   };
+
+  useEffect(() => {
+    const addBestAvailableDoctor = () => {
+      const bestAvailableDoctor = {
+        doctor_name: "Best Available Vet",
+        id: "best-available-vet",
+        selected: false,
+      };
+  
+      if (!doctors.some((doctor) => doctor.id === "best-available-vet")) {
+        setDoctors([bestAvailableDoctor, ...doctors]);
+      }
+    };
+  
+    addBestAvailableDoctor();
+  }, [doctors]);
 
   console.log("doctors", doctors);
 
