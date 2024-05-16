@@ -377,7 +377,7 @@ const Form = () => {
               clinic_doctor.selected = true;
             }
           });
-          setDoctors([{ name: "harsh" }, ...clinic.clinic_doctors]);
+          setDoctors([...clinic.clinic_doctors]);
         }
         return clinic;
       })
