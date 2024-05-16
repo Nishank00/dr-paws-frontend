@@ -16,6 +16,7 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
+  
   selectedServicesData = [],
 }) => {
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
@@ -46,10 +47,9 @@ const SelectDoctorAndDateTimePage = ({
     );
   };
 
-  const handleDoctorClick = (doctorIndex, doctorId) => {
-    // console.log(doctorIndex, doctorId, selectedClinic);
+  async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
     let copyDoctorData = doctors.map((doctor) => {
-      if (doctor.id == doctorId) {
+      if (doctor.id === doctorId) {
         doctor["selected"] = !doctor["selected"];
       } else {
         doctor["selected"] = false;
@@ -57,18 +57,29 @@ const SelectDoctorAndDateTimePage = ({
       return { ...doctor };
     });
 
+    console.log(doctors)
+
     setSelectedDoctorId(doctorId);
     setDoctors(copyDoctorData);
-  };
+
+    // If the clicked doctor is the "best available doctor"
+    if (doctorName === "best available doctor") {
+      const allDoctorSlots = doctors.flatMap((doctor) => doctor.availableSlots); // Collect all available slots from other doctors
+
+      // Remove duplicates and sort the slots
+      const bestAvailableSlots = Array.from(new Set(allDoctorSlots)).sort(
+        (a, b) => a.localeCompare(b, undefined, { numeric: true })
+      );
+
+      setAvailableSlots(bestAvailableSlots);
+    } else {
+      // Fetch the selected doctor's clinic data
+      await getSelectedDoctorClinicData();
+    }
+  }
 
   async function getSelectedDoctorClinicData(date = null) {
     try {
-      // if (!selectedDoctorId && currentPage == 3) {
-      //   return showToast("Select Doctor", "error");
-      // }
-      // if (!selectedClinic.id && currentPage == 3) {
-      //   return showToast("Select Clinic", "error");
-      // }
       let payload = {
         doctor_id: selectedDoctorId,
         clinic_id: selectedClinic.id,
@@ -97,6 +108,9 @@ const SelectDoctorAndDateTimePage = ({
   });
 
   const isDayAvailable = (selectedDate) => {
+  // if (isGroomingOnly) {
+    //   return true;
+    // }
     const selectedDay = moment(selectedDate).format("dddd");
     console.log("selectedDay", selectedDay);
     return availableDays.includes(selectedDay);
@@ -136,53 +150,39 @@ const SelectDoctorAndDateTimePage = ({
           </>
         ) : (
           <>
-            <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
-              Select Vet
-            </h2>
-            <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
-              Please select the vet {`you'd`} like to meet
-            </p>
+           {true && (
+              <>
+                <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
+                  Select Vet
+                </h2>
+                <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
+                  Please select the vet {`you'd`} like to meet
+                </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-              {/* <div
-                onClick={handleClick}
-                className={`p-3 flex flex-col items-center bg-primary4 rounded-lg ${
-                  doctor.selected ? "ring-4 ring-secondary" : ""
-                }`}
-              >
-                <div
-                  className="rounded-full h-32 w-32"
-                  style={{
-                    backgroundImage:
-                      "url(" +
-                      "https://cdn.builder.io/api/v1/image/assets/TEMP/bc03f712edd079ab8fb0ab420cf52601f4bd93043f273e2eb179548e7deb4138?apiKey=22a36eade5734692978208fb0d2f5c62&" +
-                      ")",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                />
-                <div className="p-4 text-primary">
-                  <h4 className="font-bold">{doctor.doctor_name}</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {sortedDoctors.map((doctor, i) => (
+                    <DoctorSelect
+                      key={"doctor" + i}
+                      doctor={{ ...doctor, index: i }}
+                      selected={doctor?.selected}
+                      onClick={handleDoctorClick}
+                    />
+                  ))}
                 </div>
-              </div> */}
-              {sortedDoctors.map((doctor, i) => (
-                <DoctorSelect
-                  key={"doctor" + i}
-                  doctor={{ ...doctor, index: i }}
-                  selected={doctor?.selected}
-                  onClick={handleDoctorClick}
-                />
-              ))}
-            </div>
+              </>
+            )}
             <div className="pt-1 sm:pt-10">
-              <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
+              <h2 onClick={
+                () => {
+              
+                }
+              } className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                 Select Date and Time
               </h2>
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Please select your appoinment slot
               </p>
-              {!selectedDoctorId && currentPage == 3 && (
+              { !selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">

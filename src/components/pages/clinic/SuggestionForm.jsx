@@ -5,8 +5,8 @@ import PhoneNumberInput from "@/components/ui/PhoneNumberInput";
 
 const SuggestionForm = () => {
   return (
-    <div className="w-full bg-primary3 ">
-      <div className="justify-center w-full items-center shadow-sm bg-primary3 flex  flex-col">
+    <div className="w-full rounded-lg bg-primary3 ">
+      <div className="justify-center w-full items-center bg-primary3 flex rounded-lg flex-col">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c86bbb0d478f3d8bde31d329a0619c24df3bcebaa6c25902d2bc986a973a6de?apiKey=22a36eade5734692978208fb0d2f5c62&"
@@ -16,7 +16,7 @@ const SuggestionForm = () => {
           Where should the next Dr. Paws Clinic be?
         </div>
       </div>
-      <div className="w-[80%] pt-[50px] m-auto">
+      <div className="w-[80%] pt-[20px] m-auto">
         <header className="text-center md:text-left text-xl md:text-2xl text-primary font-custom-roca mb-4">
           Tell us where you’d like a new clinic so we know where to prioritize
         </header>
@@ -35,7 +35,7 @@ const SuggestionForm = () => {
           />{" "}
         </div>
 
-        <div className=" w-full flex items-center mb-4 pl-2">
+        <div className=" w-full flex items-center my-5 pl-2">
           <div
             className="checkbox"
             aria-role="checkbox"
