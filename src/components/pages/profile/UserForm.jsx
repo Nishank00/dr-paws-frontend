@@ -290,6 +290,7 @@ const UserForm = ({ closePopup, user_id }) => {
           /> */}
 
           <TextInput
+          label={"Address"}
             placeholder={"Apartment / Building Name etc."}
             name={"address_line_1"}
             value={userData.address_line_1}
@@ -313,6 +314,7 @@ const UserForm = ({ closePopup, user_id }) => {
           /> */}
 
           <TextInput
+          label={"City"}
             placeholder={"City / Town / Village"}
             name={"city"}
             value={userData.city_id}
@@ -320,6 +322,7 @@ const UserForm = ({ closePopup, user_id }) => {
           />
 
           <TextInput
+          label={"Pin Code"}
             placeholder={"Pin Code"}
             name={"pin_code"}
             value={userData.pin_code}
