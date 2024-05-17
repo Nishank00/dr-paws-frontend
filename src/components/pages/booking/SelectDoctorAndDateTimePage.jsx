@@ -16,9 +16,12 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
-  
+  isGroomingOnly = false,
   selectedServicesData = [],
 }) => {
+
+  
+
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
@@ -48,6 +51,7 @@ const SelectDoctorAndDateTimePage = ({
   };
 
   async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
+    console.log("Doctor Clicked", doctors[0]);
     let copyDoctorData = doctors.map((doctor) => {
       if (doctor.id === doctorId) {
         doctor["selected"] = !doctor["selected"];
@@ -160,6 +164,26 @@ const SelectDoctorAndDateTimePage = ({
     setIsDoctorSelected(doctors.filter((doctor) => doctor.selected).length > 0);
   }, [doctors]);
 
+  // UseEffect to set first doctor if isGroomingOnly
+  useEffect(() => {
+    console.log("isGroomingOnly", isGroomingOnly);
+    if (isGroomingOnly && doctors.length > 0 && !doctors[0].selected) {
+      console.log("Making first doctor selected");
+      const firstDoctorId = doctors[0].id;
+      setSelectedDoctorId(firstDoctorId);
+  
+      const updatedDoctors = doctors.map((doctor, index) => ({
+        ...doctor,
+        selected: index === 0,
+      }));
+      setDoctors(updatedDoctors);
+  
+      // Fetch the first doctor's clinic data
+      getSelectedDoctorClinicData();
+    }
+  }, [isGroomingOnly, doctors]);
+
+
   return (
     <div className={"pt-1 sm:pt-10 " + className}>
       <div className="mb-24">
@@ -175,7 +199,7 @@ const SelectDoctorAndDateTimePage = ({
         ) : (
           <>
            {true && (
-              <>
+              <div style={{ display: isGroomingOnly ? "none" : "block" }}>
                 <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                   Select Vet
                 </h2>
@@ -193,7 +217,7 @@ const SelectDoctorAndDateTimePage = ({
                     />
                   ))}
                 </div>
-              </>
+              </div>
             )}
             <div className="pt-1 sm:pt-10">
               <h2 onClick={
