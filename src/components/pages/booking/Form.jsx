@@ -460,6 +460,7 @@ const Form = () => {
                   selectedServices.includes(105 || "105")
                 ? doctors
                 : doctors.filter((doctorData) => doctorData.doctor_id != 12)
+              // selectedServices.includes(105 || "105") ? doctors.filter((doctorData) => doctorData.doctor_id == 12) : doctors.filter((doctorData) => doctorData.doctor_id != 12)
             }
             setDoctors={setDoctors}
             selectedClinic={selectedClinic}

@@ -51,7 +51,7 @@ const SelectDoctorAndDateTimePage = ({
   };
 
   async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
-    console.log("Doctor Clicked", doctors[0]);
+    console.log("Doctor Clicked", doctorId);
     let copyDoctorData = doctors.map((doctor) => {
       if (doctor.id === doctorId) {
         doctor["selected"] = !doctor["selected"];
@@ -122,6 +122,7 @@ const SelectDoctorAndDateTimePage = ({
         if (!data.status) return showToast(data.message);
   
         setDoctorClinicTimings(data.data);
+        setAvailableDays(data.data?.availableDays);
         setAvailableSlots(data.data?.timesArray);
       } catch (error) {
         console.log(error);
@@ -167,7 +168,7 @@ const SelectDoctorAndDateTimePage = ({
   // UseEffect to set first doctor if isGroomingOnly
   useEffect(() => {
     console.log("isGroomingOnly", isGroomingOnly);
-    if (isGroomingOnly && doctors.length > 0 && !doctors[0].selected) {
+    if (isGroomingOnly ) {
       console.log("Making first doctor selected");
       const firstDoctorId = doctors[0].id;
       setSelectedDoctorId(firstDoctorId);
@@ -181,7 +182,7 @@ const SelectDoctorAndDateTimePage = ({
       // Fetch the first doctor's clinic data
       getSelectedDoctorClinicData();
     }
-  }, [isGroomingOnly, doctors]);
+  }, [isGroomingOnly, selectedDoctorId]);
 
 
   return (
@@ -199,7 +200,7 @@ const SelectDoctorAndDateTimePage = ({
         ) : (
           <>
            {true && (
-              <div style={{ display: isGroomingOnly ? "none" : "block" }}>
+              <div style={{ display: isGroomingOnly ? 'none' : 'block' }}>
                 <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                   Select Vet
                 </h2>
