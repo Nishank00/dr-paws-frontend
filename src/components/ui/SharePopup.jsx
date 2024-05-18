@@ -32,8 +32,8 @@ const SharePopup = ({ isOpen, onClose, url }) => {
               <Cross />
             </div>
           </div>
-          <div className="my-8">
-            <div className="space-x-6 justify-around flex mt-6 text-center">
+          <div className="">
+            <div className=" justify-around space-x-3 flex mt-6 text-center">
               <button
                 type="button"
                 className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
@@ -44,7 +44,7 @@ const SharePopup = ({ isOpen, onClose, url }) => {
               </button>
               <button
                 type="button"
-                className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                className="flex gap-2 flex-col items-center pr-5 justify-center rounded-full border-none outline-none"
                 onClick={handleShare}
               >
                 <Telegram />
@@ -60,7 +60,7 @@ const SharePopup = ({ isOpen, onClose, url }) => {
               </button>
               <button
                 type="button"
-                className="flex gap-2 flex-col items-center justify-center rounded-full border-none outline-none"
+                className="flex gap-2 flex-col pr-4 items-center pl-5 justify-center rounded-full border-none outline-none"
                 onClick={handleShare}
               >
                 <More />
