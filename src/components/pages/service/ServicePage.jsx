@@ -26,6 +26,7 @@ const ServicePage = () => {
               We{`'`}re here, whatever your friend needs
             </p>
           }
+          
           text={
             "Our modern friendly clinics offer all the services you’ll need to keep your animal happy and healthy."
           }
