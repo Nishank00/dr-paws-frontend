@@ -28,7 +28,7 @@ const ServicePage = () => {
           }
           
           text={
-            "Our modern friendly clinics offer all the services you’ll need to keep your animal happy and healthy."
+            "Our modern friendly clinics offer all the services youll need to keep your animal happy and healthy."
           }
           imagePosition={"left"}
           headingClass="!text-[48px]"
