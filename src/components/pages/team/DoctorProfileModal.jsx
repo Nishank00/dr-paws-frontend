@@ -80,7 +80,7 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
               src="/Teams/smiling.png"
               alt=""
               loading="lazy"
-              className="w-fit"
+              className=" w-[80%]  m-auto rounded-[100%]"
             />
             <div className="text-lg text-center">
               {selectedDoctor?.introduction}
