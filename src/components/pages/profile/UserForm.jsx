@@ -263,6 +263,8 @@ const UserForm = ({ closePopup, user_id }) => {
             onPhoneNumberChange={phoneNumberEntered}
           /> */}
 
+          
+
           <TextInput
             type="email"
             label={"Email"}
