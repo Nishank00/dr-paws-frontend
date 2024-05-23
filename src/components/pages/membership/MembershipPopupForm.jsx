@@ -235,7 +235,7 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
           optionValue={"id"}
           onSelect={(selected) => setSelectedPet(selected)}
         />
-        <div className="flex flex-col gap-5">
+        <div className="flex mt-4 flex-col gap-5">
           <p className="text-sm font-bold">Choose a payment plan:</p>
 
           <div className="flex flex-col gap-3">
@@ -255,7 +255,10 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
                     ₹{membership_plan?.price_yearly?.toLocaleString()}/yr
                   </p>
                   <p className="text-sm">
-                    For {membership_plan?.plan_duration_in_year} Year
+                    For {membership_plan?.plan_duration_in_year}{" "}
+                    {membership_plan?.plan_duration_in_year > 1
+                      ? "Years"
+                      : "Year"}
                   </p>
                 </div>
               </div>

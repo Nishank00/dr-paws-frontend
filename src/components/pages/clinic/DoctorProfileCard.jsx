@@ -2,6 +2,7 @@ import Popup from "@/components/ui/Popup";
 import React, { useState } from "react";
 import DoctorProfile from "../team/DoctorProfile";
 import DoctorProfileModal from "../team/DoctorProfileModal";
+import { Briefcase } from "lucide-react";
 
 const DoctorProfileCard = ({
   full_name,
@@ -46,6 +47,14 @@ const DoctorProfileCard = ({
             className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
           />
           <div className="text-slate-700 text-sm grow ">{education}</div>
+        </div>
+        <div className="flex justify-between items-center  gap-2.5 mt-5">
+          <img
+            loading="lazy"
+            src="/Teams/role.svg"
+            className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
+          />
+          <div className="text-slate-700 text-sm grow ">Veterinarian</div>
         </div>
         <div className="flex justify-between items-center  gap-2.5 mt-5">
           <img

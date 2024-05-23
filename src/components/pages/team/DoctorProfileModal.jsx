@@ -9,29 +9,44 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
         <div className="flex flex-col gap-6 w-3/5">
           <div
             style={{ fontFamily: "Roca Bold, sans-serif" }}
-            className="text-slate-700 text-start text-4xl font-semibold whitespace-nowrap"
+            className="text-slate-700 text-start text-3xl font-semibold whitespace-nowrap"
           >
             Dr. {selectedDoctor?.full_name || "NA"}
           </div>
           <div className="flex items-start gap-4">
             <img src="/Teams/experience_icon.svg" alt="" loading="lazy" />
             <div className="flex flex-col gap-2">
-              <p className="text-xl">Experience</p>
-              <h4 className="text-2xl font-semibold">{selectedDoctor?.experience}</h4>
+              <p className="text-lg">Experience</p>
+              <h4 className="text-xl font-semibold">
+                {selectedDoctor?.experience}
+              </h4>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <img src="/Teams/role.svg" alt="" loading="lazy" />
+            <div className="flex flex-col gap-2">
+              <p className="text-lg">Role</p>
+              <h4 className="text-xl font-semibold">
+                Veterinarian
+              </h4>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <img src="/Teams/specialization_icon.svg" alt="" loading="lazy" />
             <div className="flex flex-col gap-2">
-              <p className="text-xl">Specialization</p>
-              <h4 className="text-2xl font-semibold">{selectedDoctor?.specialization}</h4>
+              <p className="text-lg">Specialization</p>
+              <h4 className="text-xl font-semibold">
+                {selectedDoctor?.specialization}
+              </h4>
             </div>
           </div>
           <div className="flex items-start gap-4">
             <img loading="lazy" src="/profile/teacher.svg" alt="" />
             <div className="flex flex-col gap-2">
-              <p className="text-xl">Education</p>
-              <h4 className="text-2xl font-semibold">{selectedDoctor?.education}</h4>
+              <p className="text-lg">Education</p>
+              <h4 className="text-xl font-semibold">
+                {selectedDoctor?.education}
+              </h4>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -46,8 +61,14 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
                       key={index}
                       className="flex gap-2 border border-[#D0D5DD] p-2 rounded-sm whitespace-nowrap"
                     >
-                      <img src="/Teams/location_small.svg" alt="" loading="lazy" />
-                      <p className="text-sm font-custom-inter">Andheri West, Indiranagar</p>
+                      <img
+                        src="/Teams/location_small.svg"
+                        alt=""
+                        loading="lazy"
+                      />
+                      <p className="text-sm font-custom-inter">
+                        Andheri West, Indiranagar
+                      </p>
                     </div>
                   ))}
               </div>
@@ -60,8 +81,15 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
         </div>
         <div className="flex flex-col gap-4 w-2/5">
           <div className="flex flex-col gap-4">
-            <img src="/Teams/smiling.png" alt="" loading="lazy" className="w-full" />
-            <div className="text-lg text-center">{selectedDoctor?.introduction}</div>
+            <img
+              src="/Teams/smiling.png"
+              alt=""
+              loading="lazy"
+              className="w-full"
+            />
+            <div className="text-lg text-center">
+              {selectedDoctor?.introduction}
+            </div>
           </div>
           <Button label="Book a Visit" color="secondary" className="mt-4" />
         </div>

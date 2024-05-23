@@ -43,8 +43,20 @@ const UserForm = ({ closePopup, user_id }) => {
 
   const formValueChanged = (e) => {
     const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    const newUserData = { ...userData, [name]: value };
+
+    if (name === "pin_code") {
+      if (value.length <= 6) {
+        setUserData(newUserData);
+      } else {
+        console.log("hello");
+      }
+    } else {
+      setUserData(newUserData);
+    }
   };
+
+  console.log("userData", userData, `${userData.pin_code}`.length);
 
   const phoneNumberEntered = (phoneNumber) => {
     setUserData({ ...userData, phone: phoneNumber });
@@ -290,7 +302,7 @@ const UserForm = ({ closePopup, user_id }) => {
           /> */}
 
           <TextInput
-          label={"Address"}
+            label={"Address"}
             placeholder={"Apartment / Building Name etc."}
             name={"address_line_1"}
             value={userData.address_line_1}
@@ -314,7 +326,7 @@ const UserForm = ({ closePopup, user_id }) => {
           /> */}
 
           <TextInput
-          label={"City"}
+            label={"City"}
             placeholder={"City / Town / Village"}
             name={"city"}
             value={userData.city_id}
@@ -322,11 +334,12 @@ const UserForm = ({ closePopup, user_id }) => {
           />
 
           <TextInput
-          label={"Pin Code"}
+            label={"Pin Code"}
             placeholder={"Pin Code"}
             name={"pin_code"}
             value={userData.pin_code}
             onChange={formValueChanged}
+            type="number"
           />
 
           <MultipleSelect

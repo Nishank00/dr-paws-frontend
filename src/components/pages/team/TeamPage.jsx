@@ -52,7 +52,7 @@ const TeamPage = () => {
             </p>
           }
           text={
-            "Our clinical team is comprised of experienced vets, with a broad range of specialisations, with additional special training to create a new kind of veterinary experience. We love animals and find joy everyday helping our four legged friends stay happy & healthy."
+            "Our clinical team is comprised of experienced vets, with a broad range of specialisations, that are committed to treating your pet just like their own."
           }
           buttonVisibility={false}
         />

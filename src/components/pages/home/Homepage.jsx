@@ -82,7 +82,6 @@ const Homepage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
         {clinics.map((clinic, i) => (
           <ClinicCard key={"clinic" + i} clinic={clinic} />
-          
         ))}
       </div>
       <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
@@ -123,20 +122,15 @@ const Homepage = () => {
         </div>
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="w-full border-solid border-grey pr-5 py-4"
+          className="w-full border-solid border-grey pr-5 font-black py-4"
         >
-          <p className="text-left font-custome-inter font-bold text-primary">
+          <p className="text-left  font-custome-inter text-primary">
             About Dr. Paws
           </p>
         </div>
 
-
-        
         {DropdownData1.map((item, index) => (
-          
-          
           <Dropdown key={index} title={item.title}>
-            
             <p
               style={{ fontFamily: "Open Sans, sans-serif" }}
               className="text-slate-700 text-left font-custome-inter text-sm leading-7 tracking-tight self-center  max-md:max-w-full"

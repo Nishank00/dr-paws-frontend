@@ -59,7 +59,7 @@ const Footer = () => {
             Membership
           </Link>
           <Link href="#" className="text-xl mt-3 hover:text-secondary">
-            Download app
+            Download App
           </Link>
         </div>
         <div className="flex flex-col mt-6  items-center md:items-start">
