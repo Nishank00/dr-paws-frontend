@@ -51,7 +51,7 @@ const OverviewTabs = () => {
         console.log(err);
       });
   };
-  
+
   useEffect(() => {
     if (id) {
       getDataById();
@@ -71,7 +71,7 @@ const OverviewTabs = () => {
                   {clinic.name || "NA"}
                 </div>
                 <div className="text-primary text-[22px]  tracking-tight whitespace-nowrap mt-4">
-                  Grooming | OPD | Surgery
+                  Check-Ups | Surgery | Diagnostics | Grooming | Retail
                 </div>
               </span>
             </div>

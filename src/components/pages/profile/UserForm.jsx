@@ -252,7 +252,9 @@ const UserForm = ({ closePopup, user_id }) => {
               placeholder={"987582789"}
               name={"phone"}
               value={userData.phone}
+              type="tel"
               onChange={formValueChanged}
+              max={10}
             />
           </div>
 

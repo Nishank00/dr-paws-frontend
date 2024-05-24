@@ -53,11 +53,11 @@ const BookingButton = ({ className }) => {
       <div className={className} onClick={bookingButtonClicked}>
         Book a visit
       </div>
-      
 
       <Popup isOpen={isLoginPopupOpen} onClose={closeLoginPopup}>
         <LoginForm
           onSuccess={closeLoginPopup}
+          title="Log in to book a visit"
           route={"/booking"}
           signUpClicked={signUpClicked}
         />

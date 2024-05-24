@@ -16,7 +16,9 @@ const PetSelect = ({ onSelect = () => pet, pet = {} }) => {
           backgroundRepeat: "no-repeat",
         }}
         className={`w-12 h-12 rounded-full cursor-pointer text-white flex items-center justify-center ${
-          pet.isSelected ? "bg-secondary opacity-50" : "bg-primary3"
+          pet.isSelected
+            ? "bg-secondary opacity-50 border border-primary"
+            : "bg-primary3"
         }`}
         onClick={onSelect}
       >
