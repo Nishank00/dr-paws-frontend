@@ -3,7 +3,14 @@ import SeriveItemCard from "./SeriveItemCard";
 
 const Tab = ({ service_items = [] }) => {
   const calculateGridColumns = () => {
-    if (service_items.length === 5) {
+
+    //REMOVE SERVICES WHICH NAMES CONTAINS includes a free vet
+
+    service_items = service_items.filter((service) => {
+      return !service.name.toLowerCase().includes("free vet");
+    });
+
+      if (service_items.length === 5) {
       return "grid-cols-3 gap-10 mx-auto"; // Three columns in the first row, two columns in the second row for small screens
     } else if (service_items.length === 8) {
       return "lg:grid-cols-4 gap-5 "; // Four columns for both rows
