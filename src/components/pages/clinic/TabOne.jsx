@@ -88,7 +88,7 @@ const TabOne = ({ contact_numbers, address }) => {
         </div>
         <div className="w-full mt-10 md:mt-0 md:w-[48%] ">
           <div className="items-stretch flex max-w-[369px] flex-col p-4 border-2 border-accent  rounded-xl pt-6  pb-9">
-            <div className="text-primary text-2xl font-custom-roca font-semibold leading-4 tracking-tight w-full">
+            <div className="text-primary text-2xl font-custom-roca font-semibold pb-5 leading-4 tracking-tight w-full">
               Location
             </div>
             <iframe
