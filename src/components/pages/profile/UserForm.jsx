@@ -271,7 +271,7 @@ const UserForm = ({ closePopup, user_id }) => {
             placeholder={"johndoe@gmail.com"}
             name={"email"}
             value={userData.email}
-            onChange={formValueChanged}
+            onChange={isValidEmail}
           />
 
           <MultipleSelect

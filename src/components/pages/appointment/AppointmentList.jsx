@@ -44,7 +44,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
               color="secondary"
               label="Book a visit"
               onClick={() => router.push("/booking")}
-              className="w-auto text-lg px-5 py-2"
+              className="w-auto text- cursor-pointer px-5 py-2"
             />
           )}
         </div>

@@ -9,7 +9,7 @@ const ClinicSelect = ({
 }) => {
   return (
     <div
-      className={`bg-primary3 rounded-lg ${
+      className={`bg-primary3 cursor-pointer rounded-lg ${
         selected ? "ring-4 ring-secondary" : ""
       }`}
       onClick={onClick}
