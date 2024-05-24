@@ -7,7 +7,7 @@ const Tab = ({ service_items = [] }) => {
     //REMOVE SERVICES WHICH NAMES CONTAINS includes a free vet
 
     service_items = service_items.filter((service) => {
-      return !service.name.toLowerCase().includes("free vet");
+      return !service.name.toLowerCase().includes("general vet");
     });
 
       if (service_items.length === 5) {
