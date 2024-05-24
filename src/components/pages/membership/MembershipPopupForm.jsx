@@ -265,9 +265,22 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             ))}
           </div>
 
-          <p className="text-sm font-bold">
+          {/* <p className="text-sm font-bold">
             Total benefits worth ₹{membership.id * 500}
-          </p>
+          </p> */}
+          {/* Checkbox with text */}
+          <div className="flex items-center gap-3 px-3">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              className="rounded-sm h-4 w-4"
+            />
+            <label htmlFor="terms" className="text-xs w-[350px]">
+            By taking a membership you accept Dr. Paws' Terms & Conditions. You also agree to receive communications by WhatsApp related to your membership.
+            </label>
+            </div>
+          
         </div>
 
         <div className="flex items-center justify-end mt-10">
