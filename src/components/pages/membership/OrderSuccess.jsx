@@ -19,7 +19,7 @@ const OrderSuccess = () => {
         const response = await MembershipService.getMembershipOrderDetails({
           booking_id: id,
           order_id,
-          // user_id: userValues.id,
+          user_id: userValues.id,
         });
         const { data } = response;
         if (!data?.status)
@@ -81,7 +81,7 @@ const OrderSuccess = () => {
             <tr className="flex justify-between text-primary text-md">
               <td>Total</td>
               <td className="font-bold">
-                {membershipDetails?.membershipDetails?.price}/-
+              ₹ {parseInt(membershipDetails?.membershipDetails?.price.toString()).toLocaleString('en-IN')}
               </td>
             </tr>
           </div>
