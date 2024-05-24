@@ -35,14 +35,14 @@ const GallaryBox = ({ photoArray = [] }) => {
               onClick={openPopup}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center"
             >
-              <p className="text-lg font-custom-open-sans text-white ">View more</p>
+              <p className="text-lg font-custom-open-sans cursor-pointer text-white ">View more</p>
             </div>
           )}
         </div>
       ))}
 
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center z-50 justify-center bg-black bg-opacity-50">
           <div className=" pt-10 rounded shadow-md relative group">
             <span
               className="absolute top-1 right-1 text-white cursor-pointer text-4xl transition-transform transform hover:scale-150"
