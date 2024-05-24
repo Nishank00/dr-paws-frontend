@@ -125,7 +125,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full border-solid border-grey pr-5 py-4"
         >
-          <p className="text-left font-custome-inter font-bold text-primary">
+          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
             About Dr. Paws
           </p>
         </div>
@@ -150,7 +150,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full md:mt-10 pr-5 py-4"
         >
-          <p className="text-left font-custome-inter font-bold text-primary">
+          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
             At a Dr. Paws Clinic
           </p>
         </div>
