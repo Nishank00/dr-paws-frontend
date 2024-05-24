@@ -75,18 +75,18 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 w-96 h-96 overflow-hidden rounded-lg">
             <img
               src="/Teams/smiling.png"
               alt=""
               loading="lazy"
-              className=" w-[80%]  m-auto rounded-[100%]"
+              className=" w-full h-full object-cover  m-auto rounded-[100%]"
             />
             <div className="text-lg text-center">
               {selectedDoctor?.introduction}
             </div>
           </div>
-          <Button label="Book a Visit" color="secondary" className="mt-6" />
+          <Button label="Book a Visit" color="secondary" className="mt-6 cursor-pointer" />
         </div>
       </div>
     </div>
