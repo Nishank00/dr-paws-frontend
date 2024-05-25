@@ -39,13 +39,13 @@ const NewBanner = () => {
       <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-12">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className=" text-3xl md:text-[55px] leading-none custom-open-sans pt-10  font-bold"
+          className=" text-3xl lg:w-[100%] w-[80%] m-auto md:text-[55px] leading-none custom-open-sans -mb-7 pt-12 lg:pt-0  font-bold"
         >
           The Veterinary <br />
           Care our best <br />
           friends deserve
         </h2>
-        <p className="text-sm font-custom-open-sans  md:text-[22px] font-semibold sm:font-light">
+        <p className="text-sm font-custom-open-sans  md:text-[22px] lg:w-[100%] w-[80%] m-auto font-semibold sm:font-light">
           Book a visit now. Who will we be meeting?
         </p>
 
