@@ -75,7 +75,7 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary  font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
       >
         Check out the places we call home
       </h2>
