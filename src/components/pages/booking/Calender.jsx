@@ -94,14 +94,17 @@ const Calendar = ({
     return (
       <div className="grid grid-cols-7 gap-1 mb-10 bg-primary4 text-primary">
         {days.map((date, index) => (
-          <div
+          <button
+            // disabled={
+            //   availableDays.length
+            //     ? !availableDays.includes(moment(date).format("dddd")) ||
+            //       moment(date).format("YYYY-MM-DD") <
+            //         moment().format("YYYY-MM-DD")
+            //     : moment(date).format("YYYY-MM-DD") <
+            //       moment().format("YYYY-MM-DD")
+            // }
             disabled={
-              availableDays.length
-                ? !availableDays.includes(moment(date).format("dddd")) ||
-                  moment(date).format("YYYY-MM-DD") <
-                    moment().format("YYYY-MM-DD")
-                : moment(date).format("YYYY-MM-DD") <
-                  moment().format("YYYY-MM-DD")
+              moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
             }
             key={index}
             onClick={() => {
@@ -110,7 +113,7 @@ const Calendar = ({
               }
             }}
             className={`p-2 text-sm ${
-              !availableDays.includes(moment(date).format("dddd")) ||
+              // !availableDays.includes(moment(date).format("dddd")) ||
               moment(date).format("YYYY-MM-DD") < moment().format("YYYY-MM-DD")
                 ? "cursor-not-allowed text-gray-400"
                 : moment(date).format("YYYY-MM-DD") ==
@@ -132,12 +135,12 @@ const Calendar = ({
             } ${
               // Highlight today's date
               date && date.toDateString() === today.toDateString()
-              ? "bg-[#74A7B3] text-white rounded-full" // Specific color for today's date
-              : ""
+                ? " !bg-[#74A7B3] text-white rounded-full" // Specific color for today's date
+                : ""
             }`}
           >
             {date && date.getDate()}
-          </div>
+          </button>
         ))}
       </div>
     );

@@ -1,15 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PetCard from "./PetCard";
-import DialogBox from "@/components/Common/DialogBox";
 import ProfileForm from "./ProfileForm";
 import UserService from "@/services/User.Service";
-import PetService from "@/services/Pet.Service";
 import { UserService as UserStorageService } from "@/services/Storage.service";
 import Popup from "@/components/ui/Popup";
 import PetList from "./PetList";
-import PetForm from "./PetForm";
-import Image from "next/image";
 import Button from "@/components/ui/Button";
 
 const UserPofile = () => {
@@ -62,11 +57,14 @@ const UserPofile = () => {
               height={100}
               className="aspect-square object-cover object-center w-[160px] h-[160px] rounded-full"
             /> */}
-             <div
+            <div
               className="w-[160px] h-[160px] rounded-full bg-accent relative"
               style={{
-                backgroundImage: `url(${userData.profile_image
-                  ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}` : "/defaultUserProfileImage.png"})`,
+                backgroundImage: `url(${
+                  userData.profile_image
+                    ? `${process.env.NEXT_PUBLIC_API_UPLOAD_URL}/${userData.profile_image}`
+                    : "/defaultUserProfileImage.png"
+                })`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",

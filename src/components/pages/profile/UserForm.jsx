@@ -48,8 +48,6 @@ const UserForm = ({ closePopup, user_id }) => {
     if (name === "pin_code") {
       if (value.length <= 6) {
         setUserData(newUserData);
-      } else {
-        console.log("hello");
       }
     } else {
       setUserData(newUserData);
@@ -71,19 +69,24 @@ const UserForm = ({ closePopup, user_id }) => {
   };
 
   const handleSubmit = () => {
-    let payload = { ...userData };
-    payload.id = user_id;
-    UserService.updateUser(payload)
-      .then((r) => {
-        if (r.data.status) {
-          onCancel();
-        } else {
-          alert(r.data.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    let isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userData.email);
+    if (isValidEmail) {
+      let payload = { ...userData };
+      payload.id = user_id;
+      UserService.updateUser(payload)
+        .then((r) => {
+          if (r.data.status) {
+            onCancel();
+          } else {
+            alert(r.data.message);
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      showToast("Invalid Email", "error");
+    }
   };
 
   const onCancel = () => {

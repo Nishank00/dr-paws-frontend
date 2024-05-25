@@ -11,17 +11,19 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   // Variables
   const showToast = useToast();
   const [formData, setFormData] = useState({
-    pet_image: null,
-    name: null,
-    pet_type: null,
-    breed: null,
-    gender: null,
-    date_of_birth: null,
-    age: null,
-    weight: null,
+    pet_image: "",
+    pet_name: "",
+    pet_type: "",
+    breed: "",
+    gender: "",
+    date_of_birth: "",
+    age: 0,
+    weight: 0,
+    otherBreed: "",
   });
   const [petTypes, setPetTypes] = useState([]);
   const [breeds, setBreeds] = useState([]);
+  const [isOthersSelected, setIsOthersSelected] = useState(false);
   const [genders, setGenders] = useState([
     { value: "MALE", label: "Male" },
     { value: "FEMALE", label: "Female" },
@@ -34,6 +36,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
 
   const updateFormData = (e) => {
     const { name, value } = e.target;
+    console.log("name", name);
+    console.log("value", value);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -62,7 +66,13 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   };
 
   const selectPetType = (selectedValue) => {
+    console.log("selectedValue", selectedValue);
     setFormData({ ...formData, pet_type: selectedValue });
+    if (selectedValue === "others") {
+      setIsOthersSelected(true);
+    } else {
+      setIsOthersSelected(false);
+    }
   };
 
   const selectBreed = (selectedValue) => {
@@ -76,6 +86,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   const submitForm = () => {
     const payload = {
       ...formData,
+      breed: isOthersSelected ? formData.otherBreed : formData.breed,
       user_id: JSON.parse(localStorage.getItem("user_info")).id,
     };
     if (pet_id) payload.id = pet_id;
@@ -114,13 +125,11 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
       })
       .catch((error) => console.log(error.message));
   };
-
   // Lifecycle Hooks
   useEffect(() => {
     getPetsType();
     setTimeout(() => {
       if (pet_id) {
-        // getPet();
         setFormData({
           pet_image: petData.pet_image,
           name: petData.name,
@@ -149,8 +158,9 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
       <UploadProfile onUpload={profileUploaded} image={formData.pet_image} />
 
       <TextInput
-        name="name"
-        value={formData.name}
+        type="text"
+        name="pet_name"
+        value={formData.pet_name}
         placeholder={"Pet's Name"}
         onChange={updateFormData}
         classes="md:mb-4"
@@ -165,7 +175,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
         placeholder={"Type of Pet"}
         onSelect={selectPetType}
       />
-      {breeds.lenght > 0 && (
+
+      {breeds.length > 0 && (
         <Select
           name="breed"
           selectedValue={formData.breed}
@@ -174,6 +185,16 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           optionValue={"id"}
           placeholder={"Breed"}
           onSelect={selectBreed}
+        />
+      )}
+
+      {isOthersSelected && (
+        <TextInput
+          type="text"
+          name="otherBreed"
+          value={formData.otherBreed}
+          placeholder={"Enter your pet breed"}
+          onChange={updateFormData}
         />
       )}
 
