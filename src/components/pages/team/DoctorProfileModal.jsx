@@ -80,17 +80,19 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
           </div>
         </div>
         <div className="flex flex-col gap-4 w-2/5">
-          <div className="flex flex-col gap-4">
-            <img
-              src="/Teams/smiling.png"
-              alt=""
-              loading="lazy"
-              className="w-full"
-            />
-            <div className="text-lg text-center">
-              {selectedDoctor?.introduction}
-            </div>
-          </div>
+        <div className="flex flex-col gap-4 items-center">
+  <div className="w-[80%] aspect-square rounded-full overflow-hidden">
+    <img
+      src="/Teams/smiling.png"
+      alt="Smiling"
+      loading="lazy"
+      className="w-full h-full object-cover"
+    />
+  </div>
+  <div className="text-lg text-center">
+    {selectedDoctor?.introduction}
+  </div>
+</div>
           <Button label="Book a Visit" color="secondary" className="mt-4" />
         </div>
       </div>

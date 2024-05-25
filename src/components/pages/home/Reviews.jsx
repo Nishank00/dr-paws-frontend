@@ -41,7 +41,14 @@ const Reviews = () => {
                 "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" />
+            <Image
+    src="https://avatar.iran.liara.run/public/32" // Replace with your image URL
+    alt="Circular Placeholder"
+    height={12}
+    width={30}
+    className="rounded-full"
+  />
+              {/* <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#9FA983] rounded-[50%]" /> */}
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[0]?.reviewer_name ||
                   "Rahul Shah , pet-parent to Choco"} */}
@@ -61,7 +68,14 @@ const Reviews = () => {
               {reviews?.[1]?.clinic_review ||
                 "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div> <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
+              {/* <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" /> */}
+              <Image
+    src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
+    alt="Circular Placeholder"
+    height={12}
+    width={30}
+    className="rounded-full"
+  />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[1]?.reviewer_name || "Rahul Shah , pet-parent to choco"} */}
                 Arjun Sharma, pet-parent to Luna
@@ -74,7 +88,14 @@ const Reviews = () => {
                 "Dr. Paws is fantastic! Exceptional care, friendly staff, and a welcoming atmosphere. Highly recommend for pet owners!"}
             </div>
             <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" />
+              {/* <div className="flex w-[31px] shrink-0 h-[31px] flex-col bg-[#74A7B3] rounded-[50%]" /> */}
+              <Image
+    src="https://avatar.iran.liara.run/public/girl" // Replace with your image URL
+    alt="Circular Placeholder"
+    height={12}
+    width={30}
+    className="rounded-full"
+  />
               <div className="text-primary italic font-semibold self-center grow whitespace-nowrap my-auto">
                 {/* {reviews?.[2]?.reviewer_name ||
                   "Rahul Shah , pet-parent to choco"} */}

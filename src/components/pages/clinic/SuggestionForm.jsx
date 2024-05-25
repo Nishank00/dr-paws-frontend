@@ -1,9 +1,64 @@
-import React from "react";
+import {React, useState} from "react";
 import Input from "@/components/ui/Input";
 import TextInput from "@/components/ui/TextInput";
 import PhoneNumberInput from "@/components/ui/PhoneNumberInput";
+import Toast from "@/components/ui/Toast";
+import { useToast } from "../../ui/ToastProvider";
 
 const SuggestionForm = () => {
+
+  const showToast = useToast();
+
+  // Initialize form state including countryCode and phoneNumber
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    countryCode: '+91', // Default country code
+    phoneNumber: '',
+    pinCode: '',
+    whatsappConsent: false,
+  });
+
+  // Update form state on input change
+  const handleChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Specific handlers for countryCode and phoneNumber to fit the PhoneNumberInput interface
+  const handleCountryCodeChange = (countryCode) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      countryCode,
+    }));
+  };
+
+  const handlePhoneNumberChange = (phoneNumber) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      phoneNumber,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    // e.preventDefault(); // Prevent default form submission behavior
+    showToast("Thank you for your response!", "success");
+    // Reset form fields
+    setFormData({
+      firstName: '',
+      lastName: '',
+      countryCode: '+91', // Reset to default or clear as needed
+      phoneNumber: '',
+      pinCode: '',
+      whatsappConsent: false,
+    });
+  };
+
+
   return (
     <div className="w-full rounded-lg bg-primary3 ">
       <div className="justify-center w-full items-center bg-primary3 flex rounded-lg flex-col">
@@ -21,18 +76,23 @@ const SuggestionForm = () => {
           Tell us where you’d like a new clinic so we know where to prioritize
         </header>
       </div>
-      <form className=" w-[80%] items-center m-auto bg-primary3 pb-[50px] flex flex-col justify-center rounded-md ">
+      <div className=" w-[80%] items-center m-auto bg-primary3 pb-[50px] flex flex-col justify-center rounded-md" >
         <div className=" w-full form-group  md:mb-[4px] grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-5">
-          <TextInput type="text" placeholder={"First Name"} />
-          <TextInput type="text" placeholder={"Last Name"} />
+          {/* <TextInput type="text" placeholder={"First Name"} />
+          <TextInput type="text" placeholder={"Last Name"} /> */}
+          <TextInput type="text" placeholder={"First Name"} name="firstName" value={formData.firstName} onChange={handleChange} />
+      <TextInput type="text" placeholder={"Last Name"} name="lastName" value={formData.lastName} onChange={handleChange} />
         </div>
         <div className="w-full form-group mb-[6px]  grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-5">
-          <PhoneNumberInput placeholder={"Contact Number"} />
-          <TextInput
-            type="number"
-            name="pin_code"
-            placeholder={"Pin Code"}
-          />{" "}
+        <PhoneNumberInput
+        placeholder="Contact Number"
+        countryCode={formData.countryCode}
+        phoneNumber={formData.phoneNumber}
+        onCountryCodeChange={handleCountryCodeChange}
+        onPhoneNumberChange={handlePhoneNumberChange}
+        name="phoneNumber"
+      />
+      <TextInput type="number" name="pinCode" placeholder={"Pin Code"} maxLength={6} value={formData.pinCode} onChange={handleChange} />
         </div>
 
         <div className=" w-full flex items-center my-5 pl-2">
@@ -41,11 +101,7 @@ const SuggestionForm = () => {
             aria-role="checkbox"
             aria-label="Whatsapp Consent Checkbox"
           >
-            <input
-              type="checkbox"
-              id="whatsapp-consent"
-              className="h-[15px] w-[15px] md:h-[22px] md:w-[22px]"
-            />
+            <input type="checkbox" id="whatsapp-consent" name="whatsappConsent" checked={formData.whatsappConsent} onChange={handleChange} className="h-[15px] w-[15px] md:h-[22px] md:w-[22px]" />
           </div>
           <label
             htmlFor="whatsapp-consent"
@@ -54,12 +110,19 @@ const SuggestionForm = () => {
             Alert me when a clinic opens near me on Whatsapp
           </label>
         </div>
-        <div className="w-full mt-5 flex justify-center md:justify-start ">
+        <div onClick={
+          () => {
+handleSubmit();
+            //CLEAR ALL THE FIELDS
+
+          }
+        
+        } className="w-full mt-5 flex justify-center md:justify-start ">
           <button className="text-white font-custom-open-sans   w-[210px] h-[50px] text-base font-bold  justify-center  bg-secondary2  rounded-full">
             Submit
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

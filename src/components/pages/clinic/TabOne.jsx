@@ -109,7 +109,7 @@ const TabOne = ({ contact_numbers, address }) => {
           </div>
         </div>
       </div>
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary font-medium  pt-10  text-2xl md:text-[36px] pb-6 text-center"
@@ -117,7 +117,7 @@ const TabOne = ({ contact_numbers, address }) => {
           Meet the superheroes
         </h2>
         <DoctorSlider />
-      </div>
+      </div> */}
     </div>
   );
 };

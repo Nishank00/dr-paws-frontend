@@ -11,6 +11,7 @@ import ClinicService from "@/services/Clinic.service";
 import { useEffect, useState } from "react";
 import Dropdown from "@/components/ui/Dropdown";
 import { useDispatch } from "react-redux";
+
 import {
   setPageTitle,
   setPageHeader,
@@ -22,8 +23,11 @@ import {
 } from "@/components/constants";
 
 const Homepage = () => {
+
   const dispatch = useDispatch();
   const [clinics, setClinics] = useState([]);
+  
+
   const getClinics = () => {
     ClinicService.getData()
       .then((response) => {
@@ -40,13 +44,18 @@ const Homepage = () => {
       setPageHeader({ title: "Home", currentMenu: "HOME", currentPath: "/" })
     );
     getClinics();
+    
   }, []);
+
 
   return (
     <>
       <NewBanner />
-      <div className="body-padding-x pt-5 bg-[#cbd9e3] lg:bg-white sm:mt-10">
+      <div onClick={() => {
+          getPets();
+        }} className="body-padding-x pt-5 bg-[#cbd9e3] lg:bg-white sm:mt-10">
         <h2
+        
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary font-medium text-2xl md:text-4xl mb-5 md:mb-10 text-center"
         >
@@ -124,7 +133,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full border-solid border-grey pr-5 font-black py-4"
         >
-          <p className="text-left  font-custome-inter text-primary">
+          <p className="text-left  font-custome-inter text-primary text-lg">
             About Dr. Paws
           </p>
         </div>
@@ -144,7 +153,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full md:mt-10 pr-5 py-4"
         >
-          <p className="text-left font-custome-inter font-bold text-primary">
+          <p className="text-left font-custome-inter font-bold text-primary text-lg">
             At a Dr. Paws Clinic
           </p>
         </div>

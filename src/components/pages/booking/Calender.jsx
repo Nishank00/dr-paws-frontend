@@ -132,8 +132,8 @@ const Calendar = ({
             } ${
               // Highlight today's date
               date && date.toDateString() === today.toDateString()
-                ? "bg-primary text-white rounded-full" // Add your highlight style here
-                : ""
+              ? "bg-[#74A7B3] text-white rounded-full" // Specific color for today's date
+              : ""
             }`}
           >
             {date && date.getDate()}

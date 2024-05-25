@@ -212,18 +212,26 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
 
         <h5 className="text-sm font-bold">Includes:</h5>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col items-start">
           {membership.membership_items.map((membership_item, index) => (
             <div
               key={"popup-m-item" + membership_item.id + index}
               className="flex items-center gap-3"
             >
               <span className="w-1 h-1 rounded-full bg-primary"></span>
-              <p className="text-sm">
+              <p className="text-[15px]">
                 {membership_item.service_count} {membership_item.service_name}
               </p>
             </div>
           ))}
+          <div className="mt-6 p-4 max-w-sm mx-auto bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 rounded-lg flex items-center space-x-4 shadow-lg">
+  <img src="images/discount.png" alt="Icon" className="w-12 h-12" /> {/* Replace "/path-to-your-icon.png" with the actual path to your icon image */}
+  <div>
+    <p className="text-gray-800 text-sm font-bold">
+      Total benefits worth ₹{membership.id * 500}
+    </p>
+  </div>
+</div>
         </div>
       </div>
 
@@ -265,9 +273,20 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             ))}
           </div>
 
-          <p className="text-sm font-bold">
-            Total benefits worth ₹{membership.id * 500}
-          </p>
+          
+          {/* Checkbox with text */}
+          <div className="flex items-center gap-3 px-3">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              className="rounded-sm h-4 w-4"
+            />
+            <label htmlFor="terms" className="text-xs w-[350px]">
+            By taking a membership you accept Dr. Paws' Terms & Conditions. You also agree to receive communications by WhatsApp related to your membership.
+            </label>
+            </div>
+          
         </div>
 
         <div className="flex items-center justify-end mt-10">
