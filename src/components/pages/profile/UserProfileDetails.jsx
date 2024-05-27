@@ -40,9 +40,9 @@ const UserProfileDetails = () => {
   return (
     <>
       <div className="text-primary px-4 flex gap-5">
-        <div className="w-2/12   -ml-10 mr-11 self-center">
+        <div className="w-2/12  -ml-10 mr-14 self-center">
           <div
-            className="w-16 h-16 sm:w-28 sm:h-28 lg:w-40 lg:h-40 border-primary2  border-4 rounded-full"
+            className="w-32 h-32 ml-11 lg:ml-0 sm:w-28 sm:h-28 lg:w-40 lg:h-40 border-primary2  border-4 rounded-full"
             style={{
               // backgroundImage: `url(${
               //   userData.profile_image
@@ -59,7 +59,7 @@ const UserProfileDetails = () => {
           />
         </div>
 
-        <div className="w-8/12 flex flex-col gap-3">
+        <div className="lg:w-8/12 w-48 flex ml-14 flex-col gap-1">
           <h4 className="text-xl sm:text-3xl text-secondary capitalize  font-custom-roca" style={{}}>
             {userData.full_name || "Not Available"}
           </h4>
@@ -116,11 +116,11 @@ const UserProfileDetails = () => {
           </div>
         </div>
 
-        <div className="w-2/12 flex justify-end">
+        <div className="w-2/12 flex relative right-16 lg:right-0 lg:relative justify-end">
           <span
             onClick={openEditPopup}
             title="Update Profile"
-            className="w-5 h-5 flex items-center justify-center bg-secondary rounded-full hover:bg-primary cursor-pointer p-1 sm:hidden"
+            className="w-5 h-5 flex items-center justify-center bg-secondary rounded-full relative hover:bg-primary cursor-pointer p-1 sm:hidden"
           >
             <img src="/profile/edit.svg" alt=" " loading="lazy" />
           </span>
