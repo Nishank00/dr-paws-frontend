@@ -41,8 +41,8 @@ const NewBanner = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className=" text-3xl lg:w-[100%] w-[80%] m-auto md:text-[55px] leading-none custom-open-sans -mb-7 pt-12 lg:pt-0  font-bold"
         >
-          The Veterinary <br />
-          Care our best <br />
+          The veterinary <br />
+          care our best <br />
           friends deserve
         </h2>
         <p className="text-sm font-custom-open-sans  md:text-[22px] lg:w-[100%] w-[80%] m-auto font-semibold sm:font-light">
