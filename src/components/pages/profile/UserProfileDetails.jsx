@@ -116,11 +116,11 @@ const UserProfileDetails = () => {
           </div>
         </div>
 
-        <div className="w-2/12 flex relative right-16 lg:right-0 lg:relative justify-end">
+        <div className="w-2/12 flex relative right-16 lg:left-56 lg:relative justify-end">
           <span
             onClick={openEditPopup}
             title="Update Profile"
-            className="w-5 h-5 flex items-center justify-center bg-secondary rounded-full relative hover:bg-primary cursor-pointer p-1 sm:hidden"
+            className="lg:w-5 lg:h-5 w-8 h-8 flex items-center justify-center bg-secondary rounded-full relative hover:bg-primary cursor-pointer p-1 sm:hidden"
           >
             <img src="/profile/edit.svg" alt=" " loading="lazy" />
           </span>
