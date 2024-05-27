@@ -8,6 +8,7 @@ import Slider from "./Slider";
 import { useParams } from "next/navigation";
 import ClinicService from "@/services/Clinic.service";
 import BookingButton from "@/components/ui/BookingButton";
+import TabFour from "./TabFour";
 
 const OverviewTabs = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -51,7 +52,7 @@ const OverviewTabs = () => {
         console.log(err);
       });
   };
-  
+
   useEffect(() => {
     if (id) {
       getDataById();
@@ -71,7 +72,7 @@ const OverviewTabs = () => {
                   {clinic.name || "NA"}
                 </div>
                 <div className="text-primary text-[22px]  tracking-tight whitespace-nowrap mt-4">
-                  Grooming | OPD | Surgery
+                  Check-Ups | Surgery | Diagnostics | Grooming | Retail
                 </div>
               </span>
             </div>
@@ -84,7 +85,7 @@ const OverviewTabs = () => {
       <div className="flex w-[70%] mx-auto flex-col items-start mt-4 text-primary">
         <div className="relative w-full">
           <div className="flex w-full space-x-8 pb-4 border-b-2 border-b-primary3">
-            {["Clinic Details", "Photos", "Reviews"].map((tab, index) => (
+            {["Clinic Details", "Photos", "Reviews", "Vetrenarians"].map((tab, index) => (
               <button
                 key={index}
                 ref={(el) => (tabsRef.current[index] = el)}
@@ -125,6 +126,17 @@ const OverviewTabs = () => {
             <TabThree {...clinic} />
           </div>
         )}
+
+        
+        {/* Content for Tab 4 */}
+        {
+          activeTab === 4 && (
+            <div className="p-4">
+           <TabFour {...clinic} />
+            </div>
+          )
+        }
+
       </div>
     </div>
   );

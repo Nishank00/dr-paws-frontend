@@ -16,7 +16,7 @@ import {
 } from "@/store/features/userSession/userSessionSlice";
 import { useRouter } from "next/navigation";
 
-const LoginForm = ({ onSuccess, signUpClicked, route }) => {
+const LoginForm = ({ onSuccess, signUpClicked, route, title = "Log in" }) => {
   // Variables
   const dispatch = useDispatch();
   const showToast = useToast();
@@ -130,7 +130,7 @@ const LoginForm = ({ onSuccess, signUpClicked, route }) => {
               <div className="text-center">
                 <div className="mb-10">
                   <h5 className="font-bold font-custom-roca text-2xl sm:text-3xl mb-2">
-                    Log in to book a visit
+                    {title}
                   </h5>
                   <p className="text-sm font-custom-open-sans">
                     Enter your phone number to receive a verification code

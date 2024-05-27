@@ -16,6 +16,7 @@ import PetForm from "../petProile/PetForm";
 import ConfirmBookingOTP from "./ConfirmBookingOTP";
 import { useDispatch } from "react-redux";
 import { setPageHeader } from "@/store/features/pageHeader/pageHeaderSlice";
+import UserService from "@/services/User.Service";
 
 const Form = () => {
   // Variables
@@ -40,6 +41,7 @@ const Form = () => {
   const [appointment, setAppointment] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isOTPPopupOpen, setOTPPopupOpen] = useState(false);
+  const [userHomeClinic, setUserHomeClinic] = useState(null);
 
   // Methods
   const openPopup = () => setPopupOpen(true);
@@ -281,10 +283,18 @@ const Form = () => {
     });
 
     doctors.map((doctor) => {
-      if (doctor.selected) {
+      if (doctor.selected && doctor.id != "best-available-vet") {
         appointment.doctor_id = doctor.id;
+      } else if(doctor.id == "best-available-vet" && doctor.selected){
+        //SELECT RANDOM DOCTOR FROM THE LIST
+        const randomDoctor = doctors.filter((doctor) => doctor.id != "best-available-vet");
+        const randomDoctorIndex = Math.floor(Math.random() * randomDoctor.length);
+        appointment.doctor_id = randomDoctor[randomDoctorIndex].id;
       }
     });
+
+    
+
 
     if (!appointment.clinic_id || !appointment.doctor_id) {
       return showToast("Please select Clinic and Doctor", "warning");
@@ -375,12 +385,34 @@ const Form = () => {
               clinic_doctor.selected = true;
             }
           });
-          setDoctors([{ name: "harsh" }, ...clinic.clinic_doctors]);
+
+          const bestAvailableDoctor = {
+            doctor_name: "Best Available Vet",
+            id: "best-available-vet",
+            selected: false,
+          };
+          setDoctors([bestAvailableDoctor, ...clinic.clinic_doctors]);
         }
         return clinic;
       })
     );
   };
+
+  useEffect(() => {
+    const addBestAvailableDoctor = () => {
+      const bestAvailableDoctor = {
+        doctor_name: "Best Available Vet",
+        id: "best-available-vet",
+        selected: false,
+      };
+  
+      if (!doctors.some((doctor) => doctor.id === "best-available-vet")) {
+        setDoctors([bestAvailableDoctor, ...doctors]);
+      }
+    };
+  
+    addBestAvailableDoctor();
+  }, [doctors]);
 
   console.log("doctors", doctors);
 
@@ -413,7 +445,7 @@ const Form = () => {
         )}
         {currentPage == 3 && (
           <SelectDoctorAndDateTimePage
-          isGroomingOnly={selectedServices.includes(105 || "105")}
+            isGroomingOnly={selectedServices.includes(105 || "105")}
             selectedServicesData={selectedServices}
             currentPage={currentPage}
             className={
@@ -428,6 +460,7 @@ const Form = () => {
                   selectedServices.includes(105 || "105")
                 ? doctors
                 : doctors.filter((doctorData) => doctorData.doctor_id != 12)
+              // selectedServices.includes(105 || "105") ? doctors.filter((doctorData) => doctorData.doctor_id == 12) : doctors.filter((doctorData) => doctorData.doctor_id != 12)
             }
             setDoctors={setDoctors}
             selectedClinic={selectedClinic}
@@ -444,7 +477,9 @@ const Form = () => {
   // Lifecycle hooks
   useEffect(() => {
     getClinics();
+
     setUserID(JSON.parse(localStorage.getItem("user_info"))?.id);
+
     dispatch(
       setPageHeader({
         title: "Booking",
@@ -456,6 +491,8 @@ const Form = () => {
 
   useEffect(() => {
     fetchData();
+    getUserData();
+    
   }, [user_id]);
 
   useEffect(() => {
@@ -467,6 +504,45 @@ const Form = () => {
       prepareForm();
     }
   }, [appointment]);
+
+  const getUserData = async () => {
+    if (user_id) {
+      const userdata = await UserService.getUserById(user_id).then(
+        (response) => {
+          console.log(
+            "GET USER DATA FROM CLINIC: ",
+            response.data.data.clinic_name
+          );
+          if (response.data.data.clinic_name != null) {
+            setUserHomeClinic(response.data.data.clinic_name);
+          }
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+     const sortClinicsByHomeClinicName = () => {
+    console.log("SORTING CLINICS BY HOME CLINIC NAME");
+    console.log("USER HOME CLINIC: ", userHomeClinic);
+    console.log("CLINICS: ", clinics);
+
+    if(clinics.length > 0 && userHomeClinic != null){
+      const homeClinicIndex = clinics.findIndex(
+        (clinic) => clinic.name === userHomeClinic
+      );
+      if (homeClinicIndex > -1) {
+        const homeClinic = clinics[homeClinicIndex];
+        clinics.splice(homeClinicIndex, 1);
+        clinics.unshift(homeClinic);
+      }
+      setClinics(clinics);
+    }
+  };
+
+  sortClinicsByHomeClinicName();
+  },[userHomeClinic, clinics]);
+ 
 
   return user_id ? (
     <div className="text-primary">

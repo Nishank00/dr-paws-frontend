@@ -34,7 +34,7 @@ const TextInput = ({
           classes
         }
         min={0}
-        max={max}
+        maxLength={max}
       />
     </div>
   );

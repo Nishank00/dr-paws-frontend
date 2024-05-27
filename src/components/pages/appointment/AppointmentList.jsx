@@ -21,6 +21,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
     getAppointments();
   }, []);
 
+  console.log("appointments", appointments);
   return (
     <>
       {appointments && appointments.length > 0 ? (

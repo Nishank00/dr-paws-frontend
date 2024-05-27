@@ -7,28 +7,27 @@ import UploadProfile from "@/components/auth/UploadProfile";
 import { useToast } from "@/components/ui/ToastProvider";
 import moment from "moment";
 
-const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
+const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   // Variables
   const showToast = useToast();
-  const today = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = useState({
-    pet_image: null,
-    name: null,
-    pet_type: null,
-    breed: null,
-    gender: null,
-    date_of_birth: null,
-    age: null,
-    weight: null,
+    pet_image: "",
+    pet_name: "",
+    pet_type: "",
+    breed: "",
+    gender: "",
+    date_of_birth: "",
+    age: 0,
+    weight: 0,
+    otherBreed: "",
   });
   const [petTypes, setPetTypes] = useState([]);
   const [breeds, setBreeds] = useState([]);
+  const [isOthersSelected, setIsOthersSelected] = useState(false);
   const [genders, setGenders] = useState([
     { value: "MALE", label: "Male" },
     { value: "FEMALE", label: "Female" },
   ]);
-
-  const requiredFields = ["name", "pet_type"];
 
   // Methods
   const profileUploaded = (filename) => {
@@ -37,26 +36,11 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
 
   const updateFormData = (e) => {
     const { name, value } = e.target;
-    let updatedFormData = { ...formData };
-
-    if (name === "weight" || name === "age") {
-      if (parseFloat(value) >= 0) {
-        updatedFormData[name] = parseFloat(value);
-      } else {
-        updatedFormData[name] = 0;
-      }
-      setFormData(updatedFormData);
-    } else {
-      updatedFormData[name] = value;
-      setFormData(updatedFormData);
-    }
-
-    if (name === "date_of_birth") {
-      const dateOfBirth = moment(value);
-      updatedFormData["age"] = moment().diff(dateOfBirth, "years");
-      setFormData(updatedFormData);
-    }
+    console.log("name", name);
+    console.log("value", value);
+    setFormData({ ...formData, [name]: value });
   };
+
   const getPetsType = () => {
     PetService.getPetTypes()
       .then((response) => {
@@ -82,8 +66,16 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   };
 
   const selectPetType = (selectedValue) => {
+    console.log("selectedValue", selectedValue, selectedValue === "12");
     setFormData({ ...formData, pet_type: selectedValue });
+    if (selectedValue === "12") {
+      setIsOthersSelected(true);
+    } else {
+      setIsOthersSelected(false);
+    }
   };
+
+  console.log("isOthersSelected", isOthersSelected);
 
   const selectBreed = (selectedValue) => {
     setFormData({ ...formData, breed: selectedValue });
@@ -92,45 +84,68 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
   const selectGender = (selectedValue) => {
     setFormData({ ...formData, gender: selectedValue });
   };
+
   const submitForm = () => {
-    const allFieldsPresent = requiredFields.every((field) => formData[field]);
+    const payload = {
+      ...formData,
+      breed: isOthersSelected ? formData.otherBreed : formData.breed,
+      user_id: JSON.parse(localStorage.getItem("user_info")).id,
+    };
+    if (pet_id) payload.id = pet_id;
 
-    console.log("allFieldsPresent", allFieldsPresent);
-
-    if (allFieldsPresent) {
-      const payload = {
-        ...formData,
-        user_id: JSON.parse(localStorage.getItem("user_info")).id,
-      };
-
-      PetService.savePet(payload)
-        .then((response) => {
-          if (response.data.status) {
-            showToast("Pet Added Successfully", "success");
-            console.log(response.data.data);
-            onPetAdded();
-            closePopup();
-          }
-        })
-        .catch((error) => console.log(error.message));
-      localStorage.removeItem("isNew");
-    } else {
-      const missingFields = requiredFields.filter((field) => !formData[field]);
-      const missingFieldsMessage = `Missing fields: ${missingFields.join(
-        ", "
-      )}`;
-      console.log(missingFieldsMessage);
-      showToast(
-        `Please fill in all fields before submitting the form. ${missingFieldsMessage}`,
-        "warning"
-      );
-    }
+    (pet_id ? PetService.updatePet(payload) : PetService.savePet(payload))
+      .then((response) => {
+        if (response.data.status) {
+          showToast(
+            `Pet ${pet_id ? "Updated" : "Added"} Successfully`,
+            "success"
+          );
+          onPetAdded();
+          closePopup();
+        }
+      })
+      .catch((error) => console.log(error.message));
   };
-  console.log("petTypes", petTypes);
 
+  const getPet = () => {
+    PetService.getPets({ pet_id })
+      .then((response) => {
+        if (!response.data.status) return;
+        const data = response.data.data[0];
+        setFormData({
+          pet_image: data.pet_image,
+          name: data.name,
+          pet_type: data.pet_type,
+          breed: data.breed,
+          gender: data.gender,
+          date_of_birth: data.date_of_birth
+            ? moment(data.date_of_birth).format("YYYY-MM-DD")
+            : null,
+          age: data.age,
+          weight: data.weight,
+        });
+      })
+      .catch((error) => console.log(error.message));
+  };
   // Lifecycle Hooks
   useEffect(() => {
     getPetsType();
+    setTimeout(() => {
+      if (pet_id) {
+        setFormData({
+          pet_image: petData.pet_image,
+          name: petData.name,
+          pet_type: petData.pet_type,
+          breed: petData.breed,
+          gender: petData.gender,
+          date_of_birth: petData.date_of_birth
+            ? moment(petData.date_of_birth).format("YYYY-MM-DD")
+            : null,
+          age: petData.age,
+          weight: petData.weight,
+        });
+      }
+    }, 1500);
   }, []);
 
   useEffect(() => {
@@ -139,14 +154,15 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
 
   return (
     <div className="bg-primary3 w-96 p-5 rounded-lg">
-      <h4 className="text-primary text-center font-bold mb-4 text-3xl">
-        Add a pet
+      <h4 className="text-primary text-center font-bold font-custom-roca mb-4 text-3xl">
+        {pet_id ? "Update Pet" : "Add a Pet"}
       </h4>
-      <UploadProfile onUpload={profileUploaded} />
+      <UploadProfile onUpload={profileUploaded} image={formData.pet_image} />
 
       <TextInput
-        name="name"
-        value={formData.name}
+        type="text"
+        name="pet_name"
+        value={formData.pet_name}
         placeholder={"Pet's Name"}
         onChange={updateFormData}
         classes="md:mb-4"
@@ -154,7 +170,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
 
       <Select
         name="pet_type"
-        value={formData.pet_type}
+        selectedValue={formData.pet_type}
         options={petTypes}
         optionLabel={"name"}
         optionValue={"id"}
@@ -165,7 +181,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
       {breeds.length > 0 && (
         <Select
           name="breed"
-          value={formData.breed}
+          selectedValue={formData.breed}
           options={breeds}
           optionLabel={"name"}
           optionValue={"id"}
@@ -174,10 +190,20 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
         />
       )}
 
+      {isOthersSelected && (
+        <TextInput
+          type="text"
+          name="otherBreed"
+          value={formData.otherBreed}
+          placeholder={"Enter your pet breed"}
+          onChange={updateFormData}
+        />
+      )}
+
       <div className="grid grid-cols-2 gap-x-2">
         <Select
           name="gender"
-          value={formData.gender}
+          selectedValue={formData.gender}
           options={genders}
           optionLabel={"label"}
           optionValue={"value"}
@@ -191,31 +217,25 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           value={formData.date_of_birth}
           placeholder={"Date of Birth"}
           onChange={updateFormData}
-          max={today}
         />
 
         <TextInput
           type="number"
           name="age"
           value={formData.age}
-          readonly
           placeholder={"Age"}
+          onChange={updateFormData}
           classes="md:mb-4"
         />
 
-        <div className="relative md:mb-4 ">
-          <input
-            type="number"
-            name="weight"
-            value={formData.weight}
-            placeholder="Weight"
-            onChange={updateFormData}
-            className="text-primary p-4 border border-secondary rounded-md w-full focus:outline-none focus:ring h-12 pr-10"
-          />
-          <span className="absolute top-1/2 bottom-1/2 right-0 flex items-center pr-3 pointer-events-none text-gray-500 text-sm">
-            kg
-          </span>
-        </div>
+        <TextInput
+          type="number"
+          name="weight"
+          value={formData.weight}
+          placeholder={"Weight"}
+          onChange={updateFormData}
+          classes="md:mb-4"
+        />
       </div>
 
       <div className="flex items-center justify-between gap-5">
@@ -223,9 +243,14 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id }) => {
           color="primary4"
           label="Cancel"
           onClick={closePopup}
-          className="bg-primary3 text-secondary border-2 border-secondary hover:text-white hover:bg-secondary"
+          className="bg-primary3 text-secondary border-2 border-secondary hover:text-white hover:bg-secondary w-40 h-12"
         />
-        <Button color="secondary" label="Save" onClick={submitForm} />
+        <Button
+          color="secondary"
+          label="Save"
+          onClick={submitForm}
+          className="w-40 h-12"
+        />
       </div>
     </div>
   );

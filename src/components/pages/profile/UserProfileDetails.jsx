@@ -31,8 +31,6 @@ const UserProfileDetails = () => {
       });
   };
 
-  console.log("userData", userData);
-
   useEffect(() => {
     getUserData();
   }, []);
