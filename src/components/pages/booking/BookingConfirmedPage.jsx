@@ -411,11 +411,11 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
               </>
             )}
         </div>
-        {appointment?.is_active == 1 && (
+        {/* {appointment?.is_active == 1 && (
           <p className="underline text-sm my-8 cursor-pointer">
             + Add to Calendar
           </p>
-        )}
+        )} */}
         <Button
           color="secondary"
           label="Done"

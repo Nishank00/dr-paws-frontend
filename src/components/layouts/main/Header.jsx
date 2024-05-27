@@ -18,43 +18,17 @@ const Menus = ({ show = false, applyParentClass = "" }) => {
     { text: "Our Services", href: "/services" },
     { text: "Our Team", href: "/team" },
     { text: "Membership", href: "/membership" },
-
   ];
   return (
     <>
       <div className={`${show ? "" : "hidden md:block"}  `}>
-        {/* <ul
-          className={`${applyParentClass} text-lg flex flex-col md:flex-row lg:mt-0`}
-        >
-          <li className="md:mx-3 hover:font-semibold">
-            <Link className="" href="/clinics">
-              <span className="">Locations</span>
-            </Link>
-          </li>
-
-          <li className="md:mx-3 hover:font-semibold">
-            <Link className="" href="/services">
-              Our Services
-            </Link>
-          </li>
-
-          <li className="md:mx-3 hover:font-semibold">
-            <Link className="" href="/team">
-              Our Team
-            </Link>
-          </li>
-
-          <li className="md:mx-3 hover:font-semibold">
-            <Link className="" href="/membership">
-              Membership
-            </Link>
-          </li>
-        </ul> */}
         <div className={`flex gap-6 items-center  ${applyParentClass}`}>
           {menuItems.map((menuItem, index) => (
             <div key={index} className="">
               <Link className="" href={menuItem.href}>
-                <span className=" hover:text-gray-400 transition">{menuItem.text}</span>
+                <span className=" hover:text-gray-400 transition">
+                  {menuItem.text}
+                </span>
               </Link>
             </div>
           ))}
@@ -168,7 +142,10 @@ const Header = () => {
 
                 {showProfileDropdown && (
                   <div className="absolute top-14 w-screen sm:w-auto">
-                    <ProfileDropdown onLogout={closeProfileDropdown} />
+                    <ProfileDropdown
+                      onClose={() => setProfileDropdown(false)}
+                      onLogout={closeProfileDropdown}
+                    />
                   </div>
                 )}
               </div>

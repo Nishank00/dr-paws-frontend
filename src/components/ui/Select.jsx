@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 
 const Select = ({
@@ -10,14 +11,12 @@ const Select = ({
   returnObject = false,
   selectedValue,
 }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
   const handleSelect = (e) => {
-    setSelectedOptions(returnObject ? options[e.target.value] : e.target.value);
+    const selected = returnObject
+      ? options.find((option) => option[optionValue] === e.target.value)
+      : e.target.value;
 
-    onSelect
-      ? onSelect(returnObject ? options[e.target.value] : e.target.value)
-      : null;
+    onSelect ? onSelect(selected) : null;
   };
 
   return (
@@ -30,9 +29,9 @@ const Select = ({
       <select
         className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300 h-12"
         onChange={handleSelect}
-        value={selectedValue || selectedOptions}
+        value={selectedValue}
       >
-        {<option value="">{placeholder || "Select an option"}</option>}
+        <option value="">{placeholder || "Select an option"}</option>
         {options.map((option) => (
           <option
             className=""
