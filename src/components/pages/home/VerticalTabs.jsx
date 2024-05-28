@@ -15,7 +15,7 @@ export default function VerticalTabs() {
   const activeButonStyle =
     "text-white text-left text-[18px] font-bold capitalize whitespace-nowrap justify-center border-l-[color:var(--Primary-1,#33495F)] bg-[#5281a2] pl-4 pr-16 py-5 border-l-[5px] border-solid items-start max-md:px-5";
   const buttonStyle =
-    "text-slate-700 text-[18px]  text-left capitalize whitespace-nowrap justify-center items-stretch bg-white pl-4 pr-16 py-5 max-md:pl-5 max-md:pr-7";
+    "text-slate-700 text-[18px] text-left capitalize whitespace-nowrap justify-center items-stretch bg-white pl-4 pr-16 py-5 max-md:pl-5 max-md:pr-7";
 
   const handleTabClick = (tabId, service_id, service_name) => {
     setActiveTab(tabId);
@@ -67,14 +67,14 @@ export default function VerticalTabs() {
 
   return (
     <>
-      <div className="hidden lg:flex  h-full mt-[29px]">
+      <div className="hidden lg:flex h-full mt-[29px]">
         {/* Tab buttons */}
         <div className=" flex flex-col w-[29%] flex-shrink-0">
           {serviceList &&
             serviceList.map((service, index) => (
               <button
                 key={service.name + index}
-                className={`font-custom-roca tab-button  ${
+                className={`font-custom-roca tab-button ${
                   activeTab === index && "active-tab"
                 } ${activeTab === index ? activeButonStyle : buttonStyle}`}
                 onClick={() => handleTabClick(index, service.id, service.name)}

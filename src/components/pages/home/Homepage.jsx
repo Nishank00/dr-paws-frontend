@@ -107,9 +107,11 @@ const Homepage = () => {
           Discover our most commonly requested services. For anything not
           listed, please <br /> get in touch with your local clinic
         </p>
+        <div className="z-[0]">
         <VerticalTabs />
+        </div>
       </div>
-      <div className="body-padding-x">
+      <div className=" z-[-1] body-padding-x">
         <Reviews />
       </div>
       <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-4 pb-8">
