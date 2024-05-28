@@ -135,7 +135,7 @@ const Header = () => {
                 className="flex items-center p-2 border-secondary border-2 border-solid justify-center rounded-full hover:shadow cursor-pointer h-9 w-9 md:h-12 md:w-12 relative"
               >
                 <img
-                  className="w-10 h-10"
+                  className="lg:w-10 lg:h-10"
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/f456f7a9bed0628bc91e7851c1beccfa0ff3a43c8c32b0e1c52c5bcaa9d1dae9?"
                 />

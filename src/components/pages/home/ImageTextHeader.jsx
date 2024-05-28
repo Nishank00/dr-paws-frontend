@@ -35,7 +35,7 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "w-full h-[280px] lg:min-h-[300px]  lg:max-w-[600px] lg:h-full rounded-md" +
+              "w-full h-[250px] lg:min-h-[300px]  lg:max-w-[600px] lg:h-full rounded-md" +
               (imagePosition == " left" ? "" : " lg:order-2 ") +
               " "
             }
@@ -68,7 +68,7 @@ const ImageTextHeader = ({
                   className={
                     `${
                       !buttonVisibility && "hidden"
-                    } w-[220px] md:mt-[14px] m-auto  transition lg:mt-1 text-lg ` + buttonClass
+                    } w-[220px] md:mt-[14px] lg:ml-10 mx-auto  transition lg:mt-1 text-lg ` + buttonClass
                   }
                   color={buttonColor}
                   label={buttonText}
