@@ -25,7 +25,7 @@ const ImageTextHeader = ({
   };
   return (
     <>
-      <div className=" w-[320px]   lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
+      <div className=" w-[320px] pb-32 lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -48,7 +48,7 @@ const ImageTextHeader = ({
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium w-[80%] text-center lg:text-start lg:ml-0 m-auto lg:text-[33px]  text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-[80%]  text-center lg:text-start lg:ml-0 m-auto lg:text-[33px]  text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >

@@ -37,7 +37,7 @@ const MembershipPage = () => {
   }, []);
   return (
     <div className="py-20">
-      <div>
+      <div className="w-[78%] m-auto">
         <ImageTextHeader
           imageUrl={"/image139.png"}
           buttonText={"Explore Plans"}
