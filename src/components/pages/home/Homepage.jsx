@@ -66,7 +66,7 @@ const Homepage = () => {
           {ImageTextHeaderData.map((item, index) => (
             <div
               key={index}
-              className={`py-4 rounded-lg  bg-white m-4 ${item.className}`}
+              className={`rounded-lg  bg-white m-4 ${item.className}`}
             >
               <ImageTextHeader
                 imageUrl={item.imageUrl}
