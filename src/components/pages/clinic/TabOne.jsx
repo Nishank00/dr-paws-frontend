@@ -10,7 +10,7 @@ const TabOne = ({ contact_numbers, address }) => {
   ];
   return (
     <div className="py-4 w-full">
-      <div className="w-[70%] mx-auto flex flex-col md:flex-row justify-between items-start">
+      <div className="sm:w-[70%] p-2 mx-auto flex flex-col md:flex-row justify-between items-start">
         <div className="w-full  h-full md:w-[48%] ">
           <div className="items-stretch flex max-w-[326px] flex-col">
             <div className="text-primary font-custom-roca text-2xl leading-6 capitalize w-full">

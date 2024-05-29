@@ -61,9 +61,9 @@ const OverviewTabs = () => {
 
   return (
     <div className="w-[100%] m-auto flex-auto justify-center  items-center">
-      <div className="w-[70%] mx-auto py-10">{<GallaryBox />}</div>
+      <div className="sm:w-[70%] p-2 mx-auto py-10">{<GallaryBox />}</div>
 
-      <span className="w-[70%] mx-auto self-center flex max-w-[1042px]  items-center justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
+      <span className="sm:w-[70%] p-2 mx-auto self-center flex max-w-[1042px]  items-center justify-between gap-5  max-md:max-w-full max-md:flex-wrap max-md:mt-10">
         <div className="   max-md:max-w-full">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-[81%] max-md:w-full max-md:ml-0">
@@ -71,7 +71,7 @@ const OverviewTabs = () => {
                 <div className="text-primary text-4xl font-custom-roca capitalize whitespace-nowrap">
                   {clinic.name || "NA"}
                 </div>
-                <div className="text-primary text-[22px]  tracking-tight whitespace-nowrap mt-4">
+                <div className="text-primary text-base sm:text-[22px] tracking-tight sm:whitespace-nowrap mt-4">
                   Check-Ups | Surgery | Diagnostics | Grooming | Retail
                 </div>
               </span>
@@ -82,14 +82,14 @@ const OverviewTabs = () => {
         <BookingButton className="text-white text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5" />
       </span>
 
-      <div className="flex w-[70%] mx-auto flex-col items-start mt-4 text-primary">
+      <div className="flex sm:w-[70%] p-2 mx-auto flex-col items-start mt-4 text-primary">
         <div className="relative w-full">
-          <div className="flex w-full space-x-8 pb-4 border-b-2 border-b-primary3">
+          <div className="flex overflow-x-auto w-full space-x-8 pb-4 border-b-2 border-b-primary3">
             {["Clinic Details", "Photos", "Reviews", "Vetrenarians"].map((tab, index) => (
               <button
                 key={index}
                 ref={(el) => (tabsRef.current[index] = el)}
-                className={`text-primary font-custom-open-sans w-auto text-md cursor-pointer mx-1 rounded-full mt-12 ${
+                className={`text-primary text-nowrap font-custom-open-sans w-auto text-md cursor-pointer mx-1 rounded-full mt-12 ${
                   activeTabIndex === index ? "font-bold" : ""
                 }`}
                 onClick={() => handleTabClick(index)}

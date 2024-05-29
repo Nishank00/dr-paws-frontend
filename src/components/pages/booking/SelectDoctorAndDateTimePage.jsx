@@ -150,7 +150,7 @@ const SelectDoctorAndDateTimePage = ({
           </>
         ) : (
           <>
-           {true && (
+            {true && (
               <>
                 <h2 className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
                   Select Vet
@@ -159,7 +159,7 @@ const SelectDoctorAndDateTimePage = ({
                   Please select the vet {`you'd`} like to meet
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                <div className="md:grid flex overflow-x-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-1 mb-8 gap-x-3 gap-y-10">
                   {sortedDoctors.map((doctor, i) => (
                     <DoctorSelect
                       key={"doctor" + i}
@@ -172,17 +172,16 @@ const SelectDoctorAndDateTimePage = ({
               </>
             )}
             <div className="pt-1 sm:pt-10">
-              <h2 onClick={
-                () => {
-              
-                }
-              } className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1">
+              <h2
+                onClick={() => {}}
+                className="text-primary text-xl sm:text-4xl font-custom-roca font-medium mb-1"
+              >
                 Select Date and Time
               </h2>
               <p className="text-primary text-xs sm:text-sm mb-4 font-custom-open-sans">
                 Please select your appoinment slot
               </p>
-              { !selectedDoctorId && currentPage == 3 && (
+              {!selectedDoctorId && currentPage == 3 && (
                 <p className="text-red-500 mb-6">Select Doctor</p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 pb-10 items-start justify-start">
@@ -207,8 +206,8 @@ const SelectDoctorAndDateTimePage = ({
                       ) : (
                         <p className="text-danger">
                           Sorry, no available timeslots for this day. We do
-                          welcome walk-ins but {`can't `}guarantee an appointment
-                          time.
+                          welcome walk-ins but {`can't `}guarantee an
+                          appointment time.
                         </p>
                       )}
 

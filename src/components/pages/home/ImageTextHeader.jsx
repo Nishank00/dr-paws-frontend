@@ -23,6 +23,7 @@ const ImageTextHeader = ({
       router.push(buttonUrl);
     }
   };
+  
   return (
     <>
       <div className=" w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
@@ -42,7 +43,7 @@ const ImageTextHeader = ({
           />
         </div>
         <div>
-          <div className="w-full  h-[240px] lg:h-full flex md:justify-end md:items-center">
+          <div className="w-full p-2 h-[280px] lg:h-full flex md:justify-end md:items-center">
             <div className="h-full lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-5 lg:justify-start ">
               <div className="lg:h-fit flex flex-col justify-start">
                 <h2
@@ -75,7 +76,7 @@ const ImageTextHeader = ({
                   onClick={handleClick}
                 />
               ) : (
-                <div className="flex items-center  gap-6">
+                <div className="flex items-center gap-1 md:gap-6">
                   <Image src="/appStore.png" height={150} width={150} alt="" />
                   <Image src="/playStore.png" height={160} width={165} alt="" />
                 </div>
