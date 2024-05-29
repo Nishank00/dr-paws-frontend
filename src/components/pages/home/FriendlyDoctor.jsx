@@ -27,7 +27,7 @@ const FriendlyDoctor = () => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/608e48060f45e85f7afeeb68228e4b04a71cb1221d9a8a3e95bb3e1780bf1c47?apiKey=22a36eade5734692978208fb0d2f5c62&"
                     className="aspect-[0.98] object-contain object-center w-[43px] overflow-hidden shrink-0 max-w-full"
                   />
-                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
+                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col lg:px-5">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Highly qualified & always up-to-date
                     </div>
@@ -44,7 +44,7 @@ const FriendlyDoctor = () => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/608e48060f45e85f7afeeb68228e4b04a71cb1221d9a8a3e95bb3e1780bf1c47?apiKey=22a36eade5734692978208fb0d2f5c62&"
                     className="aspect-[0.98] object-contain object-center w-[43px] overflow-hidden shrink-0 max-w-full"
                   />
-                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
+                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col ">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Trained on the best machinery
                     </div>
@@ -60,7 +60,7 @@ const FriendlyDoctor = () => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/608e48060f45e85f7afeeb68228e4b04a71cb1221d9a8a3e95bb3e1780bf1c47?apiKey=22a36eade5734692978208fb0d2f5c62&"
                     className="aspect-[0.98] object-contain object-center w-[43px] overflow-hidden shrink-0 max-w-full"
                   />
-                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
+                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Animal-first approach. Always
                     </div>
@@ -77,7 +77,7 @@ const FriendlyDoctor = () => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/608e48060f45e85f7afeeb68228e4b04a71cb1221d9a8a3e95bb3e1780bf1c47?apiKey=22a36eade5734692978208fb0d2f5c62&"
                     className="aspect-[0.98] object-contain object-center w-[43px] overflow-hidden shrink-0 max-w-full"
                   />
-                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col px-5">
+                  <span className="items-stretch self-stretch flex grow basis-[0%] flex-col ">
                     <div className="text-slate-700 font-custom-roca text-xl capitalize">
                       Animal lovers first. Vets second
                     </div>
