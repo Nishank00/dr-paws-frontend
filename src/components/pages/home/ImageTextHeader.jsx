@@ -26,7 +26,7 @@ const ImageTextHeader = ({
   
   return (
     <>
-      <div className=" w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
+      <div className=" w-[320px]   lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -45,11 +45,11 @@ const ImageTextHeader = ({
         <div>
           <div className="w-full p-2 h-[280px] lg:h-full flex md:justify-end md:items-center">
             <div className="h-full lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-5 lg:justify-start ">
-              <div className="lg:h-fit flex flex-col justify-start">
+              <div className="lg:h-fit flex flex-col  lg:justify-start">
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium w-[80%] lg:text-[33px] text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-[80%] text-center lg:text-start lg:ml-0 m-auto lg:text-[33px]  text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >
@@ -57,7 +57,7 @@ const ImageTextHeader = ({
                 </h2>
                 <p
                   className={
-                    "text-primary w-[80%] font-custom-open-sans text-sm mb-6 " +
+                    "text-primary w-[80%] font-custom-open-sans lg:text-start lg:pb-9 lg:m-0 text-center m-auto text-sm mb-6 " +
                     paragraphClass
                   }
                 >
@@ -69,7 +69,7 @@ const ImageTextHeader = ({
                   className={
                     `${
                       !buttonVisibility && "hidden"
-                    } w-[220px] md:mt-[14px] transition lg:mt-1 text-lg ` + buttonClass
+                    } w-[220px] md:mt-[14px] m-auto  transition lg:mt-1 text-lg ` + buttonClass
                   }
                   color={buttonColor}
                   label={buttonText}

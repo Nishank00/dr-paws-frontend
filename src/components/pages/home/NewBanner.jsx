@@ -25,7 +25,7 @@ const NewBanner = () => {
   }, []);
   return (
     <div
-      className="flex items-center  h-auto md:h-[85vh] text-white px-3 sm:px-16 md:px-44 py-20 lg:px-48 "
+      className="flex items-center h-auto md:h-[85vh] text-white px-3 sm:px-16 md:px-44 py-20  lg:px-48 "
       style={{
         backgroundImage: `url(${
           isMobile ? "/home/small_screen_background.jpg" : "/home/banner.jpg"
@@ -39,17 +39,17 @@ const NewBanner = () => {
       <div className=" w-full lg:w-2/3 h-[200px] flex-col flex justify-center gap-12">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className=" text-3xl md:text-[64px] leading-none custom-open-sans pt-11 font-bold"
+          className=" text-3xl lg:w-[100%] w-[80%] m-auto md:text-[55px] leading-none custom-open-sans -mb-7 pt-12 lg:pt-0  font-bold"
         >
           The veterinary <br />
           care our best <br />
           friends deserve
         </h2>
-        <p className="text-sm font-custom-open-sans  md:text-[22px] font-semibold sm:font-light">
+        <p className="text-sm font-custom-open-sans  md:text-[22px] lg:w-[100%] w-[80%] m-auto font-semibold sm:font-light">
           Book a visit now. Who will we be meeting?
         </p>
 
-        <div className="flex gap-4 w-full relative bottom-8 cursor-pointer h-[220px]">
+        <div className="flex gap-4 w-full justify-center lg:justify-start  relative bottom-8 cursor-pointer h-[220px]">
           <BannerPetCard
             pet_type="Dog"
             width={"100px"}

@@ -112,7 +112,7 @@ const TabOne = ({ contact_numbers, address }) => {
       {/* <div className="mt-10">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium  pt-10  text-2xl md:text-[36px] pb-6 text-center"
+          className="text-primary font-medium  pt-10  text-2xl md:text-[36px] pb-10 text-center"
         >
           Meet the superheroes
         </h2>

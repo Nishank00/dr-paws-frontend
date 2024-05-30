@@ -84,7 +84,7 @@ const Homepage = () => {
 
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
-        className="text-primary  font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
+        className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
       >
         Check out the places we call home
       </h2>
@@ -133,7 +133,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full border-solid border-grey pr-5 font-black py-4"
         >
-          <p className="text-left  font-custome-inter text-primary text-lg">
+          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
             About Dr. Paws
           </p>
         </div>
@@ -153,7 +153,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full md:mt-10 pr-5 py-4"
         >
-          <p className="text-left font-custome-inter font-bold text-primary text-lg">
+          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
             At a Dr. Paws Clinic
           </p>
         </div>

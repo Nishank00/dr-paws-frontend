@@ -35,7 +35,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
         </div>
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-2 my-10">
-          <h2 className="text-2xl text-secondary text-center font-semibold sm:opacity-70 max-w-sm">
+          <h2 className="lg:text-2xl lg:w-72 w-56 text-lg text-secondary text-center font-semibold sm:opacity-70 max-w-sm">
             {["ALL", "UPCOMING"].includes(listType)
               ? "You haven't booked any visits yet"
               : "No records to show"}
@@ -45,7 +45,7 @@ const AppointmentList = ({ listType = "ALL" }) => {
               color="secondary"
               label="Book a visit"
               onClick={() => router.push("/booking")}
-              className="w-auto text-lg px-5 py-2"
+              className="w-auto text- cursor-pointer px-5 py-2 mt-8"
             />
           )}
         </div>
