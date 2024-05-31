@@ -1,0 +1,1048 @@
+{
+    "info": {
+      "_postman_id": "7d1b8f75-e9b4-4f64-9e9b-f8f8f8f8f8f8",
+      "name": "VetPort API",
+      "description": "VetPort API collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Authentication",
+        "item": [
+          {
+            "name": "Generate Access Token",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"username\": \"?\",\n    \"password\": \"?\",\n    \"scope\": [\n        \"client\"\n    ]\n}"
+              },
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=access_token",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "access_token"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "GET Requests",
+        "item": [
+          {
+            "name": "Get Clients",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=clients&status=Active&startdate=1698404400&enddate=1698408000&limit=10",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"  
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "clients"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  },
+                  {
+                    "key": "startdate",
+                    "value": "1698404400"
+                  },
+                  {
+                    "key": "enddate", 
+                    "value": "1698408000"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "10"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Patients",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {  
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=patients&status=Inactive&startdate=1698404400&enddate=1698408000&limit=10&page=4",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"  
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "patients"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Inactive" 
+                  },
+                  {
+                    "key": "startdate",
+                    "value": "1698404400"
+                  },
+                  {
+                    "key": "enddate",
+                    "value": "1698408000"
+                  },
+                  {  
+                    "key": "limit",
+                    "value": "10"
+                  },
+                  {
+                    "key": "page",
+                    "value": "4"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Staff",
+            "request": {
+              "method": "GET", 
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=staff&status=Active&page=4&limit=50",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ], 
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "staff"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  },
+                  {
+                    "key": "page",
+                    "value": "4"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "50"  
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Plan Items",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type", 
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"  
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=planitems&category=Consultation - Exams&subcategory=Consultation&status=Active&limit=2&page=55",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "planitems" 
+                  },
+                  {
+                    "key": "category",
+                    "value": "Consultation - Exams"
+                  },
+                  {
+                    "key": "subcategory", 
+                    "value": "Consultation"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "2"
+                  },
+                  {
+                    "key": "page",
+                    "value": "55"
+                  }  
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Vendor Items",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json" 
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=vendoritems&status=Active",
+                "protocol": "https",  
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "vendoritems"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  }
+                ]  
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Appointments",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }  
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=appointments&clientid=33036&startdate=1698404400&enddate=1698408000&limit=2&page=4",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport", 
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "appointments"
+                  },
+                  {
+                    "key": "clientid",
+                    "value": "33036"
+                  },
+                  {
+                    "key": "startdate", 
+                    "value": "1698404400"
+                  },
+                  {
+                    "key": "enddate",
+                    "value": "1698408000"  
+                  },
+                  {
+                    "key": "limit",
+                    "value": "2"
+                  },
+                  {
+                    "key": "page",
+                    "value": "4"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Reminders", 
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",  
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=reminders&startdate=1698762576&enddate=1698762586&remindstartdate=1698762576&remindenddate=1698762586&status=Active",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"  
+                ],
+                "path": [
+                  "vetportapi" 
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "reminders"
+                  },
+                  {
+                    "key": "startdate", 
+                    "value": "1698762576"
+                  },
+                  {
+                    "key": "enddate",
+                    "value": "1698762586"
+                  },
+                  {
+                    "key": "remindstartdate",
+                    "value": "1698762576"
+                  },
+                  {
+                    "key": "remindenddate",
+                    "value": "1698762586"  
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {  
+            "name": "Get Payments",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}" 
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=payments&startdate=1698762676&enddate=1698762686&page=2&limit=2",  
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action", 
+                    "value": "payments"
+                  },
+                  {
+                    "key": "startdate",
+                    "value": "1698762676" 
+                  },
+                  {
+                    "key": "enddate",
+                    "value": "1698762686"
+                  },
+                  {
+                    "key": "page",
+                    "value": "2"  
+                  },
+                  {
+                    "key": "limit",
+                    "value": "2"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Plan Cost",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type", 
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }  
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=plancost&planid=336444&status=Active",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  { 
+                    "key": "action",
+                    "value": "plancost"
+                  },
+                  {
+                    "key": "planid",
+                    "value": "336444"
+                  },
+                  {
+                    "key": "status",
+                    "value": "Active"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Invoice",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"  
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=invoices&invoiceid=143599",  
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi"
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "invoices" 
+                  },
+                  {
+                    "key": "invoiceid",
+                    "value": "143599"
+                  }  
+                ]
+              }
+            },
+            "response": [] 
+          },
+          {
+            "name": "Get Medical Visits",
+            "request": {
+              "method": "GET", 
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}"
+                }
+              ],
+              "url": {
+                "raw": "https://vetportdemo.vetport.com/vetportapi?action=medicalvisits&id=556926&patientid=1902&clinicid=220&uid=vetportdemo220&startdate=1667391279&enddate=1698927279&limit=2&page=1",
+                "protocol": "https",
+                "host": [
+                  "vetportdemo",
+                  "vetport",
+                  "com"
+                ],
+                "path": [
+                  "vetportapi" 
+                ],
+                "query": [
+                  {
+                    "key": "action",
+                    "value": "medicalvisits"
+                  },
+                  {
+                    "key": "id",
+                    "value": "556926"
+},
+{
+"key": "patientid",
+"value": "1902"
+},
+{
+"key": "clinicid",
+"value": "220"
+},
+{
+"key": "uid",
+"value": "vetportdemo220"
+},
+{
+"key": "startdate",
+"value": "1667391279"
+},
+{
+"key": "enddate",
+"value": "1698927279"
+},
+{
+"key": "limit",
+"value": "2"
+},
+{
+"key": "page",
+"value": "1"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Get Stock",
+"request": {
+"method": "GET",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=stock&planitem=MzM2NDcyLDMzNjQ3MywzMzMwNDU=&clinicid=220",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "stock"
+},
+{
+"key": "planitem",
+"value": "MzM2NDcyLDMzNjQ3MywzMzMwNDU="
+},
+{
+"key": "clinicid",
+"value": "220"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Get Wellness Plan",
+"request": {
+"method": "GET",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=wellnessplan&species=2&status=Active&uid=vetportdemo209",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "wellnessplan"
+},
+{
+"key": "species",
+"value": "2"
+},
+{
+"key": "status",
+"value": "Active"
+},
+{
+"key": "uid",
+"value": "vetportdemo209"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Get Patient Wellness",
+"request": {
+"method": "GET",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=patientwellness&client=10266&patient=148&Encounter=36688&status=Active&uid=vetportdemo209",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "patientwellness"
+},
+{
+"key": "client",
+"value": "10266"
+},
+{
+"key": "patient",
+"value": "148"
+},
+{
+"key": "Encounter",
+"value": "36688"
+},
+{
+"key": "status",
+"value": "Active"
+},
+{
+"key": "uid",
+"value": "vetportdemo209"
+}
+]
+}
+},
+"response": []
+}
+]
+},
+{
+"name": "POST Requests",
+"item": [
+{
+"name": "Create/Update Client",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "client": [\n        {\n            "firstname": "GAME",\n            "lastname": "vetport",\n            "clinicid": "220",\n            "address1": "blue star bldg",\n            "address2": "Nathani complex",\n            "country": "India",\n            "state": "Maharashtra",\n            "city": "Thane",\n            "postalcode": "400612",\n            "createdon": "timestamp",\n            "createdby": "35",\n            "isemployee": "false",\n            "defaultprovider": "true",\n            "smsdecline": "true",\n            "isreminders": "true",\n            "isstatements": "true",\n            "decline": "true",\n            "referedby": "112"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=client",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "client"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create/Update Client Contact",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "contact": [\n        {\n            "id": "10226",\n            "phonenumber": "625614324555",\n            "phonetype": "151",\n            "isdefault": "true"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=clientcontact",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "clientcontact"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create/Update Patient",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "patient": [\n        {\n            "id": "21554",\n            "client": "33092",\n            "name": "noddy",\n            "species": "2",\n            "dob": "1698451862",\n            "breed": "8476",\n            "color": "4992",\n            "sex": "297",\n            "defaultprovider": "843"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=patient",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "patient"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create/Update Invoice",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "invoice": [\n        {\n            "clinic": "220",\n            "encounter": "36689",\n            "status": 22,\n            "invoiceline": [\n                {\n                    "planitem": 333463,\n                    "staff": 112,\n                    "quantity": "1.0",\n                    "cliniccost": 100,\n                    "servicetax": 23.5\n                },\n                {\n                    "planitem": 333045,\n                    "staff": 112,\n                    "quantity": "1.0",\n                    "cliniccost": 100,\n                    "servicetax": 23.5\n                }\n            ]\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/postvetport?action=invoice",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"postvetport"
+],
+"query": [
+{
+"key": "action",
+"value": "invoice"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create/Update Appointment",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "appointment": [\n        {\n            "id": "54624",\n            "clinicid": "220",\n            "clientid": "32967",\n            "patientid": "17703",\n            "start_time": "1698429600",\n            "end_time": "1698431400",\n            "status": "27",\n            "createdby": "112",\n            "email": "false",\n            "sms": "false",\n            "typeid": "7",\n            "staffid": "1790"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=appointment",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "appointment"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create Payment",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "payment": [\n        {          "invoiceid": "216754",\n            "paytypeid": "27"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=payment",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "payment"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create/Update Wellness Plan",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "wellness": [\n        {\n            "encounter": "36689",\n            "plan": "277"\n        }\n    ]\n}"
+},
+"url": {
+"raw": "https://vetportdemo.vetport.com/vetportapi?action=wellnessplan",
+"protocol": "https",
+"host": [
+"vetportdemo",
+"vetport",
+"com"
+],
+"path": [
+"vetportapi"
+],
+"query": [
+{
+"key": "action",
+"value": "wellnessplan"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Send SMS",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{accessToken}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    "sms": [\n        {\n            "to": "7384019108",\n            "message": "Test SMS!",\n            "clinic
