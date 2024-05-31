@@ -26,7 +26,7 @@ const ImageTextHeader = ({
   
   return (
     <>
-      <div className=" w-[320px]   lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
+      <div className=" w-[320px] pb-32 lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white">
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -36,7 +36,7 @@ const ImageTextHeader = ({
               backgroundRepeat: "no-repeat",
             }}
             className={
-              "w-full h-[280px] lg:min-h-[300px]  lg:max-w-[600px] lg:h-full rounded-md" +
+              "w-full h-[250px] lg:min-h-[300px]  lg:max-w-[600px] lg:h-full rounded-md" +
               (imagePosition == " left" ? "" : " lg:order-2 ") +
               " "
             }
@@ -49,7 +49,7 @@ const ImageTextHeader = ({
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}
                   className={
-                    "text-primary font-medium w-[80%] text-center lg:text-start lg:ml-0 m-auto lg:text-[33px]  text-2xl mb-2 lg:mb-6 " +
+                    "text-primary font-medium w-[80%]  text-center lg:text-start lg:ml-0 m-auto lg:text-[33px]  text-2xl mb-2 lg:mb-6 " +
                     headingClass
                   }
                 >
@@ -69,7 +69,7 @@ const ImageTextHeader = ({
                   className={
                     `${
                       !buttonVisibility && "hidden"
-                    } w-[220px] md:mt-[14px] m-auto  transition lg:mt-1 text-lg ` + buttonClass
+                    } w-[220px] md:mt-[14px] lg:ml-10 mx-auto  transition lg:mt-1 text-lg ` + buttonClass
                   }
                   color={buttonColor}
                   label={buttonText}

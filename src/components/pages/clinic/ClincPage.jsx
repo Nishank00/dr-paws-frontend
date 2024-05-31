@@ -54,7 +54,7 @@ const ClinicPage = () => {
         Our Clinics
       </h4>
 
-      <div className="w-full m-auto mt-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+      <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
         {clincs &&
           clincs.map((item, index) => (
             <ClinicCard

@@ -66,7 +66,7 @@ const Homepage = () => {
           {ImageTextHeaderData.map((item, index) => (
             <div
               key={index}
-              className={`py-4 rounded-lg  bg-white m-4 ${item.className}`}
+              className={`rounded-lg bg-white m-4 ${item.className}`}
             >
               <ImageTextHeader
                 imageUrl={item.imageUrl}
@@ -107,9 +107,11 @@ const Homepage = () => {
           Discover our most commonly requested services. For anything not
           listed, please <br /> get in touch with your local clinic
         </p>
+        <div className="z-[0]">
         <VerticalTabs />
+        </div>
       </div>
-      <div className="body-padding-x">
+      <div className=" z-[-1] body-padding-x">
         <Reviews />
       </div>
       <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-4 pb-8">
@@ -142,7 +144,7 @@ const Homepage = () => {
           <Dropdown key={index} title={item.title}>
             <p
               style={{ fontFamily: "Open Sans, sans-serif" }}
-              className="text-slate-700 text-left font-custome-inter text-sm leading-7 tracking-tight self-center  max-md:max-w-full"
+              className="text-slate-700 text-left font-custome-inter lg:text-sm  text-[19px] leading-7 lg:leading-7 tracking-tight self-center  max-md:max-w-full"
             >
               {item.content}
             </p>

@@ -29,7 +29,7 @@ const Reviews = () => {
 
   return (
     <>
-      <div className="w-full px-10 flex  md:mt-20 flex-col items-center justify-center">
+      <div className="w-full px-10  flex  md:mt-20 flex-col items-center justify-center">
         <div className="text-primary mb-12 text-center text-2xl md:text-4xl leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
           Tail wags and purrs are our favourite feedback, but here&apos;s what
           pet-parents are saying

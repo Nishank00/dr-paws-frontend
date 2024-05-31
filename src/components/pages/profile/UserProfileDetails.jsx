@@ -114,7 +114,7 @@ const UserProfileDetails = () => {
           </div>
         </div>
 
-        <div className="w-2/12 flex relative right-16 lg:left-56 lg:relative justify-end">
+        <div className="w-2/12 flex relative right-16 lg:left-50 lg:relative justify-end">
           <span
             onClick={openEditPopup}
             title="Update Profile"
