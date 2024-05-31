@@ -27,7 +27,7 @@ const TabTwo = ({ photoArray = [], id = null }) => {
     getImages();
   }, []);
   return (
-    <div className="w-[70%] mx-auto m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+    <div className="sm:w-[70%] p-2 mx-auto m-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
       {clinicImages.length
         ? clinicImages.map((clinicObj, clinicIndex) => {
             return (

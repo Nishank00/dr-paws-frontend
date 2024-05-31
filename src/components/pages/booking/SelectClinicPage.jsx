@@ -22,13 +22,14 @@ const SelectClinicPage = ({
         Book an appointment at our clinic
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-10">
+      <div className="md:grid flex overflow-x-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-1 gap-x-3 gap-y-10"> 
         {clinics.map((clinic, i) => (
           <ClinicSelect
             key={"clinic" + i}
             clinic={clinic}
             selected={clinic.selected}
             hideVisitButton
+            className="min-w-[315px]"
             onClick={() =>
               setClinics(
                 clinics.map((clinic, index) => {

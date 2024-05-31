@@ -6,10 +6,11 @@ const ClinicSelect = ({
   selected = false,
   clinic = {},
   onClick,
+  className = "",
 }) => {
   return (
     <div
-      className={`bg-primary3 cursor-pointer rounded-lg ${
+      className={`bg-primary3 rounded-lg ${className} ${
         selected ? "ring-4 ring-secondary" : ""
       }`}
       onClick={onClick}

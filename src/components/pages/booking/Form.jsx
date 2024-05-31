@@ -56,7 +56,6 @@ const Form = () => {
     }
   };
   const closeOTPPopup = () => setOTPPopupOpen(false);
-  const isNew = localStorage.getItem("isNew");
 
   const getPets = () => {
     if (user_id) {
@@ -84,10 +83,9 @@ const Form = () => {
 
   console.log("getted pets", pets);
 
-  console.log(Boolean(!isNew));
-
   const fetchData = async () => {
-    if (user_id) {
+    if (user_id && localStorage) {
+      const isNew = localStorage.getItem("isNew");
       try {
         // Fetch pets
         const petResponse = await PetService.getPetsByUserId(user_id);
@@ -285,16 +283,17 @@ const Form = () => {
     doctors.map((doctor) => {
       if (doctor.selected && doctor.id != "best-available-vet") {
         appointment.doctor_id = doctor.id;
-      } else if(doctor.id == "best-available-vet" && doctor.selected){
+      } else if (doctor.id == "best-available-vet" && doctor.selected) {
         //SELECT RANDOM DOCTOR FROM THE LIST
-        const randomDoctor = doctors.filter((doctor) => doctor.id != "best-available-vet");
-        const randomDoctorIndex = Math.floor(Math.random() * randomDoctor.length);
+        const randomDoctor = doctors.filter(
+          (doctor) => doctor.id != "best-available-vet"
+        );
+        const randomDoctorIndex = Math.floor(
+          Math.random() * randomDoctor.length
+        );
         appointment.doctor_id = randomDoctor[randomDoctorIndex].id;
       }
     });
-
-    
-
 
     if (!appointment.clinic_id || !appointment.doctor_id) {
       return showToast("Please select Clinic and Doctor", "warning");
@@ -405,12 +404,12 @@ const Form = () => {
         id: "best-available-vet",
         selected: false,
       };
-  
+
       if (!doctors.some((doctor) => doctor.id === "best-available-vet")) {
         setDoctors([bestAvailableDoctor, ...doctors]);
       }
     };
-  
+
     addBestAvailableDoctor();
   }, [doctors]);
 
@@ -492,7 +491,6 @@ const Form = () => {
   useEffect(() => {
     fetchData();
     getUserData();
-    
   }, [user_id]);
 
   useEffect(() => {
@@ -522,27 +520,26 @@ const Form = () => {
   };
 
   useEffect(() => {
-     const sortClinicsByHomeClinicName = () => {
-    console.log("SORTING CLINICS BY HOME CLINIC NAME");
-    console.log("USER HOME CLINIC: ", userHomeClinic);
-    console.log("CLINICS: ", clinics);
+    const sortClinicsByHomeClinicName = () => {
+      console.log("SORTING CLINICS BY HOME CLINIC NAME");
+      console.log("USER HOME CLINIC: ", userHomeClinic);
+      console.log("CLINICS: ", clinics);
 
-    if(clinics.length > 0 && userHomeClinic != null){
-      const homeClinicIndex = clinics.findIndex(
-        (clinic) => clinic.name === userHomeClinic
-      );
-      if (homeClinicIndex > -1) {
-        const homeClinic = clinics[homeClinicIndex];
-        clinics.splice(homeClinicIndex, 1);
-        clinics.unshift(homeClinic);
+      if (clinics.length > 0 && userHomeClinic != null) {
+        const homeClinicIndex = clinics.findIndex(
+          (clinic) => clinic.name === userHomeClinic
+        );
+        if (homeClinicIndex > -1) {
+          const homeClinic = clinics[homeClinicIndex];
+          clinics.splice(homeClinicIndex, 1);
+          clinics.unshift(homeClinic);
+        }
+        setClinics(clinics);
       }
-      setClinics(clinics);
-    }
-  };
+    };
 
-  sortClinicsByHomeClinicName();
-  },[userHomeClinic, clinics]);
- 
+    sortClinicsByHomeClinicName();
+  }, [userHomeClinic, clinics]);
 
   return user_id ? (
     <div className="text-primary">
@@ -569,8 +566,8 @@ const Form = () => {
           <span className="text-lg sm:text-xl ml-2 font-open-sans">Back</span>
         </button>
       </div>
-      <div className="mt-4 min-h-[60vh]">{renderPage()}</div>
-      <div className="my-4 flex items-center justify-center">
+      <div className="mt-4 h-fit sm:min-h-[60vh]">{renderPage()}</div>
+      <div className="sm:my-4 my-16 flex items-center justify-center">
         {currentPage < totalPages && (
           <Button
             color="secondary"
