@@ -47,12 +47,11 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
-      <div className="sticky top-0 w-full z-50">
-        {currentDevice.isMobile ? (
-          <PageHeader title={currentPage.name} />
-        ) : (
-          <Header />
-        )}
+      <div className="sticky top-0 w-full z-50 flex lg:hidden">
+        <PageHeader title={currentPage.name} />
+      </div>
+      <div className="sticky top-0 w-full z-50 lg:flex hidden">
+        <Header />
       </div>
       <div className="grow mb-14 sm:mb-0 min-h-96">{children}</div>
       <div className="mb-14 sm:mb-0">

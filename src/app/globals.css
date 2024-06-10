@@ -118,3 +118,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.b1{
+  border: 1px solid red;
+}

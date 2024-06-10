@@ -51,7 +51,7 @@ const PageHeader = () => {
   }, []);
 
   return (
-    <div className="p-4 h-14 bg-primary3 text-primary flex items-center">
+    <div className="p-4 h-14 bg-primary3 w-full text-primary flex items-center">
       {pageHeaderData.title &&
       pageHeaderData.title === "Home" &&
       pageHeaderData.currentMenu === "HOME" ? (

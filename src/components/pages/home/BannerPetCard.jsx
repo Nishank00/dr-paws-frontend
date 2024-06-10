@@ -8,12 +8,12 @@ const BannerPetCard = ({
 }) => {
   const router = useRouter();
   return (
-    < >
-      <div className=" mb-14   border-blue-500 hover:shadow-lg transition  w-[100px] h-[130px] md:w-[200px] md:h-[250px] flex flex-col justify-between text-center bg-white rounded-2xl">
+    <>
+      <div className="md:mb-14 mb-0 border-blue-500 hover:shadow-lg transition  w-[100px] h-[130px] md:w-[180px] md:h-[200px] flex flex-col justify-between text-center bg-white rounded-2xl">
         <h3 className="text-secondary font-custom-roca mt-2  text-sm md:text-lg font-semibold">
           {pet_type}
         </h3>
-        <div className=" border-red-700 bg-white h-12 w-12  md:h-36 md:w-36 m-auto p-2">
+        <div className=" border-red-700 bg-white h-16 w-16 md:h-36 md:w-36 m-auto md:p-2 p-0">
           <Image
             src={pet_image}
             alt={`${pet_type} Image`}

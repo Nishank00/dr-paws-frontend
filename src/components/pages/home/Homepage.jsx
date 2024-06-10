@@ -53,11 +53,11 @@ const Homepage = () => {
       <NewBanner />
       <div onClick={() => {
           getPets();
-        }} className="body-padding-x pt-5 bg-[#cbd9e3] lg:bg-white sm:mt-10">
+        }} className=" bg-[#cbd9e3] lg:bg-white sm:mt-10 ">
         <h2
         
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary font-medium text-2xl md:text-4xl mb-5 md:mb-10 text-center"
+          className="text-primary font-medium text-2xl w-[300px] md:w-full m-auto md:text-4xl mb-5 md:mb-20 text-center"
         >
           Veterinary care, redesigned to be better
         </h2>
@@ -66,7 +66,7 @@ const Homepage = () => {
           {ImageTextHeaderData.map((item, index) => (
             <div
               key={index}
-              className={`rounded-lg bg-white m-4 ${item.className}`}
+              className={`rounded-[10px] bg-white mx-4 p-5 ${item.className}`}
             >
               <ImageTextHeader
                 imageUrl={item.imageUrl}

@@ -21,12 +21,12 @@ const Menus = ({ show = false, applyParentClass = "" }) => {
   ];
   return (
     <>
-      <div className={`${show ? "" : "hidden md:block"}  `}>
+      <div className={`${show ? "" : "hidden ld:block"}  `}>
         <div className={`flex gap-6 items-center  ${applyParentClass}`}>
           {menuItems.map((menuItem, index) => (
             <div key={index} className="">
               <Link className="" href={menuItem.href}>
-                <span className=" hover:text-gray-400 transition">
+                <span className=" hover:text-gray-400 transition text-[18px]">
                   {menuItem.text}
                 </span>
               </Link>
@@ -107,7 +107,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="body-padding-x body-padding-y lg:h-[90px] text-primary bg-primary3 relative z-50">
+      <div className="body-padding-x  w-full body-padding-y lg:h-[90px] text-primary bg-primary3 relative z-50">
         <nav className="flex items-center w-full justify-between">
           <div className="flex gap-10 items-center">
             <div id="logo" className="h-12 flex justify-center items-center">
@@ -115,18 +115,18 @@ const Header = () => {
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/d33c50d9807ec772184fb6f5d47b95056196041f13665f4a3c3bf67d9f7ee7c2?"
-                  className="aspect-[2.55] object-contain object-center w-[80px] md:w-[120px] lg:w-[130px] lg:h-[49px] justify-center items-center overflow-hidden shrink-0 max-w-full"
+                  className="aspect-[2.55] object-contain object-center w-[80px] md:min-w-[120px] lg:w-[130px] lg:h-[49px] justify-center items-center overflow-hidden shrink-0 max-w-full"
                 />
               </Link>
             </div>
             {/* {!showMenu && <MenuBar show={showMenu} />} */}
             <Menus show applyParentClass="hidden lg:flex" />
           </div>
-          <div className="flex items-center gap-5 ">
+          <div className="lg:flex items-center gap-5 hidden">
             <Button
               label="Book a Visit"
               color="secondary"
-              className="lg-w-[210px] h-12  transition cursor-pointer"
+              className="lg:w-[210px] h-12  transition cursor-pointer"
               onClick={bookingButtonClicked}
             />
             <div className="flex items-center gap-1">
@@ -141,7 +141,7 @@ const Header = () => {
                 />
 
                 {showProfileDropdown && (
-                  <div className="absolute top-14 w-screen sm:w-auto">
+                  <div className="absolute top-14 w-screen lg:w-auto">
                     <ProfileDropdown
                       onClose={() => setProfileDropdown(false)}
                       onLogout={closeProfileDropdown}
@@ -150,7 +150,7 @@ const Header = () => {
                 )}
               </div>
 
-              <div className="block md:hidden">
+              <div className="block lg:hidden">
                 <button
                   onClick={toggleMenu}
                   type="button"
