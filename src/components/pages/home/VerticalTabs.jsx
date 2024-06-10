@@ -74,7 +74,7 @@ export default function VerticalTabs() {
             serviceList.map((service, index) => (
               <button
                 key={service.name + index}
-                className={`font-custom-roca tab-button ${
+                className={`custom-open-sans tab-button ${
                   activeTab === index && "active-tab"
                 } ${activeTab === index ? activeButonStyle : buttonStyle}`}
                 onClick={() => handleTabClick(index, service.id, service.name)}
@@ -92,7 +92,7 @@ export default function VerticalTabs() {
           />
         </div>
       </div>
-      <div className=" w-full flex h-[516px] flex-col lg:hidden">
+      <div className=" w-full flex h-fit md:h-[516px] flex-col lg:hidden">
         {serviceList &&
           serviceList.map((service, index) => (
             <TabModule

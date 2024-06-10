@@ -11,7 +11,7 @@ const Dropdown = ({ title, children }) => {
   };
   
   return (
-    <div className="w-full mx-auto border-gray-300 px-10 rounded-lg border bg-primary3 my-1 ">
+    <div className="w-full mx-auto border-gray-300 px-5 md:px-10 rounded-lg border bg-primary3 my-1 ">
       <div className="">
         <div
           className="flex justify-between items-center py-4 cursor-pointer"

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 // import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { IoCloseSharp } from "react-icons/io5";
 
 const PageHeader = () => {
   // const router = useRouter();
@@ -58,7 +59,7 @@ const PageHeader = () => {
         <div className="flex items-center justify-between w-full">
           <div id="logo">
             <img
-              src="/images/Dr_Paws_Logo_Tagline.png"
+              src="/images/Dr_Paws_Logo_Tagline.svg"
               alt="Brand Logo"
               className="w-16"
             />
@@ -118,10 +119,10 @@ const SideBar = ({ closeMenu = () => {} }) => {
   };
   return (
     <>
-      <div className="absolute top-0 right-0 z-50 w-8/12 h-screen px-2 py-4 bg-white font-custom-roca text-lg">
+      <div className="absolute top-0 right-0 z-50 w-8/12 h-screen px-4 py-4 bg-white font-custom-roca text-lg">
         <div className="w-full mb-4">
           <span onClick={closeMenu} className="cursor-pointer">
-            X
+          <IoCloseSharp className="text-[30px] text-[#000]"/>
           </span>
         </div>
         <div className="flex flex-col gap-8">
@@ -181,7 +182,7 @@ const SideBar = ({ closeMenu = () => {} }) => {
             <Button
               label="Book a visit"
               color="secondary"
-              className="h-10 text-xs font-bold"
+              className="h-10 text-[14px] font-bold"
             />
           </div>
         </div>

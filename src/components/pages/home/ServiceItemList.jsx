@@ -28,11 +28,11 @@ const ServiceItemList = ({ service_list, service_name }) => {
   return (
     <>
       <div className={`tab-content pb-20`}>
-        <span className="justify-between items-center bg-primary3 flex grow flex-col w-full px-10 py-10 lg:px-16 lg:py-10 max-md:max-w-full max-md:px-5 h-[516px]">
-          <div className="text-slate-700  text-center font-custom-roca text-2xl capitalize self-stretch max-md:max-w-full">
+        <span className="md:justify-between justify-start items-center bg-primary3 flex grow flex-col w-full px-10 py-5 lg:px-16 lg:py-10 max-md:max-w-full  max-md:px-5 h-[516px]">
+          <div className="text-slate-700 mb-8 md:mb-0  font-custom-roca text-2xl capitalize self-stretch max-md:max-w-full">
             {service_name ?? "Planned Check-Ups"}
           </div>
-          <div className="w-full grid grid-cols-1  lg:grid-cols-2 gap-10 mt-10">
+          <div className="w-full  grid grid-cols-1  lg:grid-cols-2 gap-8 ">
             {service_list &&
               service_list.map((item, index) => (
                 <div

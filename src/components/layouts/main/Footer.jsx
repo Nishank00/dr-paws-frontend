@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="font-custom-open-sans text-primary bg-primary3 body-padding-x ">
+    <footer className="font-custom-open-sans w-full text-primary bg-primary3 body-padding-x ">
       <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
         <div className=" flex flex-col  items-center md:items-start">
           <img

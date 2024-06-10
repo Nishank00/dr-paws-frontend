@@ -23,10 +23,8 @@ import {
 } from "@/components/constants";
 
 const Homepage = () => {
-
   const dispatch = useDispatch();
   const [clinics, setClinics] = useState([]);
-  
 
   const getClinics = () => {
     ClinicService.getData()
@@ -44,18 +42,21 @@ const Homepage = () => {
       setPageHeader({ title: "Home", currentMenu: "HOME", currentPath: "/" })
     );
     getClinics();
-    
   }, []);
-
 
   return (
     <>
+      {/* SECTION 1 CARDS */}
       <NewBanner />
-      <div onClick={() => {
+
+      {/* SECTION 2 CARDS */}
+      <div
+        onClick={() => {
           getPets();
-        }} className=" bg-[#cbd9e3] lg:bg-white sm:mt-10 ">
+        }}
+        className=" bg-[#cbd9e3] lg:bg-white sm:mt-10 "
+      >
         <h2
-        
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary font-medium text-2xl w-[300px] md:w-full m-auto md:text-4xl mb-5 md:mb-20 text-center"
         >
@@ -82,23 +83,26 @@ const Homepage = () => {
         </div>
       </div>
 
+      {/* SECTION 3 CARDS */}
       <h2
         style={{ fontFamily: "Roca Bold, sans-serif" }}
         className="text-primary font-medium bg-[#cbd9e3] md:bg-white pt-10 text-2xl md:text-4xl pb-10 text-center"
       >
-        Check out the places we call home
+        Check out the places <br /> we call home
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:bg-white pb-10 lg:grid-cols-3 gap-10 md:gap-10 body-padding-x">
+      <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:grid-cols-3 md:bg-white pb-10 lg:grid-cols-4 gap-[20px] body-padding-x">
         {clinics.map((clinic, i) => (
           <ClinicCard key={"clinic" + i} clinic={clinic} />
         ))}
       </div>
+
+      {/* SECTION 4 CARDS */}
       <div className=" lg:body-padding-x bg-[#e2e5da] pb-10 md:bg-white flex flex-col">
         <h2
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="text-primary font-medium  mt-10 text-2xl md:text-4xl mb-6 text-center"
         >
-          Whatever your pet needs, we&apos;re there
+          Whatever your pet needs, <br /> we&apos;re there
         </h2>
         <p
           style={{ fontFamily: "Open Sans, sans-serif" }}
@@ -108,13 +112,17 @@ const Homepage = () => {
           listed, please <br /> get in touch with your local clinic
         </p>
         <div className="z-[0]">
-        <VerticalTabs />
+          <VerticalTabs />
         </div>
       </div>
-      <div className=" z-[-1] body-padding-x">
+
+      {/* SECTION 5 CARDS */}
+      <div className=" z-[-1] bg-[#FFF4E4] body-padding-x">
         <Reviews />
       </div>
-      <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-4 pb-8">
+
+      {/* SECTION 6 CARDS */}
+      <div className="body-padding-x bg-[#cbd9e3] md:bg-white mt-0 md:mt-4 pb-8">
         <FriendlyDoctor />
       </div>
       <div className="w-full flex  md:my-20 flex-col items-center justify-center body-padding-x">
@@ -144,7 +152,7 @@ const Homepage = () => {
           <Dropdown key={index} title={item.title}>
             <p
               style={{ fontFamily: "Open Sans, sans-serif" }}
-              className="text-slate-700 text-left font-custome-inter lg:text-sm  text-[19px] leading-7 lg:leading-7 tracking-tight self-center  max-md:max-w-full"
+              className="text-slate-700 text-left font-custome-inter lg:text-sm  text-[14px] md:text-[19px] leading-[18px] lg:leading-7 tracking-tight self-center  max-md:max-w-full"
             >
               {item.content}
             </p>
@@ -163,7 +171,7 @@ const Homepage = () => {
           <Dropdown key={index} title={item.title}>
             <p
               style={{ fontFamily: "Open Sans, sans-serif" }}
-              className="text-slate-700 text-left font-custome-inter text-sm leading-7 tracking-tight self-center max-md:max-w-full"
+              className="text-slate-700 text-left font-custome-inter text-sm leading-[18px] tracking-tight self-center max-md:max-w-full"
             >
               {item.content}
             </p>

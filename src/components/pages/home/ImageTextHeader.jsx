@@ -103,12 +103,14 @@ const ImageTextHeader = ({
                     height={isMobile ? 60 : 150}
                     width={isMobile ? 100 : 150}
                     alt=""
+                    className="cursor-pointer"
                   />
                   <Image
                     src="/playStore.png"
                     height={isMobile ? 60 : 165}
                     width={isMobile ? 110 : 165}
                     alt=""
+                    className="cursor-pointer"
                   />
                 </div>
               )}
