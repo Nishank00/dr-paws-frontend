@@ -6,7 +6,7 @@ import ServicePage from '@/components/pages/service/ServicePage';
 
 const Page = () => {
   return (
-    <div className='body-padding-x'>
+    <div className=''>
     <ServicePage/>
     </div>
   );

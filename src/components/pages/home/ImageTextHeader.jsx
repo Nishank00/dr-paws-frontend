@@ -17,6 +17,8 @@ const ImageTextHeader = ({
   headingClass = "",
   paragraphClass = "",
   buttonClass = "",
+  isWidthFull,
+  isHeightFull,
 }) => {
   const router = useRouter();
   const handleClick = () => {
@@ -46,7 +48,7 @@ const ImageTextHeader = ({
 
   return (
     <>
-      <div className="w-[256px] md:w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white md:body-padding-x">
+      <div className={`${isWidthFull ? 'w-full mx-6' : 'w-[256px]' } md:w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white md:body-padding-x`}>
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{
@@ -64,7 +66,7 @@ const ImageTextHeader = ({
         </div>
         <div>
           <div className="w-full h-full  lg:h-full flex md:justify-end md:items-center">
-            <div className="min-h-[300px] lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-0 lg:justify-start ">
+            <div className={`${isHeightFull ? 'h-full' : 'min-h-[300px]' }  lg:h-fit lg:w-[85%] flex flex-col justify-between py-2 pb-0 lg:justify-start`}>
               <div className="lg:h-fit flex flex-col  lg:justify-start">
                 <h2
                   style={{ fontFamily: "Roca Bold, sans-serif" }}

@@ -15,7 +15,7 @@ const ServicePage = () => {
 
   return (
     <div className="w-full pb-8">
-      <div className=" pt-20">
+      <div className=" pt-20 w-full df ">
         <ImageTextHeader
           imageUrl={"/image139.png"}
           buttonText={"Book a Visit"}
@@ -26,16 +26,17 @@ const ServicePage = () => {
               We{`'`}re here, whatever your friend needs
             </p>
           }
-          
           text={
             "Our modern & friendly clinics offer all the services you’ll need to keep your animal happy and healthy."
           }
           imagePosition={"left"}
           headingClass="!text-[48px]"
           paragraphClass="text-sm"
+          isWidthFull={true}
+          isHeightFull={true}
         />
       </div>
-      <div className="w-full ">
+      <div className="w-full body-padding-x mt-[50px] md:mt-0">
         <PageTabs />
       </div>
     </div>

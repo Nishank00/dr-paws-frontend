@@ -94,7 +94,7 @@ const OverviewTabs = () => {
           <div className="w-full ">
             <Tab {...services[activeTab - 1]} />
           </div>
-          <p className=" body-padding-y  w-[80%] m-auto text-lg  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
+          <p className=" body-padding-y  w-[80%] m-auto text-lg  font-custom-open-sans italic mt-16 mb-5 text-primary text-center font-[600]">
             We&apos;ve listed our most commonly requested services, but cater to
             many other needs. If you don&apos;t find what you need please get in
             touch and we&apos;d be happy to help or refer you to someone that
@@ -121,7 +121,7 @@ const OverviewTabs = () => {
                 <div className="w-full ">
                   <Tab {...services[activeTab - 1]} />
                 </div>
-                <p className=" body-padding-y text-md  font-custom-open-sans italic mt-16 mb-5 text-primary text-center">
+                <p className=" body-padding-y text-md  font-custom-open-sans italic mt-16 mb-5 text-primary text-center font-[600]">
                   We&apos;ve listed our most commonly requested services, but
                   cater to many other needs. If you don&apos;t find what you
                   need please get in touch and we&apos;d be happy to help or
