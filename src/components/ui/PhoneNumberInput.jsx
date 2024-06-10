@@ -1,4 +1,3 @@
-
 // import React from "react";
 
 // const PhoneNumberInput = ({
@@ -60,10 +59,9 @@
 // export default PhoneNumberInput;
 
 import React from "react";
-import 'react-phone-number-input/style.css';
-import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
-
+import "react-phone-number-input/style.css";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 const PhoneNumberInput = ({
   label,
@@ -72,8 +70,6 @@ const PhoneNumberInput = ({
   placeholder = "Enter phone number",
   classes = "",
 }) => {
-
-
   const handleChange = (value) => {
     console.log(value); // Full phone number with country code
 
@@ -83,22 +79,20 @@ const PhoneNumberInput = ({
       if (phoneNumber) {
         let phone = phoneNumber.formatNational().trim();
         console.log(phone.trim()); // Logs the national format (without country code)
-//REMOVE extra 0 from  the start of phone number 
-if(phone.startsWith('0')){
-  phone = phone.slice(1);
-  console.log(phone);
-  onPhoneNumberChange(phone);
-}
-        
+        //REMOVE extra 0 from  the start of phone number
+        if (phone.startsWith("0")) {
+          phone = phone.slice(1);
+          console.log(phone);
+          onPhoneNumberChange(phone);
+        }
+
         onPhoneNumberChange(phoneNumber.nationalNumber); // Stores just the national number (without country code)
       }
     } else {
       // If value is empty, invalid, or not a valid phone number
-      onPhoneNumberChange('');
+      onPhoneNumberChange("");
     }
   };
-
-
 
   return (
     <div className={`flex flex-col mb-4 sm:mb-0 w-full ${classes}`}>
@@ -113,7 +107,7 @@ if(phone.startsWith('0')){
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className="text-primary p-1 border border-secondary rounded-md focus:outline-none focus:ring h-12 bg-white w-full"
+        className="text-primary p-1 border border-secondary rounded-md focus-visible:outline-none focus:border-none h-12 bg-white w-full"
       />
     </div>
   );

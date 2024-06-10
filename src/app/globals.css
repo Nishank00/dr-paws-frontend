@@ -122,3 +122,9 @@ input[type="number"] {
 .b1{
   border: 1px solid red;
 }
+
+.df{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

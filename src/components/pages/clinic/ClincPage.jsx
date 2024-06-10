@@ -37,7 +37,7 @@ const ClinicPage = () => {
   }, []);
   return (
     <div className="pb-10">
-      <div className="pt-4 md:pt-24 hidden md:block">
+      <div className="pt-4 md:pt-24 ">
         <ImageHeader
           header={<p className="leading-none">Come and visit us at our place!</p>}
           imagePosition={"left"}
@@ -54,7 +54,7 @@ const ClinicPage = () => {
         Our Clinics
       </h4>
 
-      <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+      <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
         {clincs &&
           clincs.map((item, index) => (
             <ClinicCard
@@ -74,7 +74,7 @@ const ClinicPage = () => {
           </div>
         </span> */}
       </div>
-      <div className="mt-5" id="suggestion-form">
+      <div className="mt-20" id="suggestion-form">
         <SuggestionForm />
       </div>
     </div>
