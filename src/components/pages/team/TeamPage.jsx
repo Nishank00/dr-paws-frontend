@@ -64,7 +64,7 @@ const TeamPage = () => {
         </h2>
       </div>
       <div className="md:body-padding-x text-primary mb-10">
-        <div className="mt-12 flex overflow-scroll py-5 md:grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 px-5 md:px-0 ">
+        <div className="mt-12 flex overflow-scroll  py-5 md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-5 md:px-0 ">
           {doctors.map((doctor, i) => (
             <DoctorProfileCard key={i} {...doctor} />
           ))}
