@@ -36,8 +36,8 @@ const MembershipPage = () => {
     getMemberships();
   }, []);
   return (
-    <div className="py-20">
-      <div className="w-[78%] m-auto">
+    <div className="md:pt-20 pt-12">
+      <div className="m-auto df">
         <ImageTextHeader
           imageUrl={"/image139.png"}
           buttonText={"Explore Plans"}
@@ -50,15 +50,17 @@ const MembershipPage = () => {
           headingClass="!text-[48px] leading-none"
           paragraphClass="text-sm"
           buttonUrl={"/membership#memberships"}
+          isWidthFull={false}
+          isHeightFull={true}
         />
       </div>
 
-      <div className="w-full mt-14" id="memberships">
-        <div className="w-full flex items-center justify-center">
+      <div className="w-full mt-14 md:body-padding-x" id="memberships">
+        <div className="w-full px-4 md:px-0 flex items-center justify-center">
           <img src="/membership/become_member_banner.png" alt="" />
         </div>
 
-        <div className="py-20 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+        <div className="md:py-20 py-8 flex md:grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6 px-5 md:px-0 overflow-scroll md:overflow-auto">
           {memberships.map((membership, index) => (
             <MembershipCardNew
               key={membership?.id + " " + index}

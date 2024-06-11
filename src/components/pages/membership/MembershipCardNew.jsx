@@ -58,7 +58,7 @@ const MembershipCardNew = ({
   return (
     <>
       <div
-        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col gap-5 bg-primary3 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg  `}
+        className={`bg-[${membership?.background_color}] px-4 py-10 flex flex-col  bg-primary3 text-primary font-custom-open-sans rounded-2xl hover:shadow-lg transition-all duration-300 ease-in-out min-w-[292px] md:min-w-min`}
       >
         {/* Header */}
         <div className="flex flex-col  gap-2">
@@ -66,18 +66,20 @@ const MembershipCardNew = ({
             src={`/membership/${membership?.image}`}
             alt=""
             loading="lazy"
-            className="w-28 h-28 self-center"
+            className="w-20 h-20 md:w-28 md:h-28 self-center"
           />
 
-          <h3 className="text-xl font-custom-roca">{membership?.title}</h3>
+          <h3 className="text-xl font-custom-roca md:mt-4 mt-2">
+            {membership?.title}
+          </h3>
           <p className="text-sm sm:max-h-10 md:max-h-10  ">
             {membership?.description}
           </p>
         </div>
-        <div className="md:pt-20 sm:pt-10">
+        <div className="md:pt-12 pt-6">
           <p className="text-sm font-bold">Includes:</p>
         </div>
-        <div className="flex flex-col   gap-4 h-full">
+        <div className="flex flex-col h-full">
           {membership?.membership_items?.map((membership_item, index) => (
             <div
               className="flex border-b-2  border-x-primary2 py-4 items-center gap-2"
