@@ -117,7 +117,7 @@ const Homepage = () => {
       </div>
 
       {/* SECTION 5 CARDS */}
-      <div className=" z-[-1] bg-[#FFF4E4] body-padding-x">
+      <div className=" z-[-1] bg-[#FFF4E4] md:bg-transparent body-padding-x">
         <Reviews />
       </div>
 
