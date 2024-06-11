@@ -41,33 +41,36 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <div className="body-padding-x text-primary mb-10">
-      <div className="mt-14">
-        <ImageHeader
-          imageUrl={"/image139.png"}
-          imagePosition={"left"}
-          header={
-            <p className="leading-none text-[44px]">
-              Meet our very own Superheroes
-            </p>
-          }
-          text={
-            "Our clinical team is comprised of experienced vets, with a broad range of specialisations, that are committed to treating your pet just like their own."
-          }
-          buttonVisibility={false}
-        />
-      </div>
+    <>
+      <div className="body-padding-x text-primary ">
+        <div className="md:mt-14 mt-0">
+          <ImageHeader
+            imageUrl={"/image139.png"}
+            imagePosition={"left"}
+            header={
+              <p className="leading-none text-[24px] md:text-[44px]">
+                Meet our very own Superheroes
+              </p>
+            }
+            text={
+              "Our clinical team is comprised of experienced vets, with a broad range of specialisations, that are committed to treating your pet just like their own."
+            }
+            buttonVisibility={false}
+          />
+        </div>
 
-      <h2 className="text-center text-primary  font-custom-roca text-4xl">
-        Our Team
-      </h2>
-
-      <div className=" mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {doctors.map((doctor, i) => (
-          <DoctorProfileCard key={i} {...doctor} />
-        ))}
+        <h2 className="text-center text-primary  font-custom-roca text-4xl">
+          Our Team
+        </h2>
       </div>
-    </div>
+      <div className="md:body-padding-x text-primary mb-10">
+        <div className="mt-12 flex overflow-scroll py-5 md:grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 px-5 md:px-0 ">
+          {doctors.map((doctor, i) => (
+            <DoctorProfileCard key={i} {...doctor} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
