@@ -196,8 +196,8 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
   }, [membership]);
 
   return (
-    <div className="text-primary rounded-2xl flex bg-white font-custom-open-sans">
-      <div className="w-full sm:w-2/5 p-8">
+    <div className="text-primary rounded-2xl flex md:flex-row bg-white font-custom-open-sans overflow-y-auto max-h-[80vh] mx-4 md:mx-0 md:max-h-[75vh] lg:max-h-[75vh] overflow-scroll flex-col">
+      <div className="w-full md:w-2/5 p-8 relative md:sticky top-0">
         <div className="flex flex-col gap-2">
           <img
             src={`/membership/${membership.image}`}
@@ -225,17 +225,18 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             </div>
           ))}
           <div className="mt-6 p-4 max-w-sm mx-auto bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 rounded-lg flex items-center space-x-4 shadow-lg">
-  <img src="images/discount.png" alt="Icon" className="w-12 h-12" /> {/* Replace "/path-to-your-icon.png" with the actual path to your icon image */}
-  <div>
-    <p className="text-gray-800 text-sm font-bold">
-      Total benefits worth ₹{membership.id * 500}
-    </p>
-  </div>
-</div>
+            <img src="images/discount.png" alt="Icon" className="w-12 h-12" />{" "}
+            {/* Replace "/path-to-your-icon.png" with the actual path to your icon image */}
+            <div>
+              <p className="text-gray-800 text-sm font-bold">
+                Total benefits worth ₹{membership.id * 500}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="w-full sm:w-3/5 bg-primary3 p-10 rounded-r-2xl">
+      <div className="w-full md:w-3/5 bg-primary3 p-8 md:p-12 rounded-none md:rounded-r-2xl h-full">
         <p className="text-sm font-bold">Select Pet:</p>
         <MultipleSelect
           options={pets}
@@ -246,15 +247,15 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
         <div className="flex mt-4 flex-col gap-5">
           <p className="text-sm font-bold">Choose a payment plan:</p>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 ">
             {membership.membership_plans.map((membership_plan, index) => (
               <div
                 key={"popup-pl-item" + membership_plan.id + index}
-                className={`p-5 rounded-2xl bg-white cursor-pointer ${
+                className={`p-5 rounded-2xl bg-white cursor-pointer border-4 transition-all duration-300 ease-in-out ${
                   membership_plan?.selected &&
                   membership_plan?.selected === true
-                    ? "border-4 border-secondary"
-                    : ""
+                    ? "border-secondary"
+                    : "border-transparent"
                 }`}
                 onClick={() => selectPlan(membership_plan)}
               >
@@ -273,7 +274,6 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
             ))}
           </div>
 
-          
           {/* Checkbox with text */}
           <div className="flex items-center gap-3 px-3">
             <input
@@ -282,14 +282,15 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
               name="terms"
               className="rounded-sm h-4 w-4"
             />
-            <label htmlFor="terms" className="text-xs w-[350px]">
-            By taking a membership you accept Dr. Paws' Terms & Conditions. You also agree to receive communications by WhatsApp related to your membership.
+            <label htmlFor="terms" className="text-xs w-full md:w-[350px]">
+              By taking a membership you accept Dr. Paws' Terms & Conditions.
+              You also agree to receive communications by WhatsApp related to
+              your membership.
             </label>
-            </div>
-          
+          </div>
         </div>
 
-        <div className="flex items-center justify-end mt-10">
+        <div className="flex items-center md:justify-end justify-center mt-10">
           <Button
             disabled={!selectedPlan?.id || !selectedPet}
             label="Continue"

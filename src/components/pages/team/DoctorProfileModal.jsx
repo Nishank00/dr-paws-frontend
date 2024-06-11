@@ -4,8 +4,28 @@ import React from "react";
 
 const DoctorProfileModal = ({ selectedDoctor }) => {
   return (
-    <div className="p-4 pb-0 bg-white md:max-w-[1040px] max-w-[95%] w-full mx-auto rounded-2xl ">
-      <div className="p-4  text-primary overflow-y-auto max-h-[80vh]  md:max-h-[75vh] lg:max-h-[70vh] overflow-scroll  flex gap-8 md:flex-row flex-col-reverse ">
+    <div className="p-4 pb-0 bg-white md:max-w-[1040px] max-w-[95%] w-full mx-auto rounded-2xl">
+      <div className="p-4  text-primary overflow-y-auto max-h-[80vh]  md:max-h-[75vh] lg:max-h-[70vh] overflow-scroll flex gap-8 md:flex-row flex-col">
+        {/* MOBILE */}
+        <div className="flex md:hidden flex-col items-center gap-4 md:sticky md:top-0 relative ">
+          <div className="flex flex-col gap-4 md:w-72 w-36 md:h-72 h-36 overflow-hidden rounded-lg">
+            <img
+              src="/Teams/smiling.png"
+              alt=""
+              loading="lazy"
+              className=" w-full h-full object-cover  m-auto rounded-[100%]"
+            />
+            <div className="text-lg text-center">
+              {selectedDoctor?.introduction}
+            </div>
+          </div>
+          <Button
+            label="Book a Visit"
+            color="secondary"
+            className="mt-6 cursor-pointer"
+          />
+        </div>
+        
         <div className="flex flex-col gap-6 md:w-3/5 w-full">
           <div
             style={{ fontFamily: "Roca Bold, sans-serif" }}
@@ -78,7 +98,8 @@ const DoctorProfileModal = ({ selectedDoctor }) => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-4 md:sticky md:top-0 relative ">
+        {/* DESKTOP */}
+        <div className="hidden md:flex flex-col items-center gap-4 md:sticky md:top-0 relative ">
           <div className="flex flex-col gap-4 md:w-72 w-36 md:h-72 h-36 overflow-hidden rounded-lg">
             <img
               src="/Teams/smiling.png"
