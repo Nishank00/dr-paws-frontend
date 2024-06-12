@@ -22,6 +22,8 @@ const UserForm = ({ closePopup, user_id }) => {
   const [countries, setCountries] = useState([]);
   const [userData, setUserData] = useState({
     full_name: "",
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
     user_type: "",
@@ -34,6 +36,9 @@ const UserForm = ({ closePopup, user_id }) => {
     city_id: null,
     state_id: null,
     country_id: null,
+    city_name: "",
+    country_name: "",
+    state_name: "",
   });
 
   // Methods
@@ -225,10 +230,17 @@ const UserForm = ({ closePopup, user_id }) => {
           />
 
           <TextInput
-            label={"Name"}
+            label={"First Name"}
             placeholder={"John Doe"}
-            name={"full_name"}
-            value={userData.full_name}
+            name={"first_name"}
+            value={userData.first_name}
+            onChange={formValueChanged}
+          />
+          <TextInput
+            label={"Last Name"}
+            placeholder={"John Doe"}
+            name={"last_name"}
+            value={userData.last_name}
             onChange={formValueChanged}
           />
 
@@ -280,15 +292,13 @@ const UserForm = ({ closePopup, user_id }) => {
             onPhoneNumberChange={phoneNumberEntered}
           /> */}
 
-          
-
           <TextInput
             type="email"
             label={"Email"}
             placeholder={"johndoe@gmail.com"}
             name={"email"}
             value={userData.email}
-            onChange={isValidEmail}
+            onChange={formValueChanged}
           />
 
           <MultipleSelect
@@ -335,8 +345,8 @@ const UserForm = ({ closePopup, user_id }) => {
           <TextInput
             label={"City"}
             placeholder={"City / Town / Village"}
-            name={"city"}
-            value={userData.city_id}
+            name={"city_name"}
+            value={userData.city_name}
             onChange={formValueChanged}
           />
 
