@@ -409,11 +409,10 @@ const Form = () => {
         setDoctors([bestAvailableDoctor, ...doctors]);
       }
     };
+    console.log("removed the drInfinite loop");
 
     addBestAvailableDoctor();
-  }, [doctors]);
-
-  console.log("doctors", doctors);
+  }, []);
 
   const renderPage = () => {
     return (
@@ -505,17 +504,10 @@ const Form = () => {
 
   const getUserData = async () => {
     if (user_id) {
-      const userdata = await UserService.getUserById(user_id).then(
-        (response) => {
-          console.log(
-            "GET USER DATA FROM CLINIC: ",
-            response.data.data.clinic_name
-          );
-          if (response.data.data.clinic_name != null) {
-            setUserHomeClinic(response.data.data.clinic_name);
-          }
-        }
-      );
+      const userdata = await UserService.getUserById(user_id);
+      if (userdata?.data?.data?.clinic_name != null) {
+        setUserHomeClinic(userdata?.data?.data?.clinic_name);
+      }
     }
   };
 
@@ -586,7 +578,7 @@ const Form = () => {
         <ConfirmBookingOTP
           onOTPConfirmed={otpConfirmed}
           sendBookingOTP={sendBookingOTP}
-          phoneNumber={JSON.parse(localStorage.getItem("user_info")).phone}
+          phoneNumber={JSON.parse(localStorage.getItem("user_info"))?.phone}
         />
       </Popup>
     </div>
