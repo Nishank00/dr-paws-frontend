@@ -19,7 +19,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
     date_of_birth: "",
     age: 0,
     weight: 0,
-    otherBreed: "",
+    other_breed: "",
   });
   const [petTypes, setPetTypes] = useState([]);
   const [breeds, setBreeds] = useState([]);
@@ -88,7 +88,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   const submitForm = () => {
     const payload = {
       ...formData,
-      breed: isOthersSelected ? formData.otherBreed : formData.breed,
+      breed: isOthersSelected ? formData.other_breed : formData.breed,
       user_id: JSON.parse(localStorage.getItem("user_info")).id,
     };
     if (pet_id) payload.id = pet_id;
@@ -193,8 +193,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
       {isOthersSelected && (
         <TextInput
           type="text"
-          name="otherBreed"
-          value={formData.otherBreed}
+          name="other_breed"
+          value={formData.other_breed}
           placeholder={"Enter your pet breed"}
           onChange={updateFormData}
         />
