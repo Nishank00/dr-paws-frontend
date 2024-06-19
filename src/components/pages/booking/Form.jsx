@@ -411,7 +411,7 @@ const Form = () => {
     };
 
     addBestAvailableDoctor();
-  }, [doctors]);
+  }, []);
 
   console.log("doctors", doctors);
 
