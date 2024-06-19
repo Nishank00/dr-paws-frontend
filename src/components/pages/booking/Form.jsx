@@ -409,11 +409,10 @@ const Form = () => {
         setDoctors([bestAvailableDoctor, ...doctors]);
       }
     };
+    console.log("removed the drInfinite loop");
 
     addBestAvailableDoctor();
   }, []);
-
-  console.log("doctors", doctors);
 
   const renderPage = () => {
     return (
