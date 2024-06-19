@@ -7,7 +7,7 @@ const DoctorSelect = ({ doctor = {}, selected = false, onClick }) => {
   return (
     <div
       onClick={handleClick}
-      className={`p-3 flex flex-col items-center bg-primary4 rounded-lg min-w-[315px] ${
+      className={`p-3 flex flex-col items-center bg-primary4 rounded-lg min-w-[315px] md:min-w-max ${
         doctor.selected ? "ring-4 ring-secondary" : ""
       }`}
     >

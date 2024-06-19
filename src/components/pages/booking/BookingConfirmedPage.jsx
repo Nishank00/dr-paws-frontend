@@ -108,7 +108,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
 
   return (
     <div className="text-primary flex flex-col items-center justify-center my-16">
-      <h2 className="font-bold font-custom-roca text-4xl flex gap-2 mb-8">
+      <h2 className="font-bold font-custom-roca  text-2xl md:text-4xl flex gap-2 mb-8">
         {appointment && appointment.is_active == 1 && rescheduled
           ? "Booking rescheduled"
           : appointment && appointment.is_active == 1 && !rescheduled
@@ -188,7 +188,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
       <div
         className={`${
           appointment?.is_active == 1 ? "bg-primary4" : "bg-gray-100"
-        }  px-24 py-12 flex flex-col items-center rounded-2xl shadow-lg`}
+        }  md:px-24 md:py-12 px-8 py-8 mx-4 md:mx-0 flex flex-col items-center rounded-2xl shadow-lg`}
       >
         {appointment?.doctor_name?.toLowerCase() === "groomer" ? (
   <h3 className="text-2xl font-extrabold">

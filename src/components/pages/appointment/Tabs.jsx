@@ -22,15 +22,15 @@ const Tabs = ({ tabs, active }) => {
   }, [activeTabIndex]);
 
   return (
-    <div>
-      <div className="relative mb-6 w-full">
+    <div className="w-full">
+      <div className="relative mb-6 w-full ">
         <div className="flex w-full space-x-8 border-b-2 pb-4">
           {tabs.map((tab, index) => {
             return (
               <button
                 key={index}
                 ref={(el) => (tabsRef.current[index] = el)}
-                className={`text-primary font-custom-open-sans w-auto text-md  cursor-pointer mx-1 rounded-full mt-12`}
+                className={`text-primary font-custom-open-sans w-auto text-[16px] md:text-[24px]  cursor-pointer mx-1 rounded-full mt-12 `}
                 onClick={() => {
                   setActiveTabIndex(index);
                 }}
@@ -45,7 +45,7 @@ const Tabs = ({ tabs, active }) => {
           style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
         />
       </div>
-      <div>
+      <div className="">
         {tabs.map((tab) =>
           tab.id === activeTabIndex + 1 ? (
             <div key={tab.id} className="py-2">
