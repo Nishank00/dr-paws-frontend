@@ -41,17 +41,6 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const getPetsType = () => {
-    PetService.getPetTypes()
-      .then((response) => {
-        if (!response.data.status) return;
-        setPetTypes(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
-
   const getBreeds = () => {
     if (!formData.pet_type) return;
 
@@ -129,23 +118,35 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   };
   // Lifecycle Hooks
   useEffect(() => {
-    getPetsType();
-    setTimeout(() => {
-      if (pet_id) {
-        setFormData({
-          pet_image: petData.pet_image,
-          name: petData.name,
-          pet_type: petData.pet_type,
-          breed: petData.breed,
-          gender: petData.gender,
-          date_of_birth: petData.date_of_birth
-            ? moment(petData.date_of_birth).format("YYYY-MM-DD")
-            : null,
-          age: petData.age,
-          weight: petData.weight,
-        });
+    async function getPetsType() {
+      try {
+        const response = await PetService.getPetSpeciesList();
+        const { data = [] } = response;
+
+        if (data?.status) {
+          setPetTypes(data?.data || []);
+        }
+      } catch (error) {
+        console.log({ error }, "from getting species list");
       }
-    }, 1500);
+    }
+    getPetsType();
+    // setTimeout(() => {
+    //   if (pet_id) {
+    //     setFormData({
+    //       pet_image: petData.pet_image,
+    //       name: petData.name,
+    //       pet_type: petData.pet_type,
+    //       breed: petData.breed,
+    //       gender: petData.gender,
+    //       date_of_birth: petData.date_of_birth
+    //         ? moment(petData.date_of_birth).format("YYYY-MM-DD")
+    //         : null,
+    //       age: petData.age,
+    //       weight: petData.weight,
+    //     });
+    //   }
+    // }, 1500);
   }, []);
 
   useEffect(() => {

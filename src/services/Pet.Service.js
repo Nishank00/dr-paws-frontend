@@ -47,6 +47,10 @@ const PetService = {
       `pet/remove-pet-documents/${payload?.pet_id}/${payload?.document_id}`
     );
   },
+
+  getPetSpeciesList() {
+    return API().get(`pet/getPetSpecies`);
+  },
 };
 
 export default PetService;
