@@ -13,10 +13,17 @@ const ProfileDropdown = ({ onLogout, onClose }) => {
     }
   };
 
+  const handleScroll = () => {
+    onClose();
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll, true);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll, true);
     };
   }, []);
 

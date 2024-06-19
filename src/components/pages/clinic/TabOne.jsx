@@ -84,12 +84,13 @@ const TabOne = ({ contact_numbers, address }) => {
           </div>
         </div>
         <div className="w-full mt-10 md:mt-0 md:w-[48%] ">
-          <div className="items-stretch flex max-w-[369px] flex-col p-4 border-2 border-accent  rounded-xl pt-6  pb-9">
-            <div className="text-primary text-2xl mb-4 font-custom-roca font-semibold leading-4 tracking-tight w-full">
+          <div className="items-stretch flex max-w-[369px] flex-col p-4 border-2 border-accent  rounded-xl pt-6  pb-9 df gap-8">
+            <div className="text-primary text-2xl font-custom-roca font-semibold leading-4 tracking-tight w-full">
               Location
             </div>
             <iframe
               height="450"
+              width={"100%"}
               style={{
                 margin: "0",
               }}
@@ -100,12 +101,14 @@ const TabOne = ({ contact_numbers, address }) => {
     &q=Space+Needle,Seattle+WA`}
             ></iframe>
 
-            <Link
-              href="https://www.google.com/maps/place/Space+Needle/@47.620506,-122.349277,16z/data=!4m6!3m5!1s0x5490151f4ed5b7f9:0xdb2ba8689ed0920d!8m2!3d47.6205063!4d-122.3492774!16zL20vMDFrN3Y3?hl=en-GB&entry=ttu"
-              className="text-white font-custom-open-sans  text-[16px] w-fit px-4 py-2 text-center font-bold justify-center  bg-secondary mt-5  rounded-full"
-            >
-              Get Directions
-            </Link>
+            <div className="w-full">
+              <Link
+                href="https://www.google.com/maps/place/Space+Needle/@47.620506,-122.349277,16z/data=!4m6!3m5!1s0x5490151f4ed5b7f9:0xdb2ba8689ed0920d!8m2!3d47.6205063!4d-122.3492774!16zL20vMDFrN3Y3?hl=en-GB&entry=ttu"
+                className="text-white font-custom-open-sans  text-[16px] w-fit px-4 py-3 text-center font-bold justify-center bg-secondary  rounded-full"
+              >
+                Get Directions
+              </Link>
+            </div>
           </div>
         </div>
       </div>

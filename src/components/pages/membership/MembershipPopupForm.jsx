@@ -210,13 +210,13 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
         </div>
         <hr className="my-8 border border-primary3" />
 
-        <h5 className="text-sm font-bold">Includes:</h5>
+        <h5 className="text-lg font-bold md:ml-[30px] ml-0">Includes:</h5>
 
         <div className="flex flex-col items-start">
           {membership.membership_items.map((membership_item, index) => (
             <div
               key={"popup-m-item" + membership_item.id + index}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 md:ml-[30px] ml-0"
             >
               <span className="w-1 h-1 rounded-full bg-primary"></span>
               <p className="text-[15px]">
@@ -224,7 +224,7 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
               </p>
             </div>
           ))}
-          <div className="mt-6 p-4 max-w-sm mx-auto bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 rounded-lg flex items-center space-x-4 shadow-lg">
+          <div className="mt-6 p-4 max-w-sm mx-auto bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 rounded-lg flex items-center space-x-4 shadow-lg ">
             <img src="images/discount.png" alt="Icon" className="w-12 h-12" />{" "}
             {/* Replace "/path-to-your-icon.png" with the actual path to your icon image */}
             <div>
@@ -244,7 +244,7 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
           optionValue={"id"}
           onSelect={(selected) => setSelectedPet(selected)}
         />
-        <div className="flex mt-4 flex-col gap-5">
+        <div className="flex mt-10 flex-col gap-5">
           <p className="text-sm font-bold">Choose a payment plan:</p>
 
           <div className="flex flex-col gap-3 ">
@@ -293,7 +293,7 @@ const MembershipPopupForm = ({ membership, memberships, setMemberships }) => {
         <div className="flex items-center md:justify-end justify-center mt-10">
           <Button
             disabled={!selectedPlan?.id || !selectedPet}
-            label="Continue"
+            label="Buy Now"
             color="accent"
             className="w-40 h-10"
             onClick={saveMembership}

@@ -143,7 +143,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full border-solid border-grey pr-5 font-black py-4"
         >
-          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
+          <p className="text-left font-custome-inter !font-extrabold text-lg text-primary">
             About Dr. Paws
           </p>
         </div>
