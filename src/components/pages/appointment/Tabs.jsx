@@ -47,9 +47,11 @@ const Tabs = ({ tabs, active }) => {
       </div>
       <div className="">
         {tabs.map((tab) =>
+       
           tab.id === activeTabIndex + 1 ? (
             <div key={tab.id} className="py-2">
               {tab.content}
+              { console.log('dd',tab)}
             </div>
           ) : null
         )}

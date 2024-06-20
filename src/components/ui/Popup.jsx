@@ -46,12 +46,12 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   return isMounted
     ? isOpen &&
         ReactDOM.createPortal(
-          <div className={`fixed text-primary inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40 `}>
-            <div ref={popupRef} className="relative z-40 rounded-2xl mt-8">
-              <div className="rounded-2xl relative z-40 overflow-hidden">{children}</div>
+          <div className={`fixed text-primary inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60] `}>
+            <div ref={popupRef} className="relative z-[60] rounded-2xl mt-8">
+              <div className="rounded-2xl relative z-[60] overflow-hidden">{children}</div>
               {!hideClose && (
                 <span
-                  className="text-black z-40 hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
+                  className="text-black z-[60] hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
                   onClick={onClose}
                 >
                   <IoCloseSharp className="text-[30px] text-[#000]" />

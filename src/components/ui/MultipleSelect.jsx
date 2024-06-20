@@ -60,7 +60,7 @@ const MultipleSelect = ({
         {options?.map((option) => (
           <option
             key={option[optionValue]}
-            value={option[optionValue]}
+            value={option[optionValue] }
             selected={selectedValue == option[optionValue]}
           >
             {option[optionLabel]}

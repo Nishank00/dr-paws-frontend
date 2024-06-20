@@ -131,7 +131,7 @@ const AppointmentCard = ({ appointment = {} }) => {
 
       <div className="flex flex-col gap-3">
         <h4 className="text-sm font-semibold">
-          {pets?.map((pet) => pet?.pet_name).join(" & ")}&nbsp; with Dr.{" "}
+          {pets?.map((pet) => pet?.pet_name).join(" & ")}&nbsp;with Dr.{" "}
           {doctor.doctor_name}
         </h4>
         <p className="text-sm">

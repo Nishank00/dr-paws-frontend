@@ -106,7 +106,7 @@ const UserProfileDetails = () => {
               <p className="text-primary text-xs sm:text-lg w-60 pt-5 font-semibold font-custom-open-sans">
                 {`${userData?.address || ""} ${
                   userData?.address_line_1 || ""
-                } ${userData?.address_line_2 || ""}, ${userData?.city || ""}, ${
+                } ${userData?.address_line_2 || ""} ${userData?.city || ""} ${
                   userData?.state || ""
                 } ${userData?.pin_code || ""}` || "Not Available"}
               </p>
