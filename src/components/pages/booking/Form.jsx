@@ -531,7 +531,7 @@ const Form = () => {
     };
 
     sortClinicsByHomeClinicName();
-  }, [userHomeClinic, clinics]);
+  }, [userHomeClinic]);
 
   return user_id ? (
     <div className="text-primary">
