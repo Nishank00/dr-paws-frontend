@@ -48,8 +48,28 @@ const PetService = {
     );
   },
 
-  getPetSpeciesList() {
-    return API().get(`pet/getPetSpecies`);
+  getPetSpeciesList(payload) {
+    return API().get(
+      `pet/getPetSpecies?status=${payload.status}&limit=${payload.limt}`
+    );
+  },
+
+  getPetBreedList(payload) {
+    return API().get(
+      `pet/getVetportBreedData?speciesId=${payload.speciesId}&status=Active&limit=${payload.limit}`
+    );
+  },
+
+  getPetSpeciesGenderList(payload) {
+    return API().get(
+      `pet/getSpeciesGenderData?speciesId=${payload.speciesId}&status=Active&limit=${payload.limit}`
+    );
+  },
+
+  getPetColorList(payload) {
+    return API().get(
+      `pet/getPetColorData?speciesId=${payload.speciesId}&breedId=${payload.breedId}&status=Active&limit=${payload.limit}`
+    );
   },
 };
 

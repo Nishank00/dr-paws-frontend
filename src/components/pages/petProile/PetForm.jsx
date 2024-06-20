@@ -20,14 +20,13 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
     age: 0,
     weight: 0,
     other_breed: "",
+    color: "",
   });
   const [petTypes, setPetTypes] = useState([]);
   const [breeds, setBreeds] = useState([]);
   const [isOthersSelected, setIsOthersSelected] = useState(false);
-  const [genders, setGenders] = useState([
-    { value: "MALE", label: "Male" },
-    { value: "FEMALE", label: "Female" },
-  ]);
+  const [genders, setGenders] = useState([]);
+  const [color, setColor] = useState([]);
 
   // Methods
   const profileUploaded = (filename) => {
@@ -54,31 +53,75 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
       });
   };
 
-  const selectPetType = (selectedValue) => {
+  const selectPetType = async (selectedValue) => {
     console.log("selectedValue", selectedValue, selectedValue === "12");
+
     setFormData({ ...formData, pet_type: selectedValue });
-    if (selectedValue === "12") {
-      setIsOthersSelected(true);
-    } else {
-      setIsOthersSelected(false);
+
+    function getVetportBreedList() {
+      return PetService.getPetBreedList({
+        limit: 1000,
+        speciesId: selectedValue,
+      });
     }
+
+    function getVetportSpeciesGenderList() {
+      return PetService.getPetSpeciesGenderList({
+        limit: 1000,
+        speciesId: selectedValue,
+      });
+    }
+
+    const [breedResponse, genderResponse] = await Promise.all([
+      getVetportBreedList(),
+      getVetportSpeciesGenderList(),
+    ]);
+
+    console.log({ breedResponse, genderResponse });
+
+    if (!breedResponse?.data.status)
+      return showToast("No breeds found", "error");
+
+    if (!genderResponse?.data.status)
+      return showToast("No pet gender found", "error");
+
+    setBreeds(breedResponse?.data.data);
+    setGenders(genderResponse?.data.data);
+
+    // if (selectedValue === "12") {
+    //   setIsOthersSelected(true);
+    // } else {
+    //   setIsOthersSelected(false);
+    // }
   };
 
-  console.log("isOthersSelected", isOthersSelected);
-
-  const selectBreed = (selectedValue) => {
+  const selectBreed = async (selectedValue) => {
     setFormData({ ...formData, breed: selectedValue });
+    const petColorResponse = await PetService.getPetColorList({
+      limit: 1000,
+      speciesId: formData.pet_type,
+      breedId: selectedValue,
+    });
+
+    if (!petColorResponse?.data.status)
+      return showToast("No pet colors found", "error");
+
+    setColor(petColorResponse?.data.data);
   };
 
   const selectGender = (selectedValue) => {
     setFormData({ ...formData, gender: selectedValue });
   };
 
+  const selectColorType = (selectedValue) => {
+    setFormData({ ...formData, color: selectedValue });
+  };
+
   const submitForm = () => {
+    let { other_breed, ...restFormData } = formData;
     const payload = {
-      ...formData,
-      breed: isOthersSelected ? formData.other_breed : formData.breed,
-      user_id: JSON.parse(localStorage.getItem("user_info")).id,
+      ...restFormData,
+      user_id: JSON.parse(localStorage.getItem("user_info")).vetport_client_id,
     };
     if (pet_id) payload.id = pet_id;
 
@@ -120,7 +163,11 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   useEffect(() => {
     async function getPetsType() {
       try {
-        const response = await PetService.getPetSpeciesList();
+        let payload = {
+          status: "Active",
+          limit: 1000,
+        };
+        const response = await PetService.getPetSpeciesList(payload);
         const { data = [] } = response;
 
         if (data?.status) {
@@ -149,9 +196,9 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
     // }, 1500);
   }, []);
 
-  useEffect(() => {
-    getBreeds();
-  }, [formData.pet_type]);
+  // useEffect(() => {
+  //   getBreeds();
+  // }, [formData.pet_type]);
 
   return (
     <div className="bg-primary3 w-96 p-5 rounded-lg">
@@ -206,8 +253,8 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           name="gender"
           selectedValue={formData.gender}
           options={genders}
-          optionLabel={"label"}
-          optionValue={"value"}
+          optionLabel={"sex"}
+          optionValue={"id"}
           placeholder={"Gender"}
           onSelect={selectGender}
         />
@@ -239,6 +286,17 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
         />
       </div>
 
+      {color.length > 0 && (
+        <Select
+          name="color"
+          selectedValue={formData.color}
+          options={color}
+          optionLabel={"color"}
+          optionValue={"id"}
+          placeholder={"Pet Color"}
+          onSelect={selectColorType}
+        />
+      )}
       <div className="flex items-center justify-between gap-5">
         <Button
           color="primary4"
