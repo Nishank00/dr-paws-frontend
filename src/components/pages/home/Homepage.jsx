@@ -27,10 +27,11 @@ const Homepage = () => {
   const [clinics, setClinics] = useState([]);
 
   const getClinics = () => {
-    ClinicService.getData()
+    ClinicService.getVetportClincsData()
       .then((response) => {
         setClinics([]);
         if (response.data.status) {
+          console.log(response.data.data, "clincs");
           setClinics(response.data.data);
         }
       })

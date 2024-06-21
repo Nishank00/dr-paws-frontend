@@ -5,6 +5,10 @@ const clinicService = {
     return API().get(`clinic/getData`, { params });
   },
 
+  getVetportClincsData() {
+    return API().get(`clinic/get-vpt-clinics`);
+  },
+
   getClinics(params = {}) {
     return API().get("clinic", { params });
   },

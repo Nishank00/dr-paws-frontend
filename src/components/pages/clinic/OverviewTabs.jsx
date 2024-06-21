@@ -39,25 +39,24 @@ const OverviewTabs = () => {
     setActiveTab(tabNumber + 1);
   };
 
-  const getDataById = () => {
-    ClinicService.getData({ id })
-      .then((r) => {
-        if (r.data.status) {
-          setClinic(r.data.data[0]);
-        } else {
-          alert(r.data.message);
-        }
-      })
-      .catch(() => {
-        console.log(err);
-      });
+  const getDataById = async () => {
+    const response = await ClinicService.getVetportClincsData();
+    const clinicMetaData = await ClinicService.getData({ id });
+    const { data } = clinicMetaData;
+    if (!response?.data?.status && response?.data?.data?.length) return;
+    setClinic({
+      ...response?.data?.data?.find((clinicObj) => {
+        return String(clinicObj.id) == String(id);
+      }),
+      metaData: { ...data?.data?.[0] },
+    });
   };
 
   useEffect(() => {
     if (id) {
       getDataById();
     }
-  }, [id]);
+  }, []);
 
   return (
     <div className="w-[100%] m-auto flex-auto justify-center  items-center">
@@ -85,18 +84,20 @@ const OverviewTabs = () => {
       <div className="flex sm:w-[70%] p-2 mx-auto flex-col items-start mt-4 text-primary">
         <div className="relative w-full">
           <div className="flex overflow-x-auto w-full space-x-8 pb-4 border-b-2 border-b-primary3">
-            {["Clinic Details", "Photos", "Reviews", "Vetrenarians"].map((tab, index) => (
-              <button
-                key={index}
-                ref={(el) => (tabsRef.current[index] = el)}
-                className={`text-primary text-nowrap font-custom-open-sans w-auto text-md cursor-pointer mx-1 rounded-full mt-12 ${
-                  activeTabIndex === index ? "font-bold" : ""
-                }`}
-                onClick={() => handleTabClick(index)}
-              >
-                {tab}
-              </button>
-            ))}
+            {["Clinic Details", "Photos", "Reviews", "Vetrenarians"].map(
+              (tab, index) => (
+                <button
+                  key={index}
+                  ref={(el) => (tabsRef.current[index] = el)}
+                  className={`text-primary text-nowrap font-custom-open-sans w-auto text-md cursor-pointer mx-1 rounded-full mt-12 ${
+                    activeTabIndex === index ? "font-bold" : ""
+                  }`}
+                  onClick={() => handleTabClick(index)}
+                >
+                  {tab}
+                </button>
+              )
+            )}
           </div>
           <span
             className="absolute bottom-0 block h-1 bg-primary transition-all duration-300"
@@ -127,16 +128,12 @@ const OverviewTabs = () => {
           </div>
         )}
 
-        
         {/* Content for Tab 4 */}
-        {
-          activeTab === 4 && (
-            <div className="p-4">
-           <TabFour {...clinic} />
-            </div>
-          )
-        }
-
+        {activeTab === 4 && (
+          <div className="p-4">
+            <TabFour {...clinic} />
+          </div>
+        )}
       </div>
     </div>
   );

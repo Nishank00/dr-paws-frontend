@@ -125,7 +125,7 @@ const UserForm = ({ closePopup, user_id }) => {
   };
 
   const getClinics = () => {
-    ClinicService.getData()
+    ClinicService.getVetportClincsData()
       .then((response) => {
         setClinics(response.data.data);
       })

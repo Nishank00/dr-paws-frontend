@@ -2,7 +2,14 @@
 import React from "react";
 import DoctorSlider from "./DoctorSlider";
 import Link from "next/link";
-const TabOne = ({ contact_numbers, address }) => {
+const TabOne = ({
+  contact_numbers,
+  address1,
+  address2,
+  starttime,
+  endtime,
+  metaData,
+}) => {
   const schedule = [
     { day: "Monday to Friday", time: "09:00 - 19:00" },
     { day: "Saturday", time: "10:00 - 17:00" },
@@ -24,7 +31,7 @@ const TabOne = ({ contact_numbers, address }) => {
                 alt=""
               />
               <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight my-auto">
-                {address}
+                {address1}
               </div>
             </div>
           </div>
@@ -41,7 +48,7 @@ const TabOne = ({ contact_numbers, address }) => {
                 alt=""
               />
               <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight my-auto">
-                {address}
+                {address2}
               </div>
             </div>
           </div>
@@ -58,7 +65,7 @@ const TabOne = ({ contact_numbers, address }) => {
                 alt=""
               />
               <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight my-auto">
-                {contact_numbers}
+                {metaData?.contact_numbers}
               </div>
             </div>
           </div>
@@ -67,19 +74,14 @@ const TabOne = ({ contact_numbers, address }) => {
               Timings
             </div>
             <div className="mt-4 xl:w-[75%]">
-              {schedule.map((item, index) => (
-                <div
-                  key={index}
-                  className="items-stretch flex justify-between border-b border-gray-600 py-3"
-                >
-                  <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight">
-                    {item.day}
-                  </div>
-                  <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight">
-                    {item.time}
-                  </div>
+              <div className="items-stretch flex justify-between border-b border-gray-600 py-3">
+                <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight">
+                  Monday - Friday
                 </div>
-              ))}
+                <div className="text-primary font-custom-open-sans text-xl leading-4 tracking-tight">
+                  {starttime} - {endtime}
+                </div>
+              </div>
             </div>
           </div>
         </div>
