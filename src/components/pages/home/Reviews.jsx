@@ -29,12 +29,12 @@ const Reviews = () => {
 
   return (
     <>
-      <div className="w-full  px-5 md:px-10 pb-10 md:pb-0 flex  md:mt-20 flex-col items-center justify-center">
-        <div className="text-primary mb-12 text-center text-2xl md:text-4xl leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
+      <div className="w-full body-padding-x  px-5 md:px-10 pb-10 md:pb-0 flex  md:mt-8 flex-col  justify-center">
+        <div className="text-primary mb-8 md:mb-16 mx-auto w-[900px] text-center text-2xl md:text-4xl leading-7 tracking-tight self-center font-custom-roca mt-14 max-md:max-w-full max-md:mt-10">
           Tail wags and purrs are our favourite feedback, but here&apos;s what
           pet-parents are saying
         </div>
-        <div className="hidden relative max-w-[1024px] dlex justify-center w-full mt-20 md:block">
+        <div className="hidden relative max-w-[1024px] mx-auto dlex justify-center w-full mt-20 md:block">
           <div className="items-stretch shadow-sm bg-orange-100 xl:left-0 self-stretch lg:left-[-3rem] flex w-[350px] leading-none top-[25%] absolute flex-col mt-5 p-4 rounded-2xl">
             <div className="text-primary text-lg italic tracking-normal">
               {reviews?.[0]?.clinic_review ||
@@ -105,67 +105,69 @@ const Reviews = () => {
             </span>
           </div>
         </div>
-        <div className=" md:hidden flex flex-col items-center">
+        <div className=" md:hidden flex flex-col">
           <img
             loading="lazy"
             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/66d067a49dd87ecb2c1ee2b4b956dfed4d70fad12f6084ffc5c96a608f3eeaaf?apiKey=22a36eade5734692978208fb0d2f5c62&"
             className="aspect-[0.9] object-contain object-center w-[238px] overflow-hidden self-center max-w-full mt-7"
           />
-          <span className="items-stretch shadow-xl bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-primary text-xs italic leading-4 tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
-            </div>
-            <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <Image
-                src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
-                alt="Circular Placeholder"
-                height={12}
-                width={21}
-                className="rounded-full"
-              />
-              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah, pet-parent to Choco
-              </div>
-            </span>
-          </span>
-          <span className="items-stretch shadow-xl bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-primary text-xs italic leading-4 tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
-            </div>
-            <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <Image
-                src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
-                alt="Circular Placeholder"
-                height={12}
-                width={21}
-                className="rounded-full"
-              />
-              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah , pet-parent to Choco
-              </div>
-            </span>
-          </span>
-          <span className="items-stretch shadow-xl bg-orange-100 self-stretch flex w-full flex-col mt-5 p-4 rounded-2xl">
-            <div className="text-primary text-xs italic leading-4 tracking-normal">
-              Dr. Paws is fantastic! Exceptional care, friendly staff, and a
-              welcoming atmosphere. Highly recommend for pet owners!
-            </div>
-            <span className="justify-between items-stretch flex gap-3 mt-2.5">
-              <Image
-                src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
-                alt="Circular Placeholder"
-                height={12}
-                width={21}
-                className="rounded-full"
-              />
-              <div className="text-primary text-xs italic font-semibold self-center grow whitespace-nowrap my-auto">
-                Rahul Shah , pet-perent to Choco
-              </div>
-            </span>
-          </span>
         </div>
+      </div>
+      <div className=" md:hidden flex justify-start w-full overflow-scroll gap-4 px-8 pb-8">
+        <span className=" shadow-xl bg-orange-100  flex min-w-[280px]  flex-col mt-5 p-4 rounded-2xl">
+          <div className="text-primary text-[14px] italic leading-4 tracking-normal">
+            Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+            welcoming atmosphere. Highly recommend for pet owners!
+          </div>
+          <span className="justify-between items-stretch flex gap-3 mt-2.5">
+            <Image
+              src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
+              alt="Circular Placeholder"
+              height={12}
+              width={21}
+              className="rounded-full object-cover w-10 h-10"
+            />
+            <div className="text-primary text-[14px] italic font-semibold self-center  my-auto">
+              Rahul Shah, pet-parent to Choco
+            </div>
+          </span>
+        </span>
+        <span className="items-stretch shadow-xl bg-orange-100 self-stretch  flex min-w-[280px] flex-col mt-5 p-4 rounded-2xl">
+          <div className="text-primary text-[14px] italic leading-4 tracking-normal">
+            Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+            welcoming atmosphere. Highly recommend for pet owners!
+          </div>
+          <span className="justify-between items-stretch flex gap-3 mt-2.5">
+            <Image
+              src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
+              alt="Circular Placeholder"
+              height={12}
+              width={21}
+              className="rounded-full object-cover w-10 h-10"
+            />
+            <div className="text-primary text-[14px] italic font-semibold self-center grow  my-auto">
+              Rahul Shah , pet-parent to Choco
+            </div>
+          </span>
+        </span>
+        <span className="items-stretch shadow-xl bg-orange-100 self-stretch  flex min-w-[280px] flex-col mt-5 p-4 rounded-2xl">
+          <div className="text-primary text-[14px] italic leading-4 tracking-normal">
+            Dr. Paws is fantastic! Exceptional care, friendly staff, and a
+            welcoming atmosphere. Highly recommend for pet owners!
+          </div>
+          <span className="justify-between items-stretch flex gap-3 mt-2.5">
+            <Image
+              src="https://avatar.iran.liara.run/public/27" // Replace with your image URL
+              alt="Circular Placeholder"
+              height={12}
+              width={21}
+              className="rounded-full object-cover w-10 h-10"
+            />
+            <div className="text-primary text-[14px] italic font-semibold self-center grow  my-auto">
+              Rahul Shah , pet-perent to Choco
+            </div>
+          </span>
+        </span>
       </div>
     </>
   );

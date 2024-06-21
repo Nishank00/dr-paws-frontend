@@ -62,7 +62,7 @@ const UserProfileDetails = () => {
             {userData.full_name || "Not Available"}
           </h4>
 
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-24">
+          <div className="flex flex-col sm:flex-row gap-2 mt-5 md:mt-0 sm:gap-24">
             <div className="flex sm:flex-col gap-2">
               <img
                 src="/profile/call.svg"
@@ -73,7 +73,7 @@ const UserProfileDetails = () => {
               <p className="hidden sm:block pt-6 text-secondary text-sm font-custom-open-sans">
                 Contact No
               </p>
-              <p className="text-primary text-xs pt-5 sm:text-lg font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs pt-0 md:pt-5 sm:text-lg font-semibold font-custom-open-sans">
                 {userData.phone ? userData.phone : "Not Available"}
               </p>
             </div>
@@ -88,7 +88,7 @@ const UserProfileDetails = () => {
               <p className="hidden sm:block text-secondary pt-6 text-sm font-custom-open-sans">
                 Email
               </p>
-              <p className="text-primary text-xs sm:text-lg pt-5 font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs sm:text-lg pt-0 md:pt-5 font-semibold font-custom-open-sans">
                 {userData.email || "Not Available"}
               </p>
             </div>
@@ -103,7 +103,7 @@ const UserProfileDetails = () => {
               <p className="hidden sm:block text-secondary text-sm pt-6 font-custom-open-sans">
                 Address
               </p>
-              <p className="text-primary text-xs sm:text-lg w-60 pt-5 font-semibold font-custom-open-sans">
+              <p className="text-primary text-xs sm:text-lg w-60 pt-0 md:pt-5 font-semibold font-custom-open-sans">
                 {`${userData?.address || ""} ${
                   userData?.address_line_1 || ""
                 } ${userData?.address_line_2 || ""} ${userData?.city || ""} ${

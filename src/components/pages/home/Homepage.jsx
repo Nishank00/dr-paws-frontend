@@ -106,7 +106,7 @@ const Homepage = () => {
         </h2>
         <p
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center font-custom-open-sans  text-[16] mb-6"
+          className="text-primary text-center font-custom-open-sans max-w-[90%] md:max-w-full  text-[16] mb-6 mx-auto "
         >
           Discover our most commonly requested services. For anything not
           listed, please <br /> get in touch with your local clinic
@@ -117,7 +117,7 @@ const Homepage = () => {
       </div>
 
       {/* SECTION 5 CARDS */}
-      <div className=" z-[-1] bg-[#FFF4E4] md:bg-transparent body-padding-x">
+      <div className=" z-[-1] bg-[#FFF4E4] md:bg-transparent ">
         <Reviews />
       </div>
 
@@ -128,16 +128,15 @@ const Homepage = () => {
       <div className="w-full flex  md:my-20 flex-col items-center justify-center body-padding-x">
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}
-          className="text-primary hidden md:block  text-center text-2xl md:text-4xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
+          className="text-primary flex text-center text-2xl md:text-4xl leading-7 tracking-tight self-center mt-14 max-md:max-w-full max-md:mt-10"
         >
           Still have questions?
         </div>
         <div
           style={{ fontFamily: "Open Sans, sans-serif" }}
-          className="text-primary text-center hidden md:block font-custom-open-sans text-lg leading-7 tracking-tight self-center mt-7  mb-4 max-md:max-w-full max-md:mt-10"
+          className="text-primary text-center flex font-custom-open-sans text-sm md:text-lg md:leading-7 leading-5 tracking-tight self-center md:mt-7 md:mb-4 mt-4 mb-4 w-[290px] md:w-[480px] "
         >
-          If your question is still not answered, please get in touch and
-          <br /> we’d be happy to help
+          If your question is still not answered, please get in touch and  we’d be happy to help
         </div>
         <div
           style={{ fontFamily: "Roca Bold, sans-serif" }}

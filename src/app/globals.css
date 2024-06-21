@@ -33,7 +33,7 @@ html {
   width: 0px;
 }
 
-.scrollShow::-webkit-scrollbar{
+.scrollShow::-webkit-scrollbar {
   height: 10px;
   width: 10px;
 }
@@ -57,22 +57,20 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 .ribbin_shap {
   clip-path: polygon(0 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 6% 52%);
 }
+
 .box-shadow {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.phone > input {
+.phone>input {
   outline: unset !important;
 }
 
@@ -80,6 +78,7 @@ body {
   .body-padding-x {
     @apply px-3 sm:px-16 lg:px-48;
   }
+
   .body-padding-y {
     @apply py-2 sm:py-3 lg:py-5;
   }
@@ -103,12 +102,13 @@ body {
   .secondary-btn {
     @apply px-4 py-3 rounded-[80px] bg-secondary hover:bg-primary text-white font-bold w-full;
   }
+
   .accent-btn {
     @apply px-4 py-3 rounded-[80px] bg-accent hover:bg-primary text-white font-bold w-full;
   }
 
   .secondary2-btn {
-    @apply px-4 py-3 rounded-[80px] bg-secondary2 hover:bg-primary2 text-white font-bold w-full  outline-none;
+    @apply px-4 py-3 rounded-[80px] bg-secondary2 hover:bg-primary2 text-white font-bold w-full outline-none;
   }
 }
 
@@ -124,12 +124,18 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.b1{
+.b1 {
   border: 1px solid red;
 }
 
-.df{
+.df {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width:376px) {
+  .lowMob {
+    width: 230px;
+  }
 }

@@ -27,8 +27,8 @@ const ServiceItemList = ({ service_list, service_name }) => {
 
   return (
     <>
-      <div className={`tab-content pb-20`}>
-        <span className="md:justify-between justify-start items-center bg-primary3 flex grow flex-col w-full px-10 py-5 lg:px-16 lg:py-10 max-md:max-w-full  max-md:px-5 h-[516px]">
+      <div className={`tab-content overflow-hidden`}>
+        <span className="md:justify-between h-fit justify-start items-center bg-primary3 flex grow flex-col w-full px-10 py-5 lg:px-16 lg:py-10 max-md:max-w-full  max-md:px-5 h-[516px]">
           <div className="text-slate-700 mb-8 md:mb-0  font-custom-roca text-2xl capitalize self-stretch max-md:max-w-full">
             {service_name ?? "Planned Check-Ups"}
           </div>

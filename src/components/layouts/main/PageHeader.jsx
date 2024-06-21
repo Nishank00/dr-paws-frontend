@@ -141,13 +141,13 @@ const SideBar = ({ closeMenu = () => {} }) => {
               onClick={() => navigateFromMenu("/clinics")}
               className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
             >
-              <h4>Locations</h4>
+              <h4>My Appointments</h4>
               <span>
                 <img src="/icons/arrow_right.svg" alt=" " />
               </span>
             </div>
 
-            <div
+            {/* <div
               onClick={() => navigateFromMenu("/services")}
               className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
             >
@@ -155,9 +155,9 @@ const SideBar = ({ closeMenu = () => {} }) => {
               <span>
                 <img src="/icons/arrow_right.svg" alt=" " />
               </span>
-            </div>
+            </div> */}
 
-            <div
+            {/* <div
               onClick={() => navigateFromMenu("/team")}
               className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
             >
@@ -165,26 +165,35 @@ const SideBar = ({ closeMenu = () => {} }) => {
               <span>
                 <img src="/icons/arrow_right.svg" alt=" " />
               </span>
-            </div>
+            </div> */}
 
             <div
               onClick={() => navigateFromMenu("/membership")}
               className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
             >
-              <h4>Membership</h4>
+              <h4>Become a Member</h4>
+              <span>
+                <img src="/icons/arrow_right.svg" alt=" " />
+              </span>
+            </div>
+            <div
+              onClick={() => navigateFromMenu("/")}
+              className="flex items-center justify-between px-2 hover:bg-primary4 rounded-lg cursor-pointer"
+            >
+              <h4>Log Out</h4>
               <span>
                 <img src="/icons/arrow_right.svg" alt=" " />
               </span>
             </div>
           </div>
 
-          <div className="px-4">
+          {/* <div className="px-4">
             <Button
-              label="Book a visit"
+              label="Log Out"
               color="secondary"
               className="h-10 text-[14px] font-bold"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

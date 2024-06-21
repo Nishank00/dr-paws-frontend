@@ -9,7 +9,7 @@ const BottomNav = () => {
       <div className="bg-primary3 text-primary text-xs text-center font-custom-open-sans grid grid-cols-5 gap-2 py-3">
         <Link
           href={"/"}
-          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+          className={`flex flex-col items-center gap-2 hover:font-semibold justify-between  ${
             pageHeaderData.currentMenu === "HOME" ? "font-semibold" : ""
           }`}
         >
@@ -27,7 +27,7 @@ const BottomNav = () => {
         </Link>
         <Link
           href={"/pets"}
-          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+          className={`flex flex-col items-center gap-2 hover:font-semibold justify-between  ${
             pageHeaderData.currentMenu === "PETS" ? "font-semibold" : ""
           }`}
         >
@@ -57,13 +57,13 @@ const BottomNav = () => {
               className="w-16 h-16 mx-auto"
             />
           </span>
-          <p className="h-full flex items-center justify-center pt-4">
-            Book Appointment
+          <p className="h-full text-[12px] flex flex-col items-center justify-end pt-4">
+            Book
           </p>
         </Link>
         <Link
           href={"/user-memberships"}
-          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+          className={`flex flex-col items-center gap-2 hover:font-semibold justify-between  ${
             pageHeaderData.currentMenu === "MEMBERSHIP" ? "font-semibold" : ""
           }`}
         >
@@ -81,7 +81,7 @@ const BottomNav = () => {
         </Link>
         <Link
           href={"/clinics"}
-          className={`flex flex-col items-center gap-2 hover:font-semibold ${
+          className={`flex flex-col items-center gap-2 hover:font-semibold justify-between  ${
             pageHeaderData.currentMenu === "CLINICS" ? "font-semibold" : ""
           }`}
         >
@@ -95,7 +95,7 @@ const BottomNav = () => {
               alt="home-icon"
             />
           </span>
-          <p>Clinic</p>
+          <p>Our Clinics</p>
         </Link>
       </div>
     </div>
