@@ -211,18 +211,18 @@ const SelectDoctorAndDateTimePage = ({
                         </p>
                       )}
 
-                      <div className="">
+                      <div className="h-[455px] overflow-y-scroll pr-3 scrollShow">
                         {availableSlots &&
                           availableSlots.map((avaliableSlot, index) => (
-                            <div key={"slot" + index}>
+                            <div key={"slot" + index} className="w-full">
                               {avaliableSlot.selected ? (
-                                <div className="grid grid-cols-2 gap-2 w-full sm:max-w-60">
-                                  <div className="rounded-lg shadow-lg bg-primary4 border-2 border-primary w-full sm:w-30 py-4 flex items-center justify-center mb-3">
+                                <div className="grid grid-cols-2 gap-2 w-full ">
+                                  <div className="rounded-lg shadow-lg bg-primary4 border-2 border-primary w-full  py-4 flex items-center justify-center mb-3">
                                     <span>{avaliableSlot.formattedTime}</span>
                                   </div>
                                   <button
                                     onClick={onConfirmBooking}
-                                    className="rounded-lg shadow-lg bg-secondary hover:bg-primary text-white border-2 border-secondary w-full sm:w-30 py-4 flex items-center justify-center mb-3"
+                                    className="rounded-lg shadow-lg bg-secondary hover:bg-primary text-white border-2 border-secondary w-full  py-4 flex items-center justify-center mb-3"
                                   >
                                     Confirm
                                   </button>
@@ -230,7 +230,7 @@ const SelectDoctorAndDateTimePage = ({
                               ) : (
                                 <div
                                   onClick={() => slotClicked(avaliableSlot)}
-                                  className="rounded-lg shadow-lg bg-primary4 w-full sm:max-w-60 py-4 flex items-center justify-center mb-3 cursor-pointer hover:shadow-2xl"
+                                  className="rounded-lg shadow-lg bg-primary4 w-full py-4 flex items-center justify-center mb-3 cursor-pointer hover:shadow-2xl"
                                 >
                                   <span>{avaliableSlot.formattedTime}</span>
                                 </div>

@@ -35,6 +35,7 @@ const OrderSuccess = () => {
     getMemebrshipPaymentDetails();
     // console.log(params);
   }, []);
+
   return (
     <div className="w-full flex justify-center pb-20 items-center flex-col bg-[#fcfaf3]">
       <div className="w-full flex mt-10">
@@ -63,7 +64,29 @@ const OrderSuccess = () => {
             </p>
           </div>
         </div>
-        <div className="w-full mt-10">
+        <div className="w-full mt-5">
+          <div className="w-full font-bold text-xl text-primary font-custom-open-sans ">
+            Membership Details
+          </div>
+          <div className="mt-2">
+            <tr className="flex justify-between text-primary text-md">
+              <td>Plan</td>
+              <td className="font-bold">
+                {/* {membershipDetails?.membershipDetails?.created_at} */}
+                Care Senior
+              </td>
+            </tr>
+            <tr className="flex justify-between text-primary text-md">
+              <td>Duration</td>
+              <td className="font-bold">1 year</td>
+            </tr>
+            <tr className="flex justify-between text-primary text-md">
+              <td>Pet Name</td>
+              <td className="font-bold">Timmy</td>
+            </tr>
+          </div>
+        </div>
+        <div className="w-full mt-5">
           <div className="w-full font-bold text-xl text-primary font-custom-open-sans ">
             Order Details
           </div>
@@ -81,7 +104,10 @@ const OrderSuccess = () => {
             <tr className="flex justify-between text-primary text-md">
               <td>Total</td>
               <td className="font-bold">
-              ₹ {parseInt(membershipDetails?.membershipDetails?.price.toString()).toLocaleString('en-IN')}
+                ₹{" "}
+                {parseInt(
+                  membershipDetails?.membershipDetails?.price.toString()
+                ).toLocaleString("en-IN")}
               </td>
             </tr>
           </div>

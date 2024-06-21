@@ -23,7 +23,7 @@ const BannerPetCard = ({
             className="w-full h-full"
           />
         </div>
-        <BookingButton className="bg-secondary hover:opacity-50 font-light font-custom-open-sans transition rounded-b-2xl text-[10px] md:text-[14px] py-2" />
+        <BookingButton className="bg-secondary hover:bg-[#20394a] font-light font-custom-open-sans transition rounded-b-2xl text-[10px] md:text-[14px] py-2" />
       </div>
     </>
   );

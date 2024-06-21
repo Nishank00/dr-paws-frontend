@@ -29,7 +29,7 @@ const SelectClinicPage = ({
             clinic={clinic}
             selected={clinic.selected}
             hideVisitButton
-            className="min-w-[315px]"
+            className="min-w-[315px] md:min-w-max"
             onClick={() =>
               setClinics(
                 clinics.map((clinic, index) => {

@@ -53,14 +53,14 @@ const MultipleSelect = ({
       )}
       <select
         multiple={isMulti}
-        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring border-transparent focus:outline-blue-300 h-12 border-r-8"
+        className="bg-white text-primary mt-1 p-2 border rounded-md w-full focus:outline-none border-transparent focus:outline-blue-300 h-12 border-r-8"
         onChange={handleSelect}
       >
         {<option value="">{placeholder || "Select an option"}</option>}
         {options?.map((option) => (
           <option
             key={option[optionValue]}
-            value={option[optionValue]}
+            value={option[optionValue] }
             selected={selectedValue == option[optionValue]}
           >
             {option[optionLabel]}

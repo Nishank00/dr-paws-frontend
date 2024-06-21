@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { IoCloseSharp } from "react-icons/io5";
 
 const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   const popupRef = useRef();
@@ -45,18 +46,15 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
   return isMounted
     ? isOpen &&
         ReactDOM.createPortal(
-          <div className="fixed text-primary inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40">
-            <div
-              ref={popupRef}
-              className=" rounded-2xl relative xl:max-h-[75vh]  mt-8  lg:max-h-[70vh] overflow-scroll"
-            >
-              {children}
+          <div className={`fixed text-primary inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60] `}>
+            <div ref={popupRef} className="relative z-[60] rounded-2xl mt-8">
+              <div className="rounded-2xl relative z-[60] overflow-hidden">{children}</div>
               {!hideClose && (
                 <span
-                  className="text-black hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
+                  className="text-black z-[60] hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
                   onClick={onClose}
                 >
-                  X
+                  <IoCloseSharp className="text-[30px] text-[#000]" />
                 </span>
               )}
             </div>

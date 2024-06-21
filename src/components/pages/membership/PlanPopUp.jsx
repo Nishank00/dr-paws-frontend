@@ -27,7 +27,7 @@ const PlanPopUp = ({ onClose }) => {
       <div className="text-slate-700 mt-2">
         Our plan that helps prepare you and your puppy or kitten for a lifetime together{" "}
       </div>
-      <div className="text-slate-700 leading-6 mt-5">
+      <div className="text-slate-700 leading-6 mt-5 b1">
         <span className="font-bold text-slate-700">Includes:</span>
         <ul>
           <li>6 free-of-cost consultations every year</li>

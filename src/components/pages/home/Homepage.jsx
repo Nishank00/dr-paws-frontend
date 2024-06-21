@@ -118,7 +118,7 @@ const Homepage = () => {
       </div>
 
       {/* SECTION 5 CARDS */}
-      <div className=" z-[-1] bg-[#FFF4E4] body-padding-x">
+      <div className=" z-[-1] bg-[#FFF4E4] md:bg-transparent body-padding-x">
         <Reviews />
       </div>
 
@@ -144,7 +144,7 @@ const Homepage = () => {
           style={{ fontFamily: "Roca Bold, sans-serif" }}
           className="w-full border-solid border-grey pr-5 font-black py-4"
         >
-          <p className="text-left font-custome-inter font-extrabold text-lg text-primary">
+          <p className="text-left font-custome-inter !font-extrabold text-lg text-primary">
             About Dr. Paws
           </p>
         </div>

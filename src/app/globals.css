@@ -6,7 +6,7 @@
 @font-face {
   font-family: "Roca Bold";
   src: url("/font/Roca Regular.ttf") format("truetype");
-  font-weight: bold;
+  /* font-weight: 800; */
   font-style: normal;
 }
 
@@ -31,6 +31,11 @@ html {
 ::-webkit-scrollbar {
   height: 0px;
   width: 0px;
+}
+
+.scrollShow::-webkit-scrollbar{
+  height: 10px;
+  width: 10px;
 }
 
 /* Track */

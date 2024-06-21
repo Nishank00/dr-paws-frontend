@@ -33,7 +33,7 @@ const UserForm = ({ closePopup, user_id }) => {
     address_line_1: null,
     address_line_2: null,
     pin_code: null,
-    city_id: null,
+    city_id: '91-India',
     state_id: null,
     country_id: null,
     city_name: "",
@@ -145,6 +145,7 @@ const UserForm = ({ closePopup, user_id }) => {
       const { data } = response;
 
       if (!data?.status) return showToast(data.message, "warning");
+
       setStates(data.data);
     } catch (error) {
       console.log(error);
@@ -152,23 +153,36 @@ const UserForm = ({ closePopup, user_id }) => {
   };
 
   const getCountries = async () => {
-    // MasterService.getMastersByCode({ code: "STATE" })
-    //   .then((response) => {
-    //     if (!response.data.status)
-    //       return showToast(response.data.message, "warning");
-    //     setStates(response.data.data);
-    //   })
-    //   .catch((err) => console.log(err.message));
     try {
       const response = await PlaceService.getAllCountries();
       const { data } = response;
-
-      if (!data?.status) return showToast(data.message, "warning");
-      setCountries(data.data);
+  
+      if (!data?.status) {
+        showToast(data.message, "warning");
+        return;
+      }
+  
+      let countries = data.data;
+  
+      // Sort countries with India first
+      countries.sort((a, b) => {
+        if (a.isoCode === "IN") {
+          return -1; 
+        } else if (b.isoCode === "IN") {
+          return 1;
+        } else {
+          return a.name.localeCompare(b.name);
+        }
+      });
+  
+      setCountries(countries);
+      console.log('countries', countries)
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching countries:", error);
+      showToast("Error fetching countries", "error");
     }
   };
+  
 
   const stateSelected = (e) => {
     setUserData({ ...userData, state_id: e });

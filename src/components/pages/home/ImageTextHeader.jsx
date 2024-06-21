@@ -48,7 +48,7 @@ const ImageTextHeader = ({
 
   return (
     <>
-      <div className={`${isWidthFull ? 'w-full mx-6' : 'w-[256px]' } md:w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white md:body-padding-x`}>
+      <div className={`${isWidthFull ? 'w-full mx-6' : 'w-[292px]' } md:w-[320px] lg:w-auto grid grid-cols-1 lg:grid-cols-2 gap-3 overflow-hidden bg-white md:body-padding-x`}>
         <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
           <div
             style={{

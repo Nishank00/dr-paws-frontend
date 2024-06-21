@@ -10,7 +10,7 @@ const ImageHeader = ({
   buttonVisibility = true,
 }) => {
   return (
-    <div className="lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5 py-12 overflow-hidden bg-white">
+    <div className="lg:w-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 px-5 md:px-0 py-12 overflow-hidden bg-white">
       <div className={imagePosition == "left" ? "" : "lg:order-2 "}>
         <div
           style={{
@@ -32,11 +32,11 @@ const ImageHeader = ({
             <div className="lg:w-[363px] flex flex-col justify-start gap-5">
               <h2
                 style={{ fontFamily: "Roca Bold, sans-serif" }}
-                className="text-primary leading-10  mt-10 lg:mt-0 text-[32px] lg:text-[48px] mb-6"
+                className="text-primary leading-10  mt-5 lg:mt-0 text-[32px] lg:text-[48px] mb-4 md:mb-6"
               >
                 {header}
               </h2>
-              {/* <h1 style={{ fontFamily: "Roca Bold, sans-serif" }}className=" text-primary  leading-10  lg:text-[50px]">{header}</h1> */}
+
               <p className="text-primary font-custom-open-sans text-[16px] mb-6">
                 {text}
               </p>

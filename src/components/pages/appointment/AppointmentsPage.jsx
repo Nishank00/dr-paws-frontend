@@ -40,7 +40,7 @@ const AppointmentsPage = () => {
   }, []);
 
   return (
-    <div className="sm:body-padding-x body-padding-y text-xs lg:text-lg flex justify-center lg:block text-primary">
+    <div className="sm:body-padding-x body-padding-y text-xs lg:text-lg flex justify-center lg:block text-primary px-8 ">
       <Tabs tabs={tabs} active={activeTab} />
     </div>
   );
