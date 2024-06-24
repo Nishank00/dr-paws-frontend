@@ -10,6 +10,7 @@ const TextInput = ({
   classes = "",
   readonly = false,
   max,
+  error = false,
 }) => {
   const handleChange = (e) => {
     onChange(e);
@@ -30,8 +31,9 @@ const TextInput = ({
         name={name}
         readOnly={readonly}
         className={
-          "text-primary p-4 border border-secondary mt-1 rounded-md w-full focus:outline-none h-12 " +
-          classes
+          `text-primary p-4 border ${
+            error ? "border-red-600" : "border-secondary"
+          }   mt-1 rounded-md w-full focus:outline-none h-12 ` + classes
         }
         min={0}
         maxLength={max}

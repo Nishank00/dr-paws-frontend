@@ -6,6 +6,7 @@ import PetService from "@/services/Pet.Service";
 import UploadProfile from "@/components/auth/UploadProfile";
 import { useToast } from "@/components/ui/ToastProvider";
 import moment from "moment";
+import { MdError } from "react-icons/md";
 
 const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   // Variables
@@ -153,7 +154,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   }, [formData.pet_type]);
 
   return (
-    <div className="bg-primary3 w-96 p-5 rounded-lg">
+    <div className="bg-primary3 md:w-96 w-80 md:mx-0 mx-4 p-5 rounded-lg">
       <h4 className="text-primary text-center font-bold font-custom-roca mb-4 text-3xl">
         {pet_id ? "Update Pet" : "Add a Pet"}
       </h4>
@@ -166,6 +167,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
         placeholder={"Pet's Name"}
         onChange={updateFormData}
         classes="md:mb-4"
+        error={false}
       />
 
       <Select
@@ -176,6 +178,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
         optionValue={"id"}
         placeholder={"Type of Pet"}
         onSelect={selectPetType}
+        error={false}
       />
 
       {breeds.length > 0 && (
@@ -187,6 +190,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           optionValue={"id"}
           placeholder={"Breed"}
           onSelect={selectBreed}
+          error={false}
         />
       )}
 
@@ -197,6 +201,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           value={formData.otherBreed}
           placeholder={"Enter your pet breed"}
           onChange={updateFormData}
+          error={false}
         />
       )}
 
@@ -209,6 +214,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           optionValue={"value"}
           placeholder={"Gender"}
           onSelect={selectGender}
+          error={false}
         />
 
         <TextInput
@@ -217,6 +223,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           value={formData.date_of_birth}
           placeholder={"Date of Birth"}
           onChange={updateFormData}
+          error={false}
         />
 
         <TextInput
@@ -226,6 +233,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           placeholder={"Age"}
           onChange={updateFormData}
           classes="md:mb-4"
+          error={false}
         />
 
         <TextInput
@@ -235,8 +243,14 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
           placeholder={"Weight"}
           onChange={updateFormData}
           classes="md:mb-4"
+          error={false}
         />
       </div>
+      {false && (
+        <p className="mb-2 ml-1 text-[12px] text-red-600 gap-1 flex items-center">
+          <MdError /> Please fill fields in red before clicking submit.
+        </p>
+      )}
 
       <div className="flex items-center justify-between gap-5">
         <Button

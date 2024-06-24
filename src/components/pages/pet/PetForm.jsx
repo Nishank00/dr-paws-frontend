@@ -151,7 +151,7 @@ const PetForm = ({ closePopup, onPetAdded = () => {}, pet_id, petData }) => {
   }, [formData.pet_type]);
 
   return (
-    <div className="bg-primary3 w-96 p-5 rounded-lg">
+    <div className="bg-primary3 md:w-96 w-full p-5 rounded-lg">
       <h4 className="text-primary text-center font-bold font-custom-roca mb-4 text-3xl">
         {pet_id ? "Update Pet" : "Add a Pet"}
       </h4>
