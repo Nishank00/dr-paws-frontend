@@ -43,7 +43,7 @@ const OTPInput = ({ onOTPEntered }) => {
           value={digit}
           onChange={(e) => handleOTPChange(index, e.target.value)}
           onKeyDown={(e) => handleBackspace(index, e)}
-          className="w-16 h-16 p-4 text-xl text-center border sm:rounded-full m-2 focus:outline-none focus:border-blue-300 rounded-full"
+          className="md:w-16 w-12 md:h-16 h-12 p-4 text-xl text-center border sm:rounded-full m-2 focus:outline-none focus:border-blue-300 rounded-full"
         />
       ))}
     </div>

@@ -14,7 +14,7 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
     );
   }, [services]);
   return (
-    <div className="bg-primary4 relative rounded-md cursor-pointer w-[90%] m-auto lg:w-[100%] shadow-md flex flex-col transition ease-in-out delay-500 hover:shadow-lg">
+    <div className="bg-primary4 relative rounded-md cursor-pointer min-w-[300px] md:min-w-max md:w-[90%] m-auto lg:w-[100%] shadow-md flex flex-col transition ease-in-out delay-500 hover:shadow-lg">
       <div
         onClick={() => router.push(`/clinics/overview/${id}`)}
         className="rounded-t-md w-full h-[150px] lg:h-[140px] md:h-[240px] flex justify-end"

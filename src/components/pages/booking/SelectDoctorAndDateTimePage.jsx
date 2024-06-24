@@ -16,7 +16,7 @@ const SelectDoctorAndDateTimePage = ({
   setSelectedSlot,
   onConfirmBooking,
   className,
-  
+
   selectedServicesData = [],
 }) => {
   const [isDoctorSelected, setIsDoctorSelected] = useState(false);
@@ -25,6 +25,7 @@ const SelectDoctorAndDateTimePage = ({
   const [availableDays, setAvailableDays] = useState([]);
   const [doctorClinicTimings, setDoctorClinicTimings] = useState([]);
   const showToast = useToast();
+
 
   const dateSelected = async (date) => {
     setSelectedDate(date);
@@ -48,6 +49,7 @@ const SelectDoctorAndDateTimePage = ({
   };
 
   async function handleDoctorClick(doctorIndex, doctorId, doctorName) {
+  
     let copyDoctorData = doctors.map((doctor) => {
       if (doctor.id === doctorId) {
         doctor["selected"] = !doctor["selected"];
@@ -57,7 +59,7 @@ const SelectDoctorAndDateTimePage = ({
       return { ...doctor };
     });
 
-    console.log(doctors)
+    console.log("dc", doctors);
 
     setSelectedDoctorId(doctorId);
     setDoctors(copyDoctorData);
@@ -108,7 +110,7 @@ const SelectDoctorAndDateTimePage = ({
   });
 
   const isDayAvailable = (selectedDate) => {
-  // if (isGroomingOnly) {
+    // if (isGroomingOnly) {
     //   return true;
     // }
     const selectedDay = moment(selectedDate).format("dddd");
@@ -163,7 +165,10 @@ const SelectDoctorAndDateTimePage = ({
                   {sortedDoctors.map((doctor, i) => (
                     <DoctorSelect
                       key={"doctor" + i}
-                      doctor={{ ...doctor, index: i }}
+                      doctor={{
+                        ...doctor,
+                        index: i,
+                      }}
                       selected={doctor?.selected}
                       onClick={handleDoctorClick}
                     />

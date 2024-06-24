@@ -79,7 +79,7 @@ const OverviewTabs = () => {
             <div className="flex flex-col items-stretch w-[19%] ml-5 max-md:w-full max-md:ml-0"></div>
           </div>
         </div>
-        <BookingButton className="text-white cursor-pointer text-2xl font-custom-open-sans w-60 h-[64px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5" />
+        <BookingButton className="text-white cursor-pointer text-xl md:text-2xl font-custom-open-sans md:w-60 w-44 md:h-[64px] h-[50px] font-bold  flex justify-center  items-center bg-secondary mt-1 rounded-[43.2px] self-start max-md:px-5" />
       </span>
 
       <div className="flex sm:w-[70%] p-2 mx-auto flex-col items-start mt-4 text-primary">

@@ -1,10 +1,26 @@
 "use clinet";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
+import { useMediaQuery } from "@/store/useMediaQuery";
 
 const GallaryBox = ({ photoArray = [] }) => {
-  const gridData = [0, 1, 2, 3, 4, 5, 6, 7];
+  const gridDataDesk = [0, 1, 2, 3, 4, 5, 6, 7];
+  const gridDataMob = [0, 1, 2, 3];
   const [isOpen, setIsOpen] = useState(false);
+
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const [gridData, setGridData] = useState([]);
+  const [lastCard, setLastCard] = useState([]);
+
+  useEffect(() => {
+    if (isMobile) {
+      setGridData(gridDataMob);
+      setLastCard(gridDataMob.length - 1);
+    } else {
+      setGridData(gridDataDesk);
+      setLastCard(gridDataDesk.length - 1);
+    }
+  }, [isMobile]);
 
   const openPopup = () => {
     setIsOpen(true);
@@ -21,21 +37,26 @@ const GallaryBox = ({ photoArray = [] }) => {
           key={"itemm" + item}
           className="flex flex-col relative items-stretch 2 max-md:w-full max-md:ml-0 group overflow-hidden bg-black bg-opacity-50 z-40"
         >
-          <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
+          <a
+            href="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
             className="w-[100%]"
-          ><img
-            loading="lazy"
-            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
-            className={`aspect-square cursor-pointer object-cover h-full w-full ${
-              index == 7 && `inset-0 bg-white opacity-25`
-            } object-contain object-center overflow-hidden shrink-0 sm:max-w-full  h-auto transform transition-transform group-hover:scale-110`}
-          /></a>
-          {index == 7 && (
+          >
+            <img
+              loading="lazy"
+              srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/7c646ea30e3844702c2ab9ed407682c8eb61f40ba6477b9e9cc92a6140557cd1?apiKey=22a36eade5734692978208fb0d2f5c62&"
+              className={`aspect-square cursor-pointer object-cover h-full w-full ${
+                index == 7 && `inset-0 bg-white opacity-25`
+              } object-contain object-center overflow-hidden shrink-0 sm:max-w-full  h-auto transform transition-transform group-hover:scale-110`}
+            />
+          </a>
+          {index == lastCard && (
             <div
               onClick={openPopup}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center"
             >
-              <p className="text-lg font-custom-open-sans cursor-pointer text-white ">View more</p>
+              <p className="text-lg font-custom-open-sans cursor-pointer text-white ">
+                View more
+              </p>
             </div>
           )}
         </div>

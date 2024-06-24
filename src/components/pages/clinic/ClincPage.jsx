@@ -37,7 +37,7 @@ const ClinicPage = () => {
   }, []);
   return (
     <div className="pb-10">
-      <div className="pt-4 md:pt-24 ">
+      <div className="pt-4 md:pt-24 body-padding-x ">
         <ImageHeader
           header={<p className="leading-none">Come and visit us at our place!</p>}
           imagePosition={"left"}
@@ -50,11 +50,11 @@ const ClinicPage = () => {
       </div>
 
       {/* grid section */}
-      <h4 className="text-primary font-custom-roca font-semibold text-center text-xl md:text-5xl mt-1 md:mt-14 mb-10 hidden md:block">
+      <h4 className="text-primary font-custom-roca font-semibold text-center text-xl md:text-5xl mt-1 md:mt-14 mb-10 hidden md:block body-padding-x">
         Our Clinics
       </h4>
 
-      <div className="w-full m-auto mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
+      <div className="w-full m-auto mt-6 md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] flex overflow-scroll px-3 md:body-padding-x">
         {clincs &&
           clincs.map((item, index) => (
             <ClinicCard
@@ -74,7 +74,7 @@ const ClinicPage = () => {
           </div>
         </span> */}
       </div>
-      <div className="mt-20" id="suggestion-form">
+      <div className="mt-20 body-padding-x" id="suggestion-form">
         <SuggestionForm />
       </div>
     </div>

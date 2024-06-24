@@ -15,7 +15,7 @@ const ConfirmBookingOTP = ({ onOTPConfirmed, sendBookingOTP, phoneNumber }) => {
   };
 
   return (
-    <div className="pt-16 px-10 pb-12 max-w-[430px] max-h-[460px] text-center bg-white rounded-2xl">
+    <div className="pt-16 px-10 pb-12 max-w-[300px] md:max-w-[430px] max-h-fit md:max-h-[460px] text-center bg-white rounded-2xl">
       <h2 className="text-2xl font-semibold mb-2">Verify your Phone Number</h2>
       <p className="text-sm mb-10">
         To book the visit please enter the OTP sent to +91 {phoneNumber}.
