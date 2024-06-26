@@ -44,7 +44,7 @@ const SinglePet = ({ pet_id }) => {
               className="w-40"
             />
 
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center flex-col md:flex-row gap-3 md:gap-0 justify-between w-full">
               <div>
                 <h4 className="text-lg font-custom-roca">
                   {petData.pet_membership?.title || "NA"}

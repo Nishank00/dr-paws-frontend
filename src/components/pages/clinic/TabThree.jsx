@@ -29,7 +29,7 @@ const TabThree = ({ id = null }) => {
   }, []);
 
   return (
-    <div className="sm:w-[70%] p-2 mx-auto flex justify-between items-center gap-5">
+    <div className="sm:w-[70%] p-4 mx-auto md:grid md:grid-cols-3 lg:grid-cols-4 overflow-x-auto flex justify-between items-center gap-5">
       {reviews.length
         ? reviews.map((item, index) => (
             <ReviewCard

@@ -115,7 +115,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
           ? "Booking Confirmed"
           : "Booking Cancelled"}
 
-        {appointment && appointment.is_active == 1 && rescheduled ? (
+        {/* {appointment && appointment.is_active == 1 && rescheduled ? (
           <svg
             width="36"
             height="36"
@@ -183,7 +183,7 @@ const BookingConfirmedPage = ({ appointment_id = 0 }) => {
               strokeLinecap="round"
             />
           </svg>
-        )}
+        )} */}
       </h2>
       <div
         className={`${

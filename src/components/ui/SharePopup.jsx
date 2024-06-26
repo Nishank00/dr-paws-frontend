@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React,{useEffect,useRef} from "react";
 import Popup from "./Popup";
 
 const SharePopup = ({ isOpen, onClose, url }) => {
@@ -17,10 +17,28 @@ const SharePopup = ({ isOpen, onClose, url }) => {
       console.error("Error sharing document:", error);
     }
   };
+  const popupRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      onClose(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
   return (
     <>
       <Popup hideClose isOpen={isOpen}>
-        <div className="w-full max-w-md bg-[#33495F] shadow-lg rounded-md p-6 relative">
+        <div ref={popupRef}  className="w-full max-w-md bg-[#33495F] shadow-lg rounded-md p-6 relative">
           <div className="flex items-center">
             <h3
               style={{ fontFamily: "Roca Bold, sans-serif" }}

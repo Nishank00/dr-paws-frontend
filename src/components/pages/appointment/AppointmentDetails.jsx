@@ -83,9 +83,9 @@ const AppointmentDetails = ({
 
   return (
     <div className="flex flex-col items-center justify-center my-16 text-center">
-      <h2 className="font-bold font-custom-roca text-4xl flex gap-2 mb-8">
+      {/* <h2 className="font-bold font-custom-roca text-4xl flex gap-2 mb-8">
         Your Booking
-      </h2>
+      </h2> */}
 
       <div className="bg-primary4 md:px-24 md:py-12 px-8 py-8 flex flex-col items-center rounded-2xl shadow-lg">
         <h3 className="text-2xl font-extrabold mx-8 md:mx-0">

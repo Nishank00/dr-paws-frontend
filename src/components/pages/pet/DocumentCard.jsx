@@ -2,13 +2,31 @@ import DeletePopup from "@/components/ui/DeletePopup";
 import SharePopup from "@/components/ui/SharePopup";
 import { useToast } from "@/components/ui/ToastProvider";
 import PetService from "@/services/Pet.Service";
-import React, { useState } from "react";
+import React, { useState,useRef ,useEffect} from "react";
 import { useSelector } from "react-redux";
 
-const Popover = ({ showPopover = false, onDelete, onShare }) => {
+const Popover = ({ showPopover = false,setShowPopover, onDelete, onShare }) => {
+  const popupRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setShowPopover(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showPopover) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showPopover]);
   return (
     showPopover && (
-      <div className="w-48 bg-primary rounded-lg shadow-lg text-white font-custom-open-sans ml-44 -mt-20 z-50">
+      <div ref={popupRef} className="md:w-48 w-28 bg-primary rounded-lg shadow-lg text-white font-custom-open-sans ml-44 -mt-20 z-50 relative">
         <div className="py-1">
           <button
             className="block px-4 py-2 text-sm hover:opacity-45 w-full text-left"
@@ -97,6 +115,7 @@ const DocumentCard = ({ document, onRefresh = () => {} }) => {
         showPopover={showPopover}
         // onDelete={handleDelete}
         // onShare={handleShare}
+        setShowPopover={setShowPopover}
         onDelete={() => setDeletePop(true)}
         onShare={() => setShare(true)}
       />

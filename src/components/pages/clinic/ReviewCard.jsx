@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ReviewCard = ({ index, reviewData }) => {
   return (
-    <div className="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
+    <div className="flex flex-col items-stretch  min-w-[260px] max-md:w-full max-md:ml-0">
       <div className="bg-primary3 flex w-full grow flex-col items-center mx-auto pb-12 rounded-md max-md:mt-6">
         <Image
           src={

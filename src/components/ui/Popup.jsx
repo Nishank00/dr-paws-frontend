@@ -51,7 +51,7 @@ const Popup = ({ isOpen, onClose = () => {}, hideClose, children }) => {
               <div className="rounded-2xl relative z-[60] overflow-hidden">{children}</div>
               {!hideClose && (
                 <span
-                  className="text-black z-[60] hover:text-gray-500 text-xl absolute top-2 right-2 md:right-5 cursor-pointer"
+                  className="text-black z-[60] hover:text-gray-500 text-xl absolute top-2 right-5 cursor-pointer"
                   onClick={onClose}
                 >
                   <IoCloseSharp className="text-[30px] text-[#000]" />

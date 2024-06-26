@@ -167,7 +167,7 @@ const AddMedicalHistory = () => {
           Back
         </button>
       </div>
-      <div className="w-full p-10">
+      <div className="w-full p-4 md:p-10">
         <div className="w-full flex justify-center m-auto">
           <h1 className="font-custom-roca text-secondary text-4xl">
             {`${selectedPetInfo?.name}'s` || "Buddy’s"} Medical History
@@ -188,7 +188,7 @@ const AddMedicalHistory = () => {
                   >
                     <button
                       className="justify-center items-center text-secondary font-bold text-md 
-                                w-[166px] h-[50px] border-[color:var(--Secondary-1,#5281A2)] flex 
+                                md:w-[166px] md:h-[50px] w-[120px] h-[40px] border-[color:var(--Secondary-1,#5281A2)] flex 
                                 rounded-[40px] border-2 border-solid"
                       onClick={handleButtonClick}
                     >
@@ -217,7 +217,7 @@ const AddMedicalHistory = () => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full p-8">
+                <div className="flex w-full p-0 md:p-8">
                   {uploadedFiles &&
                     uploadedFiles
                       .filter(
@@ -226,7 +226,7 @@ const AddMedicalHistory = () => {
                       .map((doc, docIndex) => (
                         <div
                           key={docIndex}
-                          className="flex mx-auto flex-wrap justify-start w-full gap-2"
+                          className="flex mx-auto flex-row overflow-auto md:flex-wrap justify-start w-full gap-2"
                         >
                           {doc.doc_list &&
                             doc.doc_list.map((file, fileIndex) => (
@@ -235,7 +235,7 @@ const AddMedicalHistory = () => {
                               // </div>
                               <div
                                 key={fileIndex}
-                                className="flex gap-0 w-1/5 flex-col"
+                                className="flex gap-0 w-[40%] md:w-1/5 flex-col"
                               >
                                 <div
                                   className="bg-primary3 p-4 h-[86px] flex justify-end text-[#5281A2]"

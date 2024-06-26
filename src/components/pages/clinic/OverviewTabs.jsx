@@ -84,8 +84,8 @@ const OverviewTabs = () => {
 
       <div className="flex sm:w-[70%] p-2 mx-auto flex-col items-start mt-4 text-primary">
         <div className="relative w-full">
-          <div className="flex overflow-x-auto w-full space-x-8 pb-4 border-b-2 border-b-primary3">
-            {["Clinic Details", "Photos", "Reviews", "Vetrenarians"].map((tab, index) => (
+          <div className="flex overflow-x-auto justify-center md:justify-start w-full space-x-8 pb-4 border-b-2 border-b-primary3">
+            {["Clinic Details", "Reviews", "Vets"].map((tab, index) => (
               <button
                 key={index}
                 ref={(el) => (tabsRef.current[index] = el)}
@@ -113,16 +113,16 @@ const OverviewTabs = () => {
           </div>
         )}
 
-        {/* Content for Tab 2 */}
+        {/* Content for Tab 2
         {activeTab === 2 && (
           <div className="p-4">
             <TabTwo {...clinic} />
           </div>
-        )}
+        )} */}
 
         {/* Content for Tab 3 */}
-        {activeTab === 3 && (
-          <div className="p-4">
+        {activeTab === 2 && (
+          <div className="">
             <TabThree {...clinic} />
           </div>
         )}
@@ -130,7 +130,7 @@ const OverviewTabs = () => {
         
         {/* Content for Tab 4 */}
         {
-          activeTab === 4 && (
+          activeTab === 3 && (
             <div className="p-4">
            <TabFour {...clinic} />
             </div>

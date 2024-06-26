@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React ,{useRef,useEffect} from "react";
 import Popup from "./Popup";
 import { Cross } from "./SharePopup";
 import Button from "./Button";
@@ -8,10 +8,29 @@ const DeletePopup = ({ isOpen, onClose }) => {
   const handleDeletePopUp = (type = false) => {
     onClose(type);
   };
+
+  const popupRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      onClose(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
   return (
     <>
       <Popup hideClose isOpen={isOpen}>
-        <div className="w-full max-w-md bg-[#33495F] shadow-lg rounded-md p-6 relative">
+        <div ref={popupRef} className="w-full max-w-md bg-[#33495F] shadow-lg rounded-md p-6 relative">
           <div className="flex items-center">
             <h3
               style={{ fontFamily: "Roca Bold, sans-serif" }}

@@ -88,7 +88,7 @@ const MedicalHistory = ({ pet_id, petData }) => {
                 {documentType.document_type_name}
               </h2>
 
-              <div className="flex flex-nowrap gap-4">
+              <div className="flex flex-nowrap gap-4 overflow-auto">
                 {documentType.documents && documentType.documents.length > 0 ? (
                   documentType.documents.map((document, i) => (
                     <div
