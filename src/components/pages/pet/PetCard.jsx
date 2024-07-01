@@ -51,7 +51,7 @@ const PetCard = ({ pet = {}, backgroundColor = "primary3" }) => {
         ></div>
         <h4
           className={`text-2xl text-secondary font-custom-roca text-center ${
-            pet?.name.length < 11 ? "whitespace-nowrap" : ""
+            pet?.name?.length < 11 ? "whitespace-nowrap" : ""
           }`}
         >
           {pet?.name}

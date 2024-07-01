@@ -22,7 +22,8 @@ const DoctorProfileCard = ({
           className="aspect-square object-contain object-center w-[115px] overflow-hidden self-center max-w-full"
         />
         <div className="text-slate-700 text-center text-lg font-semibold whitespace-nowrap mt-5">
-          Dr. {full_name || "NA"}
+          {/* Dr. {full_name || "NA"} */}
+          {rest?.firstname} {rest?.lastname}
         </div>
         <div className="flex justify-between items-center  gap-2.5 md:mt-4 mt-3">
           <img
@@ -30,7 +31,9 @@ const DoctorProfileCard = ({
             src="/Teams/specialization_icon.svg"
             className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
           />
-          <div className="text-slate-700 text-sm grow ">{specialization}</div>
+          <div className="text-slate-700 text-sm grow ">
+            {rest?.designation || "-"}
+          </div>
         </div>
         <div className="flex justify-between items-center  gap-2.5 md:mt-4 mt-3">
           <img
@@ -38,7 +41,9 @@ const DoctorProfileCard = ({
             src="/Teams/experience_icon.svg"
             className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
           />
-          <div className="text-slate-700 text-sm grow ">{experience}</div>
+          <div className="text-slate-700 text-sm grow ">
+            {experience || "-"}
+          </div>
         </div>
         <div className="flex justify-between items-center  gap-2.5 md:mt-4 mt-3">
           <img
@@ -46,7 +51,7 @@ const DoctorProfileCard = ({
             src="/profile/teacher.svg"
             className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
           />
-          <div className="text-slate-700 text-sm grow ">{education}</div>
+          <div className="text-slate-700 text-sm grow ">{education || "-"}</div>
         </div>
         <div className="flex justify-between items-center  gap-2.5 md:mt-4 mt-3">
           <img
@@ -54,7 +59,9 @@ const DoctorProfileCard = ({
             src="/Teams/role.svg"
             className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
           />
-          <div className="text-slate-700 text-sm grow ">Veterinarian</div>
+          <div className="text-slate-700 text-sm grow ">
+            {rest?.designation ?? "-"}
+          </div>
         </div>
         <div className="flex justify-between items-center  gap-2.5 md:mt-4 mt-3">
           <img

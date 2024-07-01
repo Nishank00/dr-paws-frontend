@@ -35,7 +35,7 @@ const SinglePet = ({ pet_id }) => {
 
   return (
     <div className="body-padding-y">
-      {petData.pet_membership &&
+      {petData?.pet_membership &&
         Object.keys(petData.pet_membership).length > 0 && (
           <div className="flex items-center gap-8 bg-secondary p-5 rounded-t-xl ">
             <img
@@ -75,10 +75,10 @@ const SinglePet = ({ pet_id }) => {
             className="w-10 h-10 md:w-40 md:h-40 rounded-full"
             style={{
               backgroundImage: `url(${
-                petData.pet_image
+                petData?.pet_image
                   ? process.env.NEXT_PUBLIC_API_UPLOAD_URL +
                     "/" +
-                    petData.pet_image
+                    petData?.pet_image
                   : petData?.pet_type_name == "Dog"
                   ? "/home/dog.png"
                   : "/home/cat_cartoon.png"
@@ -101,25 +101,17 @@ const SinglePet = ({ pet_id }) => {
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Type of Pet</p>
-            <h4 className="text-lg">{petData.pet_type_name}</h4>
+            <h4 className="text-lg">{petData?.species}</h4>
           </div>
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Breed</p>
-            <h4 className="text-lg">{petData.breed_name || "NA"}</h4>
+            <h4 className="text-lg">{petData?.breed || "NA"}</h4>
           </div>
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Gender</p>
-            <h4 className="text-lg">
-              {petData.gender
-                ? petData.gender === "MALE"
-                  ? "Male"
-                  : petData.gender === "FEMALE"
-                  ? "Female"
-                  : "NA"
-                : "NA"}
-            </h4>
+            <h4 className="text-lg">{petData?.sex || "NA"}</h4>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -140,9 +132,7 @@ const SinglePet = ({ pet_id }) => {
 
           <div className="flex flex-col gap-1">
             <p className="text-sm text-secondary">Weight</p>
-            <h4 className="text-lg">
-              {petData.weight ? petData.weight + "Kg" : "NA"}
-            </h4>
+            <h4 className="text-lg">{petData?.weight || "NA"}</h4>
           </div>
         </div>
 

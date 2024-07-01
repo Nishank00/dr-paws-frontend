@@ -9,6 +9,13 @@ const clinicService = {
     return API().get(`clinic/get-vpt-clinics`);
   },
 
+  getVetportClinicStaffData(payload = "") {
+    if (!payload.hasOwnProperty("clinicId")) {
+      return new Error("Required params or payload missing");
+    }
+    return API().get(`clinic/get-vpt-clinic-staffs/${payload?.clinicId}`);
+  },
+
   getClinics(params = {}) {
     return API().get("clinic", { params });
   },

@@ -92,7 +92,7 @@ const Homepage = () => {
         Check out the places <br /> we call home
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2  bg-[#cbd9e3] md:grid-cols-3 md:bg-white pb-10 lg:grid-cols-4 gap-[20px] body-padding-x">
-        {clinics.map((clinic, i) => (
+        {clinics?.map((clinic, i) => (
           <ClinicCard key={"clinic" + i} clinic={clinic} />
         ))}
       </div>

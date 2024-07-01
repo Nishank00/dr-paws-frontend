@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import DoctorProfileCard from "./DoctorProfileCard";
 import DoctorService from "@/services/Doctor.Service";
+import clinicService from "@/services/Clinic.service";
+import { useParams } from "next/navigation";
 
 const DoctorSlider = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [doctors, setDoctors] = useState([]);
+  const { id = null } = useParams();
 
   const getAllDoctors = () => {
     DoctorService.getAllDotors()
@@ -20,8 +23,25 @@ const DoctorSlider = () => {
       });
   };
 
+  const getAllVptClinicDoctors = async () => {
+    try {
+      const response = await clinicService.getVetportClinicStaffData({
+        clinicId: id,
+      });
+
+      const { data } = response;
+
+      if (data?.data && data?.data.length) {
+        setDoctors(response.data.data);
+      }
+    } catch (error) {
+      console.log(error, "from get clinic staffs");
+    }
+  };
+
   useEffect(() => {
-    getAllDoctors();
+    // getAllDoctors();
+    getAllVptClinicDoctors();
   }, []);
 
   const nextSlide = () => {

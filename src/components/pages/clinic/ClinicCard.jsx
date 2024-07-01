@@ -7,11 +7,15 @@ const ClinicCard = ({ imageUrl = "/home/clinic_image.png", clinic = {} }) => {
   const [serviceString, setServiceString] = useState();
   const router = useRouter();
 
-  const { id, name, services } = clinic;
+  const { id = "", name = "", services = "" } = clinic;
   useEffect(() => {
-    setServiceString(
-      [...new Set(services?.map((service) => service.service_name))].join(" | ")
-    );
+    if (services) {
+      setServiceString(
+        [...new Set(services?.map((service) => service.service_name))].join(
+          " | "
+        )
+      );
+    }
   }, [services]);
   return (
     <div className="bg-primary4 relative rounded-md cursor-pointer w-[90%] m-auto lg:w-[100%] shadow-md flex flex-col transition ease-in-out delay-500 hover:shadow-lg">

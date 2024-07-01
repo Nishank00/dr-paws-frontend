@@ -46,7 +46,12 @@ const PetsPage = () => {
   // Methods
   const getPets = () => {
     startLoading();
-    PetService.getPetsByUserId(user_id)
+
+    let vetportClientId = JSON.parse(
+      localStorage.getItem("user_info")
+    )?.vetport_client_id;
+
+    PetService.getPetsByUserId(vetportClientId)
       .then((response) => {
         if (!response.data.status)
           return showToast(response.data.message, "warning");
@@ -81,8 +86,11 @@ const PetsPage = () => {
   }, []);
 
   useEffect(() => {
-    if (user_id) getPets();
-  }, [user_id]);
+    let vetportClientId = JSON.parse(
+      localStorage.getItem("user_info")
+    )?.vetport_client_id;
+    if (vetportClientId) getPets();
+  }, []);
 
   return (
     <>
@@ -90,7 +98,7 @@ const PetsPage = () => {
         <h3 className="text-lg">Your Pets</h3>
         <Button
           label="+&nbsp;&nbsp;Add Pet"
-           className="w-fit"
+          className="w-fit"
           onClick={openPetForm}
         />
       </div>
